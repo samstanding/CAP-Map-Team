@@ -4,4 +4,6 @@ capApp.controller('EmailSignupController', ['UserService', 'GuestService', funct
     self.userService = UserService;
     self.guestService = GuestService;
 
+    self.addGuest = GuestService.addGuest;
+
 }]);
