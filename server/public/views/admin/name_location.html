@@ -1,1 +1,8 @@
 name location
+
+<!-- clear id of location when x is pressed -->
+<a href="/#!/admin/addlocation"><i class="material-icons">clear</i></a>
+
+<input ng-model="vm.locations.newLocation.name"/>
+
+<button ng-click="vm.saveLocationName()">save</button>
