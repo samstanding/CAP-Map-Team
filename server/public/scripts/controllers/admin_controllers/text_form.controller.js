@@ -4,4 +4,7 @@ capApp.controller('TextFormController', ['UserService', 'AdminService', function
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.locations = AdminService.locations;
+    self.saveText = AdminService.saveText;
+
 }]);
