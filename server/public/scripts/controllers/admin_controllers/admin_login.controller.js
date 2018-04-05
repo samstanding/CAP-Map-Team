@@ -17,7 +17,7 @@ capApp.controller('LoginController', ['$http', '$location', 'UserService', funct
             if (response.status == 200) {
               console.log('success: ', response.data);
               // location works with SPA (ng-route)
-              $location.path('/user');
+              $location.path('/admin/home');
             } else {
               console.log('failure error: ', response);
               self.message = "Incorrect credentials. Please try again.";
@@ -37,7 +37,7 @@ capApp.controller('LoginController', ['$http', '$location', 'UserService', funct
         console.log('sending to server...', self.user);
         $http.post('/api/user/register', self.user).then(function (response) {
           console.log('success');
-          $location.path('/home');
+          $location.path('/admin');
         },
           function (response) {
             console.log('error');

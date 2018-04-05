@@ -3,5 +3,6 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
     var self = this;
     self.userService = UserService;
     self.adminService = AdminService;
-
+    self.addNewLocation = AdminService.addNewLocation;
+    
 }]);
