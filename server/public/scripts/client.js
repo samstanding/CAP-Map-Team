@@ -106,6 +106,15 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       //   }
       // }
     })
+    .when('/admin/sculptures', {
+      templateUrl: '/views/admin/artifacts/all_sculptures.html',
+      controller: 'SculpturesController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+    })
     .when('/admin/textform', {
       templateUrl: '/views/admin/artifacts/text_form.html',
       controller: 'TextFormController as vm',
