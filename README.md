@@ -1,14 +1,20 @@
-# Name of Project
+# Caponi Art Park Interactive Map
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+The Caponi Art Park app is a mobile-friendly full-stack web application that uses geolocation to allow park visitors to learn about sites near them in the park as well as upcoming park events. Park administrators will be able to upload site information via a separate interface.
 
-## Built With
+## Technologies
 
-List technologies and frameworks here
+- AngularJS
+- NodeJS
+- Express
+- SQL
+- Angular-Material
+- Google Maps API
+- 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+TBD
 
 ### Prerequisites
 
@@ -20,15 +26,9 @@ Link to software that is required to install the app (e.g. node).
 
 ### Installing
 
-Steps to get the development environment running.
+Steps to get the development environment running. (TBD)
 
-```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
-);
-```
+- See caponi.sql for DB creation instructions
 
 ## Screen Shot
 
@@ -57,8 +57,11 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
-
+* Louis Heim
+* Christiana Routon
+* Sam Standing
+* Ryan Udelhoven
+* Elizabeth Wong
 
 ## Acknowledgments
 
