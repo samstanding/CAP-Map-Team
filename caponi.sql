@@ -89,3 +89,46 @@ priority INTEGER
 --COMMIT
 
 
+
+----------------------------
+------create mock data------
+----------------------------
+
+--ADD RECORDS TO INFORMATION--
+BEGIN;
+INSERT INTO information (description, category) VALUES ('don''t climb on the stuff', 'rules');
+INSERT INTO information (description, category) VALUES ('don''t jump the fence Dev', 'rules');
+INSERT INTO information (description, category) VALUES ('bathrooms are in the trees', 'facilities');
+--SELECT * FROM information
+--ROLLBACK
+--COMMIT
+
+--ADD RECORDS TO MAP--
+BEGIN;
+INSERT INTO map (location_name, lat, long, reveal_type) VALUES ('Mr Oak Tree', 44.8043, 93.1548, 'static');
+--SELECT * FROM map
+--ROLLBACK
+--COMMIT
+
+--ADD RECORDS TO ARTIFACT
+BEGIN;
+INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('Mr Oak Tree', '1900', 'wood', 'Mother Nature', 'the wooden tree','The Grand Old Tree', 'If you cut me down you can count my rings', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 4321);
+--SELECT * FROM artifact
+--ROLLBACK
+--COMMIT
+
+--ADD RECORDS TO MAP_ARTIFACT_JOIN
+BEGIN;
+INSERT INTO map_artifact_join (artifact_id, location_id, priority) VALUES (1, 1, 1);
+--SELECT * FROM map_artifact_join
+--ROLLBACK
+--COMMIT
+
+--ADD RECORDS TO EVENTS
+BEGIN;
+INSERT INTO events (title, date_time, description, notes, category, photo_url, age_group, price) VALUES ('Its the event', '5/4/2018 08:00:00', 'This is the description of the event', 'Notes go here', 'Workshop', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Xlf4l624HKjzTaa91X-p9_AWv2FzwhuDHS4ce0xETpXCJWlpXA', '0-12', 12.75);
+--SELECT * FROM events
+--ROLLBACK
+--COMMIT
+
+
