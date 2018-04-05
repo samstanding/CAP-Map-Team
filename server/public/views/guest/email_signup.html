@@ -1,3 +1,10 @@
-email signup
+<a href=#!menu><i class="material-icons">menu</i></a>
+<div>
+    <h1>Register for Emails</h1>
 
-<div ng-include="'views/guest/guest_menu.html'"></div>
+    <form>
+    <input ng-model="vm.user.guest.name" placeholder="First Name" />
+    <input ng-model="vm.user.guest.email" placeholder="Email" />
+    <input type="button"ng-click="vm.addGuest(vm.user.guest)" value="Submit" />
+    </form>
+</div>
