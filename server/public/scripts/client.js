@@ -27,6 +27,10 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       templateUrl: 'views/guest/email_signup.html',
       controller: 'EmailSignupController as vm',
     })
+    .when('/menu', {
+      templateUrl: 'views/guest/guest_menu.html',
+      controller: 'GuestMenuController as vm',
+    })
 
 
     //ADMIN VIEWS HERE
