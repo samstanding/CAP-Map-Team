@@ -31,6 +31,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       templateUrl: 'views/guest/guest_menu.html',
       controller: 'GuestMenuController as vm',
     })
+    
 
 
     //ADMIN VIEWS HERE
