@@ -1,15 +1,15 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var capApp= angular.module('capApp', ['ngRoute']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  console.log('myApp -- config')
+capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  console.log('capApp -- config')
   $routeProvider
     .when('/', {
       redirectTo: 'guidelines'
     })
     .when('/guidelines',{
       templateUrl:'views/guest/guidelines.html',
-      controller: 'GuestController as vm',
+      controller: 'GuidelinesController as vm',
     })
     .when('/events', {
       templateUrl: 'views/guest/guest_events.html',
@@ -108,7 +108,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/admin/textform', {
       templateUrl: '/views/admin/artifacts/text_form.html',
-      controller: 'TextController as vm',
+      controller: 'TextFormController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();
