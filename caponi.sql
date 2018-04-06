@@ -9,7 +9,7 @@
 
 --USERS TABLE--
 BEGIN;
-create TABLE users(
+CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 first_name VARCHAR(20)NOT NULL,
 last_name VARCHAR(20)NOT NULL,
@@ -85,8 +85,8 @@ view_count INTEGER
 BEGIN;
 CREATE TABLE map_artifact_join(
 id SERIAL PRIMARY KEY,
-artifact_id INTEGER REFERENCES artifact(artifact_id),
-location_id INTEGER REFERENCES map(location_id),
+artifact_id INTEGER REFERENCES artifact(id),
+location_id INTEGER REFERENCES map(id),
 priority INTEGER
 )
 --SELECT * FROM map_artifact_join

@@ -79,9 +79,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-
-
-
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
         $http({
