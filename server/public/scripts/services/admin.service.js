@@ -55,4 +55,16 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveSculpture,', newSculpture);
     }
 
+    self.editEvent = function(dataObj){
+        $http({
+            method: 'PUT',
+            url: `/admin/event/edit`,
+            data: dataObj
+        }).then((result)=>{
+
+        }).catch((error)=>{
+            
+        })
+    }
+
 }]);
