@@ -10,4 +10,20 @@ Search:
 <input type="text" ng-model="vm.searchLocations">
 <div ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
     {{location.location_name}}
+    <i ng-if="!location.expanded" class="material-icons">expand_more</i>
+    <i ng-if="location.expanded" class="material-icons">expand_less</i>
+    <div ng-if="location.expanded && !location.beingEdited">
+        {{location.title}}
+        {{location.year}}
+        {{location.artist_name}}
+        {{location.description}}
+        {{location.extended_description}}
+    </div>
+    <div ng-if="location.expanded && location.beingEdited">
+            <input value="location.title" />
+            <input value="location.year" />
+            <input value="location.artist_name" />
+            <input value="location.description" />
+            <input value="location.extended_description" />
+    </div>
 </div>

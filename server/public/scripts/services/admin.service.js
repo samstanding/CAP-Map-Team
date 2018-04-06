@@ -79,6 +79,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }).then((result)=>{
             console.log('success getting all locations', result.data);
             self.locations.allLocations = result.data;
+            for (let location of self.locations.allLocations){
+                location.expanded = false;
+                location.beingEdited = false;
+            }
         }).catch((error)=>{
             console.log('error getting all locations');
         })
