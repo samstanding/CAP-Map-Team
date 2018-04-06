@@ -1,1 +1,13 @@
-edit location
+<a href="/#!/admin/menu"><i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i></a>
+<br><br>
+
+<h3>edit location</h3>
+
+<hr>
+
+<!-- search bar with ng-repeat and filter -->
+Search:
+<input type="text" ng-model="vm.searchLocations">
+<div ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
+    {{location.location_name}}
+</div>

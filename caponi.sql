@@ -1,6 +1,7 @@
-------------------------
---Table create scripts--
-------------------------
+
+-------------------------------
+-- DB title: caponi_art_park --
+-------------------------------
 
 --USERS TABLE--
 -- BEGIN;
@@ -20,7 +21,7 @@ user_type VARCHAR(20)NOT NULL
 --INFORMATION TABLE--
 -- BEGIN;
 CREATE TABLE information(
-information_id SERIAL PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 description VARCHAR,
 category VARCHAR NOT NULL
 )
@@ -31,9 +32,10 @@ category VARCHAR NOT NULL
 --EVENTS TABLE--
 -- BEGIN;
 CREATE TABLE events(
-event_id SERIAL PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 title VARCHAR NOT NULL,
-date_time TIMESTAMP NOT NULL,
+date DATE NOT NULL,
+time TIME NOT NULL,
 description VARCHAR NOT NULL,
 notes VARCHAR NOT NULL,
 category VARCHAR NOT NULL,
@@ -48,7 +50,7 @@ price MONEY
 --MAP TABLE--
 -- BEGIN;
 CREATE TABLE map(
-location_id SERIAL PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 location_name VARCHAR,
 lat DECIMAL NOT NULL,
 long DECIMAL NOT NULL,
@@ -61,7 +63,7 @@ reveal_type VARCHAR
 --ARTIFACT TABLE--
 -- BEGIN;
 CREATE TABLE artifact(
-artifact_id SERIAL PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 type VARCHAR NOT NULL,
 year VARCHAR,
 material VARCHAR,
@@ -80,8 +82,8 @@ view_count INTEGER
 -- BEGIN;
 CREATE TABLE map_artifact_join(
 id SERIAL PRIMARY KEY,
-artifact_id INTEGER REFERENCES artifact(artifact_id),
-location_id INTEGER REFERENCES map(location_id),
+artifact_id INTEGER REFERENCES artifact(id),
+location_id INTEGER REFERENCES map(id),
 priority INTEGER
 )
 --SELECT * FROM map_artifact_join
@@ -95,7 +97,6 @@ priority INTEGER
 ----------------------------
 
 --ADD RECORDS TO INFORMATION--
--- BEGIN;
 INSERT INTO information (description, category) VALUES ('don''t climb on the stuff', 'rules');
 INSERT INTO information (description, category) VALUES ('don''t jump the fence Dev', 'rules');
 INSERT INTO information (description, category) VALUES ('bathrooms are in the trees', 'facilities');
@@ -104,29 +105,27 @@ INSERT INTO information (description, category) VALUES ('bathrooms are in the tr
 --COMMIT
 
 --ADD RECORDS TO MAP--
--- BEGIN;
 INSERT INTO map (location_name, lat, long, reveal_type) VALUES ('Mr Oak Tree', 44.8043, 93.1548, 'static');
 --SELECT * FROM map
 --ROLLBACK
 --COMMIT
 
--- --ADD RECORDS TO ARTIFACT
--- BEGIN;
+
+--ADD RECORDS TO ARTIFACT
+--BEGIN;
 INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('Mr Oak Tree', '1900', 'wood', 'Mother Nature', 'the wooden tree','The Grand Old Tree', 'If you cut me down you can count my rings', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 4321);
 --SELECT * FROM artifact
 --ROLLBACK
 --COMMIT
 
 --ADD RECORDS TO MAP_ARTIFACT_JOIN
--- BEGIN;
-INSERT INTO map_artifact_join (artifact_id, location_id, priority) VALUES (1, 1, 1);
+INSERT INTO map_artifact_join (artifact_id, location_id, priority) VALUES (2, 2, 1);
 --SELECT * FROM map_artifact_join
 --ROLLBACK
 --COMMIT
 
 --ADD RECORDS TO EVENTS
--- BEGIN;
-INSERT INTO events (title, date_time, description, notes, category, photo_url, age_group, price) VALUES ('Its the event', '5/4/2018 08:00:00', 'This is the description of the event', 'Notes go here', 'Workshop', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Xlf4l624HKjzTaa91X-p9_AWv2FzwhuDHS4ce0xETpXCJWlpXA', '0-12', 12.75);
+INSERT INTO events (title, date, time, description, notes, category, photo_url, age_group, price) VALUES ('Its the event', '5/4/2018', '08:00:00', 'This is the description of the event', 'Notes go here', 'Workshop', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Xlf4l624HKjzTaa91X-p9_AWv2FzwhuDHS4ce0xETpXCJWlpXA', '0-12', 12.75);
 --SELECT * FROM events
 --ROLLBACK
 --COMMIT
