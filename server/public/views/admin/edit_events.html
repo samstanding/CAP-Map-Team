@@ -9,7 +9,7 @@ edit events
            Time: <input type="time" ng-model="vm.locations.events.newEvent.time" placeholder="Time" />
            Description: <input ng-model="vm.locations.events.newEvent.description" placeholder="Description" />
            Notes: <input ng-model="vm.locations.events.newEvent.notes" placeholder="Notes" />
-           Category: <input ng-model="vm.locations.events.newEvent.date" placeholder="Category" />
+           Category: <input ng-model="vm.locations.events.newEvent.category" placeholder="Category" />
            Photo: <input ng-model="vm.locations.events.newEvent.photo_url" placeholder="Photo" />
            Age Group: <input ng-model="vm.locations.events.newEvent.age_group" placeholder="Age Group" />
            Price: <input ng-model="vm.locations.events.newEvent.price" placeholder="Price" />
@@ -61,11 +61,11 @@ edit events
                         <div>{{event.Price}}</div>
                     </td>
                     <td>
-                        <button ng-hide="event.editing" ng-click="vm.editEvent(event)">Edit</button>
-                        <button ng-show="event.editing" ng-click="vm.saveEvent(event)">Save</button>
+                        <button ng-hide="event.editing" ng-click="vm.viewEditEvent(event)">Edit</button>
+                        <button ng-show="event.editing" ng-click="vm.editEvent(event)">Save</button>
                     </td>
                     <td>
-                    <button ng-click="vm.deleteEvent(evemt)">Delete</button>
+                    <button ng-click="vm.deleteEvent(event)">Delete</button>
                     </td>
             </tbody>
         </table>

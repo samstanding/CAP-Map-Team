@@ -7,6 +7,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         newMultimedia: {},
         newSculpture: {},
         allLocations: [],
+        events: [],
     }
 
     self.addNewLocation = function(latitude, longitude){
@@ -56,6 +57,34 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveSculpture,', newSculpture);
     }
 
+    self.getEvents = function(){
+        console.log('getEvents');
+        http({
+            method:'GET', 
+            url:`/admin/event/get`,
+        }).then((result)=>{
+            console.log('Events:',result.data);
+            self.locations.events = result.data;
+        }).catch((error)=>{
+            console.log('getEvents', error);
+        })
+    }
+
+    self.addEvent = function(dataObj){
+        console.log('Add Event', dataObj);
+        http({
+            method: 'POST',
+            url:`/admin/event/post`,
+            data: dataObj
+        }).then((result)=>{
+            console.log('Event added');
+            self.getEvents();
+            self.emptyEventsInputs();
+        }).catch((error)=>{
+            console.log('addEvent', error);
+        })
+    }
+
     self.editEvent = function(dataObj){
         $http({
             method: 'PUT',
@@ -63,6 +92,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             data: dataObj
         }).then((result)=>{
             // Redisplay DOM
+            self.getEvents();
         }).catch((error)=>{
             console.log('editEvent', error);
         })
@@ -74,13 +104,23 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             url: `/admin/event/delete/${dataObj.event_id}`
         }).then((result)=>{
             // Redisplay DOM
+            self.getEvents();
         }).catch((error)=>{
             console.log('editEvent', error);
         })
     }
 
-
-
+    self.emptyEventsInputs = function(){
+        self.locations.events.newEvent.title = '';
+        self.locations.events.newEvent.date = '';
+        self.locations.events.newEvent.time = '';
+        self.locations.events.newEvent.description = '';
+        self.locations.events.newEvent.notes = '';
+        self.locations.events.newEvent.category = '';
+        self.locations.events.newEvent.photo_url = '';
+        self.locations.events.newEvent.age_group = '';
+        self.locations.events.newEvent.price = '';
+    }
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
