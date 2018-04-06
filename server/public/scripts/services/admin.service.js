@@ -6,6 +6,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         newText: {},
         newMultimedia: {},
         newSculpture: {},
+        allLocations: [],
     }
 
     self.addNewLocation = function(latitude, longitude){
@@ -53,6 +54,45 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.saveSculpture = function(){
         let newSculpture = self.locations.newSculpture;
         console.log('in saveSculpture,', newSculpture);
+    }
+
+    self.editEvent = function(dataObj){
+        $http({
+            method: 'PUT',
+            url: `/admin/event/edit`,
+            data: dataObj
+        }).then((result)=>{
+            // Redisplay DOM
+        }).catch((error)=>{
+            console.log('editEvent', error);
+        })
+    }
+
+    self.deleteEvent = function(dataObj){
+        $http({
+            method: 'PUT',
+            url: `/admin/event/delete/${dataObj.event_id}`
+        }).then((result)=>{
+            // Redisplay DOM
+        }).catch((error)=>{
+            console.log('editEvent', error);
+        })
+    }
+
+
+
+
+    self.getAllLocations = function(){
+        console.log('in getAllLocations function');
+        $http({
+            method: 'GET',
+            url: `/admin/locations/all`,
+        }).then((result)=>{
+            console.log('success getting all locations', result.data);
+            self.locations.allLocations = result.data;
+        }).catch((error)=>{
+            console.log('error getting all locations');
+        })
     }
 
 }]);

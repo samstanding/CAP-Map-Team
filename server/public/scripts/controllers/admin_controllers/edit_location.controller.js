@@ -4,4 +4,6 @@ capApp.controller('EditLocationController', ['UserService', 'AdminService', func
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.locations = UserService.locations;
+    self.getAllLocations = UserService.getAllLocations;
 }]);
