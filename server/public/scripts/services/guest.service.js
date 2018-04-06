@@ -13,4 +13,13 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
 
     }
 
+    $http({
+        method: 'GET',
+        url: `/guest/events`
+    }).then((result)=>{
+
+    }).catch((error)=>{
+
+    }) // Needs a function, GET for guest view of events - Ryan
+
 }]);
