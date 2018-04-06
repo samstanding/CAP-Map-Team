@@ -3,13 +3,9 @@
 -- DB title: caponi_art_park --
 -------------------------------
 
-------------------------
---Table create scripts--
-------------------------
-
 --USERS TABLE--
 BEGIN;
-CREATE TABLE users(
+create TABLE users(
 id SERIAL PRIMARY KEY,
 first_name VARCHAR(20)NOT NULL,
 last_name VARCHAR(20)NOT NULL,
