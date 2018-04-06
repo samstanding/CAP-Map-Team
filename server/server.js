@@ -7,8 +7,10 @@ const sessionConfig = require('./modules/session-middleware');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const adminRouter = require('./routes/admin.router');
-const guestRouter = require('./routes/guest.router');
+const artifactsRouter = require('./routes/artifacts.router');
+const eventsRouter = require('./routes/events.router');
+const informationRouter = require('./routes/information.router');
+const mapRouter = require('./routes/map.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -23,8 +25,10 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/admin', adminRouter);
-app.use('/guest', guestRouter);
+app.use('/artifacts', artifactsRouter);
+app.use('/events', eventsRouter);
+app.use('/information', informationRouter);
+app.use('/map', mapRouter);
 
 // Serve static files
 app.use(express.static('server/public'));

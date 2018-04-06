@@ -2,18 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool.js');
 const router = express.Router();
 
-// Authentication Template
-router.get('/', (req, res) => {
-    // check if logged in
-    if (req.isAuthenticated()) {
-      // send back user object from database
-      res.send(req.user);
-    } else {
-      // failure best handled on the server. do redirect here.
-      res.sendStatus(403);
-    }
-  });
-
 router.put('/event/edit', (req, res) => {
     // if (req.isAuthenticated()) {
     pool.query(`UPDATE events SET title = $1, date_time = $2, description = $3, notes = $4, category = $5, photo_url = $6, age_group = $7, price = $8 WHERE id = $9;`,
@@ -31,12 +19,13 @@ router.delete('/event/delete/:id', (req, res) => {
     // }
 });
 
-router.get('/locations/all', (req, res) => {
-    // if (req.isAuthenticated()) {
-        pool.query('SELECT * FROM map JOIN map_artifact_join on map.id = map_artifact_join.location_id JOIN artifact on artifact.id = map_artifact_join.artifact_id;')
-    // } else {
-    //     res.sendStatus(403);
-    // }
-});
+router.get('/events', (req, res)=>{
+    pool.query(`select * from events order by date;`)
+    .then(function(result) {
+        res.send(result.rows);
+    }).catch(function(error) {
+        res.sendStatus(500);
+    })
+})
 
-  module.exports = router;
+module.exports = router;
