@@ -6,6 +6,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         newText: {},
         newMultimedia: {},
         newSculpture: {},
+        allLocations: [],
     }
 
     self.addNewLocation = function(latitude, longitude){
@@ -64,6 +65,22 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
         }).catch((error)=>{
             
+        })
+    }
+
+
+
+
+    self.getAllLocations = function(){
+        console.log('in getAllLocations function');
+        $http({
+            method: 'GET',
+            url: `/admin/locations/all`,
+        }).then((result)=>{
+            console.log('success getting all locations', result.data);
+            self.locations.allLocations = result.data;
+        }).catch((error)=>{
+            console.log('error getting all locations');
         })
     }
 
