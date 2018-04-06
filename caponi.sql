@@ -3,6 +3,10 @@
 -- DB title: caponi_art_park --
 -------------------------------
 
+------------------------
+--Table create scripts--
+------------------------
+
 --USERS TABLE--
 BEGIN;
 create TABLE users(
