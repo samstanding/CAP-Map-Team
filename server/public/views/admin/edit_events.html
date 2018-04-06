@@ -1,3 +1,74 @@
 edit events
 <a href="/#!/admin/menu"><i id="backArrow" class="material-icons" style="font-size: 100px">arrow_back</i></a>
-<div ng-include="'views/guest/guest_events.html'"></div>
+
+<div>
+    <div>
+        <form>
+           Event Title: <input ng-model="vm.locations.events.newEvent.title" placeholder="Title"/>
+           Date: <input type="date" ng-model="vm.locations.events.newEvent.date" placeholder="Date" />
+           Time: <input type="time" ng-model="vm.locations.events.newEvent.time" placeholder="Time" />
+           Description: <input ng-model="vm.locations.events.newEvent.description" placeholder="Description" />
+           Notes: <input ng-model="vm.locations.events.newEvent.notes" placeholder="Notes" />
+           Category: <input ng-model="vm.locations.events.newEvent.date" placeholder="Category" />
+           Photo: <input ng-model="vm.locations.events.newEvent.photo_url" placeholder="Photo" />
+           Age Group: <input ng-model="vm.locations.events.newEvent.age_group" placeholder="Age Group" />
+           Price: <input ng-model="vm.locations.events.newEvent.price" placeholder="Price" />
+           <input type="submit" ng-click="vm.addEvent(vm.locations.events.newEvent)" value="Submit" />
+        </form>
+    </div>
+    <div>
+        <table>
+            <thread>
+                <th>Event Title</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Description</th>
+                <th>Notes</th>
+                <th>Category</th>
+                <th>Photo</th>
+                <th>Age Group</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </thread>
+            <tbody>
+                <tr ng-repeat="event in vm.locations.events">
+                    <td>
+                        <div>{{event.title}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.date}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.time}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.description}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.notes}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.category}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.photo_url}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.age_group}}</div>
+                    </td>
+                    <td>
+                        <div>{{event.Price}}</div>
+                    </td>
+                    <td>
+                        <button ng-hide="event.editing" ng-click="vm.editEvent(event)">Edit</button>
+                        <button ng-show="event.editing" ng-click="vm.saveEvent(event)">Save</button>
+                    </td>
+                    <td>
+                    <button ng-click="vm.deleteEvent(evemt)">Delete</button>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+</div>
+
