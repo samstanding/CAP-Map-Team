@@ -62,14 +62,22 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             url: `/admin/event/edit`,
             data: dataObj
         }).then((result)=>{
-
+            // Redisplay DOM
         }).catch((error)=>{
-            
+            console.log('editEvent', error);
         })
     }
 
-
-
+    self.deleteEvent = function(dataObj){
+        $http({
+            method: 'PUT',
+            url: `/admin/event/delete/${dataObj.event_id}`
+        }).then((result)=>{
+            // Redisplay DOM
+        }).catch((error)=>{
+            console.log('editEvent', error);
+        })
+    }
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
