@@ -55,4 +55,23 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/guest/all', (req, res) => {
+  pool.query('SELECT * FROM guest_users;')
+  .then(function(result){
+    res.send(result.rows);
+  }).catch(function(error){
+    res.sendStatus(500);
+  })
+});
+
+router.delete('/guest/delete/:id', (req, res) => {
+  let id = req.params.id;
+  pool.query('DELETE FROM guest_users where id = $1;', [id])
+  .then(function(result){
+    res.send(result.rows);
+  }).catch(function(error){
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;
