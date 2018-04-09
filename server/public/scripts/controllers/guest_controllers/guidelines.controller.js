@@ -3,5 +3,9 @@ capApp.controller('GuidelinesController', ['UserService', 'GuestService', functi
     var self = this;
     self.userService = UserService;
     self.guestService = GuestService;
+
+    self.getGuidelines = GuestService.getGuidelines;
+
+    self.getGuidelines();
     
 }]);
