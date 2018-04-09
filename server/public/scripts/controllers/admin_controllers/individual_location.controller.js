@@ -1,4 +1,4 @@
-capApp.controller('IndividualLocationController', ['UserService', 'AdminService', function (UserService, AdminService) {
+capApp.controller('IndividualLocationController', ['UserService', 'AdminService', '$routeParams', function (UserService, AdminService, $routeParams) {
     console.log('IndividualLocationController created');
     var self = this;
     self.userService = UserService;

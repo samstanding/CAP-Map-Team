@@ -140,7 +140,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in getIndividualLocation function');
         $http({
             method: 'GET',
-            url: `/artifacts/${locationid}`
+            url: `map/artifact/${locationid}`
         }).then((result)=>{
             self.locations.allArtifactsForLocation = result.data;
             console.log('success getting all locations', self.locations.allArtifactsForLocation);
