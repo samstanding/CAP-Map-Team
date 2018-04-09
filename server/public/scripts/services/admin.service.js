@@ -8,6 +8,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         newSculpture: {},
         allLocations: [],
         events: [],
+        allArtifactsForLocation: [],
     }
 
     self.addNewLocation = function(latitude, longitude){
@@ -126,14 +127,23 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in getAllLocations function');
         $http({
             method: 'GET',
-            url: '/map/locations/all'
+            url: '/map/all'
         }).then((result)=>{
             self.locations.allLocations = result.data;
-            for (let location of self.locations.allLocations){
-                location.expanded = false;
-                location.beingEdited = false;
-            }
             console.log('success getting all locations', self.locations.allLocations);
+        }).catch((error)=>{
+            console.log('error getting all locations');
+        })
+    }
+
+    self.getIndividualLocation = function(locationid){
+        console.log('in getIndividualLocation function');
+        $http({
+            method: 'GET',
+            url: `/artifacts/${locationid}`
+        }).then((result)=>{
+            self.locations.allArtifactsForLocation = result.data;
+            console.log('success getting all locations', self.locations.allArtifactsForLocation);
         }).catch((error)=>{
             console.log('error getting all locations');
         })
