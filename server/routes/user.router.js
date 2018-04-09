@@ -74,4 +74,16 @@ router.delete('/guest/delete/:id', (req, res) => {
   })
 });
 
+router.post('/guest', (req, res)=>{
+  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2)', [req.body.name, req.body.email])
+  .then(function(result){
+    console.log('Guest Added');
+    res.sendStatus(201);
+  })
+  .catch(function(error){
+    console.log('Could not add guest', error);
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;

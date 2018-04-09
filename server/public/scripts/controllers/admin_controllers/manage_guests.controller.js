@@ -4,4 +4,9 @@ capApp.controller('ManageGuestsController', ['UserService', 'AdminService', func
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.deleteGuest = AdminService.deleteGuest;
+    self.getAllGuests = AdminService.getAllGuests;
+    self.addGuest = AdminService.addGuest;
+    
+    self.getAllGuests();
 }]);
