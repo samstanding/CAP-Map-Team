@@ -12,6 +12,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         allWritings: [],
         allPoems: [],
         allMultimedia: [],
+        guidelines: {},
     }
     
     self.indLocation = {
@@ -168,7 +169,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         
         $http({
             method: 'PUT',
-            url: `/events/edit`,
+            url: `/events/edit/${dataObj.id}`,
             data: dataObj
         }).then((result)=>{
             // Redisplay DOM
@@ -181,7 +182,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.deleteEvent = function(dataObj){
         $http({
             method: 'DELETE',
-            url: `/events/delete/${dataObj.event_id}`
+            url: `/events/delete/${dataObj.id}`
         }).then((result)=>{
             // Redisplay DOM
             self.getEvents();
@@ -239,6 +240,67 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+    //----GUIDELINES AJAX-----//
+
+    self.addGuideline = function(dataObj){
+        console.log('Add Guideline');
+        
+        $http({
+            method:'POST', 
+            url: `/information/post`,
+            data: dataObj
+        })
+        .then((result)=>{
+            console.log('Information added');
+            self.getGuidelines();
+        }).catch((error)=>{
+            console.log('Add information', error);
+        })
+    }
+
+    self.getGuidelines = function () {
+        console.log('Get Guidelines');
+        $http({
+            method: 'GET',
+            url: `/information/get`,
+        }).then((result) => {
+            console.log('Guidelines:', result.data);
+            self.locations.guidelines = result.data;
+        }).catch((error) => {
+            console.log('guidelines', error);
+        })
+    }
+
+    self.editGuideline = function(dataObj){
+        console.log('Edit Guideline');
+        $http({
+            method: 'PUT',
+            url: `/information/edit/${dataObj.id}`,
+            data: dataObj,
+        }).then((result) => {
+            console.log('Information updated');
+            self.getGuidelines();
+        }).catch((error) => {
+            console.log('guidelines', error);
+        })
+
+    }
+
+    self.deleteGuideline = function(dataObj) {
+        console.log('Delete Guideline');
+        $http({
+            method: 'DELETE',
+            url: `/information/delete/${dataObj.id}`
+        }).then((result) => {
+            self.getGuidelines();
+        }).catch((error) => {
+            console.log('delete guideline', error);
+        })
+   
+    }
+
+//-----END GUIDELINES AJAX-------
+    
     self.determineType = function(){
         for (let artifact of self.locations.allArtifactsForLocation){
             if (artifact.type == 'sculpture'){
