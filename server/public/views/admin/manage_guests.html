@@ -1,2 +1,24 @@
 manage guests
 <a href="/#!/admin/manageusers"><i class="material-icons">clear</i></a>
+
+<form>
+    <input ng-model="vm.user.newGuest.name" placeholder="Name" />
+    <input ng-model="vm.user.newGuest.email" placeholder="Email" />
+    <input type="submit" ng-click="vm.addGuest(vm.locations.newGuest)" value="Submit" />
+</form>
+
+<div>
+    <table>
+        <thread>
+            <th>Name</th>
+            <th>Email</th>
+        </thread>
+        <tbody>
+            <tr ng-repeat="guest in vm.location.guestList">
+                <td><div>{{guest.name}}</div></td>
+                <td><div>{{guest.email}}</div></td>
+                <td><button ng-click="vm.deleteGuest(guest)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
