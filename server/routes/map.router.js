@@ -30,4 +30,14 @@ router.get('/artifact/:id', (req, res) => {
     // }
 });
 
+router.delete('/join/delete/:id', (req, res) => {
+    let id = req.params.id;
+    pool.query('DELETE * FROM map_artifact_join where id = $1', [id])
+    .then(function(result) {
+        res.send(result.rows);
+    }).catch(function(error) {
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
