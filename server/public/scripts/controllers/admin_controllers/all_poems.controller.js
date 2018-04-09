@@ -4,4 +4,7 @@ capApp.controller('PoemsController', ['UserService', 'AdminService', function (U
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.newText = AdminService.newText;
+    self.newText.type = 'poem';
+
 }]);
