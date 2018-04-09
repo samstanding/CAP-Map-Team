@@ -8,6 +8,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         newEvent:{},
         events: [],
         allArtifactsForLocation: [],
+        allAnecdotes: [],
+        allWritings: [],
+        allPoems: [],
+        allMultimedia: [],
         guidelines: {},
     }
     
@@ -65,26 +69,44 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+    self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
+
     self.uploadnewPhoto = function(){
         console.log('in uploadNewPhoto');
         self.newMultimedia.type = 'photo';
-        //filestack here
-        //set newMultimedia.url equal to filestack url
-        self.newMultimedia.url = 'fakephotourl';
+        self.client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+          }).then(function(result){
+            console.log('in upload,', result.filesUploaded[0].url)
+            alert("successful upload!");
+            self.newMultimedia.media_url = result.filesUploaded[0].url;
+    })
     }
 
-    self.uploadNewVideo = function(){
-        console.log('in uploadNewVideo');
+    self.uploadNewVideo = function(url){
+        console.log('in uploadNewVideo', url);
         self.newMultimedia.type = 'video';
-        //set newMultimedia.url equal to youtube embed url
-        self.newMultimedia.url = 'fakeyoutubeurl';
+        self.newMultimedia.media_url = url;
     }
 
     self.saveMultimedia = function(){
         let newMultimedia = self.newMultimedia;
         console.log('in saveMultimedia,', newMultimedia);
-        //on .then()
-        history.back();
+        $http({
+            method: 'POST',
+            url: '/artifact/multimedia/save',
+            data: {
+                type: newMultimedia.type,
+                media_url: newMultimedia.media_url,
+                description: newMultimedia.description
+            }
+        }).then((result)=>{
+            console.log('new multimedia saved');
+            history.back();
+        }).catch((error)=>{
+            console.log('error saving new multimedia', error);
+        })
     }
 
     self.saveSculpture = function(){
@@ -306,38 +328,66 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.saveLocationInfo = function(){
-        //save main_photo info
+        //save main_photo info, along with all artifact info, when save button is pressed
     }
 
-    // I need a function!
-    $http({
-        method: 'GET',
-        url: '/artifacts/sculpture'
-    }).then((result)=>{
+    // $http({
+    //     method: 'GET',
+    //     url: '/artifacts/sculpture'
+    // }).then((result)=>{
 
-    }).catch((error)=>{
-        console.log('/artifacts/sculpture', error);
-    })
+    // }).catch((error)=>{
+    //     console.log('/artifacts/sculpture', error);
+    // })
 
-    // I need a function!
+    self.getAllMultimedia = function(){
+    console.log('in getAllMultimedia function');
     $http({
         method: 'GET',
         url: '/artifacts/media'
     }).then((result)=>{
-
+        self.locations.allMultimedia = result.data;
     }).catch((error)=>{
         console.log('/artifacts/media', error);
     })
+    }
 
-    // I need a function!
+    self.getAllWritings = function(){
+    console.log('in getAllWritings function');
     $http({
         method: 'GET',
         url: '/artifacts/writing'
     }).then((result)=>{
-
+        self.locations.allWritings = result.data;
     }).catch((error)=>{
         console.log('/artifacts/writing', error);
     })
+    }
+
+    self.getAllAnecdotes = function(){
+    console.log('in getAllAnecdotes function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/anecdote'
+    }).then((result)=>{
+        self.locations.allAnecdotes = result.data;
+    }).catch((error)=>{
+        console.log('/artifacts/anecdote', error);
+    })
+    }
+
+    self.getAllPoems = function(){
+    console.log('in getAllMultimedia function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/poem'
+    }).then((result)=>{
+        self.locations.allPoems = result.data;
+    }).catch((error)=>{
+        console.log('/artifacts/poem', error);
+    })
+    }
+
 
 }]);
 

@@ -6,5 +6,8 @@ capApp.controller('PoemsController', ['UserService', 'AdminService', function (U
 
     self.newText = AdminService.newText;
     self.newText.type = 'poem';
+    self.locations = AdminService.locations;
+    self.getAllPoems = AdminService.getAllPoems;
+    self.getAllPoems();
 
 }]);
