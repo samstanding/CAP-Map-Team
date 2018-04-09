@@ -4,17 +4,16 @@ const router = express.Router();
 
 router.put('/edit', (req, res) => {
     // if (req.isAuthenticated()) {
-    pool.query(`UPDATE events SET title = $1, date = $2, time = $3, description = $4, notes = $5, category = $6, photo_url = $7, age_group = $8, price = $9 WHERE id = $10;`,
-    [req.body.title, req.body.date, req.body.time, req.body.description, req.body.notes, req.body.category, req.body.photo_url, req.body.age_group, req.body.price, req.body.id])
-        .then(function (result) {
-            console.log('Event updated', result);
-            res.sendStatus(201);
-        })
-        .catch(function (error) {
-            console.log('Could not update Event', error);
-            res.sendStatus(500);
-        })
-    
+        pool.query(`UPDATE events SET title = $1, date = $2, time = $3, description = $4, notes = $5, category = $6, photo_url = $7, age_group = $8, price = $9 WHERE id = $10;`,
+        [req.body.title, req.body.date, req.body.time, req.body.description, req.body.notes, req.body.category, req.body.photo_url, req.body.age_group, req.body.price, req.body.id])
+            .then(function (result) {
+                console.log('Event updated', result);
+                res.sendStatus(201);
+            })
+            .catch(function (error) {
+                console.log('Could not update Event', error);
+                res.sendStatus(500);
+            })
     // } else {
     // res.sendStatus(403);
     // }
@@ -23,6 +22,7 @@ router.put('/edit', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
     
     // if (req.isAuthenticated()) {
+<<<<<<< HEAD
         
     pool.query(`delete from events where id = $1;`, [req.params.id])
         .then(function (result) {
@@ -34,17 +34,30 @@ router.delete('/delete/:id', (req, res) => {
             res.sendStatus(500);
         })
         // } else {
+=======
+        pool.query(`DELETE FROM events where id = $1;`, [req.prams.id])
+        .then(function(result) {
+            res.send(result.rows);
+        }).catch(function(error) {
+            res.sendStatus(500);
+        })
+    // } else {
+>>>>>>> master
     //     res.sendStatus(403);
     // }
 });
 
 router.get('/get', (req, res)=>{
-    pool.query(`select * from events order by date;`)
-    .then(function(result) {
-        res.send(result.rows);
-    }).catch(function(error) {
-        res.sendStatus(500);
-    })
+    // if (req.isAuthenticated()) {
+        pool.query(`SELECT * FROM events order by date;`)
+        .then(function(result) {
+            res.send(result.rows);
+        }).catch(function(error) {
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
 })
 
 router.post('/post', (req, res) =>{
