@@ -55,4 +55,35 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/guest/all', (req, res) => {
+  pool.query('SELECT * FROM guest_users;')
+  .then(function(result){
+    res.send(result.rows);
+  }).catch(function(error){
+    res.sendStatus(500);
+  })
+});
+
+router.delete('/guest/delete/:id', (req, res) => {
+  let id = req.params.id;
+  pool.query('DELETE FROM guest_users where id = $1;', [id])
+  .then(function(result){
+    res.send(result.rows);
+  }).catch(function(error){
+    res.sendStatus(500);
+  })
+});
+
+router.post('/guest', (req, res)=>{
+  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2)', [req.body.name, req.body.email])
+  .then(function(result){
+    console.log('Guest Added');
+    res.sendStatus(201);
+  })
+  .catch(function(error){
+    console.log('Could not add guest', error);
+    res.sendStatus(500);
+  })
+})
+
 module.exports = router;
