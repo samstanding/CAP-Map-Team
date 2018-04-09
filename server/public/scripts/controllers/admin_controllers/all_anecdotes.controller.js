@@ -7,4 +7,8 @@ capApp.controller('AnecdotesController', ['UserService', 'AdminService', functio
     self.newText = AdminService.newText;
     self.newText.type = 'anecdote';
 
+    self.locations = AdminService.locations;
+    self.getAllAnecdotes = AdminService.getAllAnecdotes;
+    self.getAllAnecdotes();
+
 }]);

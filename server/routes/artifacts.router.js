@@ -57,7 +57,7 @@ router.get('/media', (req, res) => {
 
 router.get('/writing', (req, res) => {
     // if (req.isAuthenticated()) {
-        pool.query(`SELECT * FROM artifact WHERE (type = 'poem') OR (type = 'writing') OR (type = 'anecdote') ORDER BY id DESC;`)
+        pool.query(`SELECT * FROM artifact WHERE (type = 'writing') ORDER BY id DESC;`)
         .then(function(result) {
             res.send(result.rows);
         }).catch(function(error) {
@@ -67,5 +67,33 @@ router.get('/writing', (req, res) => {
     //     res.sendStatus(403);
     // }
 })
+
+router.get('/anecdote', (req, res) => {
+    // if (req.isAuthenticated()) {
+        pool.query(`SELECT * FROM artifact WHERE (type = 'anecdote') ORDER BY id DESC;`)
+        .then(function(result) {
+            res.send(result.rows);
+        }).catch(function(error) {
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+})
+
+router.get('/poem', (req, res) => {
+    // if (req.isAuthenticated()) {
+        pool.query(`SELECT * FROM artifact WHERE (type = 'poem') ORDER BY id DESC;`)
+        .then(function(result) {
+            res.send(result.rows);
+        }).catch(function(error) {
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+})
+
+//write saveMultimedia post - url: /artifact/multimedia/save body: type, media_url, description
 
 module.exports = router;
