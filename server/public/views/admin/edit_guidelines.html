@@ -1,3 +1,42 @@
 edit guidelines
 
 <a href="/#!/admin/menu"><i id="backArrow" class="material-icons" style="font-size: 100px">arrow_back</i></a>
+
+
+<div>
+    <form>
+        New Guideline:<input ng-model="vm.locations.guidelines.newGuideline.description"/>
+        Category:<input ng-model="vm.locations.guidelines.newGuideline.category"/>
+        <input type="submit" ng-click="vm.addGuideline(vm.locations.guidelines.newGuideline)"/>
+    </form>
+</div>
+
+<div>
+    <table>
+        <thread>
+            <th>Guideline</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+        </thread>
+        <tbody>
+            <tr ng-repeat="guideline in vm.locations.guidelines">
+                <td>
+                    <div ng-hide="guideline.editing">{{guideline.description}}</div>
+                    <input ng-show="guideline.editing" ng-model="guideline.description" ng-value="guideline.description"/>
+                </td>
+                <td>
+                    <div ng-hide="guideline.editing">{{guideline.category}}</div>
+                    <input ng-show="guideline.editing" ng-model="guideline.category" ng-value="guideline.category"/>
+                </td>
+                <td>
+                    <button ng-hide="guideline.editing" ng-click="vm.viewEditGuideline(guideline)">Edit</button>
+                    <button ng-show="guideline.editing" ng-click="vm.editGuideline(guideline)">Save</button>
+                </td>
+                <td>
+                    <button ng-click="vm.deleteGuideline(guideline)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

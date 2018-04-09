@@ -21,9 +21,19 @@ router.put('/edit', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
+    
     // if (req.isAuthenticated()) {
-        pool.query(`delete from events where id = $1;`, [req.prams.id])
-    // } else {
+        
+    pool.query(`delete from events where id = $1;`, [req.params.id])
+        .then(function (result) {
+            console.log('Event updated', result);
+            res.sendStatus(201);
+        })
+        .catch(function (error) {
+            console.log('Could not update Event', error);
+            res.sendStatus(500);
+        })
+        // } else {
     //     res.sendStatus(403);
     // }
 });
