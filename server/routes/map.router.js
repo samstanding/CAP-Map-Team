@@ -4,9 +4,8 @@ const router = express.Router();
 
 router.get('/all', (req, res) => {
     // if (req.isAuthenticated()) {
-        let id = req.params.id;
-        pool.query('SELECT * FROM map ORDER BY id DESC;',
-        [id]).then(function(result) {
+        pool.query('SELECT * FROM map ORDER BY id DESC;')
+        .then(function(result) {
             res.send(result.rows);
         }).catch(function(error) {
             res.sendStatus(500);
