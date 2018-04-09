@@ -21,7 +21,6 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('guest email added');
-            
         })
         .catch((error)=>{
             console.log('Could not add guest email'); 
