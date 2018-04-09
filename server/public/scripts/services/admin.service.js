@@ -4,6 +4,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.locations = {
         newLocation: {},
         allLocations: [],
+        allEvents: [],
+        newEvent:{},
         events: [],
         allArtifactsForLocation: [],
     }
@@ -107,14 +109,15 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+//---START EVENTS AJAX---
     self.getEvents = function(){
         console.log('getEvents');
-        http({
+        $http({
             method:'GET', 
-            url:`/admin/event/get`,
+            url:`/events/get`,
         }).then((result)=>{
             console.log('Events:',result.data);
-            self.locations.events = result.data;
+            self.locations.allEvents = result.data;
         }).catch((error)=>{
             console.log('getEvents', error);
         })
@@ -122,9 +125,12 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.addEvent = function(dataObj){
         console.log('Add Event', dataObj);
-        http({
+        console.log(self.locations.newEvent);
+        
+        dataObj.time = dataObj.time.toString().substring(16, 24);
+        $http({
             method: 'POST',
-            url:`/admin/event/post`,
+            url:`/events/post`,
             data: dataObj
         }).then((result)=>{
             console.log('Event added');
@@ -136,9 +142,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.editEvent = function(dataObj){
+        console.log('Edited item', dataObj);
+        
         $http({
             method: 'PUT',
-            url: `/admin/event/edit`,
+            url: `/events/edit`,
             data: dataObj
         }).then((result)=>{
             // Redisplay DOM
@@ -150,8 +158,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.deleteEvent = function(dataObj){
         $http({
-            method: 'PUT',
-            url: `/admin/event/delete/${dataObj.event_id}`
+            method: 'DELETE',
+            url: `/events/delete/${dataObj.event_id}`
         }).then((result)=>{
             // Redisplay DOM
             self.getEvents();
@@ -171,6 +179,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.locations.events.newEvent.age_group = '';
         self.locations.events.newEvent.price = '';
     }
+    //-----END EVENTS AJAX----
+
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
@@ -237,6 +247,35 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         //save main_photo info
     }
 
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/sculpture'
+    }).then((result)=>{
 
+    }).catch((error)=>{
+        console.log('/artifacts/sculpture', error);
+    })
+
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/media'
+    }).then((result)=>{
+
+    }).catch((error)=>{
+        console.log('/artifacts/media', error);
+    })
+
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/writing'
+    }).then((result)=>{
+
+    }).catch((error)=>{
+        console.log('/artifacts/writing', error);
+    })
 
 }]);
+

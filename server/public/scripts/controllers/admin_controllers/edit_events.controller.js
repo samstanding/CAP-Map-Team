@@ -4,4 +4,16 @@ capApp.controller('EditEventsController', ['UserService', 'AdminService', functi
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.viewEditEvents = function(event){
+        event.editing=true;
+    }
+    
+    self.locations = AdminService.locations;
+    self.getEvents = AdminService.getEvents;
+    self.addEvent = AdminService.addEvent;
+    self.editEvent = AdminService.editEvent;
+    self.deleteEvent = AdminService.deleteEvent;
+    self.emptyEventsInputs = AdminService.emptyEventsInputs;
+   
+    self.getEvents();
 }]);

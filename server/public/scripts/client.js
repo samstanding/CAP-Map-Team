@@ -192,6 +192,15 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       //   }
       // }
     })
+    .when('/admin/editguidelines', {
+      templateUrl: '/views/admin/edit_guidelines.html',
+      controller: 'EditGuidelinesController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+    })
     // .when('/register', {
     //   templateUrl: '/views/templates/register.html',
     //   controller: 'LoginController as vm'
