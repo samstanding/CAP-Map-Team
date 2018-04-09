@@ -12,8 +12,19 @@ username VARCHAR(20)NOT NULL,
 password VARCHAR(200)NOT NULL,
 email VARCHAR(200)NOT NULL,
 user_type VARCHAR(20)NOT NULL
-)
+);
 --SELECT * FROM users
+--ROLLBACK
+--COMMIT
+
+--GUEST_USERS TABLE--
+--BEGIN;
+create TABLE guest_users(
+id SERIAL PRIMARY KEY,
+name VARCHAR,
+email VARCHAR(200)
+);
+--SELECT * FROM guest_users
 --ROLLBACK
 --COMMIT
 
@@ -23,7 +34,7 @@ CREATE TABLE information(
 id SERIAL PRIMARY KEY,
 description VARCHAR,
 category VARCHAR NOT NULL
-)
+);
 --SELECT * FROM information
 --ROLLBACK
 --COMMIT
@@ -41,7 +52,7 @@ category VARCHAR NOT NULL,
 photo_url VARCHAR NOT NULL,
 age_group VARCHAR,
 price MONEY
-)
+);
 --SELECT * FROM events
 --ROLLBACK
 --COMMIT
@@ -54,7 +65,7 @@ location_name VARCHAR,
 lat DECIMAL NOT NULL,
 long DECIMAL NOT NULL,
 reveal_type VARCHAR
-)
+);
 --SELECT * FROM map
 --ROLLBACK
 --COMMIT
@@ -72,7 +83,7 @@ description VARCHAR,
 extended_description VARCHAR,
 media_url VARCHAR,
 view_count INTEGER
-)
+);
 --SELECT * FROM artifact
 --ROLLBACK
 --COMMIT
@@ -85,11 +96,10 @@ artifact_id INTEGER REFERENCES artifact(id),
 location_id INTEGER REFERENCES map(id),
 main_photo BOOLEAN,
 priority INTEGER
-)
+);
 --SELECT * FROM map_artifact_join
 --ROLLBACK
 --COMMIT
-
 
 
 ----------------------------
@@ -120,7 +130,7 @@ INSERT INTO artifact (type, year, material, artist_name, title, description, ext
 INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('writing', '2006', 'words', 'Crouton', 'Something writen', 'Here I will talk about the description', 'More description here', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 75);
 INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('anecdote', '2116', 'words', 'Sam', 'Here''s a anecdote for ya!', 'Here I will talk about the description', 'More description here', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 85);
 INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('video', '2226', 'flipbook of images', 'Ryan', 'Roses are red', 'Here I will talk about the description', 'More description here', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 95);
-INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('bathroom', '2336', 'plastic', 'John', 'Bathroom', 'Description', 'More description here', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 105)
+INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url, view_count) VALUES ('bathroom', '2336', 'plastic', 'John', 'Bathroom', 'Description', 'More description here', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOTespJaKoSogP6_mJe0qFlJAgEM4AmLVG0d9jJdw32Qe3ZiFg', 105);
 --SELECT * FROM artifact
 --ROLLBACK
 --COMMIT
@@ -140,15 +150,22 @@ INSERT INTO map (location_name, lat, long, reveal_type) VALUES ('Place 2', 44.80
 
 --ADD RECORDS TO MAP_ARTIFACT_JOIN
 --BEGIN;
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (6, 4, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (7, 4, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (8, 5, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (9, 3, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (10, 6, false);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (11, 7, false);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (12, 8, false);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (1, 1, true);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (2, 1, true);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (3, 2, true);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (4, 3, true);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (5, 4, false);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (6, 5, false);
+INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (7, 6, false);
 --SELECT * FROM map_artifact_join
 --ROLLBACK
 --COMMIT
 
+--ADD GUEST_USER
+--BEGIN;
+INSERT INTO guest_users (name, email) VALUES ('Frank E.', 'frank@email.com');
+INSERT INTO guest_users (name, email) VALUES ('Bill B.', 'bill@email.com');
+--SELECT * FROM guest_users
+--ROLLBACK
+--COMMIT
 
