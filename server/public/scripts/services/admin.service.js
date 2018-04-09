@@ -66,7 +66,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             url:`/events/get`,
         }).then((result)=>{
             console.log('Events:',result.data);
-            self.locations.events = result.data;
+            self.locations.allEvents = result.data;
         }).catch((error)=>{
             console.log('getEvents', error);
         })
@@ -74,6 +74,9 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.addEvent = function(dataObj){
         console.log('Add Event', dataObj);
+        console.log(self.locations.newEvent);
+        
+        dataObj.time = dataObj.time.toString().substring(16, 24);
         $http({
             method: 'POST',
             url:`/events/post`,
@@ -88,6 +91,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.editEvent = function(dataObj){
+        console.log('Edited item', dataObj);
+        
         $http({
             method: 'PUT',
             url: `/events/edit`,

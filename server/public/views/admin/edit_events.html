@@ -38,7 +38,7 @@ edit events
                         <input ng-show="event.editing" ng-model="event.title" ng-value="event.title">
                     </td>
                     <td>
-                        <div ng-hide="event.editing">{{event.date}}</div>
+                        <div ng-hide="event.editing">{{event.date | date: short}}</div>
                         <input ng-show="event.editing" ng-model="event.date" ng-value="event.date">
                     </td>
                     <td>
@@ -66,11 +66,11 @@ edit events
                         <input ng-show="event.editing" ng-model="event.age_group" ng-value="event.age_group">
                     </td>
                     <td>
-                        <div ng-hide="event.editing">{{event.Price}}</div>
+                        <div ng-hide="event.editing">{{event.price}}</div>
                         <input ng-show="event.editing" ng-model="event.price" ng-value="event.price">
                     </td>
                     <td>
-                        <button ng-hide="event.editing" ng-click="vm.viewEditEvent(event)">Edit</button>
+                        <button ng-hide="event.editing" ng-click="vm.viewEditEvents(event)">Edit</button>
                         <button ng-show="event.editing" ng-click="vm.editEvent(event)">Save</button>
                     </td>
                     <td>
