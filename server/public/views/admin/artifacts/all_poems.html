@@ -1,4 +1,14 @@
 all poems
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
+<div ng-repeat="poem in vm.locations.allPoems">
+    
+    {{poem.title}}
+    {{poem.year}}
+    {{poem.description}}
+    <div ng-if="vm.locations.currentLocationId != ''">
+        <button ng-click="vm.saveAssociation(poem.id, 'false')">Add to location</button>
+    </div>
+</div>
+
 <a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>

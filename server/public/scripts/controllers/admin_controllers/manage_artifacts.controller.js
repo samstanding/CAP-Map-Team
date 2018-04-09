@@ -4,4 +4,7 @@ capApp.controller('ManageArtifactsController', ['UserService', 'AdminService', f
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.locations = AdminService.locations;
+    self.locations.currentLocationId = '';
+
 }]);

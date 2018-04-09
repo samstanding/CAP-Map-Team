@@ -13,6 +13,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         allPoems: [],
         allMultimedia: [],
         guidelines: {},
+        currentLocationId: '',
     }
     
     self.indLocation = {
@@ -225,6 +226,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             url: `map/artifact/${locationid}`
         }).then((result)=>{
             self.locations.allArtifactsForLocation = result.data;
+            self.locations.currentLocationId = locationid;
+            console.log('current location id:', self.locations.currentLocationId)
             console.log(`success getting artifacts for location id:${locationid}`, self.locations.allArtifactsForLocation);
             self.indLocation.indSculpture = {};
             self.indLocation.indMainPhoto = {};
@@ -321,7 +324,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             else if (artifact.type == 'video'){
                 self.indLocation.indVideos.push(artifact);
             }
-            if (artifact.main_photo){
+            else if (artifact.main_photo){
                 self.indLocation.indMainPhoto = artifact;
             }
         }
@@ -377,15 +380,34 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.getAllPoems = function(){
-    console.log('in getAllMultimedia function');
+    console.log('in getAllPoems function');
     $http({
         method: 'GET',
         url: '/artifacts/poem'
     }).then((result)=>{
         self.locations.allPoems = result.data;
+        console.log(self.locations.allPoems);
     }).catch((error)=>{
         console.log('/artifacts/poem', error);
     })
+    }
+
+    self.saveAssociation = function(artifact_id, main_photo){
+        let location_id = self.locations.currentLocationId;
+        console.log('in saveAssociation function--artifact_id, main_photo, location_id:', artifact_id, main_photo, location_id);
+        $http({
+            method: 'POST',
+            url: '/map/join/insert',
+            data: {
+                artifact_id: artifact_id,
+                location_id: location_id,
+                main_photo: main_photo,
+            }
+        }).then((result)=>{
+            console.log('association saved');
+        }).catch((error)=>{
+            console.log('error saving association', error);
+        })
     }
 
 

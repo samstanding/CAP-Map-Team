@@ -1,4 +1,14 @@
 all writings
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
+<div ng-repeat="writing in vm.locations.allWritings">
+    
+        {{writing.title}}
+        {{writing.year}}
+        {{writing.description}}
+        <div ng-if="vm.locations.currentLocationId != ''">
+            <button ng-click="vm.saveAssociation(writing.id, 'false')">Add to location</button>
+        </div>
+    </div>
+
 <a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>

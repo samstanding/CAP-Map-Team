@@ -41,8 +41,7 @@ router.delete('/join/delete/:id', (req, res) => {
 
 router.post('/join/insert', (req, res) => {
     // if (req.isAuthenticated()) {
-    let id = req.params.id;
-    pool.query('INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES ($1, $2)',
+    pool.query('INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES ($1, $2, $3)',
         [req.body.artifact_id, req.body.location_id, req.body.main_photo], (err, result) => {
             if (err) {
                 console.log("Error inserting data: ", err);

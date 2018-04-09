@@ -10,4 +10,6 @@ capApp.controller('PoemsController', ['UserService', 'AdminService', function (U
     self.getAllPoems = AdminService.getAllPoems;
     self.getAllPoems();
 
+    self.saveAssociation = AdminService.saveAssociation;
+
 }]);
