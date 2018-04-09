@@ -10,6 +10,7 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
         allEvents: [],
         guidelines: [],
     }
+    
     self.addGuest = function(guest){
         console.log('In addGuest');
         console.log(guest);
@@ -18,15 +19,13 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
             url:'/api/user/guest',
             data: guest,
         })
-            .then((result)=>{
-                console.log('guest email added');
-                
-            })
-            .catch((error)=>{
-                console.log('Could not add guest email');
-                
-            })
-        
+        .then((result)=>{
+            console.log('guest email added');
+            
+        })
+        .catch((error)=>{
+            console.log('Could not add guest email'); 
+        })
 
     }
 

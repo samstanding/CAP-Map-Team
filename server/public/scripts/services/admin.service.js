@@ -13,6 +13,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         allPoems: [],
         allMultimedia: [],
         guidelines: {},
+        guestList: [],
+        newGuest:{},
     }
     
     self.indLocation = {
@@ -388,6 +390,56 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     })
     }
 
+    //----Guest Management----//
+
+    self.getAllGuests = function (){
+        $http({
+            method:'GET', 
+            url: `/api/user/guest/all`
+        })
+        .then((result)=>{
+            console.log('guest emails', result.data);
+            self.locations.guestList = result.data;
+        })
+        .catch((error)=>{
+            console.log('could not get guest emails', error);
+            
+        })
+    }
+
+    self.deleteGuest = function(guest){
+        $http({
+            method:'DELETE',
+            url:`/guest/delete/${guest.id}`
+        })
+        .then((result)=>{
+            console.log('Guest deleted',);
+            self.getAllGuests();
+        })
+        .catch((error)=>{
+            console.log('Could not delete guest');
+        })
+    }
+
+    self.addGuest = function (guest) {
+        console.log('In addGuest');
+        console.log(guest);
+        $http({
+            method: 'POST',
+            url: '/api/user/guest',
+            data: guest,
+        })
+        .then((result) => {
+            console.log('guest email added');
+
+        })
+        .catch((error) => {
+            console.log('Could not add guest email');
+        })
+
+    }
+
+//------END GUEST MANAGEMENT----//
 
 }]);
 
