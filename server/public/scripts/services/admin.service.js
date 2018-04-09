@@ -159,4 +159,34 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/sculpture'
+    }).then((result)=>{
+
+    }).catch((error)=>{
+        console.log('/artifacts/sculpture', error);
+    })
+
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/media'
+    }).then((result)=>{
+
+    }).catch((error)=>{
+        console.log('/artifacts/media', error);
+    })
+
+    // I need a function!
+    $http({
+        method: 'GET',
+        url: '/artifacts/writing'
+    }).then((result)=>{
+
+    }).catch((error)=>{
+        console.log('/artifacts/writing', error);
+    })
+
 }]);
