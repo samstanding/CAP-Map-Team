@@ -4,4 +4,7 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', functi
     self.userService = UserService;
     self.adminService = AdminService;
 
+    self.locations = AdminService.locations;
+    self.newMultimedia = AdminService.newMultimedia
+
 }]);
