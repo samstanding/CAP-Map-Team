@@ -1,4 +1,14 @@
 all anecdotes
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
+<div ng-repeat="anecdote in vm.locations.allAnecdotes">
+    
+        {{anecdote.title}}
+        {{anecdote.year}}
+        {{anecdote.description}}
+        <div ng-if="vm.locations.currentLocationId != ''">
+            <button ng-click="vm.saveAssociation(anecdote.id, 'false')">Add to location</button>
+        </div>
+    </div>
+
 <a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>
