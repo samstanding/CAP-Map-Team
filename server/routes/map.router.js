@@ -37,7 +37,7 @@ router.delete('/join/delete/:id', (req, res) => {
         }).catch(function (error) {
             res.sendStatus(500);
         })
-})
+});
 
 router.post('/join/insert', (req, res) => {
     // if (req.isAuthenticated()) {
