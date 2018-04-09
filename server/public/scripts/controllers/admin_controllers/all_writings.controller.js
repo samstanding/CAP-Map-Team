@@ -6,5 +6,9 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
 
     self.newText = AdminService.newText;
     self.newText.type = 'writing';
+    self.locations = AdminService.locations;
+    self.getAllWritings = AdminService.getAllWritings;
+    self.getAllWritings();
+
 
 }]);

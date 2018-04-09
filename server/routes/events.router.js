@@ -22,7 +22,6 @@ router.put('/edit', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
     
     // if (req.isAuthenticated()) {
-<<<<<<< HEAD
         
     pool.query(`delete from events where id = $1;`, [req.params.id])
         .then(function (result) {
@@ -34,7 +33,7 @@ router.delete('/delete/:id', (req, res) => {
             res.sendStatus(500);
         })
         // } else {
-=======
+
         pool.query(`DELETE FROM events where id = $1;`, [req.prams.id])
         .then(function(result) {
             res.send(result.rows);
@@ -42,7 +41,7 @@ router.delete('/delete/:id', (req, res) => {
             res.sendStatus(500);
         })
     // } else {
->>>>>>> master
+
     //     res.sendStatus(403);
     // }
 });
