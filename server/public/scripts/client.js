@@ -75,6 +75,15 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       //   }
       // }
     })
+    .when('/admin/location/:locationid', {
+      templateUrl: '/views/admin/individual_location.html',
+      controller: 'IndividualLocationController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+    })
     .when('/admin/poems', {
       templateUrl: '/views/admin/artifacts/all_poems.html',
       controller: 'PoemsController as vm',
@@ -183,19 +192,28 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       //   }
       // }
     })
+    .when('/admin/editguidelines', {
+      templateUrl: '/views/admin/edit_guidelines.html',
+      controller: 'EditGuidelinesController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+    })
     // .when('/register', {
     //   templateUrl: '/views/templates/register.html',
     //   controller: 'LoginController as vm'
     // })
-    // .when('/user', {
-    //   templateUrl: '/views/templates/user.html',
-    //   controller: 'UserController as vm',
-    //   resolve: {
-    //     getuser : function(UserService){
-    //       return UserService.getuser();
-    //     }
-    //   }
-    // })
+    .when('/user', {
+      templateUrl: '/views/templates/user.html',
+      controller: 'UserController as vm',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     // .when('/info', {
     //   templateUrl: '/views/templates/info.html',
     //   controller: 'InfoController as vm',
