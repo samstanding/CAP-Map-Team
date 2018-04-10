@@ -1,4 +1,21 @@
 all multimedia
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
+<div ng-repeat="multimedia in vm.locations.allMultimedia">
+        <div ng-if="multimedia.type == 'photo'">
+                <img src="{{multimedia.media_url}}" />
+                {{multimedia.description}}
+                <div ng-if="vm.locations.currentLocationId != ''">
+                    <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
+                </div>
+        </div>
+
+        <div ng-if="multimedia.type == 'video'">
+            <iframe src="{{multimedia.media_url}}"></iframe>
+            {{multimedia.description}}
+        <div ng-if="vm.locations.currentLocationId != ''">
+            <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
+        </div>
+    </div>
+
 <a href="/#!/admin/multimediaform"><i class="material-icons">add_circle</i></a>

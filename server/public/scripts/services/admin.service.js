@@ -57,7 +57,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveText,', newText);
         $http({
             method: 'POST',
-            url: `/artifact/newtext/save`,
+            url: `/artifacts/newtext/save`,
             data: {
                 title: newText.title,
                 year: newText.year,
@@ -407,6 +407,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('association saved');
+            history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
         })

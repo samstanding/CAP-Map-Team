@@ -10,4 +10,6 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', functi
     self.getAllMultimedia = AdminService.getAllMultimedia;
     self.getAllMultimedia();
 
+    self.saveAssociation = AdminService.saveAssociation;
+
 }]);

@@ -113,11 +113,12 @@ router.post('/sculpture/save', (req, res) => {
 router.post('/newtext/save', (req, res) => {
     // if (req.isAuthenticated()) {
         let obj = req.body;
-        pool.query('INSERT INTO artifact (type = $1, year = $2, title = $3, description = $4)',
+        pool.query('INSERT INTO artifact (type, year, title, description) VALUES ($1, $2, $3, $4);',
         [obj.type, obj.year, obj.title, obj.description])
         .then(function(result){
             res.sendStatus(201);
         }).catch(function(error){
+            console.log(error);
             res.sendStatus(500);
         })
         // } else {
