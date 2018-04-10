@@ -4,8 +4,7 @@ const router = express.Router();
 
 router.post('/post', (req,res)=>{
 const guideline = req.body;
-const sqlText = `INSERT INTO information (description, category)
-VALUES ($1, $2);`;
+const sqlText = `INSERT INTO information (description, category) VALUES ($1, $2);`;
 pool.query(sqlText, [guideline.description, guideline.category])
     .then(function(result){
         console.log('Information added', result);
@@ -44,7 +43,7 @@ router.put('/edit/:id', (req,res)=>{
 router.delete('/delete/:id', (req, res) => {
     // if (req.isAuthenticated()) {
     const id = req.params
-    pool.query(`delete from information where id = $1;;`, [req.params.id])
+    pool.query(`delete from information where id = $1;`, [req.params.id])
     // } else {
     //     res.sendStatus(403);
     // }
