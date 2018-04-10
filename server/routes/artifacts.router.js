@@ -127,4 +127,18 @@ router.post('/multimedia/save', (req, res) => {
     // }
 })
 
+router.delete('/delete/:id', (req, res)=>{
+    // if (req.isAuthenticated()) {
+        let id = req.params.id;
+        pool.query('DELETE FROM artifact where id = $1;', [id])
+        .then((result)=>{
+            res.sendStatus(204);
+        }).catch((error)=>{
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+})
+
 module.exports = router;
