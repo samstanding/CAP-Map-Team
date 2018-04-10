@@ -29,7 +29,7 @@ router.post('/register', (req, res, next) => {
     password: encryptLib.encryptPassword(req.body.password)
   };
   console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id',
+  pool.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id;',
     [saveUser.username, saveUser.password], (err, result) => {
       if (err) {
         console.log("Error inserting data: ", err);
@@ -75,7 +75,7 @@ router.delete('/guest/delete/:id', (req, res) => {
 });
 
 router.post('/guest', (req, res)=>{
-  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2)', [req.body.name, req.body.email])
+  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
   .then(function(result){
     console.log('Guest Added');
     res.sendStatus(201);

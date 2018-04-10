@@ -463,5 +463,14 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
 //------END GUEST MANAGEMENT----//
 
+    // I need a function! (POST location data to map table)
+    $http({
+        method: 'POST',
+        url: '/map/location/post',
+        data: postObj
+    }).then((result)=>{
+    }).catch((error)=>{
+        console.log('/map/location/post', error);
+    })
 }]);
 
