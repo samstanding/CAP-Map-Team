@@ -4,8 +4,10 @@ capApp.controller('GuidelinesController', ['UserService', 'GuestService', functi
     self.userService = UserService;
     self.guestService = GuestService;
 
-    self.getGuidelines = GuestService.getGuidelines;
+    self.information = GuestService.information
 
-    self.getGuidelines();
+    self.getInformation = GuestService.getInformation;
+
+    self.getInformation();
     
 }]);
