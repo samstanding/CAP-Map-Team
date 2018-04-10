@@ -11,4 +11,6 @@ capApp.controller('AnecdotesController', ['UserService', 'AdminService', functio
     self.getAllAnecdotes = AdminService.getAllAnecdotes;
     self.getAllAnecdotes();
 
+    self.saveAssociation = AdminService.saveAssociation;
+
 }]);

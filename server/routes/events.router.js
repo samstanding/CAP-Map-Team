@@ -20,10 +20,8 @@ router.put('/edit', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
-    
     // if (req.isAuthenticated()) {
-        
-    pool.query(`delete from events where id = $1;`, [req.params.id])
+        pool.query(`delete from events where id = $1;`, [req.params.id])
         .then(function (result) {
             console.log('Event updated', result);
             res.sendStatus(201);
@@ -33,7 +31,6 @@ router.delete('/delete/:id', (req, res) => {
             res.sendStatus(500);
         })
         // } else {
-
         pool.query(`DELETE FROM events where id = $1;`, [req.prams.id])
         .then(function(result) {
             res.send(result.rows);
@@ -57,23 +54,24 @@ router.get('/get', (req, res)=>{
     // } else {
     //     res.sendStatus(403);
     // }
-})
+});
 
 router.post('/post', (req, res) =>{
-    const event = req.body;
-    const sqlText =  `INSERT INTO events (title, date, time, description, notes, category, photo_url, age_group, price)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
-    pool.query(sqlText, [event.title, event.date, event.time, event.description, event.notes, event.category, event.photo_url, event.age_group, event.price])
-    .then(function(result){
-        console.log('Event Added', event);
-        res.sendStatus(201);
-    })
-    .catch(function(error){
-        console.log('Could not add Event', error);
-        res.sendStatus(500);
-    })
-})
-
-
+    // if (req.isAuthenticated()) {
+        const event = req.body;
+        const sqlText =  `INSERT INTO events (title, date, time, description, notes, category, photo_url, age_group, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        pool.query(sqlText, [event.title, event.date, event.time, event.description, event.notes, event.category, event.photo_url, event.age_group, event.price])
+        .then(function(result){
+            console.log('Event Added', event);
+            res.sendStatus(201);
+        })
+        .catch(function(error){
+            console.log('Could not add Event', error);
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+});
 
 module.exports = router;

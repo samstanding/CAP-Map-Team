@@ -57,7 +57,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveText,', newText);
         $http({
             method: 'POST',
-            url: `/artifact/newtext/save`,
+            url: `/artifacts/newtext/save`,
             data: {
                 title: newText.title,
                 year: newText.year,
@@ -407,6 +407,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('association saved');
+            history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
         })
@@ -463,5 +464,14 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
 //------END GUEST MANAGEMENT----//
 
+    // I need a function! (POST location data to map table)
+    // $http({
+    //     method: 'POST',
+    //     url: '/map/location/post',
+    //     data: postObj
+    // }).then((result)=>{
+    // }).catch((error)=>{
+    //     console.log('/map/location/post', error);
+    // })
 }]);
 

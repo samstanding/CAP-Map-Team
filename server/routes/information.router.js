@@ -4,8 +4,7 @@ const router = express.Router();
 
 router.post('/post', (req,res)=>{
 const guideline = req.body;
-const sqlText = `INSERT INTO information (description, category)
-VALUES ($1, $2)`;
+const sqlText = `INSERT INTO information (description, category) VALUES ($1, $2);`;
 pool.query(sqlText, [guideline.description, guideline.category])
     .then(function(result){
         console.log('Information added', result);
@@ -18,7 +17,7 @@ pool.query(sqlText, [guideline.description, guideline.category])
 })
 
 router.get('/get', (req,res)=>{
-    pool.query(`SELECT * FROM information ORDER BY id`)
+    pool.query(`SELECT * FROM information ORDER BY id;`)
     .then(function(result){
         res.send(result.rows);
     })
@@ -29,7 +28,7 @@ router.get('/get', (req,res)=>{
 
 router.put('/edit/:id', (req,res)=>{
     const guideline = req.body;
-    const sqlText = `UPDATE information SET description = $1, category = $2 WHERE id = $3`;
+    const sqlText = `UPDATE information SET description = $1, category = $2 WHERE id = $3;`;
     pool.query(sqlText, [guideline.description, guideline.category, guideline.id])
     .then(function(result){
         console.log('Guideline updated', result);
