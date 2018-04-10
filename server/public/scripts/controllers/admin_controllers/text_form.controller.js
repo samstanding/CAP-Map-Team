@@ -8,4 +8,6 @@ capApp.controller('TextFormController', ['UserService', 'AdminService', function
     self.newText = AdminService.newText;
     self.saveText = AdminService.saveText;
 
+    self.editText = AdminService.editText;
+
 }]);

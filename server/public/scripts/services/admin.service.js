@@ -483,10 +483,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('individual result:', result.data);
-            // self.newText.type = self.locations.allPoems.poem.type;
-            // self.newText.title = self.locations.allPoems.poem.title;
-            // self.newText.year = self.locations.allPoems.poem.year;
-            // self.newText.description = self.locations.allPoems.poem.description;
+            self.newText.type = result.data[0].type;
+            self.newText.title = result.data[0].title;
+            self.newText.year = result.data[0].year;
+            self.newText.description = result.data[0].description;
+            $location.path('/admin/textform')
         })
         .catch((error)=>{
             console.log('Could not get individual artifact', error);
@@ -494,9 +495,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-
-
-    //-----Start Artifact Other-----
     //-----End Misc Artifact Functions-----
 //-----End Artifacts-------
 //----Start Guest Management----
