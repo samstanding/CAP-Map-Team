@@ -10,5 +10,6 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
     self.getAllWritings = AdminService.getAllWritings;
     self.getAllWritings();
 
+    self.saveAssociation = AdminService.saveAssociation;
 
 }]);

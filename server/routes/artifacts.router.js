@@ -103,6 +103,7 @@ router.post('/newtext/save', (req, res) => {
         .then(function(result){
             res.sendStatus(201);
         }).catch(function(error){
+            console.log(error);
             res.sendStatus(500);
         })
     // } else {
