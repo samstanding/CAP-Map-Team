@@ -141,4 +141,18 @@ router.delete('/delete/:id', (req, res)=>{
     // }
 })
 
+router.get('/single/:id', (req, res)=>{
+    // if (req.isAuthenticated()) {
+        let id = req.params.id;
+        pool.query('SELECT * FROM artifact where id = $1;', [id])
+        .then((result)=>{
+            res.send(result.rows);
+        }).catch((error)=>{
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+})
+
 module.exports = router;
