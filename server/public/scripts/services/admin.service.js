@@ -258,7 +258,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
 //-----END INFORMATION AJAX-------
-
 //-----Start Artifacts-------
     //-----Start Multimedia------
     self.saveMultimedia = function(){
@@ -345,7 +344,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('/artifacts/sculpture', error);
         })
     }
-    //-----Start Sculptures------
+    //-----End Sculptures------
     //-----Start Other Artifacts-----
     self.saveText = function(){
         let newText = self.newText;
@@ -404,7 +403,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
     //-----End Other Artifacts-----
-    //-----Start Artifact Other-----
+    //-----Start Misc Artifact Functions-----
     
     self.determineType = function(){
         for (let artifact of self.locations.allArtifactsForLocation){
@@ -475,9 +474,9 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('/artifacts/delete/:id', error);
         })
     }
-    //-----Start Artifact Other-----
+    //-----End Misc Artifact Functions-----
 //-----End Artifacts-------
-//----Guest Management----
+//----Start Guest Management----
     self.getAllGuests = function (){
         $http({
             method:'GET', 
@@ -521,5 +520,5 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('Could not add guest email');
         })
     }
-//------END GUEST MANAGEMENT----
+//------End Guest Management----
 }]);
