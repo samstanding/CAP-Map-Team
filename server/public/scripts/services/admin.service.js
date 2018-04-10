@@ -520,7 +520,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         .catch((error) => {
             console.log('Could not add guest email');
         })
-
     }
 //------END GUEST MANAGEMENT----
 }]);
