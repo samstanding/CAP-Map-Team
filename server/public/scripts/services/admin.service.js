@@ -413,6 +413,31 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+    self.deleteArtifact = function(artifact){
+        $http({
+            method: 'DELETE',
+            url: `/artifacts/delete/${artifact.id}`
+        }).then((result)=>{
+            switch (artifact.type){
+                case 'photo':
+                case 'video':
+                    self.getAllMultimedia();
+                    break;
+                case 'writing':
+                    self.getAllWritings();
+                    break;
+                case 'anecdote':
+                    self.getAllAnecdotes();
+                    break;
+                case 'poem':
+                    self.getAllPoems();
+                    break;
+            }
+        }).catch((error)=>{
+            console.log('/artifacts/delete/:id', error);
+        })
+    }
+
     //----Guest Management----//
 
     self.getAllGuests = function (){
@@ -426,7 +451,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .catch((error)=>{
             console.log('could not get guest emails', error);
-            
         })
     }
 
@@ -454,7 +478,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result) => {
             console.log('guest email added');
-
         })
         .catch((error) => {
             console.log('Could not add guest email');
