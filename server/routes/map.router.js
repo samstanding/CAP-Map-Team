@@ -59,7 +59,7 @@ router.post('/join/insert', (req, res) => {
     // }
 });
 
-router.post('/location/post', (req, res) => {
+router.post('/post', (req, res) => {
     // if (req.isAuthenticated()) {
         let location = req.body;
         pool.query('INSERT INTO map (location_name, lat, long, reveal_type) VALUES ($1, $2, $3 $4);', [location.location_name, location.lat, location.long, location.reveal_type])
@@ -71,6 +71,30 @@ router.post('/location/post', (req, res) => {
     // } else {
     //     res.sendStatus(403);
     // }
-})
+});
+
+router.delete('/delete/:id', (req, res)=>{
+    // if (req.isAuthenticated()) {
+        let id = req.params.id;
+        pool.query('DELETE FROM map where id = $1;', [id])
+        .then((result)=>{
+            res.sendStatus(204);
+        }).catch((error)=>{
+            res.sendStatus(500);
+        })
+    // } else {
+    //     res.sendStatus(403);
+    // }
+});
+
+router.put('/edit', (req, res)=>{
+    let loc = req.body;
+    pool.query('UPDATE events SET location_name = $1, lat = $2, long = $3, reveal_type = $4;', [loc.location_name, loc.lat, loc.long, loc.reveal_type])
+    .then((result)=>{
+        res.sendStatus(201);
+    }).catch((error)=>{
+        res.sendStatus(500);
+    })
+});
 
 module.exports = router;
