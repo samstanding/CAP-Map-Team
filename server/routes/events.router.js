@@ -59,8 +59,7 @@ router.get('/get', (req, res)=>{
 router.post('/post', (req, res) =>{
     // if (req.isAuthenticated()) {
         const event = req.body;
-        const sqlText =  `INSERT INTO events (title, date, time, description, notes, category, photo_url, age_group, price)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        const sqlText =  `INSERT INTO events (title, date, time, description, notes, category, photo_url, age_group, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
         pool.query(sqlText, [event.title, event.date, event.time, event.description, event.notes, event.category, event.photo_url, event.age_group, event.price])
         .then(function(result){
             console.log('Event Added', event);
