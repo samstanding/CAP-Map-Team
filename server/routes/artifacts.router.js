@@ -67,7 +67,6 @@ router.get('/poem', (req, res) => {
     // }
 })
 
-
 router.get('/anecdote', (req, res) => {
     // if (req.isAuthenticated()) {
         pool.query(`SELECT * FROM artifact WHERE (type = 'anecdote') ORDER BY id DESC;`)
@@ -84,7 +83,7 @@ router.get('/anecdote', (req, res) => {
 router.post('/sculpture/save', (req, res) => {
     // if (req.isAuthenticated()) {
         let obj = req.body;
-        pool.query('INSERT INTO artifact (type = $1, year = $2, material = $3, artist_name = $4, title = $5, description = $6, extended_description = $7);',
+        pool.query('INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description) VALUES ($1, $2, $3, $4, $5, $6, $7);',
         [obj.type, obj.year, obj.material, obj.artist_name, obj.title, obj.description, obj.extended_description])
         .then(function(result){
             res.sendStatus(201);
@@ -116,7 +115,7 @@ router.post('/newtext/save', (req, res) => {
 router.post('/multimedia/save', (req, res) => {
     // if (req.isAuthenticated()) {
         let obj = req.body;
-        pool.query('INSERT INTO artifact (type=$1, media_url=$2, description=$3);',
+        pool.query('INSERT INTO artifact (type, media_url, description) VALUES ($1, $2, $3);',
         [obj.type, obj.media_url, obj.description])
         .then(function(result){
             res.sendStatus(201);
