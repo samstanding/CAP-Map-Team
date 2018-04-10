@@ -21,7 +21,6 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('guest email added');
-            
         })
         .catch((error)=>{
             console.log('Could not add guest email'); 
@@ -29,13 +28,13 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
 
     }
 
-    self.getGuidelines = function () {
+    self.getInformation = function () {
         console.log('Get Guidelines');
         $http({
             method: 'GET',
             url: `/information/get`,
         }).then((result) => {
-            console.log('Guidelines:', result.data);
+            console.log('Information:', result.data);
             self.information.guidelines = result.data;
         }).catch((error) => {
             console.log('guidelines', error);

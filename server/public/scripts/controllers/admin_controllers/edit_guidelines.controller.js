@@ -5,15 +5,15 @@ capApp.controller('EditGuidelinesController', ['UserService', 'AdminService', fu
     self.adminService = AdminService;
     self.locations = AdminService.locations
 
-    self.viewEditGuideline = function (guideline) {
-        guideline.editing = true;
+    self.viewEditInformation = function (information) {
+        information.editing = true;
     }
 
-    self.getGuidelines = AdminService.getGuidelines;
-    self.addGuideline = AdminService.addGuideline;
-    self.editGuideline = AdminService.editGuideline;
-    self.deleteGuideline = AdminService.deleteGuideline;
+    self.getInformation = AdminService.getInformation;
+    self.addInformation = AdminService.addInformation;
+    self.editInformation = AdminService.editInformation;
+    self.deleteInformation = AdminService.deleteInformation;
 
-    self.getGuidelines();
+    self.getInformation();
 
 }]);

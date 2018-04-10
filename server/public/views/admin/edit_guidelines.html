@@ -1,40 +1,40 @@
-edit guidelines
+edit general information
 
 <a href="/#!/admin/menu"><i id="backArrow" class="material-icons" style="font-size: 100px">arrow_back</i></a>
 
 
 <div>
     <form>
-        New Guideline:<input ng-model="vm.locations.guidelines.newGuideline.description"/>
-        Category:<input ng-model="vm.locations.guidelines.newGuideline.category"/>
-        <input type="submit" ng-click="vm.addGuideline(vm.locations.guidelines.newGuideline)"/>
+        New Information:<input ng-model="vm.locations.information.newInformation.description"/>
+        Category:<input ng-model="vm.locations.information.newInformation.category"/>
+        <input type="submit" ng-click="vm.addInformation(vm.locations.information.newInformation)"/>
     </form>
 </div>
 
 <div>
     <table>
         <thread>
-            <th>Guideline</th>
+            <th>Information</th>
             <th>Category</th>
             <th></th>
             <th></th>
         </thread>
         <tbody>
-            <tr ng-repeat="guideline in vm.locations.guidelines">
+            <tr ng-repeat="information in vm.locations.information">
                 <td>
-                    <div ng-hide="guideline.editing">{{guideline.description}}</div>
-                    <input ng-show="guideline.editing" ng-model="guideline.description" ng-value="guideline.description"/>
+                    <div ng-hide="information.editing">{{information.description}}</div>
+                    <input ng-show="information.editing" ng-model="information.description" ng-value="information.description"/>
                 </td>
                 <td>
-                    <div ng-hide="guideline.editing">{{guideline.category}}</div>
-                    <input ng-show="guideline.editing" ng-model="guideline.category" ng-value="guideline.category"/>
+                    <div ng-hide="information.editing">{{information.category}}</div>
+                    <input ng-show="information.editing" ng-model="information.category" ng-value="information.category"/>
                 </td>
                 <td>
-                    <button ng-hide="guideline.editing" ng-click="vm.viewEditGuideline(guideline)">Edit</button>
-                    <button ng-show="guideline.editing" ng-click="vm.editGuideline(guideline)">Save</button>
+                    <button ng-hide="information.editing" ng-click="vm.viewEditInformation(information)">Edit</button>
+                    <button ng-show="information.editing" ng-click="vm.editInformation(information)">Save</button>
                 </td>
                 <td>
-                    <button ng-click="vm.deleteGuideline(guideline)">Delete</button>
+                    <button ng-click="vm.deleteinformation(information)">Delete</button>
                 </td>
             </tr>
         </tbody>

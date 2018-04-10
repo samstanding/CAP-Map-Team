@@ -12,7 +12,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         allWritings: [],
         allPoems: [],
         allMultimedia: [],
-        guidelines: {},
+        information: {},
         currentLocationId: '',
         guestList: [],
         newGuest:{},
@@ -245,10 +245,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    //----GUIDELINES AJAX-----//
+    //----BEGIN Information AJAX-----//
 
-    self.addGuideline = function(dataObj){
-        console.log('Add Guideline');
+    self.addInformation = function(dataObj){
+        //console.log('Add Information');
         
         $http({
             method:'POST', 
@@ -257,54 +257,54 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('Information added');
-            self.getGuidelines();
+            self.getInformation();
         }).catch((error)=>{
             console.log('Add information', error);
         })
     }
 
-    self.getGuidelines = function () {
-        console.log('Get Guidelines');
+    self.getInformation = function () {
+        //console.log('Get Information');
         $http({
             method: 'GET',
             url: `/information/get`,
         }).then((result) => {
-            console.log('Guidelines:', result.data);
-            self.locations.guidelines = result.data;
+            console.log('Information:', result.data);
+            self.locations.information = result.data;
         }).catch((error) => {
             console.log('guidelines', error);
         })
     }
 
-    self.editGuideline = function(dataObj){
-        console.log('Edit Guideline');
+    self.editInformation = function(dataObj){
+        //console.log('Edit Information');
         $http({
             method: 'PUT',
             url: `/information/edit/${dataObj.id}`,
             data: dataObj,
         }).then((result) => {
             console.log('Information updated');
-            self.getGuidelines();
+            self.getInformation();
         }).catch((error) => {
-            console.log('guidelines', error);
+            console.log('Information', error);
         })
 
     }
 
-    self.deleteGuideline = function(dataObj) {
-        console.log('Delete Guideline');
+    self.deleteInformation = function(dataObj) {
+        //console.log('Delete Information');
         $http({
             method: 'DELETE',
             url: `/information/delete/${dataObj.id}`
         }).then((result) => {
-            self.getGuidelines();
+            self.getInformation();
         }).catch((error) => {
-            console.log('delete guideline', error);
+            console.log('delete information', error);
         })
    
     }
 
-//-----END GUIDELINES AJAX-------
+//-----END INFORMATION AJAX-------
     
     self.determineType = function(){
         for (let artifact of self.locations.allArtifactsForLocation){
@@ -464,5 +464,14 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
 //------END GUEST MANAGEMENT----//
 
+    // I need a function! (POST location data to map table)
+    // $http({
+    //     method: 'POST',
+    //     url: '/map/location/post',
+    //     data: postObj
+    // }).then((result)=>{
+    // }).catch((error)=>{
+    //     console.log('/map/location/post', error);
+    // })
 }]);
 
