@@ -39,6 +39,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.newSculpture = {};
 
+    self.isMainPhoto = {boolean: false};
+
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
 
     self.uploadnewPhoto = function(){
@@ -584,7 +586,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             data: {
                 artifact_id: artifact_id,
                 location_id: location_id,
-                main_photo: main_photo,
+                main_photo: self.isMainPhoto.boolean,
             }
         }).then((result)=>{
             console.log('association saved');
