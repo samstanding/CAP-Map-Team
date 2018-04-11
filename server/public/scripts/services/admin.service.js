@@ -376,6 +376,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.type = 'video';
         self.newMultimedia.media_url = url;
     }
+
+    $http({
+        method: 'delete'
+    })
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -491,7 +495,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.clearArtifact = function(){
-        // self.newText.type = '',
+        // self.newText.type = '';
         self.newText.year = '';
         self.newText.material = '';
         self.newText.artist_name = '';
@@ -597,6 +601,18 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
+        })
+    }
+
+    self.deleteAssociation = function(id){
+        console.log('in deleteAssociation', id);
+        $http({
+            method: 'DELETE',
+            url: `/artifacts/join/delete/${id}`
+        }).then((result)=>{
+            // Things you need go here!
+        }).catch((error)=>{
+            console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
     }
 
