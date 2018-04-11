@@ -376,6 +376,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.type = 'video';
         self.newMultimedia.media_url = url;
     }
+
+    $http({
+        method: 'delete'
+    })
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -600,9 +604,16 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.deleteAssociation = function(join_id){
-        console.log('in deleteAssociation', join_id);
-        // on .then() --> get all artifacts for location
+    self.deleteAssociation = function(id){
+        console.log('in deleteAssociation', id);
+        $http({
+            method: 'DELETE',
+            url: `/artifacts/join/delete/${id}`
+        }).then((result)=>{
+            // Things you need go here!
+        }).catch((error)=>{
+            console.log(`/artifacts/join/delete/${id}: ${result}`);
+        })
     }
 
     self.deleteArtifact = function(artifact){
