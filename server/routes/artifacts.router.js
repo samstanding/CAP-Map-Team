@@ -155,4 +155,15 @@ router.get('/single/:id', (req, res)=>{
     // }
 })
 
+router.put('/edit', (req, res)=>{
+    let art = req.body;
+    pool.query('UPDATE artifact SET type = $1, year = $2, material = $3, artist_name = $4, title = $5, description = $6, extended_description = $7, media_url = $8, view_count = $9 WHERE id = $10;',
+    [art.type, art.year, art.material, art.artist_name, art.title, art.description, art.extended_description, art.media_url, art.view_count, art.id])
+    .then((result)=>{
+        res.sendStatus(201);
+    }).catch((error)=>{
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
