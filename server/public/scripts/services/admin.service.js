@@ -474,6 +474,25 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('/artifacts/delete/:id', error);
         })
     }
+    
+    self.editText = function(id){
+        console.log('Editing text artifact');
+        $http({
+            method: 'GET',
+            url: `/artifacts/single/${id}`,
+        })
+        .then((result)=>{
+            console.log('individual result:', result.data);
+            // self.newText.type = self.locations.allPoems.poem.type;
+            // self.newText.title = self.locations.allPoems.poem.title;
+            // self.newText.year = self.locations.allPoems.poem.year;
+            // self.newText.description = self.locations.allPoems.poem.description;
+        })
+        .catch((error)=>{
+            console.log('Could not get individual artifact', error);
+        
+        })
+    }
     //-----End Misc Artifact Functions-----
 //-----End Artifacts-------
 //----Start Guest Management----

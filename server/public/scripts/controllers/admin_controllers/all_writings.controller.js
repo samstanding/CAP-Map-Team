@@ -11,5 +11,5 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
     self.getAllWritings();
 
     self.saveAssociation = AdminService.saveAssociation;
-
+    self.deleteArtifact = AdminService.deleteArtifact;
 }]);

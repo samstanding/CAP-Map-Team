@@ -12,5 +12,6 @@ capApp.controller('AnecdotesController', ['UserService', 'AdminService', functio
     self.getAllAnecdotes();
 
     self.saveAssociation = AdminService.saveAssociation;
+    self.deleteArtifact = AdminService.deleteArtifact;
 
 }]);
