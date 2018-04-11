@@ -265,7 +265,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveMultimedia,', newMultimedia);
         $http({
             method: 'POST',
-            url: '/artifact/multimedia/save',
+            url: '/artifacts/save',
             data: {
                 type: newMultimedia.type,
                 media_url: newMultimedia.media_url,
@@ -316,7 +316,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveSculpture,', newSculpture);
         $http({
             method: 'POST',
-            url: `/artifact/sculpture/save`,
+            url: `/artifacts/save`,
             data: {
                 title: newSculpture.title,
                 year: newSculpture.year,
@@ -351,7 +351,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         console.log('in saveText,', newText);
         $http({
             method: 'POST',
-            url: `/artifacts/newtext/save`,
+            url: `/artifacts/save`,
             data: {
                 title: newText.title,
                 year: newText.year,
