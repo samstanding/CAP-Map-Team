@@ -528,10 +528,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }
     }
 
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
-
     self.getAllMultimedia = function(){
     console.log('in getAllMultimedia function');
     $http({
@@ -602,7 +598,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.deleteAssociation = function(join_id){
         console.log('in deleteAssociation', join_id);
-        // on .then() --> get all artifacts for location
+        // on .then() --> get all artifacts for location -- getIndividualLocation()
     }
 
     self.deleteArtifact = function(artifact){
