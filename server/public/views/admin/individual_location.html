@@ -38,7 +38,7 @@
     <br>
     <div><strong>Videos</strong></div>
     <div ng-repeat="video in vm.indLocation.indVideos">
-            <iframe width="200" height="200" src="{{video.media_url}}"></iframe>
+                <iframe width="560" height="315" ng-src="{{vm.trustSrc(video.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
     </div>
 
     <button ng-click="vm.indLocation.isBeingEdited=true">Edit</button>

@@ -33,7 +33,9 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         type: '',
     }
 
-    self.newMultimedia = {}
+    self.newMultimedia = {
+        newVideo: '',
+    }
 
     self.newSculpture = {};
 
@@ -90,7 +92,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.uploadNewVideo = function(url){
         console.log('in uploadNewVideo', url);
         self.newMultimedia.type = 'video';
+        self.newMultimedia.uploaded = true;
+        console.log(self.newMultimedia.uploaded);
         self.newMultimedia.media_url = url;
+        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>';
     }
 
     self.saveMultimedia = function(){
@@ -106,6 +111,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('new multimedia saved');
+            self.newMultimedia = {}
             history.back();
         }).catch((error)=>{
             console.log('error saving new multimedia', error);
@@ -335,15 +341,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.saveLocationInfo = function(){
         //save main_photo info, along with all artifact info, when save button is pressed
     }
-
-    // $http({
-    //     method: 'GET',
-    //     url: '/artifacts/sculpture'
-    // }).then((result)=>{
-
-    // }).catch((error)=>{
-    //     console.log('/artifacts/sculpture', error);
-    // })
 
     self.getAllMultimedia = function(){
     console.log('in getAllMultimedia function');

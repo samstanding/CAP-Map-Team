@@ -11,11 +11,13 @@ all multimedia
         </div>
 
         <div ng-if="multimedia.type == 'video'">
-            <iframe src="{{multimedia.media_url}}"></iframe>
-            {{multimedia.description}}
+            
+                <iframe width="560" height="315" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
+                {{multimedia.description}}
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
         </div>
+    </div>
     </div>
 
 <a href="/#!/admin/multimediaform"><i class="material-icons">add_circle</i></a>
