@@ -44,5 +44,6 @@ capApp.controller('MultimediaFormController', ['UserService', 'AdminService', '$
     //     });
     //   };
     
-
+    self.newMultimedia = AdminService.newMultimedia;
+    self.editArtifact = AdminService.editArtifact;
 }]);

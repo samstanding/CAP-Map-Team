@@ -376,6 +376,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.type = 'video';
         self.newMultimedia.media_url = url;
     }
+
+    $http({
+        method: 'delete'
+    })
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -596,9 +600,16 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.deleteAssociation = function(join_id){
-        console.log('in deleteAssociation', join_id);
-        // on .then() --> get all artifacts for location -- getIndividualLocation()
+    self.deleteAssociation = function(id){
+        console.log('in deleteAssociation', id);
+        $http({
+            method: 'DELETE',
+            url: `/artifacts/join/delete/${id}`
+        }).then((result)=>{
+            // Things you need go here!
+        }).catch((error)=>{
+            console.log(`/artifacts/join/delete/${id}: ${result}`);
+        })
     }
 
     self.deleteArtifact = function(artifact){
@@ -630,7 +641,27 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }
     }
 
-    self.editText = function(id){
+    self.formDecider = function(artifact){
+        switch (artifact.type) {
+            case 'photo':
+                $location.path('/admin/multimediaform');
+                break;
+            case 'video':
+                $location.path('/admin/multimediaform');
+                break;
+            case 'writing':
+                $location.path('/admin/textform');
+                break;
+            case 'anecdote':
+                $location.path('/admin/textform');
+                break;
+            case 'poem':
+                $location.path('/admin/textform');
+                break;
+        }
+    }
+
+    self.getArifactToEdit = function(id){
         console.log('Editing text artifact');
         $http({
             method: 'GET',
@@ -644,7 +675,13 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.newText.year = result.data[0].year;
             self.newText.description = result.data[0].description;
             self.newText.editing = true;
-            $location.path('/admin/textform')
+            self.newMultimedia.id = result.data[0].id;
+            self.newMultimedia.type = result.data[0].type;
+            self.newMultimedia.media_url = result.data[0].media_url;
+            self.newMultimedia.description = result.data[0].description;
+            self.newMultimedia.extended_description = result.data[0].extended_description;
+            self.newMultimedia.editing = true;
+            self.formDecider(result.data[0]);
         })
         .catch((error)=>{
             console.log('Could not get individual artifact', error);
