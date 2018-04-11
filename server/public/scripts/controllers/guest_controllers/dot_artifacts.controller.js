@@ -1,4 +1,4 @@
-capApp.controller('DotArtifactsController', ['UserService', 'GuestService', function (UserService, GuestService) {
+capApp.controller('DotArtifactsController', ['UserService', 'GuestService', '$sce', function (UserService, GuestService, $sce) {
     console.log('DotArtifactsController created');
     var self = this;
     self.userService = UserService;
@@ -7,4 +7,8 @@ capApp.controller('DotArtifactsController', ['UserService', 'GuestService', func
     self.getIndividualLocation = GuestService.getIndividualLocation;
 
     self.getIndividualLocation();
+    self.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    }
+
 }]);
