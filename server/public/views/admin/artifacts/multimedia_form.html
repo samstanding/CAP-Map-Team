@@ -17,7 +17,9 @@ multimedia form
 <!-- <span id="vidThing">???</span> -->
 <iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>
 
-<input ng-model="vm.newMultimedia.description" placeholder="caption" />
+<!-- <input ng-model="vm.newMultimedia.description" placeholder="caption" /> -->
+<br>Caption: <br>
+<text-angular ng-model="vm.newMultimedia.description"></text-angular>
 
 <button ng-click="vm.saveMultimedia()">Add</button>
 <button ng-if="editing=true">Save Edit</button>
