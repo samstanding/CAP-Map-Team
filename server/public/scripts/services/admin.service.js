@@ -489,6 +489,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
                 self.getAllPoems();
                 break;
         }
+    }
     
     self.editText = function(id){
         console.log('Editing text artifact');
