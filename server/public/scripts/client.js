@@ -1,4 +1,4 @@
-var capApp= angular.module('capApp', ['ngRoute']);
+let capApp = angular.module('capApp', ['ngRoute', 'ngSanitize', 'ngMaterial', 'mdLightbox', 'textAngular']);
 
 /// Routes ///
 capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

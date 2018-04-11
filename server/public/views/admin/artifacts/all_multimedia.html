@@ -11,12 +11,15 @@ all multimedia
         </div>
 
         <div ng-if="multimedia.type == 'video'">
-            <iframe src="{{multimedia.media_url}}"></iframe>
-            {{multimedia.description}}
+            
+                <iframe width="560" height="315" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
+                {{multimedia.description}}
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
         </div>
-        </div>
+    </div>
+    </div>
+
 
     <button>Edit</button>
     <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
