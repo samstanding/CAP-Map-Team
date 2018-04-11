@@ -15,4 +15,5 @@ capApp.controller('IndividualLocationController', ['UserService', 'AdminService'
         return $sce.trustAsResourceUrl(src);
       }
 
+    self.deleteAssociation = AdminService.deleteAssociation;
 }]);

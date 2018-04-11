@@ -3,8 +3,8 @@ text form
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 <input ng-model="vm.newText.title"/>
 <input ng-model="vm.newText.year"/>
-<input ng-model="vm.newText.description"/>
-
+<!-- <input ng-model="vm.newText.description"/> -->
+<text-angular ng-model="vm.newText.description"></text-angular>
 
 <button ng-if="!vm.newText.editing" ng-click="vm.saveText()">Add</button>
 <button ng-if="vm.newText.editing" ng-click="vm.editArtifact(vm.newText)">Save Edit</button>

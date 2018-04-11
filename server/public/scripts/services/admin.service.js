@@ -600,6 +600,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
+    self.deleteAssociation = function(join_id){
+        console.log('in deleteAssociation', join_id);
+        // on .then() --> get all artifacts for location
+    }
+
     self.deleteArtifact = function(artifact){
         $http({
             method: 'DELETE',
