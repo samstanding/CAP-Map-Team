@@ -178,9 +178,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
 
     self.addNewLocation = function(latitude, longitude){
         console.log('Latitude:', latitude, ', Longitude:', longitude);
@@ -377,9 +374,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.media_url = url;
     }
 
-    $http({
-        method: 'delete'
-    })
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -606,7 +600,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             method: 'DELETE',
             url: `/artifacts/join/delete/${id}`
         }).then((result)=>{
-            // Things you need go here!
+            self.getIndividualLocation();
         }).catch((error)=>{
             console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
