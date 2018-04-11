@@ -377,9 +377,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.media_url = url;
     }
 
-    $http({
-        method: 'delete'
-    })
+   
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
