@@ -594,13 +594,14 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.deleteAssociation = function(id){
-        console.log('in deleteAssociation', id);
+    self.deleteAssociation = function(artifact_id){
+        let location_id = Number(self.locations.currentLocationId);
+        console.log('in deleteAssociation', artifact_id, location_id);
         $http({
             method: 'DELETE',
-            url: `/artifacts/join/delete/${id}`
+            url: `/artifacts/join/delete/${artifact_id}/${location_id}`
         }).then((result)=>{
-            self.getIndividualLocation();
+            self.getIndividualLocation(location_id);
         }).catch((error)=>{
             console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
