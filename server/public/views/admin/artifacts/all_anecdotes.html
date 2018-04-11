@@ -9,7 +9,7 @@ all anecdotes
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(anecdote.id, 'false')">Add to location</button>
         </div>
-        <button>Edit</button>
+        <button ng-click="vm.editText(anecdote.id)">Edit</button>
         <button ng-click="vm.deleteArtifact(anecdote)">Delete</button>
 </div>
 

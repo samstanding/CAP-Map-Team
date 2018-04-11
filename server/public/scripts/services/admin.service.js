@@ -486,7 +486,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.newText.type = result.data[0].type;
             self.newText.title = result.data[0].title;
             self.newText.year = result.data[0].year;
-            self.newText.description = result.data[0].description;
+            self.newText.description = result.data[0] .description;
             $location.path('/admin/textform')
         })
         .catch((error)=>{
