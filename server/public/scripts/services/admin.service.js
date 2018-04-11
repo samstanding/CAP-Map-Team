@@ -404,6 +404,18 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
     //-----End Other Artifacts-----
     //-----Start Misc Artifact Functions-----
+
+    self.editArtifact = function(artifact){
+        $http({
+            method: 'PUT',
+            url: '/artifacts/edit',
+            data: artifact
+        }).then((result)=>{
+            self.getDecider(artifact);
+        }).catch((error)=>{
+            console.log('/artifacts/edit', error);
+        })
+    }
     
     self.determineType = function(){
         for (let artifact of self.locations.allArtifactsForLocation){
@@ -455,25 +467,28 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             method: 'DELETE',
             url: `/artifacts/delete/${artifact.id}`
         }).then((result)=>{
-            switch (artifact.type){
-                case 'photo':
-                case 'video':
-                    self.getAllMultimedia();
-                    break;
-                case 'writing':
-                    self.getAllWritings();
-                    break;
-                case 'anecdote':
-                    self.getAllAnecdotes();
-                    break;
-                case 'poem':
-                    self.getAllPoems();
-                    break;
-            }
+            self.getDecider(artifact);
         }).catch((error)=>{
             console.log('/artifacts/delete/:id', error);
         })
     }
+
+    self.getDecider = function(artifact){
+        switch (artifact.type){
+            case 'photo':
+            case 'video':
+                self.getAllMultimedia();
+                break;
+            case 'writing':
+                self.getAllWritings();
+                break;
+            case 'anecdote':
+                self.getAllAnecdotes();
+                break;
+            case 'poem':
+                self.getAllPoems();
+                break;
+        }
     
     self.editText = function(id){
         console.log('Editing text artifact');
@@ -483,10 +498,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('individual result:', result.data);
-            // self.newText.type = self.locations.allPoems.poem.type;
-            // self.newText.title = self.locations.allPoems.poem.title;
-            // self.newText.year = self.locations.allPoems.poem.year;
-            // self.newText.description = self.locations.allPoems.poem.description;
         })
         .catch((error)=>{
             console.log('Could not get individual artifact', error);
