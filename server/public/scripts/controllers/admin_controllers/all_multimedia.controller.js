@@ -11,5 +11,5 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', functi
     self.getAllMultimedia();
 
     self.saveAssociation = AdminService.saveAssociation;
-
+    self.deleteArtifact = AdminService.deleteArtifact;
 }]);

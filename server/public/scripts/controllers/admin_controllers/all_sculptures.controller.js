@@ -8,5 +8,6 @@ capApp.controller('SculpturesController', ['UserService', 'AdminService', functi
     self.newSculpture = AdminService.newSculpture;
 
     self.saveAssociation = AdminService.saveAssociation;
+    self.deleteArtifact = AdminService.deleteArtifact;
 
 }]);

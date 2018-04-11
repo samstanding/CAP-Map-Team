@@ -489,6 +489,20 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
                 self.getAllPoems();
                 break;
         }
+    
+    self.editText = function(id){
+        console.log('Editing text artifact');
+        $http({
+            method: 'GET',
+            url: `/artifacts/single/${id}`,
+        })
+        .then((result)=>{
+            console.log('individual result:', result.data);
+        })
+        .catch((error)=>{
+            console.log('Could not get individual artifact', error);
+        
+        })
     }
     //-----End Misc Artifact Functions-----
 //-----End Artifacts-------
