@@ -33,11 +33,78 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         type: '',
     }
 
-    self.newMultimedia = {}
+    self.newMultimedia = {
+        newVideo: '',
+    }
 
     self.newSculpture = {};
 
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
+
+    self.uploadnewPhoto = function(){
+        console.log('in uploadNewPhoto');
+        self.newMultimedia.type = 'photo';
+        self.client.pick({
+            accept: 'image/*',
+            maxFiles: 1
+          }).then(function(result){
+            console.log('in upload,', result.filesUploaded[0].url)
+            alert("successful upload!");
+            self.newMultimedia.media_url = result.filesUploaded[0].url;
+    })
+    }
+
+    self.uploadNewVideo = function(url){
+        console.log('in uploadNewVideo', url);
+        self.newMultimedia.type = 'video';
+        self.newMultimedia.uploaded = true;
+        console.log(self.newMultimedia.uploaded);
+        self.newMultimedia.media_url = url;
+        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>';
+    }
+
+    self.saveMultimedia = function(){
+        let newMultimedia = self.newMultimedia;
+        console.log('in saveMultimedia,', newMultimedia);
+        $http({
+            method: 'POST',
+            url: '/artifact/multimedia/save',
+            data: {
+                type: newMultimedia.type,
+                media_url: newMultimedia.media_url,
+                description: newMultimedia.description
+            }
+        }).then((result)=>{
+            console.log('new multimedia saved');
+            self.newMultimedia = {}
+            history.back();
+        }).catch((error)=>{
+            console.log('error saving new multimedia', error);
+        })
+    }
+
+    self.saveSculpture = function(){
+        let newSculpture = self.newSculpture; 
+        console.log('in saveSculpture,', newSculpture);
+        $http({
+            method: 'POST',
+            url: `/artifact/sculpture/save`,
+            data: {
+                title: newSculpture.title,
+                year: newSculpture.year,
+                artist_name: newSculpture.artist_name,
+                material: newSculpture.material,
+                description: newSculpture.description,
+                extended_description: newSculpture.extended_description,
+                type: 'sculpture',
+            }
+        }).then((result)=>{
+            console.log('new sculpture saved');
+            history.back();
+        }).catch((error)=>{
+            console.log('error saving new sculpture', error);
+        })
+    }
 
 //---START EVENTS AJAX---
     self.getEvents = function(){
@@ -460,7 +527,60 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }
     }
-    
+
+    self.saveLocationInfo = function(){
+        //save main_photo info, along with all artifact info, when save button is pressed
+    }
+
+    self.getAllMultimedia = function(){
+    console.log('in getAllMultimedia function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/media'
+    }).then((result)=>{
+        self.locations.allMultimedia = result.data;
+    }).catch((error)=>{
+        console.log('/artifacts/media', error);
+    })
+    }
+
+    self.getAllWritings = function(){
+    console.log('in getAllWritings function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/writing'
+    }).then((result)=>{
+        self.locations.allWritings = result.data;
+    }).catch((error)=>{
+        console.log('/artifacts/writing', error);
+    })
+    }
+
+    self.getAllAnecdotes = function(){
+    console.log('in getAllAnecdotes function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/anecdote'
+    }).then((result)=>{
+        self.locations.allAnecdotes = result.data;
+    }).catch((error)=>{
+        console.log('/artifacts/anecdote', error);
+    })
+    }
+
+    self.getAllPoems = function(){
+    console.log('in getAllPoems function');
+    $http({
+        method: 'GET',
+        url: '/artifacts/poem'
+    }).then((result)=>{
+        self.locations.allPoems = result.data;
+        console.log(self.locations.allPoems);
+    }).catch((error)=>{
+        console.log('/artifacts/poem', error);
+    })
+    }
+
     self.saveAssociation = function(artifact_id, main_photo){
         let location_id = self.locations.currentLocationId;
         console.log('in saveAssociation function--artifact_id, main_photo, location_id:', artifact_id, main_photo, location_id);

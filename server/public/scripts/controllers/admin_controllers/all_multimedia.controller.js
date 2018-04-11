@@ -1,4 +1,4 @@
-capApp.controller('MultimediaController', ['UserService', 'AdminService', function (UserService, AdminService) {
+capApp.controller('MultimediaController', ['UserService', 'AdminService', '$sce', function (UserService, AdminService, $sce) {
     console.log('MultimediaController created');
     var self = this;
     self.userService = UserService;
@@ -11,5 +11,14 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', functi
     self.getAllMultimedia();
 
     self.saveAssociation = AdminService.saveAssociation;
+<<<<<<< HEAD
+
+    self.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+      }
+
+
+=======
     self.deleteArtifact = AdminService.deleteArtifact;
+>>>>>>> master
 }]);
