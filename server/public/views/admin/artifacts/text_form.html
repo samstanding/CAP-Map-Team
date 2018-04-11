@@ -6,5 +6,5 @@ text form
 <input ng-model="vm.newText.description"/>
 
 
-<button ng-click="vm.saveText()">Add</button>
-<button ng-if="editing=true">Save Edit</button>
+<button ng-if="!vm.newText.editing" ng-click="vm.saveText()">Add</button>
+<button ng-if="vm.newText.editing" ng-click="vm.editArtifact(vm.newText)">Save Edit</button>
