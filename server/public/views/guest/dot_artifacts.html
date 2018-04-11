@@ -2,7 +2,13 @@
 
 <div>
     <h1>Artifact Information</h1>
-        
+        <div ng-repeat="artifact in vm.information.allArtifactsForLocation">
+            <div>{{artifact.type}}</div>
+            <div>{{artifact.title}}</div>
+            <div>{{artifact.year}}</div>
+            <div>{{artifact.description}}</div>
+            <hr>
+        </div>
     <i class="material-icons">arrow_drop_down</i>
 </div>
 

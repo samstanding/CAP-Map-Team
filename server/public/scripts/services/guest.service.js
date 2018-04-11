@@ -75,8 +75,8 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
         }).then((result) => {
             self.information.allArtifactsForLocation = result.data;
             self.information.currentLocationId = locationid;
-            console.log('current location id:', self.locations.currentLocationId)
-            console.log(`success getting artifacts for location id:${locationid}`, self.locations.allArtifactsForLocation);
+            console.log('current location id:', self.information.currentLocationId)
+            console.log(`success getting artifacts for location id:${locationid}`, self.information.allArtifactsForLocation);
             self.indLocation.indSculpture = {};
             self.indLocation.indMainPhoto = {};
             self.indLocation.indPhotos = [];
@@ -87,7 +87,7 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
             self.indLocation.isBeingEdited = false;
             self.determineType();
         }).catch((error) => {
-            console.log('error getting all locations');
+            console.log('error getting all locations', error);
         })
     }
 

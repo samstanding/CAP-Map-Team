@@ -12,5 +12,5 @@ capApp.controller('PoemsController', ['UserService', 'AdminService', function (U
 
     self.saveAssociation = AdminService.saveAssociation;
     self.deleteArtifact = AdminService.deleteArtifact;
-    self.editText = AdminService.editText
+    self.getArifactToEdit = AdminService.getArifactToEdit;
 }]);
