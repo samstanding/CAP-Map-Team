@@ -168,4 +168,3 @@ INSERT INTO guest_users (name, email) VALUES ('Bill B.', 'bill@email.com');
 --SELECT * FROM guest_users
 --ROLLBACK
 --COMMIT
-

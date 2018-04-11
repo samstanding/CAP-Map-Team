@@ -80,11 +80,11 @@ router.get('/anecdote', (req, res) => {
     // }
 })
 
-router.post('/sculpture/save', (req, res) => {
+router.post('/save', (req, res) => {
     // if (req.isAuthenticated()) {
         let obj = req.body;
-        pool.query('INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description) VALUES ($1, $2, $3, $4, $5, $6, $7);',
-        [obj.type, obj.year, obj.material, obj.artist_name, obj.title, obj.description, obj.extended_description])
+        pool.query('INSERT INTO artifact (type, year, material, artist_name, title, description, extended_description, media_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
+        [obj.type, obj.year, obj.material, obj.artist_name, obj.title, obj.description, obj.extended_description, obj.media_url])
         .then(function(result){
             res.sendStatus(201);
         }).catch(function(error){
@@ -95,15 +95,13 @@ router.post('/sculpture/save', (req, res) => {
     // }
 })
 
-router.post('/newtext/save', (req, res) => {
+router.delete('/delete/:id', (req, res)=>{
     // if (req.isAuthenticated()) {
-        let obj = req.body;
-        pool.query('INSERT INTO artifact (type, year, title, description) VALUES ($1, $2, $3, $4);',
-        [obj.type, obj.year, obj.title, obj.description])
-        .then(function(result){
-            res.sendStatus(201);
-        }).catch(function(error){
-            console.log(error);
+        let id = req.params.id;
+        pool.query('DELETE FROM artifact where id = $1;', [id])
+        .then((result)=>{
+            res.sendStatus(204);
+        }).catch((error)=>{
             res.sendStatus(500);
         })
     // } else {
@@ -111,20 +109,35 @@ router.post('/newtext/save', (req, res) => {
     // }
 })
 
-//write saveMultimedia post - url: /artifact/multimedia/save body: type, media_url, description
-router.post('/multimedia/save', (req, res) => {
+router.get('/single/:id', (req, res)=>{
     // if (req.isAuthenticated()) {
-        let obj = req.body;
-        pool.query('INSERT INTO artifact (type, media_url, description) VALUES ($1, $2, $3);',
-        [obj.type, obj.media_url, obj.description])
-        .then(function(result){
-            res.sendStatus(201);
-        }).catch(function(error){
+        let id = req.params.id;
+        pool.query('SELECT * FROM artifact where id = $1;', [id])
+        .then((result)=>{
+            res.send(result.rows);
+        }).catch((error)=>{
             res.sendStatus(500);
         })
     // } else {
     //     res.sendStatus(403);
     // }
+})
+
+router.put('/edit', (req, res)=>{
+    console.log(req.body);
+    
+    let art = req.body;
+    pool.query('UPDATE artifact SET type = $1, year = $2, material = $3, artist_name = $4, title = $5, description = $6, extended_description = $7, media_url = $8, view_count = $9 WHERE id = $10;',
+    [art.type, art.year, art.material, art.artist_name, art.title, art.description, art.extended_description, art.media_url, art.view_count, art.id])
+    .then((result)=>{
+        res.sendStatus(201);
+        console.log('Artifact is updated', result.rows);
+        
+    }).catch((error)=>{
+        res.sendStatus(500);
+        console.log('Update failed', error);
+        
+    })
 })
 
 module.exports = router;

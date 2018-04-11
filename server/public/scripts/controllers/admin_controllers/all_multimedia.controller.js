@@ -11,10 +11,14 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', '$sce'
     self.getAllMultimedia();
 
     self.saveAssociation = AdminService.saveAssociation;
+<<<<<<< HEAD
 
     self.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);
       }
 
 
+=======
+    self.deleteArtifact = AdminService.deleteArtifact;
+>>>>>>> master
 }]);
