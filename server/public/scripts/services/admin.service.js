@@ -39,6 +39,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.newSculpture = {};
 
+    self.isMainPhoto = {boolean: false};
+
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
 
     self.uploadnewPhoto = function(){
@@ -178,9 +180,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
 
     self.addNewLocation = function(latitude, longitude){
         console.log('Latitude:', latitude, ', Longitude:', longitude);
@@ -377,9 +376,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.media_url = url;
     }
 
-    $http({
-        method: 'delete'
-    })
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -532,10 +528,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }
     }
 
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
-
     self.getAllMultimedia = function(){
     console.log('in getAllMultimedia function');
     $http({
@@ -594,7 +586,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             data: {
                 artifact_id: artifact_id,
                 location_id: location_id,
-                main_photo: main_photo,
+                main_photo: self.isMainPhoto.boolean,
             }
         }).then((result)=>{
             console.log('association saved');
@@ -604,13 +596,14 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.deleteAssociation = function(id){
-        console.log('in deleteAssociation', id);
+    self.deleteAssociation = function(artifact_id){
+        let location_id = Number(self.locations.currentLocationId);
+        console.log('in deleteAssociation', artifact_id, location_id);
         $http({
             method: 'DELETE',
-            url: `/artifacts/join/delete/${id}`
+            url: `/artifacts/join/delete/${artifact_id}/${location_id}`
         }).then((result)=>{
-            // Things you need go here!
+            self.getIndividualLocation(location_id);
         }).catch((error)=>{
             console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
