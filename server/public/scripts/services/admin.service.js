@@ -360,6 +360,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('new text saved');
+            self.clearArtifact();
             history.back();
         }).catch((error)=>{
             console.log('error saving new text', error);
@@ -406,15 +407,32 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     //-----Start Misc Artifact Functions-----
 
     self.editArtifact = function(artifact){
+        console.log('Edit Artifact', artifact);
+        
         $http({
             method: 'PUT',
             url: '/artifacts/edit',
             data: artifact
         }).then((result)=>{
             self.getDecider(artifact);
+            console.log('Artifact updated', result);
+            self.clearArtifact();
+            history.back();
         }).catch((error)=>{
             console.log('/artifacts/edit', error);
         })
+    }
+
+    self.clearArtifact = function(){
+        // self.newText.type = '',
+        self.newText.year = '';
+        self.newText.material = '';
+        self.newText.artist_name = '';
+        self.newText.title = '';
+        self.newText.description = '';
+        self.newText.extended_description = '';
+        self.newText.media_url = '';
+        self.newText.editing = false;
     }
     
     self.determineType = function(){
@@ -489,7 +507,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
                 self.getAllPoems();
                 break;
         }
-    
+    }
+
     self.editText = function(id){
         console.log('Editing text artifact');
         $http({
@@ -498,10 +517,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result)=>{
             console.log('individual result:', result.data);
+            self.newText.id = result.data[0].id;
             self.newText.type = result.data[0].type;
             self.newText.title = result.data[0].title;
             self.newText.year = result.data[0].year;
-            self.newText.description = result.data[0] .description;
+            self.newText.description = result.data[0].description;
             self.newText.editing = true;
             $location.path('/admin/textform')
         })
