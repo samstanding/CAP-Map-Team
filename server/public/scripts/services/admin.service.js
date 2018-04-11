@@ -491,7 +491,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
 
     self.clearArtifact = function(){
-        // self.newText.type = '',
+        // self.newText.type = '';
         self.newText.year = '';
         self.newText.material = '';
         self.newText.artist_name = '';
