@@ -4,4 +4,7 @@ capApp.controller('DotArtifactsController', ['UserService', 'GuestService', func
     self.userService = UserService;
     self.guestService = GuestService;
 
+    self.getIndividualLocation = GuestService.getIndividualLocation;
+
+    self.getIndividualLocation();
 }]);

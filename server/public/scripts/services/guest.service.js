@@ -9,6 +9,19 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
     self.information = {
         allEvents: [],
         guidelines: [],
+        allArtifactsForLocation: [],
+        currentLocationId: '',
+    }
+
+    self.indLocation = {
+        indSculpture: {},
+        indMainPhoto: {},
+        indPhotos: [],
+        indPoems: [],
+        indWritings: [],
+        indAnecdotes: [],
+        indVideos: [],
+        isBeingEdited: false,
     }
     
     self.addGuest = function(guest){
@@ -51,6 +64,30 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
             self.information.allEvents = result.data;
         }).catch((error) => {
             console.log('getEvents', error);
+        })
+    }
+
+    self.getIndividualLocation = function (locationid) {
+        console.log('in getIndividualLocation function');
+        $http({
+            method: 'GET',
+            url: `map/artifact/${locationid}`
+        }).then((result) => {
+            self.information.allArtifactsForLocation = result.data;
+            self.information.currentLocationId = locationid;
+            console.log('current location id:', self.locations.currentLocationId)
+            console.log(`success getting artifacts for location id:${locationid}`, self.locations.allArtifactsForLocation);
+            self.indLocation.indSculpture = {};
+            self.indLocation.indMainPhoto = {};
+            self.indLocation.indPhotos = [];
+            self.indLocation.indPoems = [];
+            self.indLocation.indWritings = [];
+            self.indLocation.indAnecdotes = [];
+            self.indLocation.indVideos = [];
+            self.indLocation.isBeingEdited = false;
+            self.determineType();
+        }).catch((error) => {
+            console.log('error getting all locations');
         })
     }
 
