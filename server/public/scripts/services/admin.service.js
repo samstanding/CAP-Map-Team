@@ -204,6 +204,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             url: '/map/all'
         }).then((result)=>{
             self.locations.allLocations = result.data;
+            self.indLocation.isBeingEdited = false;
             console.log('success getting all locations', self.locations.allLocations);
         }).catch((error)=>{
             console.log('error getting all locations');
@@ -262,7 +263,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.indLocation.indWritings = [];
             self.indLocation.indAnecdotes = [];
             self.indLocation.indVideos = [];
-            self.indLocation.isBeingEdited = false;
             self.determineType();
         }).catch((error)=>{
             console.log('error getting all locations');
@@ -599,6 +599,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('association saved');
+            history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
         })
