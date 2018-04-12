@@ -6,7 +6,7 @@ edit general information
 <div>
     <form>
         New Information:<input ng-model="vm.locations.information.newInformation.description"/>
-        Category:<input ng-model="vm.locations.information.newInformation.category"/>
+        <!-- Category:<input ng-model="vm.locations.information.newInformation.category"/> -->
         <input type="submit" ng-click="vm.addInformation(vm.locations.information.newInformation)"/>
     </form>
 </div>
@@ -15,7 +15,7 @@ edit general information
     <table>
         <thread>
             <th>Information</th>
-            <th>Category</th>
+            <!-- <th>Category</th> -->
             <th></th>
             <th></th>
         </thread>
@@ -26,10 +26,10 @@ edit general information
                     <input ng-show="information.editing" ng-model="information.description" ng-value="information.description"/>
                     <!-- <text-angular ng-show="information.editing" ng-value="information.description" ng-model="information.description"></text-angular> -->
                 </td>
-                <td>
+                <!-- <td>
                     <div ng-hide="information.editing">{{information.category}}</div>
                     <input ng-show="information.editing" ng-model="information.category" ng-value="information.category"/>
-                </td>
+                </td> -->
                 <td>
                     <button ng-hide="information.editing" ng-click="vm.viewEditInformation(information)">Edit</button>
                     <button ng-show="information.editing" ng-click="vm.editInformation(information)">Save</button>

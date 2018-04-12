@@ -88,29 +88,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         })
     }
 
-    self.saveSculpture = function(){
-        let newSculpture = self.newSculpture; 
-        console.log('in saveSculpture,', newSculpture);
-        $http({
-            method: 'POST',
-            url: `/artifact/sculpture/save`,
-            data: {
-                title: newSculpture.title,
-                year: newSculpture.year,
-                artist_name: newSculpture.artist_name,
-                material: newSculpture.material,
-                description: newSculpture.description,
-                extended_description: newSculpture.extended_description,
-                type: 'sculpture',
-            }
-        }).then((result)=>{
-            console.log('new sculpture saved');
-            history.back();
-        }).catch((error)=>{
-            console.log('error saving new sculpture', error);
-        })
-    }
-
 //---START EVENTS AJAX---
     self.getEvents = function(){
         console.log('getEvents');
@@ -391,6 +368,9 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             }
         }).then((result)=>{
             console.log('new sculpture saved');
+            let artifact_id = result.data[0].id //return id from database!!!!
+            console.log('artifact_id:' , artifact_id)
+            self.saveAssociation(artifact_id, false);
             history.back();
         }).catch((error)=>{
             console.log('error saving new sculpture', error);
@@ -583,7 +563,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             }
         }).then((result)=>{
             console.log('association saved');
-            history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
         })
@@ -642,11 +621,13 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             case 'poem':
                 $location.path('/admin/textform');
                 break;
+            case 'statue':
+                $location.path(' /admin/allsculptures')
         }
     }
 
     self.getArifactToEdit = function(id){
-        console.log('Editing text artifact');
+        console.log('Editing artifact', id);
         $http({
             method: 'GET',
             url: `/artifacts/single/${id}`,
@@ -664,6 +645,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             self.newMultimedia.description = result.data[0].description;
             self.newMultimedia.extended_description = result.data[0].extended_description;
             self.newMultimedia.editing = true;
+            // self.newStatue.id = result.data[0].id;
             self.formDecider(result.data[0]);
         }).catch((error)=>{
             console.log('Could not get individual artifact', error);
@@ -722,8 +704,8 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         $http({
             method: 'GET',
             url: '/api/user/admin/all',
-        }).then((result)=>{
-            console.log('Got all admins');
+        }).then((result) => {
+            console.log('Got all admins', result.data);
             self.locations.allAdmins = result.data;
         }).catch((error)=>{
             console.log('Error getting all admins');

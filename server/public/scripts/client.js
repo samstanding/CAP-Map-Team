@@ -57,7 +57,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/namelocation/:locationid', {
+    .when('/admin/namelocation/', {
       templateUrl: '/views/admin/name_location.html',
       controller: 'NameLocationController as vm',
       resolve: {
@@ -65,6 +65,16 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
           return UserService.getuser();
         }
       }
+    })
+    .when('/admin/locationpreview', {
+      templateUrl: '/views/admin/location_preview.html',
+      controller: 'LocationPreviewController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+
     })
     .when('/admin/editlocation', {
       templateUrl: '/views/admin/edit_location.html',
