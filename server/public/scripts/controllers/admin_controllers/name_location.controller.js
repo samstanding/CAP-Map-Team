@@ -11,7 +11,7 @@ capApp.controller('NameLocationController',  ['UserService', 'AdminService','$ro
     self.findLocation = AdminService.findLocation;
 
     self.moveTo = () =>{
-        $location.url('/admin/namelocation/1');
+        $location.url('/admin/locationpreview');
     }
 
     self.saveLocationName = AdminService.saveLocationName;

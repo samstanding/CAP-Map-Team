@@ -11,7 +11,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', '$loc
 
     //function to route the page on click to the name location
    self.movePage = () => {
-    $location.url('/admin/namelocation/1');
+    $location.url('/admin/namelocation/');
    }
  
 }]);
