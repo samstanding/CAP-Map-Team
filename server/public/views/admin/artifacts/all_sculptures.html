@@ -19,4 +19,5 @@ Extended Description:
 
 
 
-<button ng-click="vm.saveSculpture()">Add</button>
+<button ng-if="!vm.newSculpture.editing" ng-click="vm.saveSculpture()">Add</button>
+<button ng-if="vm.newSculpture.editing" ng-click="vm.editArtifact(vm.newSculpture)">Save Edit</button>

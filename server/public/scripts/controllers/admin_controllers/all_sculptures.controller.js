@@ -14,4 +14,6 @@ capApp.controller('SculpturesController', ['UserService', 'AdminService', functi
 
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
+
+    self.editArtifact = AdminService.editArtifact;
 }]);
