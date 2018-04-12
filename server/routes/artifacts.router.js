@@ -113,7 +113,7 @@ router.delete('/delete/:id', (req, res)=>{
 router.get('/single/:id', (req, res)=>{
     // if (req.isAuthenticated()) {
         let id = req.params.id;
-        pool.query('SELECT * FROM artifact where id = $1;', [id])
+        pool.query('SELECT * FROM artifact WHERE id = $1;', [id])
         .then((result)=>{
             res.send(result.rows);
         }).catch((error)=>{
@@ -140,7 +140,7 @@ router.put('/edit', (req, res)=>{
 router.delete('/join/delete/:artifactid/:locationid', (req, res)=>{
     let artifact_id = req.params.artifactid;
     let location_id = req.params.locationid;
-    pool.query('DELETE FROM map_artifact_join where artifact_id = $1 and location_id = $2;', [artifact_id, location_id])
+    pool.query('DELETE FROM map_artifact_join WHERE artifact_id = $1 and location_id = $2;', [artifact_id, location_id])
     .then((result)=>{
         res.sendStatus(204);
     }).catch((error)=>{
