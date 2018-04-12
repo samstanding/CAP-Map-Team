@@ -66,6 +66,16 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
+    .when('/admin/locationpreview', {
+      templateUrl: '/views/admin/location_preview.html',
+      controller: 'LocationPreviewController as vm',
+      // resolve: {
+      //   getuser: function (UserService) {
+      //     return UserService.getuser();
+      //   }
+      // }
+
+    })
     .when('/admin/editlocation', {
       templateUrl: '/views/admin/edit_location.html',
       controller: 'EditLocationController as vm',

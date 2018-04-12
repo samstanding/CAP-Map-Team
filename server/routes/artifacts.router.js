@@ -98,7 +98,8 @@ router.post('/save', (req, res) => {
 router.delete('/delete/:id', (req, res)=>{
     // if (req.isAuthenticated()) {
         let id = req.params.id;
-        pool.query('DELETE FROM artifact WHERE id = $1;', [id])
+        pool.query('DELETE FROM map_artifact_join where artifact_id = $1;', [id])
+        pool.query('DELETE FROM artifact where id = $1;', [id])
         .then((result)=>{
             res.sendStatus(204);
         }).catch((error)=>{
