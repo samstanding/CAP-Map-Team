@@ -133,13 +133,13 @@ router.put('/edit', (req, res)=>{
     }).catch((error)=>{
         res.sendStatus(500);
         console.log('Update failed', error);
-        
     })
 })
 
-router.delete('/join/delete/:id', (req, res)=>{
-    let id = req.params.id;
-    pool.query('DELETE FROM map_artifact_join where id = $1;', [id])
+router.delete('/join/delete/:artifactid/:locationid', (req, res)=>{
+    let artifact_id = req.params.artifactid;
+    let location_id = req.params.locationid;
+    pool.query('DELETE FROM map_artifact_join where artifact_id = $1 and location_id = $2;', [artifact_id, location_id])
     .then((result)=>{
         res.sendStatus(204);
     }).catch((error)=>{
