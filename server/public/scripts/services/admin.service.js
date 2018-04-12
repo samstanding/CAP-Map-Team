@@ -368,10 +368,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             }
         }).then((result)=>{
             console.log('new sculpture saved');
+            alert('sculpture added!');
             let artifact_id = result.data[0].id //return id from database!!!!
             console.log('artifact_id:' , artifact_id)
             self.saveAssociation(artifact_id, false);
-            history.back();
         }).catch((error)=>{
             console.log('error saving new sculpture', error);
         })
@@ -552,6 +552,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
 
     self.saveAssociation = function(artifact_id, main_photo){
+        let location_id = Number(self.locations.currentLocationId);
         console.log('in saveAssociation function--artifact_id, main_photo, location_id:', artifact_id, main_photo, location_id);
         $http({
             method: 'POST',
