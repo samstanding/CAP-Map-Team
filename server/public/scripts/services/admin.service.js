@@ -739,12 +739,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.locations.newGuest.email = '';
     }
 //------End Guest Management----
-
 //-----Begin Admin Management----
     self.getAllAdmins = function(){
         $http({
             method: 'GET',
-            url: '',
+            url: '/api/user/admin/all',
         }).then((result) => {
             console.log('Got all admins');
             self.locations.allAdmins = result.data;
@@ -753,4 +752,5 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('Error getting all admins');
         })
     }
+//-----End Admin Management----
 }]);
