@@ -38,7 +38,6 @@ router.delete('/delete/:id', (req, res) => {
             res.sendStatus(500);
         })
     // } else {
-
     //     res.sendStatus(403);
     // }
 });

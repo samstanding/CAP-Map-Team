@@ -648,17 +648,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.formDecider = function(artifact){
         switch (artifact.type) {
             case 'photo':
-                $location.path('/admin/multimediaform');
-                break;
             case 'video':
                 $location.path('/admin/multimediaform');
                 break;
             case 'writing':
-                $location.path('/admin/textform');
-                break;
             case 'anecdote':
-                $location.path('/admin/textform');
-                break;
             case 'poem':
                 $location.path('/admin/textform');
                 break;
