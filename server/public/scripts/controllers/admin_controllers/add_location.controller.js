@@ -2,9 +2,10 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', '$loc
     console.log('AddLocationController created');
     let self = this;
     
+    //don't think i need these since I'm not sending anything to the db
     // self.userService = UserService;
-    self.adminService = AdminService;
-    self.addNewLocation = AdminService.addNewLocation;
+    // self.adminService = AdminService;
+    // self.addNewLocation = AdminService.addNewLocation;
 
     //because first location is not being sent to db I am putting that function in the controller
     self.findLocation = () => {

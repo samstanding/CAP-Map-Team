@@ -181,10 +181,41 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     //-----END EVENTS AJAX----
     //-----Start Locations----
 
-    self.addNewLocation = function(latitude, longitude){
-        console.log('Latitude:', latitude, ', Longitude:', longitude);
+    self.addNewLocation = function(locationName){
+        console.log('in add new location');
+        success = (pos) => {
+            let crd = pos.coords;
+            console.log(`Latitude: ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`more or less ${crd.accuracy} meters`);
+        } 
+        $http({
+            method: 'POST',
+            url: '/map/post',
+            data: {
+                location_name: locationName,
+                lat: crd.latitude,
+                long: crd.longitude
+            }
+            .then((response) =>{
+                //get the single location
+            })
+            .catch((error) => {
+                console.log('error on post: ', error); 
+            })
+        })
+        error = (err) => {
+            console.log('error on finding location for name: ', err);
+        }
+        let options = {
+            enableHighAccuracy: true
+        }
+        navigator.geolocation.getCurrentPosition(success, error, options);
+        
+        
         //send latitude and longitude to DB, get back ID, replace 1 in location url with id.
-        $location.url('/admin/namelocation/1');
+        //need to get the id and add that to the params for the preview
+        // $location.url('/admin/namelocation/1');
     }
 
     self.saveLocationName = function(){
@@ -208,18 +239,22 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('error getting all locations');
         })
     }
+//i don't think we need this one if we have the addnewlocation function above
+    // self.addLocationToDB = function(location){
+    //     success = (pos) => {
+    //         let crd = pos.coords;
+    //     }
 
-    self.addLocationToDB = function(postObj){
-        $http({
-            method: 'POST',
-            url: '/map/post',
-            data: postObj
-        }).then((result)=>{
-            self.getAllLocations();
-        }).catch((error)=>{
-            console.log('/map/location/post', error);
-        })
-    } // ---------------------I don't have a button---------------------
+    //     $http({
+    //         method: 'POST',
+    //         url: '/map/post',
+    //         data: postObj
+    //     }).then((result)=>{
+    //         self.getAllLocations();
+    //     }).catch((error)=>{
+    //         console.log('/map/location/post', error);
+    //     })
+    // } // ---------------------I don't have a button---------------------
 
     self.deleteLocation = function(){
         $http({
