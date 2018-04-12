@@ -627,7 +627,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }
     }
 
-    self.getArifactToEdit = function(id){
+    self.getArtifactToEdit = function(id){
         console.log('Editing artifact', id);
         $http({
             method: 'GET',
