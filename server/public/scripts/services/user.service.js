@@ -14,11 +14,11 @@ capApp.service('UserService', ['$http', '$location', function($http, $location){
         } else {
             console.log('UserService -- getuser -- failure');
             // user has no session, bounce them back to the login page
-            $location.path("/home");
+            $location.path("/admin/menu");
         }
     },function(response){
       console.log('UserService -- getuser -- failure: ', response);
-      $location.path("/home");
+      $location.path("/admin");
     });
   },
 
@@ -26,7 +26,7 @@ capApp.service('UserService', ['$http', '$location', function($http, $location){
     console.log('UserService -- logout');
     $http.get('/api/user/logout').then(function(response) {
       console.log('UserService -- logout -- logged out');
-      $location.path("/home");
+      $location.path("/admin");
     });
   }
 }]);

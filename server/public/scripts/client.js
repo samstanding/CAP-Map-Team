@@ -201,10 +201,10 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       //   }
       // }
     })
-    // .when('/register', {
-    //   templateUrl: '/views/templates/register.html',
-    //   controller: 'LoginController as vm'
-    // })
+    .when('/register', {
+      templateUrl: '/views/templates/register.html',
+      controller: 'LoginController as vm'
+    })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
       controller: 'UserController as vm',
@@ -214,6 +214,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
+
     // .when('/info', {
     //   templateUrl: '/views/templates/info.html',
     //   controller: 'InfoController as vm',
