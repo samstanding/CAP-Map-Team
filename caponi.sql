@@ -33,7 +33,7 @@ email VARCHAR(200)
 CREATE TABLE information(
 id SERIAL PRIMARY KEY,
 description VARCHAR,
-category VARCHAR NOT NULL
+category VARCHAR 
 );
 --SELECT * FROM information
 --ROLLBACK

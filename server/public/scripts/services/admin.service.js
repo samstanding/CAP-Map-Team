@@ -654,11 +654,13 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             case 'poem':
                 $location.path('/admin/textform');
                 break;
+            case 'statue':
+                $location.path(' /admin/allsculptures')
         }
     }
 
     self.getArifactToEdit = function(id){
-        console.log('Editing text artifact');
+        console.log('Editing artifact', id);
         $http({
             method: 'GET',
             url: `/artifacts/single/${id}`,
@@ -677,6 +679,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.newMultimedia.description = result.data[0].description;
             self.newMultimedia.extended_description = result.data[0].extended_description;
             self.newMultimedia.editing = true;
+            // self.newStatue.id = result.data[0].id;
             self.formDecider(result.data[0]);
         })
         .catch((error)=>{
