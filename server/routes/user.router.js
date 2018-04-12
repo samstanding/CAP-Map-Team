@@ -8,9 +8,9 @@ const router = express.Router();
 // Handles Ajax request for user information if user is authenticated
 router.get('/', (req, res)=>{
   // check if logged in
-  if (req.isAuthenticated()){
+  if(req.isAuthenticated()){
     res.send(req.user);
-  } else {
+  }else{
     res.sendStatus(403);
   }
 });
@@ -19,7 +19,7 @@ router.get('/', (req, res)=>{
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next)=>{
-  // if (req.isAuthenticated()) {
+  if(req.isAuthenticated()){
     const username = req.body.username;
     const password = encryptLib.encryptPassword(req.body.password);
     const first_name = req.body.first_name;
@@ -42,9 +42,9 @@ router.post('/register', (req, res, next)=>{
           res.sendStatus(201);
         }
       })
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    }else{
+        res.sendStatus(403);
+    }
 });
 
 // Handles login form authenticate/login POST
@@ -81,7 +81,7 @@ router.get('/admin/all', (req, res)=>{
 });
 
 router.delete('/guest/delete/:id', (req, res)=>{
-  // if (req.isAuthenticated()) {
+  if(req.isAuthenticated()){
     let id = req.params.id;
     pool.query('DELETE FROM guest_users where id = $1;', [id])
     .then(function(result){
@@ -89,25 +89,20 @@ router.delete('/guest/delete/:id', (req, res)=>{
     }).catch(function(error){
       res.sendStatus(500);
     })
-  // } else {
-  //     res.sendStatus(403);
-  // }
+  }else{
+      res.sendStatus(403);
+  }
 });
 
 router.post('/guest', (req, res)=>{
-  // if (req.isAuthenticated()) {
-    pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
-    .then(function(result){
-      console.log('Guest Added');
-      res.sendStatus(201);
-    })
-    .catch(function(error){
-      console.log('Could not add guest', error);
-      res.sendStatus(500);
-    })
-  // } else {
-  //     res.sendStatus(403);
-  // }
+  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
+  .then(function(result){
+    console.log('Guest Added');
+    res.sendStatus(201);
+  }).catch(function(error){
+    console.log('Could not add guest', error);
+    res.sendStatus(500);
+  })
 })
 
 module.exports = router;
