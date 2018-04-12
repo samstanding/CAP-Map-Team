@@ -5,7 +5,7 @@ all anecdotes
     
         {{anecdote.title}}
         {{anecdote.year}}
-        {{anecdote.description}}
+        <div ng-bind-html="anecdote.description">{{anecdote.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(anecdote.id, 'false')">Add to location</button>
         </div>

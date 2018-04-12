@@ -13,6 +13,7 @@ capApp.controller('ManageAdminsController', ['UserService', 'AdminService', '$ht
           console.log('sending to server...', self.user);
           $http.post('/api/user/register', self.user).then(function (response) {
             console.log('success');
+            self.getAllAdmins();
             $location.path('/admin/manageadmins');
           },
             function (response) {
@@ -21,6 +22,9 @@ capApp.controller('ManageAdminsController', ['UserService', 'AdminService', '$ht
             });
         }
       }
+
+    self.getAllAdmins = AdminService.getAllAdmins;
     
+    self.getAllAdmins();
 
 }]);

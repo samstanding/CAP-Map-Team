@@ -86,28 +86,28 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.saveSculpture = function(){
-        let newSculpture = self.newSculpture; 
-        console.log('in saveSculpture,', newSculpture);
-        $http({
-            method: 'POST',
-            url: `/artifact/sculpture/save`,
-            data: {
-                title: newSculpture.title,
-                year: newSculpture.year,
-                artist_name: newSculpture.artist_name,
-                material: newSculpture.material,
-                description: newSculpture.description,
-                extended_description: newSculpture.extended_description,
-                type: 'sculpture',
-            }
-        }).then((result)=>{
-            console.log('new sculpture saved');
-            history.back();
-        }).catch((error)=>{
-            console.log('error saving new sculpture', error);
-        })
-    }
+    // self.saveSculpture = function(){
+    //     let newSculpture = self.newSculpture; 
+    //     console.log('in saveSculpture,', newSculpture);
+    //     $http({
+    //         method: 'POST',
+    //         url: `/artifact/sculpture/save`,
+    //         data: {
+    //             title: newSculpture.title,
+    //             year: newSculpture.year,
+    //             artist_name: newSculpture.artist_name,
+    //             material: newSculpture.material,
+    //             description: newSculpture.description,
+    //             extended_description: newSculpture.extended_description,
+    //             type: 'sculpture',
+    //         }
+    //     }).then((result)=>{
+    //         console.log('new sculpture saved');
+    //         history.back();
+    //     }).catch((error)=>{
+    //         console.log('error saving new sculpture', error);
+    //     })
+    // }
 
 //---START EVENTS AJAX---
     self.getEvents = function(){
@@ -397,6 +397,9 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('new sculpture saved');
+            let artifact_id = result.data[0].id //return id from database!!!!
+            console.log('artifact_id:' , artifact_id)
+            self.saveAssociation(artifact_id, false);
             history.back();
         }).catch((error)=>{
             console.log('error saving new sculpture', error);
@@ -596,7 +599,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             }
         }).then((result)=>{
             console.log('association saved');
-            history.back();
         }).catch((error)=>{
             console.log('error saving association', error);
         })
@@ -745,7 +747,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             method: 'GET',
             url: '/api/user/admin/all',
         }).then((result) => {
-            console.log('Got all admins');
+            console.log('Got all admins', result.data);
             self.locations.allAdmins = result.data;
         })
         .catch((error) => {
