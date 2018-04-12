@@ -39,6 +39,8 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
 
     self.newSculpture = {};
 
+    self.isMainPhoto = {boolean: false};
+
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
 
     self.uploadnewPhoto = function(){
@@ -178,9 +180,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
 
     self.addNewLocation = function(latitude, longitude){
         console.log('Latitude:', latitude, ', Longitude:', longitude);
@@ -245,16 +244,16 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     } // ---------------------I don't have a button---------------------
 
-    self.getIndividualLocation = function(locationid){
+    self.getIndividualLocation = function(id){
         console.log('in getIndividualLocation function');
         $http({
             method: 'GET',
-            url: `map/artifact/${locationid}`
+            url: `map/artifact/${id}`
         }).then((result)=>{
             self.locations.allArtifactsForLocation = result.data;
-            self.locations.currentLocationId = locationid;
+            self.locations.currentLocationId = id;
             console.log('current location id:', self.locations.currentLocationId)
-            console.log(`success getting artifacts for location id:${locationid}`, self.locations.allArtifactsForLocation);
+            console.log(`success getting artifacts for location id:${id}`, self.locations.allArtifactsForLocation);
             self.indLocation.indSculpture = {};
             self.indLocation.indMainPhoto = {};
             self.indLocation.indPhotos = [];
@@ -376,6 +375,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newMultimedia.type = 'video';
         self.newMultimedia.media_url = url;
     }
+
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -528,10 +528,6 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }
     }
 
-    self.saveLocationInfo = function(){
-        //save main_photo info, along with all artifact info, when save button is pressed
-    }
-
     self.getAllMultimedia = function(){
     console.log('in getAllMultimedia function');
     $http({
@@ -590,7 +586,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             data: {
                 artifact_id: artifact_id,
                 location_id: location_id,
-                main_photo: main_photo,
+                main_photo: self.isMainPhoto.boolean,
             }
         }).then((result)=>{
             console.log('association saved');
@@ -600,9 +596,17 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     }
 
-    self.deleteAssociation = function(join_id){
-        console.log('in deleteAssociation', join_id);
-        // on .then() --> get all artifacts for location
+    self.deleteAssociation = function(artifact_id){
+        let location_id = Number(self.locations.currentLocationId);
+        console.log('in deleteAssociation', artifact_id, location_id);
+        $http({
+            method: 'DELETE',
+            url: `/artifacts/join/delete/${artifact_id}/${location_id}`
+        }).then((result)=>{
+            self.getIndividualLocation(location_id);
+        }).catch((error)=>{
+            console.log(`/artifacts/join/delete/${id}: ${result}`);
+        })
     }
 
     self.deleteArtifact = function(artifact){
@@ -634,7 +638,21 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         }
     }
 
-    self.editText = function(id){
+    self.formDecider = function(artifact){
+        switch (artifact.type) {
+            case 'photo':
+            case 'video':
+                $location.path('/admin/multimediaform');
+                break;
+            case 'writing':
+            case 'anecdote':
+            case 'poem':
+                $location.path('/admin/textform');
+                break;
+        }
+    }
+
+    self.getArifactToEdit = function(id){
         console.log('Editing text artifact');
         $http({
             method: 'GET',
@@ -648,7 +666,13 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.newText.year = result.data[0].year;
             self.newText.description = result.data[0].description;
             self.newText.editing = true;
-            $location.path('/admin/textform')
+            self.newMultimedia.id = result.data[0].id;
+            self.newMultimedia.type = result.data[0].type;
+            self.newMultimedia.media_url = result.data[0].media_url;
+            self.newMultimedia.description = result.data[0].description;
+            self.newMultimedia.extended_description = result.data[0].extended_description;
+            self.newMultimedia.editing = true;
+            self.formDecider(result.data[0]);
         })
         .catch((error)=>{
             console.log('Could not get individual artifact', error);

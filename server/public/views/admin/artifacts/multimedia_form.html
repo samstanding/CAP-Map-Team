@@ -21,5 +21,5 @@ multimedia form
 <br>Caption: <br>
 <text-angular ng-model="vm.newMultimedia.description"></text-angular>
 
-<button ng-click="vm.saveMultimedia()">Add</button>
-<button ng-if="editing=true">Save Edit</button>
+<button ng-if="!vm.newMultimedia.editing" ng-click="vm.saveMultimedia()">Add</button>
+<button ng-if="vm.newMultimedia.editing" ng-click="vm.editArtifact(vm.newMultimedia)">Save Edit</button>
