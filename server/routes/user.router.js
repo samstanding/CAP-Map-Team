@@ -91,4 +91,13 @@ router.post('/guest', (req, res)=>{
   })
 })
 
+router.get('/admin/all', (req, res) => {
+  pool.query('SELECT * FROM users ORDER BY id;')
+  .then(function(result){
+    res.send(result.rows);
+  }).catch(function(error){
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;
