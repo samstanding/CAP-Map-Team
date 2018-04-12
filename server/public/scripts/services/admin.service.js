@@ -16,6 +16,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         currentLocationId: '',
         guestList: [],
         newGuest:{},
+        allAdmins: [],
     }
     
     self.indLocation = {
@@ -738,4 +739,18 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.locations.newGuest.email = '';
     }
 //------End Guest Management----
+
+//-----Begin Admin Management----
+    self.getAllAdmins = function(){
+        $http({
+            method: 'GET',
+            url: '',
+        }).then((result) => {
+            console.log('Got all admins');
+            self.locations.allAdmins = result.data;
+        })
+        .catch((error) => {
+            console.log('Error getting all admins');
+        })
+    }
 }]);
