@@ -12,7 +12,7 @@ router.get('/get', (req,res)=>{
 })
 
 router.post('/post', (req,res)=>{
-    // if (req.isAuthenticated()) {
+    if(req.isAuthenticated()){
         const guideline = req.body;
         pool.query('INSERT INTO information (description, category) VALUES ($1, $2);',
         [guideline.description, guideline.category])
@@ -21,38 +21,38 @@ router.post('/post', (req,res)=>{
         }).catch(function(error){
             res.sendStatus(500);
         })
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    }else{
+        res.sendStatus(403);
+    }
 })
 
 router.put('/edit/:id', (req,res)=>{
-    // if (req.isAuthenticated()) {
+    if (req.isAuthenticated()){
         const guideline = req.body;
         pool.query('UPDATE information SET description = $1, category = $2 WHERE id = $3;',
         [guideline.description, guideline.category, guideline.id])
         .then(function(result){
             res.sendStatus(201);
-        }).catch(function (error) {
+        }).catch(function(error){
             res.sendStatus(500);
         })
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    } else {
+        res.sendStatus(403);
+    }
 })
 
-router.delete('/delete/:id', (req, res) => {
-    // if (req.isAuthenticated()) {
+router.delete('/delete/:id', (req, res)=>{
+    if(req.isAuthenticated()){
         const id = req.params
         pool.query(`delete from information where id = $1;`, [req.params.id])
-        .then(function (result) {
+        .then(function(result){
             res.sendStatus(201);
-        }).catch(function (error) {
+        }).catch(function(error){
             res.sendStatus(500);
         })
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    }else{
+        res.sendStatus(403);
+    }
 });
 
 module.exports = router;
