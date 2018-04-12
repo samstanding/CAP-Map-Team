@@ -244,16 +244,16 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
     } // ---------------------I don't have a button---------------------
 
-    self.getIndividualLocation = function(locationid){
+    self.getIndividualLocation = function(id){
         console.log('in getIndividualLocation function');
         $http({
             method: 'GET',
-            url: `map/artifact/${locationid}`
+            url: `map/artifact/${id}`
         }).then((result)=>{
             self.locations.allArtifactsForLocation = result.data;
-            self.locations.currentLocationId = locationid;
+            self.locations.currentLocationId = id;
             console.log('current location id:', self.locations.currentLocationId)
-            console.log(`success getting artifacts for location id:${locationid}`, self.locations.allArtifactsForLocation);
+            console.log(`success getting artifacts for location id:${id}`, self.locations.allArtifactsForLocation);
             self.indLocation.indSculpture = {};
             self.indLocation.indMainPhoto = {};
             self.indLocation.indPhotos = [];
@@ -641,17 +641,11 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.formDecider = function(artifact){
         switch (artifact.type) {
             case 'photo':
-                $location.path('/admin/multimediaform');
-                break;
             case 'video':
                 $location.path('/admin/multimediaform');
                 break;
             case 'writing':
-                $location.path('/admin/textform');
-                break;
             case 'anecdote':
-                $location.path('/admin/textform');
-                break;
             case 'poem':
                 $location.path('/admin/textform');
                 break;

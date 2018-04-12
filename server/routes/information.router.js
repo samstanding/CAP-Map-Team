@@ -55,7 +55,6 @@ router.delete('/delete/:id', (req, res) => {
         console.log('Could not delete guideline', error);
         res.sendStatus(500);
     })
-
 });
 
 module.exports = router;
