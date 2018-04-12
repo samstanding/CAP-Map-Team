@@ -80,7 +80,7 @@
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.year}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
-        <button ng-if="vm.indLocation.indSculpture.title" ng-click="vm.getArifactToEdit(vm.indLocation.indSculpture.id)">Edit</button>
+        <button ng-if="vm.indLocation.indSculpture.title" ng-click="vm.getArtifactToEdit(vm.indLocation.indSculpture.id)">Edit</button>
         <a ng-if="!vm.indLocation.indSculpture.title" href="/#!/admin/sculptures">
                 <i class="material-icons">add_circle</i>
         </a>
