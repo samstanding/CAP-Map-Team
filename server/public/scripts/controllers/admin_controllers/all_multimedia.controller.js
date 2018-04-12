@@ -19,5 +19,8 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', '$sce'
     self.deleteArtifact = AdminService.deleteArtifact;
     
     self.getArifactToEdit = AdminService.getArifactToEdit;
+    
+    self.clearArtifact = AdminService.clearArtifact;
+    self.clearArtifact();
 
 }]);

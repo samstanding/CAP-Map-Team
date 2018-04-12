@@ -3,5 +3,6 @@ capApp.controller('AdminMenuController', ['UserService', 'AdminService', functio
     var self = this;
     self.userService = UserService;
     self.adminService = AdminService;
+    self.logout = UserService.logout;
 
 }]);
