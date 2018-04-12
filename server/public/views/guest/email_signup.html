@@ -5,6 +5,6 @@
     <form>
         <input ng-model="vm.user.guest.name" placeholder="Name" />
         <input ng-model="vm.user.guest.email" placeholder="Email" />
-        <input type="submit" ng-click="vm.addGuest(vm.user.guest)" value="Submit" />
+        <input type="submit" ng-click="vm.addGuest(vm.user.guest); vm.user.guest.name = ''; vm.user.guest.email=''" value="Submit" />
     </form>
 </div>
