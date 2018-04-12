@@ -9,10 +9,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // check if logged in
   if (req.isAuthenticated()) {
-    // send back user object from database
     res.send(req.user);
   } else {
-    // failure best handled on the server. do redirect here.
     res.sendStatus(403);
   }
 });
@@ -21,28 +19,32 @@ router.get('/', (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
-  const username = req.body.username;
-  const password = encryptLib.encryptPassword(req.body.password);
-  const first_name = req.body.first_name;
-  const last_name = req.body.last_name;
-  const email = req.body.email;
-  var saveUser = {
-    username: req.body.username,
-    password: encryptLib.encryptPassword(req.body.password),
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-  };
-  console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5) RETURNING id;',
-    [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.email], (err, result) => {
-      if (err) {
-        console.log("Error inserting data: ", err);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(201);
-      }
-    });
+  if (req.isAuthenticated()) {
+    const username = req.body.username;
+    const password = encryptLib.encryptPassword(req.body.password);
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const email = req.body.email;
+    var saveUser = {
+      username: req.body.username,
+      password: encryptLib.encryptPassword(req.body.password),
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+    };
+    console.log('new user:', saveUser);
+    pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5) RETURNING id;',
+      [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.email], (err, result) => {
+        if (err) {
+          console.log("Error inserting data: ", err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 // Handles login form authenticate/login POST
@@ -69,28 +71,6 @@ router.get('/guest/all', (req, res) => {
   })
 });
 
-router.delete('/guest/delete/:id', (req, res) => {
-  let id = req.params.id;
-  pool.query('DELETE FROM guest_users where id = $1;', [id])
-  .then(function(result){
-    res.send(result.rows);
-  }).catch(function(error){
-    res.sendStatus(500);
-  })
-});
-
-router.post('/guest', (req, res)=>{
-  pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
-  .then(function(result){
-    console.log('Guest Added');
-    res.sendStatus(201);
-  })
-  .catch(function(error){
-    console.log('Could not add guest', error);
-    res.sendStatus(500);
-  })
-})
-
 router.get('/admin/all', (req, res) => {
   pool.query('SELECT * FROM users ORDER BY id;')
   .then(function(result){
@@ -99,5 +79,35 @@ router.get('/admin/all', (req, res) => {
     res.sendStatus(500);
   })
 });
+
+router.delete('/guest/delete/:id', (req, res) => {
+  // if (req.isAuthenticated()) {
+    let id = req.params.id;
+    pool.query('DELETE FROM guest_users where id = $1;', [id])
+    .then(function(result){
+      res.send(result.rows);
+    }).catch(function(error){
+      res.sendStatus(500);
+    })
+  // } else {
+  //     res.sendStatus(403);
+  // }
+});
+
+router.post('/guest', (req, res)=>{
+  // if (req.isAuthenticated()) {
+    pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
+    .then(function(result){
+      console.log('Guest Added');
+      res.sendStatus(201);
+    })
+    .catch(function(error){
+      console.log('Could not add guest', error);
+      res.sendStatus(500);
+    })
+  // } else {
+  //     res.sendStatus(403);
+  // }
+})
 
 module.exports = router;
