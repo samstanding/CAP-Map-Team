@@ -1,3 +1,10 @@
+
+<a href="/#!/admin/menu">
+        <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
+</a>
+<br>
+<br>
+
 <div ng-if="!vm.indLocation.isBeingEdited">
         <br>
         <div>
@@ -66,15 +73,17 @@
                 <strong>Sculpture</strong>
         </div>
         <div>
-                <a href="/#!/admin/sculptures">
-                        <i class="material-icons">add_circle</i>
-                </a>
+
         </div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.title}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.artist_name}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.year}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
+        <button ng-if="vm.indLocation.indSculpture.title" ng-click="vm.editSculpture(vm.indLocation.indSculpture.id)">Edit</button>
+        <a ng-if="!vm.indLocation.indSculpture.title" href="/#!/admin/sculptures">
+                <i class="material-icons">add_circle</i>
+        </a>
         <br>
 
         <div>
@@ -99,6 +108,7 @@
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="photo in vm.indLocation.indPhotos">
                 <img src="{{photo.media_url}}" height="100px" width="100px" />
@@ -109,9 +119,11 @@
                 <strong>Poems</strong>
         </div>
         <a href="/#!/admin/poems">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="poem in vm.indLocation.indPoems">
                 <div>{{poem.title}}</div>
@@ -124,9 +136,11 @@
                 <strong>Writings</strong>
         </div>
         <a href="/#!/admin/writings">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="writing in vm.indLocation.indWritings">
                 <div>{{writing.title}}</div>
@@ -140,6 +154,7 @@
                 <strong>Anecdotes</strong>
         </div>
         <a href="/#!/admin/anecdotes">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
@@ -155,6 +170,7 @@
                 <strong>Videos</strong>
         </div>
         <a href="/#!/admin/multimedia">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
