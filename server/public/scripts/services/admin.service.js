@@ -115,7 +115,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             method:'GET', 
             url:`/events/get`,
         }).then((result)=>{
-            console.log('Events:',result.data);
+            console.log('Events:', result.data);
             self.locations.allEvents = result.data;
         }).catch((error)=>{
             console.log('getEvents', error);
@@ -145,7 +145,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         
         $http({
             method: 'PUT',
-            url: `/events/edit/${dataObj.id}`,
+            url: `/events/edit`,
             data: dataObj
         }).then((result)=>{
             // Redisplay DOM
@@ -163,20 +163,20 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             // Redisplay DOM
             self.getEvents();
         }).catch((error)=>{
-            console.log('editEvent', error);
+            console.log('Delete Event', error);
         })
     }
 
     self.emptyEventsInputs = function(){
-        self.locations.events.newEvent.title = '';
-        self.locations.events.newEvent.date = '';
-        self.locations.events.newEvent.time = '';
-        self.locations.events.newEvent.description = '';
-        self.locations.events.newEvent.notes = '';
-        self.locations.events.newEvent.category = '';
-        self.locations.events.newEvent.photo_url = '';
-        self.locations.events.newEvent.age_group = '';
-        self.locations.events.newEvent.price = '';
+        self.locations.newEvent.title = '';
+        self.locations.newEvent.date = '';
+        self.locations.newEvent.time = '';
+        self.locations.newEvent.description = '';
+        self.locations.newEvent.notes = '';
+        self.locations.newEvent.category = '';
+        self.locations.newEvent.photo_url = '';
+        self.locations.newEvent.age_group = '';
+        self.locations.newEvent.price = '';
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
