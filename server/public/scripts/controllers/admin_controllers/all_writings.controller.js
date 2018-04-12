@@ -14,4 +14,7 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
     self.deleteArtifact = AdminService.deleteArtifact;
     self.editText = AdminService.editText
     self.getArifactToEdit = AdminService.getArifactToEdit;
+    
+    self.clearArtifact = AdminService.clearArtifact;
+    self.clearArtifact();
 }]);

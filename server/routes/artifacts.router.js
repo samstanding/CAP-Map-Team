@@ -133,7 +133,6 @@ router.put('/edit', (req, res)=>{
     }).catch((error)=>{
         res.sendStatus(500);
         console.log('Update failed', error);
-        
     })
 })
 

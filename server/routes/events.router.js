@@ -30,15 +30,8 @@ router.delete('/delete/:id', (req, res) => {
             console.log('Could not update Event', error);
             res.sendStatus(500);
         })
-        // } else {
-        pool.query(`DELETE FROM events where id = $1;`, [req.prams.id])
-        .then(function(result) {
-            res.send(result.rows);
-        }).catch(function(error) {
-            res.sendStatus(500);
-        })
+       
     // } else {
-
     //     res.sendStatus(403);
     // }
 });
