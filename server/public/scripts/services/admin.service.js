@@ -654,6 +654,9 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             case 'poem':
                 $location.path('/admin/textform');
                 break;
+            case 'sculpture':
+                $location.path('/admin/sculptures');
+                break;
         }
     }
 
@@ -677,6 +680,17 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.newMultimedia.description = result.data[0].description;
             self.newMultimedia.extended_description = result.data[0].extended_description;
             self.newMultimedia.editing = true;
+            self.newSculpture.id = result.data[0].id;
+            self.newSculpture.title = result.data[0].title;
+            self.newSculpture.artist_name = result.data[0].artist_name;
+            self.newSculpture.material = result.data[0].material;
+            self.newSculpture.year = result.data[0].year;
+            self.newSculpture.description = result.data[0].description;
+            self.newSculpture.extended_description = result.data[0].extended_description;
+            self.newSculpture.view_count = result.data[0].view_count;
+            self.newSculpture.type = result.data[0].type;
+            self.newSculpture.media_url = result.data[0].media_url;
+            self.newSculpture.editing = true;
             self.formDecider(result.data[0]);
         })
         .catch((error)=>{
