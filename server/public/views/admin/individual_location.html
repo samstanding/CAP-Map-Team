@@ -1,4 +1,17 @@
+
+
+
+
+
+<br>
+<br>
+
 <div ng-if="!vm.indLocation.isBeingEdited">
+
+        <a href="/#!/admin/editlocation">
+                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
+         </a>
+         <br>
         <br>
         <div>
                 <strong>Sculpture</strong>
@@ -6,8 +19,8 @@
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.title}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.artist_name}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.year}}</div>
-        <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
-        <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
+        <div ng-bind-html="vm.indLocation.indSculpture.description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
+        <div ng-bind-html="vm.indLocation.indSculpture.extended_description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
         <br>
         <div>
                 <strong>Main Photo</strong>
@@ -29,7 +42,7 @@
         <div ng-repeat="poem in vm.indLocation.indPoems">
                 <div>{{poem.title}}</div>
                 <div>{{poem.artist_name}}</div>
-                <div>{{poem.description}}</div>
+                <div ng-bind-html="poem.description">{{poem.description}}</div>
         </div>
         <br>
         <div>
@@ -38,7 +51,7 @@
         <div ng-repeat="writing in vm.indLocation.indWritings">
                 <div>{{writing.title}}</div>
                 <div>{{writing.artist_name}}</div>
-                <div>{{writing.description}}</div>
+                <div ng-bind-html="writing.description">{{writing.description}}</div>
         </div>
         <br>
         <div>
@@ -47,7 +60,7 @@
         <div ng-repeat="anecdote in vm.indLocation.indAnecdotes">
                 <div>{{anecdote.title}}</div>
                 <div>{{anecdote.artist_name}}</div>
-                <div>{{anecdote.description}}</div>
+                <div ng-bind-html="anecdote.description">{{anecdote.description}}</div>
         </div>
         <br>
         <div>
@@ -61,20 +74,24 @@
 </div>
 
 <div ng-if="vm.indLocation.isBeingEdited">
-
+        <div ng-click="vm.indLocation.isBeingEdited = false">
+                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
+        </div><br><br>
         <div>
                 <strong>Sculpture</strong>
         </div>
         <div>
-                <a href="/#!/admin/sculptures">
-                        <i class="material-icons">add_circle</i>
-                </a>
+
         </div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.title}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.artist_name}}</div>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.year}}</div>
-        <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
-        <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
+        <div ng-bind-html="vm.indLocation.indSculpture.description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
+        <div ng-bind-html="vm.indLocation.indSculpture.extended_description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
+        <button ng-if="vm.indLocation.indSculpture.title" ng-click="vm.editSculpture(vm.indLocation.indSculpture.id)">Edit</button>
+        <a ng-if="!vm.indLocation.indSculpture.title" href="/#!/admin/sculptures">
+                <i class="material-icons">add_circle</i>
+        </a>
         <br>
 
         <div>
@@ -99,6 +116,7 @@
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="photo in vm.indLocation.indPhotos">
                 <img src="{{photo.media_url}}" height="100px" width="100px" />
@@ -109,14 +127,16 @@
                 <strong>Poems</strong>
         </div>
         <a href="/#!/admin/poems">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="poem in vm.indLocation.indPoems">
                 <div>{{poem.title}}</div>
                 <div>{{poem.artist_name}}</div>
-                <div>{{poem.description}}</div>
+                <div ng-bind-html="poem.description">{{poem.description}}</div>
                 <button ng-click="vm.deleteAssociation(poem.id)">Remove</button>
         </div>
 
@@ -124,14 +144,16 @@
                 <strong>Writings</strong>
         </div>
         <a href="/#!/admin/writings">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
+
         </a>
         <div ng-repeat="writing in vm.indLocation.indWritings">
                 <div>{{writing.title}}</div>
                 <div>{{writing.artist_name}}</div>
-                <div>{{writing.description}}</div>
+                <div ng-bind-html="writing.description">{{writing.description}}</div>
                 <button ng-click="vm.deleteAssociation(writing.id)">Remove</button>
         </div>
         <br>
@@ -140,6 +162,7 @@
                 <strong>Anecdotes</strong>
         </div>
         <a href="/#!/admin/anecdotes">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>
@@ -147,7 +170,7 @@
         <div ng-repeat="anecdote in vm.indLocation.indAnecdotes">
                 <div>{{anecdote.title}}</div>
                 <div>{{anecdote.artist_name}}</div>
-                <div>{{anecdote.description}}</div>
+                <div ng-bind-html="anecdote.description">{{anecdote.description}}</div>
                 <button ng-click="vm.deleteAssociation(anecdote.id)">Remove</button>
         </div>
 
@@ -155,6 +178,7 @@
                 <strong>Videos</strong>
         </div>
         <a href="/#!/admin/multimedia">
+
                 <button ng-click="vm.isMainPhoto.boolean=false">
                 <i class="material-icons">add_circle</i>
                 </button>

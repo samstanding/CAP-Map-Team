@@ -9,6 +9,7 @@ capApp.controller('EditEventsController', ['UserService', 'AdminService', functi
     }
     
     self.locations = AdminService.locations;
+    self.locations.newEvent.title = AdminService.locations.newEvent.title;
     self.getEvents = AdminService.getEvents;
     self.addEvent = AdminService.addEvent;
     self.editEvent = AdminService.editEvent;
