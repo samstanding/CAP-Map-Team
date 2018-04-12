@@ -1,10 +1,10 @@
-capApp.controller('AddLocationController', ['UserService', 'AdminService', function (UserService, AdminService) {
+capApp.controller('AddLocationController', ['UserService', 'AdminService', '$location', function (UserService, AdminService, $location) {
     console.log('AddLocationController created');
-    var self = this;
-    //since this isn't sending anything to the db, i'm disconnecting it from the services. 
+    let self = this;
+    
     // self.userService = UserService;
-    // self.adminService = AdminService;
-    // self.addNewLocation = AdminService.addNewLocation;
+    self.adminService = AdminService;
+    self.addNewLocation = AdminService.addNewLocation;
 
     //because first location is not being sent to db I am putting that function in the controller
     self.findLocation = () => {
@@ -28,6 +28,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
             enableHighAccuracy: true
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
+        $location.url('/admin/namelocation/1');
     }
     
 }]);
