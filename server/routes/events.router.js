@@ -21,7 +21,7 @@ router.put('/edit', (req, res) => {
 
 router.delete('/delete/:id', (req, res) => {
     // if (req.isAuthenticated()) {
-        pool.query(`delete from events where id = $1;`, [req.params.id])
+        pool.query(`DELETE FROM events where id = $1;`, [req.params.id])
         .then(function (result) {
             console.log('Event updated', result);
             res.sendStatus(201);
