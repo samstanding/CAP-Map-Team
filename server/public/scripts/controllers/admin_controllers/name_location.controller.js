@@ -1,4 +1,4 @@
-capApp.controller('NameLocationController', ['UserService', 'AdminService','$routeParams', function (UserService, AdminService, $routeParams) {
+capApp.controller('NameLocationController',  ['UserService', 'AdminService','$routeParams', '$location', function (UserService, AdminService, $routeParams, $location) {
     console.log('NameLocationController created');
     var self = this;
 
@@ -8,12 +8,11 @@ capApp.controller('NameLocationController', ['UserService', 'AdminService','$rou
     
     self.locations = AdminService.locations;
 
-    
+    self.findLocation = AdminService.findLocation;
 
-    //also don't need this bit yet
-
-    // self.locations.newLocation.id = $routeParams.locationid;
-    // console.log('locationid:', self.locations.newLocation.id);
+    self.moveTo = () =>{
+        $location.url('/admin/namelocation/1');
+    }
 
     self.saveLocationName = AdminService.saveLocationName;
-}]);a
+}]);
