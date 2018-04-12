@@ -57,7 +57,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/namelocation/:locationid', {
+    .when('/admin/namelocation/', {
       templateUrl: '/views/admin/name_location.html',
       controller: 'NameLocationController as vm',
       resolve: {

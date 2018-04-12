@@ -2,4 +2,17 @@ manage admins
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
 <div ng-include="'views/templates/register.html'"></div>
-
+<table>
+<thead>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>Username</th>
+</thead>
+<tbody ng-repeat="admin in vm.locations.allAdmins">
+    <td>{{admin.first_name}}</td>
+    <td>{{admin.last_name}}</td>
+    <td>{{admin.email}}</td>
+    <td>{{admin.username}}</td>
+</tbody>
+</table>
