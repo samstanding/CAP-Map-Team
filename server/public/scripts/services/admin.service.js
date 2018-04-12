@@ -216,7 +216,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         //send latitude and longitude to DB, get back ID, replace 1 in location url with id.
         //need to get the id and add that to the params for the preview
         // $location.url('/admin/namelocation/1');
-    }
+    }//end addd location
 
     self.saveLocationName = function(){
         let newName = self.locations.newLocation.name;

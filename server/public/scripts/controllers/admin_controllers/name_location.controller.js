@@ -16,4 +16,4 @@ capApp.controller('NameLocationController', ['UserService', 'AdminService','$rou
     // console.log('locationid:', self.locations.newLocation.id);
 
     self.saveLocationName = AdminService.saveLocationName;
-}]);
+}]);a
