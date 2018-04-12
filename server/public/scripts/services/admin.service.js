@@ -502,6 +502,10 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         self.newText.extended_description = '';
         self.newText.media_url = '';
         self.newText.editing = false;
+        self.newMultimedia.media_url = '';
+        self.newMultimedia.description = '';
+        self.newMultimedia.extended_description = '';
+        self.newMultimedia.editing = false;
     }
     
     self.determineType = function(){
