@@ -13,7 +13,7 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
     self.saveAssociation = AdminService.saveAssociation;
     self.deleteArtifact = AdminService.deleteArtifact;
     self.editText = AdminService.editText
-    self.getArifactToEdit = AdminService.getArifactToEdit;
+    self.getArtifactToEdit = AdminService.getArtifactToEdit;
     
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
