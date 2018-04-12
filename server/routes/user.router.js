@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
-  if (req.isAuthenticated()) {
+  // if (req.isAuthenticated()) {
     const username = req.body.username;
     const password = encryptLib.encryptPassword(req.body.password);
     const first_name = req.body.first_name;
@@ -41,10 +41,10 @@ router.post('/register', (req, res, next) => {
         } else {
           res.sendStatus(201);
         }
-      });
-    } else {
-        res.sendStatus(403);
-    }
+      })
+    // } else {
+    //     res.sendStatus(403);
+    // }
 });
 
 // Handles login form authenticate/login POST
