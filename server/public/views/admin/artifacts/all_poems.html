@@ -4,7 +4,7 @@ all poems
 <div ng-repeat="poem in vm.locations.allPoems">
     {{poem.title}}
     {{poem.year}}
-    {{poem.description}}
+    <div ng-bind-html="poem.description">{{poem.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(poem.id, 'false')">Add to location</button>
         </div>

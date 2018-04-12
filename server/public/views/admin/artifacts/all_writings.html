@@ -5,7 +5,7 @@ all writings
     
         {{writing.title}}
         {{writing.year}}
-        {{writing.description}}
+        <div ng-bind-html="writing.description">{{writing.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(writing.id, 'false')">Add to location</button>
         </div>
