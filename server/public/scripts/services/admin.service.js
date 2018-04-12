@@ -704,7 +704,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
     self.deleteGuest = function(guest){
         $http({
             method:'DELETE',
-            url:`/guest/delete/${guest.id}`
+            url:`/api/user/guest/delete/${guest.id}`
         })
         .then((result)=>{
             console.log('Guest deleted',);
@@ -725,10 +725,17 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
         })
         .then((result) => {
             console.log('guest email added');
+            self.getAllGuests();
+            self.emptyGuestInputs();
         })
         .catch((error) => {
             console.log('Could not add guest email');
         })
+    }
+
+    self.emptyGuestInputs = function(){
+        self.locations.newGuest.name = '';
+        self.locations.newGuest.email = '';
     }
 //------End Guest Management----
 }]);
