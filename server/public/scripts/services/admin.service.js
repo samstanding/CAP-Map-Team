@@ -53,6 +53,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('in upload,', result.filesUploaded[0].url)
             alert("successful upload!");
             self.newMultimedia.media_url = result.filesUploaded[0].url;
+            self.locations.newEvent.photo_url = result.filesUploaded[0].url;
     })
     }
 
@@ -136,7 +137,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             self.getEvents();
             self.emptyEventsInputs();
         }).catch((error)=>{
-            console.log('addEvent', error);
+            console.log('addEvent error', error);
         })
     }
 
@@ -367,6 +368,7 @@ capApp.service('AdminService', ['$http', '$location', function ($http, $location
             console.log('in upload,', result.filesUploaded[0].url)
             alert("successful upload!");
             self.newMultimedia.media_url = result.filesUploaded[0].url;
+            self.locations.newEvent.photo_url = result.filesUploaded[0].url;
         })
     }
 
