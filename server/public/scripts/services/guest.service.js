@@ -33,12 +33,20 @@ capApp.service('GuestService', ['$http', '$location', function ($http, $location
             data: guest,
         })
         .then((result)=>{
-            console.log('guest email added');
+            // console.log('guest email added');
+            self.emptyGuestInputs();
+            alert("Thank you for joining the Caponi Art Park Email List!");
+            // self.emptyGuestInputs();
         })
         .catch((error)=>{
             console.log('Could not add guest email'); 
         })
 
+    }
+
+    self.emptyGuestInputs = function () {
+        self.user.guest.name = '';
+        self.user.guest.email = '';
     }
 
     self.getInformation = function () {
