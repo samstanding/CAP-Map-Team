@@ -17,6 +17,10 @@ edit events
            <input type="submit" ng-click="vm.addEvent(vm.locations.newEvent)" value="Submit" /><br>
         </form>
     </div>
+
+Search:
+<input type="text" ng-model="vm.searchEvents">
+
     <div>
         <table>
             <thread>
@@ -33,7 +37,7 @@ edit events
                 <th></th>
             </thread>
             <tbody>
-                <tr ng-repeat="event in vm.locations.allEvents">
+                <tr ng-repeat="event in vm.locations.allEvents|filter:vm.searchEvents">
                     <td>
                         <div ng-hide="event.editing">{{event.title}}</div>
                         <input ng-show="event.editing" ng-model="event.title" ng-value="event.title">
