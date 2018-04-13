@@ -10,11 +10,15 @@ capApp.controller('LocationPreviewController', ['UserService', 'AdminService', f
     // nor do i need any of these
     // self.getAllLocations = AdminService.getAllLocations;
     // self.getAllLocations();
+
+    console.log(self.locations.newLocation.coords);
+    
     self.initMap = () => {
+        geocoder = new google.maps.Geocoder();
        self.map = new google.maps.Map(document.getElementById('map'), {
             center : {
-                lat: 44.978,
-                lng: -93.263
+                lat:44.804978887592256,
+                lng: -93.15347598874304
             }, 
             zoom: 12,
             streetViewControl: false,
@@ -24,15 +28,33 @@ capApp.controller('LocationPreviewController', ['UserService', 'AdminService', f
         });
 
         let marker = new google.maps.Marker({
-            position: new google.maps.LatLng(self.locations.newLocation.coords.lat,self.locations.newLocation.coords.long ),
+            position: new google.maps.LatLng(44.804978887592256,-93.15347598874304),
             map: self.map,
             title: self.locations.newLocation.name,
+            draggable: true,
             animation: google.maps.Animation.DROP
         })
 
-        marker.addListener('click', function () {
-            infowindow.open(self.map, marker);
-        });
+
+        google.maps.event.addListener(marker, 'dragstart', function () {
+            console.log('drag start');
+            
+        })
+
+        google.maps.event.addListener(marker, 'drag', function () {
+            console.log('dragging');
+            
+        })
+
+        google.maps.event.addListener(marker, 'dragend', function () {
+            console.log('dragend');
+            console.log(marker.getPosition());
+            console.log(marker.getPosition().lat());
+            console.log(marker.getPosition().lng());
+            
+        })
     }
+
+   
     self.initMap();
 }]);

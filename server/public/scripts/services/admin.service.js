@@ -1,4 +1,4 @@
-capApp.service('AdminService', ['$http', '$location', function($http, $location){
+capApp.service('AdminService', ['$http', '$location',  function($http, $location){
     console.log('AdminService Loaded');
     var self = this;
     self.locations = {
@@ -161,7 +161,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     //-----Start Locations----
 
 
-     //because first location is not being sent to db I am putting that function in the controller
+    //function that saves user's location
      self.findLocation = () => {
         console.log('in find location');
         self.locations.newLocation.coords= {};
@@ -190,9 +190,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             enableHighAccuracy: true
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
-        
-
-
     }
     self.addNewLocation = function(locationName){
         console.log('in add new location');

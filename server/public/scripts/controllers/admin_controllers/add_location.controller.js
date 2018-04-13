@@ -1,4 +1,4 @@
-capApp.controller('AddLocationController', ['UserService', 'AdminService', '$location', function (UserService, AdminService, $location) {
+capApp.controller('AddLocationController', ['UserService', 'AdminService', '$location',  function (UserService, AdminService, $location) {
     console.log('AddLocationController created');
     let self = this;
     
