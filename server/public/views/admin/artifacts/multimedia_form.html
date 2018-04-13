@@ -4,9 +4,7 @@ multimedia form
 
 <button ng-click="vm.uploadnewPhoto()">Choose Photo</button>
 <input ng-model="vm.newMultimedia.media_url" placeholder="video url"/>
-<!-- <button ng-click="vm.uploadNewVideo(vm.newMultimedia.newVideo)">Preview Video</button> -->
-<button ng-click="vm.uploadNewVideo()">Preview Video</button> <!--on click call function to append to url, and reload preview_video.html-->
-<!-- <md-button class="md-primary md-raised" ng-click="vm.openLightboxModal($index)">Preview Video</md-button> -->
+<button ng-click="vm.uploadNewVideo()">Preview Video</button> 
 <br>Preview:
 <br>
 {{vm.newMultimedia.media_url}}
@@ -20,9 +18,6 @@ multimedia form
 <img src="{{vm.newMultimedia.media_url}}">
 </div>
 
-    
-
-<!-- <input ng-model="vm.newMultimedia.description" placeholder="caption" /> -->
 <br>Caption: <br>
 <text-angular ng-model="vm.newMultimedia.description"></text-angular>
 

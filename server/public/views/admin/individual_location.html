@@ -98,7 +98,7 @@
                 <strong>Main Photo</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean=true">
+                <button ng-click="vm.isMainPhoto.boolean=true && vm.isMainPhoto.type == photo">
                         <i class="material-icons">add_circle</i>
                 </button>
         </a>
@@ -113,7 +113,7 @@
                 <strong>Historical Photos</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean=false">
+                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == photo">
                 <i class="material-icons">add_circle</i>
                 </button>
 
@@ -179,7 +179,7 @@
         </div>
         <a href="/#!/admin/multimedia">
 
-                <button ng-click="vm.isMainPhoto.boolean=false">
+                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == video">
                 <i class="material-icons">add_circle</i>
                 </button>
         </a>

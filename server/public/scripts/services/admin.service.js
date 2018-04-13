@@ -42,7 +42,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
 
     self.newSculpture = {};
 
-    self.isMainPhoto = {boolean: false};
+    self.isMainPhoto = {
+        boolean: false,
+        type: '',
+    };
 
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
 
@@ -67,9 +70,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         self.newMultimedia.type = 'video';
         self.newMultimedia.uploaded = true;
         self.newMultimedia.media_url = `https://www.youtube.com/embed/${self.newMultimedia.media_url}`
-        // console.log(self.newMultimedia.uploaded);
-        // self.newMultimedia.media_url = url;
-        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/kwmFPKQAX4g" frameborder="0" allowfullscreen></iframe>';
     }
 
     self.saveMultimedia = function(){
