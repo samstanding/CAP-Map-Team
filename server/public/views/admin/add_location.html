@@ -1,9 +1,12 @@
-<a href="/#!/admin/menu">
-    <i id="backArrow" class="material-icons" style="font-size: 100px">arrow_back</i>
-</a>
-
-<!-- Replace function inputs with latitude and longitude -->
-
-<div id="addLocationDiv">
-    <i class="material-icons addLocationButton" style="font-size: 700px" ng-click="vm.addNewLocation(1.0, 1.0)">add_circle</i>
+<div id="map-container"> 
+    <div class="map_header">
+            <a href="/#!/admin/menu">
+                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
+            </a>
+    <input type="text" placeholder="Name Location" ng-model="vm.locations.newLocation.name">
+    <button ng-click="vm.addLocation(vm.locations.newLocation)">Submit Location</button>
 </div>
+
+<div id="map"></div>
+</div>
+
