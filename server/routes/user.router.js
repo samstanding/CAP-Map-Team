@@ -72,12 +72,16 @@ router.get('/guest/all', (req, res)=>{
 });
 
 router.get('/admin/all', (req, res)=>{
-  pool.query('SELECT * FROM users ORDER BY id;')
-  .then(function(result){
-    res.send(result.rows);
-  }).catch(function(error){
-    res.sendStatus(500);
-  })
+  if(req.isAuthenticated()){
+    pool.query('SELECT * FROM users ORDER BY id;')
+    .then(function(result){
+      res.send(result.rows);
+    }).catch(function(error){
+      res.sendStatus(500);
+    })
+  }else{
+      res.sendStatus(403);
+  }
 });
 
 router.delete('/guest/delete/:id', (req, res)=>{

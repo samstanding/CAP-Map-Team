@@ -438,10 +438,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             }
         }).then((result)=>{
             console.log('new sculpture saved');
+            alert('sculpture added!');
             let artifact_id = result.data[0].id //return id from database!!!!
             console.log('artifact_id:' , artifact_id)
             self.saveAssociation(artifact_id, false);
-            history.back();
         }).catch((error)=>{
             console.log('error saving new sculpture', error);
         })
@@ -622,6 +622,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
 
     self.saveAssociation = function(artifact_id, main_photo){
+        let location_id = Number(self.locations.currentLocationId);
         console.log('in saveAssociation function--artifact_id, main_photo, location_id:', artifact_id, main_photo, location_id);
         $http({
             method: 'POST',
@@ -692,12 +693,13 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             case 'poem':
                 $location.path('/admin/textform');
                 break;
-            case 'statue':
-                $location.path(' /admin/allsculptures')
+            case 'sculpture':
+                $location.path('/admin/sculptures');
+                break;
         }
     }
 
-    self.getArifactToEdit = function(id){
+    self.getArtifactToEdit = function(id){
         console.log('Editing artifact', id);
         $http({
             method: 'GET',
@@ -716,7 +718,21 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             self.newMultimedia.description = result.data[0].description;
             self.newMultimedia.extended_description = result.data[0].extended_description;
             self.newMultimedia.editing = true;
-            // self.newStatue.id = result.data[0].id;
+// <<<<<<< HEAD
+            self.newSculpture.id = result.data[0].id;
+            self.newSculpture.title = result.data[0].title;
+            self.newSculpture.artist_name = result.data[0].artist_name;
+            self.newSculpture.material = result.data[0].material;
+            self.newSculpture.year = result.data[0].year;
+            self.newSculpture.description = result.data[0].description;
+            self.newSculpture.extended_description = result.data[0].extended_description;
+            self.newSculpture.view_count = result.data[0].view_count;
+            self.newSculpture.type = result.data[0].type;
+            self.newSculpture.media_url = result.data[0].media_url;
+            self.newSculpture.editing = true;
+// =======
+//             // self.newStatue.id = result.data[0].id;
+// >>>>>>> master
             self.formDecider(result.data[0]);
         }).catch((error)=>{
             console.log('Could not get individual artifact', error);
