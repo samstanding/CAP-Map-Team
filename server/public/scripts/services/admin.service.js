@@ -202,6 +202,8 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             }
         }).then((response) =>{
                 console.log('location sent to the database');
+                alert('Location successfully uploaded!');
+                location.name = '';
             })
             .catch((error) => {
                 console.log('error on post: ', error); 
