@@ -4,22 +4,22 @@ all multimedia
 <div ng-repeat="multimedia in vm.locations.allMultimedia">
         <div ng-if="multimedia.type == 'photo'">
                 <img src="{{multimedia.media_url}}" />
-                {{multimedia.description}}
+                <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
                 <div ng-if="vm.locations.currentLocationId != ''">
                     <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
                 </div>
-                <button ng-click="vm.getArifactToEdit(multimedia.id)">Edit</button>
+                <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
                 <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
         </div>
 
         <div ng-if="multimedia.type == 'video'">
             
                 <iframe width="560" height="315" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
-                {{multimedia.description}}
+                <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
         </div>
-        <button ng-click="vm.getArifactToEdit(multimedia.id)">Edit</button>
+        <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
         <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
     </div>
     </div>

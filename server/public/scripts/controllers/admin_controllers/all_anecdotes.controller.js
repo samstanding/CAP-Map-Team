@@ -13,7 +13,7 @@ capApp.controller('AnecdotesController', ['UserService', 'AdminService', functio
 
     self.saveAssociation = AdminService.saveAssociation;
     self.deleteArtifact = AdminService.deleteArtifact;
-    self.getArifactToEdit = AdminService.getArifactToEdit;
+    self.getArtifactToEdit = AdminService.getArtifactToEdit;
     
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
