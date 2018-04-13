@@ -35,7 +35,9 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
 
     self.newMultimedia = {
-        newVideo: '',
+        media_url: '',
+        type: '',
+        description: '',
     }
 
     self.newSculpture = {};
@@ -52,6 +54,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             maxFiles: 1
         }).then(function(result){
             console.log('in upload,', result.filesUploaded[0].url);
+            self.newMultimedia.uploaded = true;
             alert("successful upload!");
             self.newMultimedia.media_url = result.filesUploaded[0].url;
         }).catch((error)=>{
@@ -59,25 +62,25 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         })
     }
 
-    self.uploadNewVideo = function(url){
-        console.log('in uploadNewVideo', url);
+    self.uploadNewVideo = function(){
+        console.log('in uploadNewVideo', self.newMultimedia.media_url);
         self.newMultimedia.type = 'video';
         self.newMultimedia.uploaded = true;
-        console.log(self.newMultimedia.uploaded);
-        self.newMultimedia.media_url = url;
-        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>';
+        self.newMultimedia.media_url = `https://www.youtube.com/embed/${self.newMultimedia.media_url}`
+        // console.log(self.newMultimedia.uploaded);
+        // self.newMultimedia.media_url = url;
+        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/kwmFPKQAX4g" frameborder="0" allowfullscreen></iframe>';
     }
 
     self.saveMultimedia = function(){
-        let newMultimedia = self.newMultimedia;
-        console.log('in saveMultimedia,', newMultimedia);
+        console.log('in save media,', self.newMultimedia);
         $http({
             method: 'POST',
-            url: '/artifact/multimedia/save',
+            url: '/artifacts/save',
             data: {
-                type: newMultimedia.type,
-                media_url: newMultimedia.media_url,
-                description: newMultimedia.description
+                type: self.newMultimedia.type,
+                media_url: self.newMultimedia.media_url,
+                description: self.newMultimedia.description
             }
         }).then((result)=>{
             console.log('new multimedia saved');
@@ -298,24 +301,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
 //-----END INFORMATION AJAX-------
 //-----Start Artifacts-------
     //-----Start Multimedia------
-    self.saveMultimedia = function(){
-        let newMultimedia = self.newMultimedia;
-        console.log('in saveMultimedia,', newMultimedia);
-        $http({
-            method: 'POST',
-            url: '/artifacts/save',
-            data: {
-                type: newMultimedia.type,
-                media_url: newMultimedia.media_url,
-                description: newMultimedia.description
-            }
-        }).then((result)=>{
-            console.log('new multimedia saved');
-            history.back();
-        }).catch((error)=>{
-            console.log('error saving new multimedia', error);
-        })
-    }
+
 
     self.getAllMultimedia = function(){
         console.log('in getAllMultimedia function');
@@ -329,24 +315,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         })
     }
 
-    self.uploadnewPhoto = function(){
-        console.log('in uploadNewPhoto');
-        self.newMultimedia.type = 'photo';
-        self.client.pick({
-            accept: 'image/*',
-            maxFiles: 1
-        }).then(function(result){
-            console.log('in upload,', result.filesUploaded[0].url)
-            alert("successful upload!");
-            self.newMultimedia.media_url = result.filesUploaded[0].url;
-        })
-    }
-
-    self.uploadNewVideo = function(url){
-        console.log('in uploadNewVideo', url);
-        self.newMultimedia.type = 'video';
-        self.newMultimedia.media_url = url;
-    }
 
    
     //-----End Multimedia------
@@ -502,17 +470,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }
     }
 
-    self.getAllMultimedia = function(){
-        console.log('in getAllMultimedia function');
-        $http({
-            method: 'GET',
-            url: '/artifacts/media'
-        }).then((result)=>{
-            self.locations.allMultimedia = result.data;
-        }).catch((error)=>{
-            console.log('/artifacts/media', error);
-        })
-    }
 
     self.getAllWritings = function(){
         console.log('in getAllWritings function');

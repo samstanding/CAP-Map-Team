@@ -15,17 +15,17 @@ capApp.controller('MultimediaFormController', ['UserService', 'AdminService', '$
         return $sce.trustAsResourceUrl(src);
     }
 
-    self.image = [
-        {
-          'url': 'https://www.youtube.com/embed/IAFS1gwzTTs',
-          'caption': 'Optional caption',
-        }
-      ];
+    // self.image = [
+    //     {
+    //       'url': 'https://www.youtube.com/embed/IAFS1gwzTTs',
+    //       'caption': 'Optional caption',
+    //     }
+    //   ];
      
-      self.openLightboxModal = function (index) {
-        console.log('in openLightboxModal')
-        Lightbox.openModal(self.image, index);
-      };
+    //   self.openLightboxModal = function (index) {
+    //     console.log('in openLightboxModal')
+    //     Lightbox.openModal(self.image, index);
+    //   };
 
     // self.showConfirm = function(ev) {
     //     // Appending dialog to document.body to cover sidenav in docs app

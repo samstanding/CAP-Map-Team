@@ -3,19 +3,24 @@ multimedia form
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
 <button ng-click="vm.uploadnewPhoto()">Choose Photo</button>
-<input ng-model="vm.newMultimedia.newVideo" placeholder="video url"/>
+<input ng-model="vm.newMultimedia.media_url" placeholder="video url"/>
 <!-- <button ng-click="vm.uploadNewVideo(vm.newMultimedia.newVideo)">Preview Video</button> -->
-<md-button class="md-primary md-raised" ng-click="vm.openLightboxModal($index)">Preview Video</md-button>
+<button ng-click="vm.uploadNewVideo()">Preview Video</button> <!--on click call function to append to url, and reload preview_video.html-->
+<!-- <md-button class="md-primary md-raised" ng-click="vm.openLightboxModal($index)">Preview Video</md-button> -->
 <br>Preview:
 <br>
-{{vm.newMultimedia.newVideo}}
+{{vm.newMultimedia.media_url}}
 <br>
 
-<!-- <div ng-if="vm.newMultimedia.uploaded"> -->
-<!-- <div ng-include src="'/views/admin/artifacts/preview_video.html'"></div> -->
-<!-- </div>  -->
-<!-- <span id="vidThing">???</span> -->
-<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>
+<div ng-if="vm.newMultimedia.uploaded && vm.newMultimedia.type=='video'">
+<iframe width="420" height="315" ng-src="{{vm.trustSrc(vm.newMultimedia.media_url)}}" frameborder="0" allowfullscreen></iframe>
+</div> 
+
+<div ng-if="vm.newMultimedia.uploaded && vm.newMultimedia.type=='photo'">
+<img ng-src="{{vm.newMultimedia.media_url}}" />
+</div>
+
+    
 
 <!-- <input ng-model="vm.newMultimedia.description" placeholder="caption" /> -->
 <br>Caption: <br>
