@@ -5,6 +5,8 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
     // self.userService = UserService;
     self.adminService = AdminService;
 
+    self.addLocation = AdminService.addLocation;
+
     self.locations = AdminService.locations;
 
     // nor do i need any of these
@@ -14,7 +16,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
     console.log(self.locations.newLocation.coords);
     
     self.initMap = () => {
-        geocoder = new google.maps.Geocoder();
+        
        self.map = new google.maps.Map(document.getElementById('map'), {
             center : {
                 lat:44.80457827564791,
@@ -50,12 +52,8 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
             console.log('dragend');
             self.locations.newLocation.lat =marker.getPosition().lat();
             self.locations.newLocation.long =marker.getPosition().lng();
-            console.log(self.locations.newLocation);
-            
-            
+            console.log(self.locations.newLocation);      
         })
-    }
-
-   
+    }   
     self.initMap();
 }]);

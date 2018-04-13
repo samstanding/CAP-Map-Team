@@ -1,7 +1,11 @@
 <a href="/#!/admin/menu">
     <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
 </a>
-<div id="map-container">
+<div id="map-container"> 
+    <div class="map_header">
+    <input type="text" placeholder="Name Location" ng-model="vm.locations.newLocation.name">
+    <button ng-click="vm.addLocation(vm.locations.newLocation)">Submit Location</button>
+</div>
 <div id="map"></div>
 </div>
 

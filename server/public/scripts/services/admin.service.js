@@ -191,51 +191,23 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
-    self.addNewLocation = function(locationName){
-        console.log('in add new location');
-        success = (pos) => {
-            let crd = pos.coords;
-            console.log(`Latitude: ${crd.latitude}`);
-            console.log(`Longitude: ${crd.longitude}`);
-            console.log(`more or less ${crd.accuracy} meters`);
-        } 
+    self.addLocation = function(location){
         $http({
             method: 'POST',
             url: '/map/post',
             data: {
-                location_name: locationName,
-                lat: crd.latitude,
-                long: crd.longitude
+                location_name: location.name,
+                lat: location.lat,
+                long: location.long
             }
-            .then((response) =>{
-                
+        }).then((response) =>{
+                console.log('location sent to the database');
             })
             .catch((error) => {
                 console.log('error on post: ', error); 
             })
-        })
-        error = (err) => {
-            console.log('error on finding location for name: ', err);
-        }
-        let options = {
-            enableHighAccuracy: true
-        }
-        navigator.geolocation.getCurrentPosition(success, error, options);
-        
-        
-        //send latitude and longitude to DB, get back ID, replace 1 in location url with id.
-        //need to get the id and add that to the params for the preview
         // $location.url('/admin/namelocation/1');
     }//end addd location
-
-    self.saveLocationName = function(){
-        let newName = self.locations.newLocation.name;
-        let newId = self.locations.newLocation.id;
-        console.log('newLocation name:', newName, 'newLocation id', newId);
-        //update location of id with new name in DB
-        //on .then()
-        $location.url('/admin/addlocation');
-    }
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
