@@ -16,3 +16,5 @@ capApp.controller('GuidelinesController', ['UserService', 'GuestService', 'Admin
     self.getAllLocations();
     
 }]);
+
+

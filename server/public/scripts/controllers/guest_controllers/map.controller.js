@@ -28,12 +28,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
          self.infowindow = new google.maps.InfoWindow();
          
-
-         console.log(self.locations.allLocations);
          
          //need to add something to differentiate between display types
          for(let i = 0; i <self.locations.allLocations.length; i ++) {
-             console.log(self.locations.allLocations[i]);
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
                 map: map,
