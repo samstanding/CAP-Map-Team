@@ -1,10 +1,64 @@
-<!-- admin menu -->
-<button class="btn btn-default" ng-click="vm.userService.logout()">Log Out</button>
-<div layout="column" id="admin-menu-parent">
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/addlocation">Add Location</a></div>
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/editlocation">Edit Location</a></div>
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/manageartifacts">Manage Artifacts</a></div>
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/editevents">Manage Events</a></div>
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/manageusers">Manage Users</a></div>
-<div class="admin-menu" flex><a class="admin-menu-a" href="/#!/admin/editguidelines">Edit Guidelines</a></div>
-</div>
+          <md-toolbar class="md-menu-toolbar">
+          <div layout="row">
+            <div>
+              <md-menu-bar>
+
+                <md-menu>
+                    <button >
+                        <a href="/#!/admin/editlocation">Edit Location</a>
+                    </button>
+                </md-menu>
+
+                <md-menu>
+                    <button >
+                        <a href="/#!/admin/addlocation">Add Location</a>
+                    </button>
+                </md-menu>
+
+                <md-menu>
+                  <button ng-click="$mdMenu.open()">
+                    Manage Artifacts
+                  </button>
+                  <md-menu-content>
+                    <a href="/#!/admin/anecdotes"><md-menu-item type="string">Anecdotes</md-menu-item></a>
+                    <a href="/#!/admin/poems"><md-menu-item type="string">Poems</md-menu-item></a>
+                    <a href="/#!/admin/writings"><md-menu-item type="string">Writings</md-menu-item></a>
+                    <a href="/#!/admin/multimedia"><md-menu-item type="string">Multimedia</md-menu-item></a>
+                  </md-menu-content>
+                </md-menu>
+
+                <md-menu>
+                        <button >
+                            <a href="/#!/admin/editevents">Edit Events</a>
+                        </button>
+                </md-menu>
+
+                <md-menu>
+                    <button ng-click="$mdMenu.open()">
+                        Manage Users
+                    </button>
+                    <md-menu-content>
+                        <a href="/#!/admin/manageadmins"><md-menu-item type="string">Admins</md-menu-item></a>
+                        <a href="/#!/admin/manageguests"><md-menu-item type="string">Guests</md-menu-item></a>
+                    </md-menu-content>
+                </md-menu>
+
+                <md-menu>
+                    <button>
+                        <a href="/#!/admin/editguidelines">Edit Guidelines</a>
+                    </button>
+                </md-menu>
+
+                <md-menu>
+                    <button ng-click="vm.userService.logout()">
+                        Log Out
+                    </button>
+                </md-menu>
+
+              </md-menu-bar>
+            </div>
+          </div>
+        </md-toolbar>
+      
+
+      
