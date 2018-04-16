@@ -1,5 +1,13 @@
 all poems
+<div ng-include="'/views/admin/admin_menu.html'"></div>
+
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
+
+Search:
+<input type="text" ng-model="vm.searchLocations">
+<div ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
+    <a href="/#!/admin/location/{{location.id}}">{{location.location_name}}</a>
+</div>
 
 <div ng-repeat="poem in vm.locations.allPoems">
     {{poem.title}}

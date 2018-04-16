@@ -103,26 +103,6 @@ a{
   height: 100vh;
 }
 
-/* admin menu view */
-
-.admin-menu{
-  background-color: lightblue;
-  height: 15%;
-  text-align: center;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-}
-
-#admin-menu-parent{
-  background-color: lightpink;
-  height: 100vh;
-}
-
-.admin-menu-a{
-  vertical-align: middle;
-}
-
 /* modal */
 
 .dialogdemoBasicUsage #popupContainer {
@@ -156,4 +136,17 @@ a{
     height: 200px;
     position: relative;
     overflow: hidden;
+  }
+
+  #map {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+  }
+
+  #map-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }

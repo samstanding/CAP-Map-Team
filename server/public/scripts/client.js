@@ -39,15 +39,15 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       templateUrl: '/views/admin/admin_login.html',
       controller: 'LoginController as vm',
     })
-    .when('/admin/menu', {
-      templateUrl: '/views/admin/admin_menu.html',
-      controller: 'AdminMenuController as vm',
-      resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
-        }
-      }
-    })
+    // .when('/admin/menu', {
+    //   templateUrl: '/views/admin/admin_menu.html',
+    //   controller: 'AdminMenuController as vm',
+    //   resolve: {
+    //     getuser: function (UserService) {
+    //       return UserService.getuser();
+    //     }
+    //   }
+    // })
     .when('/admin/addlocation', {
       templateUrl: '/views/admin/add_location.html',
       controller: 'AddLocationController as vm', 
@@ -56,25 +56,6 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
           return UserService.getuser();
         }
       }
-    })
-    .when('/admin/namelocation/', {
-      templateUrl: '/views/admin/name_location.html',
-      controller: 'NameLocationController as vm',
-      resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
-        }
-      }
-    })
-    .when('/admin/locationpreview', {
-      templateUrl: '/views/admin/location_preview.html',
-      controller: 'LocationPreviewController as vm',
-      // resolve: {
-      //   getuser: function (UserService) {
-      //     return UserService.getuser();
-      //   }
-      // }
-
     })
     .when('/admin/editlocation', {
       templateUrl: '/views/admin/edit_location.html',
@@ -85,7 +66,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/location/:locationid', {
+    .when('/admin/location/', {
       templateUrl: '/views/admin/individual_location.html',
       controller: 'IndividualLocationController as vm',
       resolve: {

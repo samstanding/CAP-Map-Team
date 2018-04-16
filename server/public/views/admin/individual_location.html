@@ -1,6 +1,4 @@
-
-
-
+<div ng-include="'/views/admin/admin_menu.html'"></div>
 
 
 <br>
@@ -69,8 +67,9 @@
         <div ng-repeat="video in vm.indLocation.indVideos">
                 <iframe width="560" height="315" ng-src="{{vm.trustSrc(video.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
         </div>
-
+        <div>Reveal Type: {{vm.indLocation.reveal_type}}</div>
         <button ng-click="vm.indLocation.isBeingEdited=true">Edit</button>
+
 </div>
 
 <div ng-if="vm.indLocation.isBeingEdited">
@@ -187,4 +186,18 @@
                 <iframe width="560" height="315" ng-src="{{vm.trustSrc(video.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
                 <button ng-click="vm.deleteAssociation(video.id)">Remove</button>
         </div>
+<br>
+
+        <md-select ng-model="vm.indLocation.reveal_type">
+                <md-option ng-selected="vm.indLocation.reveal_type" ng-repeat="types in vm.locations.allRevealTypes"
+                ng-value={{types.type}}>{{ types.type }}</md-option>
+        </md-select>
+
+        <!-- <select value="{{vm.indLocation.reveal_type}}">
+                <option value="static">Static</option>
+                <option value="proximity">Proximity</option>
+                <option value="bathroom">Bathroom</option>
+        </select> -->
+        
+
 </div>

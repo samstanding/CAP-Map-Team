@@ -1,4 +1,4 @@
-capApp.service('AdminService', ['$http', '$location', function($http, $location){
+capApp.service('AdminService', ['$http', '$location',  function($http, $location){
     console.log('AdminService Loaded');
     var self = this;
     self.locations = {
@@ -17,6 +17,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         guestList: [],
         newGuest:{},
         allAdmins: [],
+        allRevealTypes: [{type:'static'}, {type:'proximity'}, {type:'bathroom'}],
     }
     
     self.indLocation = {
@@ -28,6 +29,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         indAnecdotes: [],
         indVideos: [],
         isBeingEdited: false,
+        reveal_type: '',
     }
 
     self.newText = {
@@ -58,8 +60,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }).then(function(result){
             console.log('in upload,', result.filesUploaded[0].url);
             self.newMultimedia.media_url = result.filesUploaded[0].url;
+            self.locations.newEvent.photo_url = result.filesUploaded[0].url;
             self.newMultimedia.uploaded = true;
             alert("successful upload!");
+            
         }).catch((error)=>{
             alert("Please try again.");
         })
@@ -119,7 +123,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             self.getEvents();
             self.emptyEventsInputs();
         }).catch((error)=>{
-            console.log('addEvent', error);
+            console.log('addEvent error', error);
         })
     }
 
@@ -162,20 +166,57 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-    self.addNewLocation = function(latitude, longitude){
-        console.log('Latitude:', latitude, ', Longitude:', longitude);
-        //send latitude and longitude to DB, get back ID, replace 1 in location url with id.
-        $location.url('/admin/namelocation/1');
-    }
 
-    self.saveLocationName = function(){
-        let newName = self.locations.newLocation.name;
-        let newId = self.locations.newLocation.id;
-        console.log('newLocation name:', newName, 'newLocation id', newId);
-        //update location of id with new name in DB
-        //on .then()
-        $location.url('/admin/addlocation');
+
+    //function that saves user's location
+     self.findLocation = () => {
+        console.log('in find location');
+        self.locations.newLocation.coords= {};
+        //if the user allows geolocation the success function will run: it returns an object with info about the user's location
+        success = (pos) => {
+            let crd = pos.coords;
+            //adding logs to test that function is working
+            console.log('your current position is: ');
+            console.log(`Latitude: ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`more or less ${crd.accuracy} meters`);
+            //assign the long + lat to the newlocation object
+            self.locations.newLocation.coords = {
+                lat: crd.latitude,
+                long: crd.longitude,
+            }
+            console.log(self.locations.newLocation);
+        }
+        //if geolocation is not able to run, the error function runs. 
+        error = (err) => {
+            alert ('Geolocation did not work!. Maybe change your browser settings to allow this website to get your location' );
+            console.log('error on finding location: ', err);
+        }
+        //options lets us choose things like how accurate a read we want.
+        options = {
+            enableHighAccuracy: true
+        }
+        navigator.geolocation.getCurrentPosition(success, error, options);
     }
+    self.addLocation = function(location){
+        $http({
+            method: 'POST',
+            url: '/map/post',
+            data: {
+                location_name: location.name,
+                lat: location.lat,
+                long: location.long
+            }
+        }).then((response) =>{
+                console.log('location sent to the database');
+                alert('Location successfully uploaded!');
+                location.name = '';
+            })
+            .catch((error) => {
+                console.log('error on post: ', error); 
+            })
+        // $location.url('/admin/namelocation/1');
+    }//end addd location
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
@@ -190,18 +231,22 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             console.log('error getting all locations');
         })
     }
+//i don't think we need this one if we have the addnewlocation function above
+    // self.addLocationToDB = function(location){
+    //     success = (pos) => {
+    //         let crd = pos.coords;
+    //     }
 
-    self.addLocationToDB = function(postObj){
-        $http({
-            method: 'POST',
-            url: '/map/post',
-            data: postObj
-        }).then((result)=>{
-            self.getAllLocations();
-        }).catch((error)=>{
-            console.log('/map/location/post', error);
-        })
-    } // ---------------------I don't have a button---------------------
+    //     $http({
+    //         method: 'POST',
+    //         url: '/map/post',
+    //         data: postObj
+    //     }).then((result)=>{
+    //         self.getAllLocations();
+    //     }).catch((error)=>{
+    //         console.log('/map/location/post', error);
+    //     })
+    // } // ---------------------I don't have a button---------------------
 
     self.deleteLocation = function(){
         $http({
@@ -243,6 +288,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             self.indLocation.indWritings = [];
             self.indLocation.indAnecdotes = [];
             self.indLocation.indVideos = [];
+            self.indLocation.reveal_type = '';
             self.determineType();
         }).catch((error)=>{
             console.log('error getting all locations');
@@ -451,6 +497,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
     
     self.determineType = function(){
+        self.indLocation.reveal_type = self.locations.allArtifactsForLocation[0].reveal_type;
         for(let artifact of self.locations.allArtifactsForLocation){
             if(artifact.type == 'sculpture'){
                 self.indLocation.indSculpture = artifact;
@@ -538,6 +585,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }).catch((error)=>{
             console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
+    }
+    
+    self.saveRevealType = function(reveal_type){
+
     }
 
     self.deleteArtifact = function(artifact){
