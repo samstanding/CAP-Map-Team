@@ -7,4 +7,7 @@ capApp.controller('ManageArtifactsController', ['UserService', 'AdminService', f
     self.locations = AdminService.locations;
     self.locations.currentLocationId = '';
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
+
 }]);

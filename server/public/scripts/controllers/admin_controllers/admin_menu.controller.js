@@ -5,4 +5,6 @@ capApp.controller('AdminMenuController', ['UserService', 'AdminService', functio
     self.adminService = AdminService;
     self.logout = UserService.logout;
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

@@ -39,15 +39,15 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       templateUrl: '/views/admin/admin_login.html',
       controller: 'LoginController as vm',
     })
-    .when('/admin/menu', {
-      templateUrl: '/views/admin/admin_menu.html',
-      controller: 'AdminMenuController as vm',
-      resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
-        }
-      }
-    })
+    // .when('/admin/menu', {
+    //   templateUrl: '/views/admin/admin_menu.html',
+    //   controller: 'AdminMenuController as vm',
+    //   resolve: {
+    //     getuser: function (UserService) {
+    //       return UserService.getuser();
+    //     }
+    //   }
+    // })
     .when('/admin/addlocation', {
       templateUrl: '/views/admin/add_location.html',
       controller: 'AddLocationController as vm', 
@@ -66,7 +66,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/location/', {
+    .when('/admin/location/:id', {
       templateUrl: '/views/admin/individual_location.html',
       controller: 'IndividualLocationController as vm',
       resolve: {

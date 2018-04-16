@@ -1,5 +1,6 @@
-manage guests
-<a href="/#!/admin/manageusers"><i class="material-icons">clear</i></a>
+
+<div ng-include="'/views/admin/admin_menu.html'"></div>
+
 
 <form>
     <input ng-model="vm.locations.newGuest.name" placeholder="Name" />
@@ -15,9 +16,15 @@ manage guests
         </thread>
         <tbody>
             <tr ng-repeat="guest in vm.locations.guestList">
-                <td><div>{{guest.name}}</div></td>
-                <td><div>{{guest.email}}</div></td>
-                <td><button ng-click="vm.deleteGuest(guest)">Delete</button></td>
+                <td>
+                    <div>{{guest.name}}</div>
+                </td>
+                <td>
+                    <div>{{guest.email}}</div>
+                </td>
+                <td>
+                    <button ng-click="vm.deleteGuest(guest)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>
