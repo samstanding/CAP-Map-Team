@@ -127,4 +127,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
         this.div_ = null;
       };
     self.initMap();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

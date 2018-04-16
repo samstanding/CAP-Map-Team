@@ -29,4 +29,6 @@ capApp.controller('ManageAdminsController', ['UserService', 'AdminService', '$ht
 
     self.deleteAdmin = AdminService.deleteAdmin;
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);
