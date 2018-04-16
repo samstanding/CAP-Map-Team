@@ -724,12 +724,23 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     self.getAllAdmins = function(){
         $http({
             method: 'GET',
-            url: '/api/user/admin/all',
+            url: '/api/user/admin/all'
         }).then((result) => {
             console.log('Got all admins', result.data);
             self.locations.allAdmins = result.data;
         }).catch((error)=>{
-            console.log('Error getting all admins');
+            console.log('/api/user/admin/all', error);
+        })
+    }
+
+    self.deleteAdmin = function(id){
+        $http({
+            method: 'DELETE',
+            url: `/api/user/admin/delete/${id.id}`
+        }).then((result)=>{
+            self.getAllAdmins();
+        }).catch((error)=>{
+            console.log(`/api/user/admin/delete/${id.id}`, error);
         })
     }
 //-----End Admin Management----
