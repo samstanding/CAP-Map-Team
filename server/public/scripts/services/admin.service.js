@@ -58,13 +58,10 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }).then(function(result){
             console.log('in upload,', result.filesUploaded[0].url);
             self.newMultimedia.media_url = result.filesUploaded[0].url;
-<<<<<<< HEAD
             self.locations.newEvent.photo_url = result.filesUploaded[0].url;
-   
-=======
             self.newMultimedia.uploaded = true;
             alert("successful upload!");
->>>>>>> master
+            
         }).catch((error)=>{
             alert("Please try again.");
         })
@@ -361,28 +358,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         })
     }
 
-<<<<<<< HEAD
-    self.uploadnewPhoto = function(){
-        console.log('in uploadNewPhoto');
-        self.newMultimedia.type = 'photo';
-        self.client.pick({
-            accept: 'image/*',
-            maxFiles: 1
-        }).then(function(result){
-            console.log('in upload,', result.filesUploaded[0].url)
-            alert("successful upload!");
-            self.newMultimedia.media_url = result.filesUploaded[0].url;
-            self.locations.newEvent.photo_url = result.filesUploaded[0].url;
-        })
-    }
-
-    self.uploadNewVideo = function(url){
-        console.log('in uploadNewVideo', url);
-        self.newMultimedia.type = 'video';
-        self.newMultimedia.media_url = url;
-    }
-=======
->>>>>>> master
 
    
     //-----End Multimedia------
