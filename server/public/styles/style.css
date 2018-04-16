@@ -191,5 +191,37 @@ a{
     padding: 50px;
     margin: 20px;
     background-color: #FFF2E0; 
+  }
 
+  .indent{
+    margin-left: 40px;
+  }
+
+  .extraIndent{
+    margin-left: 40px;
+  }
+
+  .locationName{
+    padding: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: larger;
+  }
+
+  .searchBar{
+    width: 40%;
+  }
+
+  .location-list:hover{
+    background-color: #FFF2E0;
+  }
+
+  .searchIcon{
+    position: relative;
+    transform: translateY(10px);
+  }
+
+  #mainPhoto{
+    width: 100vm;
   }
