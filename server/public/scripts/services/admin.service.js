@@ -196,6 +196,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
+
     self.addLocation = function(location){
         $http({
             method: 'POST',
@@ -212,8 +213,8 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             })
             .catch((error) => {
                 console.log('error on post: ', error); 
+                alert('That did not work. Try refreshing and running again');
             })
-        // $location.url('/admin/namelocation/1');
     }//end addd location
 
     self.getAllLocations = function(){
