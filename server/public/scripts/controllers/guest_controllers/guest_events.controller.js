@@ -9,5 +9,9 @@ capApp.controller('GuestEventsController', ['UserService', 'GuestService','Admin
 
     self.getEvents();
 
+    self.getAllLocations = AdminService.getAllLocations;
+
+    self.getAllLocations();
+
 
 }]);

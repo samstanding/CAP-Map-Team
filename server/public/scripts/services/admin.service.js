@@ -167,37 +167,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     //-----END EVENTS AJAX----
     //-----Start Locations----
 
-
-    //function that saves user's location
-     self.findLocation = () => {
-        console.log('in find location');
-        self.locations.newLocation.coords= {};
-        //if the user allows geolocation the success function will run: it returns an object with info about the user's location
-        success = (pos) => {
-            let crd = pos.coords;
-            //adding logs to test that function is working
-            console.log('your current position is: ');
-            console.log(`Latitude: ${crd.latitude}`);
-            console.log(`Longitude: ${crd.longitude}`);
-            console.log(`more or less ${crd.accuracy} meters`);
-            //assign the long + lat to the newlocation object
-            self.locations.newLocation.coords = {
-                lat: crd.latitude,
-                long: crd.longitude,
-            }
-            console.log(self.locations.newLocation);
-        }
-        //if geolocation is not able to run, the error function runs. 
-        error = (err) => {
-            alert ('Geolocation did not work!. Maybe change your browser settings to allow this website to get your location' );
-            console.log('error on finding location: ', err);
-        }
-        //options lets us choose things like how accurate a read we want.
-        options = {
-            enableHighAccuracy: true
-        }
-        navigator.geolocation.getCurrentPosition(success, error, options);
-    }
     self.addLocation = function(location){
         $http({
             method: 'POST',
@@ -214,11 +183,12 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             })
             .catch((error) => {
                 console.log('error on post: ', error); 
+                alert('That did not work. Try refreshing and running again');
             })
-        // $location.url('/admin/namelocation/1');
     }//end addd location
 
     self.getAllLocations = function(){
+        self.locations.allLocations = [];
         console.log('in getAllLocations function');
         $http({
             method: 'GET',
@@ -231,22 +201,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             console.log('error getting all locations');
         })
     }
-//i don't think we need this one if we have the addnewlocation function above
-    // self.addLocationToDB = function(location){
-    //     success = (pos) => {
-    //         let crd = pos.coords;
-    //     }
-
-    //     $http({
-    //         method: 'POST',
-    //         url: '/map/post',
-    //         data: postObj
-    //     }).then((result)=>{
-    //         self.getAllLocations();
-    //     }).catch((error)=>{
-    //         console.log('/map/location/post', error);
-    //     })
-    // } // ---------------------I don't have a button---------------------
 
     self.deleteLocation = function(){
         $http({
