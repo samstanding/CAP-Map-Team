@@ -58,6 +58,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }).then(function(result){
             console.log('in upload,', result.filesUploaded[0].url);
             self.newMultimedia.media_url = result.filesUploaded[0].url;
+            self.locations.newEvent.photo_url = result.filesUploaded[0].url;
             self.newMultimedia.uploaded = true;
             alert("successful upload!");
         }).catch((error)=>{
