@@ -10,6 +10,7 @@ The Caponi Art Park app is a mobile-friendly full-stack web application that use
 - SQL
 - Angular-Material
 - Google Maps API
+- Filestack API
 
 ## Authors
 

@@ -656,7 +656,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             self.newMultimedia.description = result.data[0].description;
             self.newMultimedia.extended_description = result.data[0].extended_description;
             self.newMultimedia.editing = true;
-
             self.newSculpture.id = result.data[0].id;
             self.newSculpture.title = result.data[0].title;
             self.newSculpture.artist_name = result.data[0].artist_name;
@@ -668,7 +667,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             self.newSculpture.type = result.data[0].type;
             self.newSculpture.media_url = result.data[0].media_url;
             self.newSculpture.editing = true;
-
             self.formDecider(result.data[0]);
         }).catch((error)=>{
             console.log('Could not get individual artifact', error);
@@ -726,12 +724,23 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     self.getAllAdmins = function(){
         $http({
             method: 'GET',
-            url: '/api/user/admin/all',
+            url: '/api/user/admin/all'
         }).then((result) => {
             console.log('Got all admins', result.data);
             self.locations.allAdmins = result.data;
         }).catch((error)=>{
-            console.log('Error getting all admins');
+            console.log('/api/user/admin/all', error);
+        })
+    }
+
+    self.deleteAdmin = function(id){
+        $http({
+            method: 'DELETE',
+            url: `/api/user/admin/delete/${id.id}`
+        }).then((result)=>{
+            self.getAllAdmins();
+        }).catch((error)=>{
+            console.log(`/api/user/admin/delete/${id.id}`, error);
         })
     }
 //-----End Admin Management----
