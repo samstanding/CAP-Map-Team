@@ -1,3 +1,6 @@
+
+<div ng-include="'/views/admin/admin_menu.html'"></div>
+
 <div id="map-container"> 
     <div class="map_header">
             <a href="/#!/admin/menu">
@@ -6,6 +9,7 @@
     <input type="text" placeholder="Name Location" ng-model="vm.locations.newLocation.name">
     <button ng-click="vm.addLocation(vm.locations.newLocation)">Submit Location</button>
 </div>
+
 
 <div id="map"></div>
 </div>
