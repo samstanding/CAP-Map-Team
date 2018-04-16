@@ -150,21 +150,7 @@ INSERT INTO map (location_name, lat, long, reveal_type) VALUES ('Place 2', 44.80
 
 --ADD RECORDS TO MAP_ARTIFACT_JOIN
 --BEGIN;
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (1, 1, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (2, 1, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (3, 2, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (4, 3, true);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (5, 4, false);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (6, 5, false);
-INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES (7, 6, false);
---SELECT * FROM map_artifact_join
---ROLLBACK
---COMMIT
-
---ADD GUEST_USER
---BEGIN;
-INSERT INTO guest_users (name, email) VALUES ('Frank E.', 'frank@email.com');
-INSERT INTO guest_users (name, email) VALUES ('Bill B.', 'bill@email.com');
+git 
 --SELECT * FROM guest_users
 --ROLLBACK
 --COMMIT
