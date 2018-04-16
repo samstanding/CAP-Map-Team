@@ -5,13 +5,52 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.adminService = AdminService;
     self.guestService = GuestService;
 
-
     self.locations = AdminService.locations;
 
+    let markerStore = {marker: null};
+
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+    self.findLocation = () => {
+        console.log('in find location map');
+        success = (pos) => {
+            let crd = pos.coords;
+            console.log('your current position is: ');
+            console.log(`Latitude: ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`more or less ${crd.accuracy} meters`);
+            console.log(markerStore.marker);
+            
+        if (markerStore.marker !== null) {
+            markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
+        } 
+         else {
+            let personMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(crd.latitude, crd.longitude),
+                map: self.map,
+                icon: '../../styles/maps_marker.png',
+            })
+
+            markerStore.marker = personMarker;
+            console.log(markerStore.marker);
+            
+        }
+        $scope.$apply();
+    }
+    error = (err) => {
+        console.log('error in finding location: ', err);
+    }
+    // options = {
+    //     enableHighAccuracy: true
+    // }
+    navigator.geolocation.watchPosition(success, error);
+}
+
+self.findLocation();
 
     self.initMap = () => {
         
-        let map = new google.maps.Map(document.getElementById('map'), {
+        self.map = new google.maps.Map(document.getElementById('map'), {
              center : {
                  lat: 44.80526000, 
                  lng: -93.15375000
@@ -26,9 +65,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
      
         //  let srcImage = '../../styles/northMap.png';
 
-        let generateLink = (location) => {
-            return `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
-        }
+        let generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
+        
 
          self.infowindow = new google.maps.InfoWindow();
          
@@ -37,21 +75,18 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
          for(let i = 0; i <self.locations.allLocations.length; i ++) {
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
-                map: map,
+                map: self.map,
                 title: self.locations.allLocations[i].location_name,
          })
 
          google.maps.event.addListener(marker, 'click', (function (marker, i) {
              return function () {
                  self.infowindow.setContent(generateLink(self.locations.allLocations[i]));
-                 self.infowindow.open(map, marker);
+                 self.infowindow.open(self.map, marker);
              } 
          })(marker, i));
-         
-        }
-         
+        }    
     } 
-
     self.initMap();
 
 }]);
