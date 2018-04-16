@@ -10,4 +10,7 @@ capApp.controller('ManageGuestsController', ['UserService', 'AdminService', func
     self.locations = AdminService.locations;
     
     self.getAllGuests();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

@@ -87,7 +87,7 @@ router.get('/admin/all', (req, res)=>{
 router.delete('/guest/delete/:id', (req, res)=>{
   if(req.isAuthenticated()){
     let id = req.params.id;
-    pool.query('DELETE FROM guest_users where id = $1;', [id])
+    pool.query('DELETE FROM guest_users WHERE id = $1;', [id])
     .then(function(result){
       res.send(result.rows);
     }).catch(function(error){
@@ -101,12 +101,24 @@ router.delete('/guest/delete/:id', (req, res)=>{
 router.post('/guest', (req, res)=>{
   pool.query('INSERT INTO guest_users (name, email) VALUES ($1, $2);', [req.body.name, req.body.email])
   .then(function(result){
-    console.log('Guest Added');
     res.sendStatus(201);
   }).catch(function(error){
-    console.log('Could not add guest', error);
     res.sendStatus(500);
   })
+})
+
+router.delete('/api/user/admin/delete/:id', (req, res)=>{
+  if(req.isAuthenticated()){
+    let id = req.params.id;
+    pool.query('DELETE FROM users WHERE id = $1;', [id])
+    .then(function(result){
+      res.send(result.rows);
+    }).catch(function(error){
+      res.sendStatus(500);
+    })
+  }else{
+      res.sendStatus(403);
+  }
 })
 
 module.exports = router;

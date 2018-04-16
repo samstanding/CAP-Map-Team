@@ -11,4 +11,6 @@ capApp.controller('TextFormController', ['UserService', 'AdminService', function
     self.editText = AdminService.editText;
     self.editArtifact = AdminService.editArtifact;
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);
