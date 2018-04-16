@@ -17,6 +17,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         guestList: [],
         newGuest:{},
         allAdmins: [],
+        allRevealTypes: [{type:'static'}, {type:'proximity'}, {type:'bathroom'}],
     }
     
     self.indLocation = {
@@ -28,6 +29,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         indAnecdotes: [],
         indVideos: [],
         isBeingEdited: false,
+        reveal_type: '',
     }
 
     self.newText = {
@@ -243,6 +245,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             self.indLocation.indWritings = [];
             self.indLocation.indAnecdotes = [];
             self.indLocation.indVideos = [];
+            self.indLocation.reveal_type = '';
             self.determineType();
         }).catch((error)=>{
             console.log('error getting all locations');
@@ -451,6 +454,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
     
     self.determineType = function(){
+        self.indLocation.reveal_type = self.locations.allArtifactsForLocation[0].reveal_type;
         for(let artifact of self.locations.allArtifactsForLocation){
             if(artifact.type == 'sculpture'){
                 self.indLocation.indSculpture = artifact;
@@ -538,6 +542,10 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }).catch((error)=>{
             console.log(`/artifacts/join/delete/${id}: ${result}`);
         })
+    }
+    
+    self.saveRevealType = function(reveal_type){
+
     }
 
     self.deleteArtifact = function(artifact){

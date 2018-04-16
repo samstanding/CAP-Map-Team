@@ -103,26 +103,6 @@ a{
   height: 100vh;
 }
 
-/* admin menu view */
-
-.admin-menu{
-  background-color: lightblue;
-  height: 15%;
-  text-align: center;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-}
-
-#admin-menu-parent{
-  background-color: lightpink;
-  height: 100vh;
-}
-
-.admin-menu-a{
-  vertical-align: middle;
-}
-
 /* modal */
 
 .dialogdemoBasicUsage #popupContainer {
