@@ -7,7 +7,7 @@
         <div ng-repeat="event in vm.locations.allEvents" class="event">
             <div class="eventDate">{{event.date | date: short }}</div>
             <div>{{event.title}} <img class="eventPhoto" src="{{event.photo_url}}"></div>
-            <div> Adaptable for ages{{event.age_group}},  {{event.price}}/person</div>
+            <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div>
             <div>{{event.description}}, {{event.time}}</div>
         </div>
     </div>
