@@ -744,4 +744,8 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         })
     }
 //-----End Admin Management----
+    self.isCurrentPage = function(path){
+        return path === $location.path();
+    }
+
 }]);

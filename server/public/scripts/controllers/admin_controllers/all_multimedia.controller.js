@@ -23,4 +23,7 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', '$sce'
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
+
 }]);

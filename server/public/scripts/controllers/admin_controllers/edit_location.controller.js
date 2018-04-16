@@ -8,4 +8,7 @@ capApp.controller('EditLocationController', ['UserService', 'AdminService', func
     self.getAllLocations = AdminService.getAllLocations;
 
     self.getAllLocations();
+    
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);
