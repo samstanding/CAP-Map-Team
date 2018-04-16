@@ -4,5 +4,6 @@ capApp.controller('ManageUsersController', ['UserService', 'AdminService', funct
     self.userService = UserService;
     self.adminService = AdminService;
 
-    
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

@@ -17,4 +17,7 @@ capApp.controller('WritingsController', ['UserService', 'AdminService', function
     
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

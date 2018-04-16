@@ -17,4 +17,7 @@ capApp.controller('AnecdotesController', ['UserService', 'AdminService', functio
     
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

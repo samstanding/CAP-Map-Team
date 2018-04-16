@@ -19,4 +19,7 @@ capApp.controller('EditEventsController', ['UserService', 'AdminService', functi
     self.getEvents();
 
     self.uploadnewPhoto = AdminService.uploadnewPhoto;
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);
