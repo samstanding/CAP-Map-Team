@@ -26,6 +26,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
      
         //  let srcImage = '../../styles/northMap.png';
 
+        let generateLink = (location) => {
+            return `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
+        }
+
          self.infowindow = new google.maps.InfoWindow();
          
          
@@ -39,7 +43,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
          google.maps.event.addListener(marker, 'click', (function (marker, i) {
              return function () {
-                 self.infowindow.setContent(self.locations.allLocations[i].location_name);
+                 self.infowindow.setContent(generateLink(self.locations.allLocations[i]));
                  self.infowindow.open(map, marker);
              } 
          })(marker, i));
