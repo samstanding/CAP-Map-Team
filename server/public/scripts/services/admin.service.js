@@ -1,4 +1,4 @@
-capApp.service('AdminService', ['$http', '$location', function($http, $location){
+capApp.service('AdminService', ['$http', '$location',  function($http, $location){
     console.log('AdminService Loaded');
     var self = this;
     self.locations = {
@@ -35,12 +35,17 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
 
     self.newMultimedia = {
-        newVideo: '',
+        media_url: '',
+        type: '',
+        description: '',
     }
 
     self.newSculpture = {};
 
-    self.isMainPhoto = {boolean: false};
+    self.isMainPhoto = {
+        boolean: false,
+        type: '',
+    };
 
     self.client = filestack.init("AI5OhtlsWSsiO7mmCbw06z");
 
@@ -52,34 +57,35 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             maxFiles: 1
         }).then(function(result){
             console.log('in upload,', result.filesUploaded[0].url);
-            alert("successful upload!");
             self.newMultimedia.media_url = result.filesUploaded[0].url;
+<<<<<<< HEAD
             self.locations.newEvent.photo_url = result.filesUploaded[0].url;
    
+=======
+            self.newMultimedia.uploaded = true;
+            alert("successful upload!");
+>>>>>>> master
         }).catch((error)=>{
             alert("Please try again.");
         })
     }
 
-    self.uploadNewVideo = function(url){
-        console.log('in uploadNewVideo', url);
+    self.uploadNewVideo = function(){
+        console.log('in uploadNewVideo', self.newMultimedia.media_url);
         self.newMultimedia.type = 'video';
         self.newMultimedia.uploaded = true;
-        console.log(self.newMultimedia.uploaded);
-        self.newMultimedia.media_url = url;
-        // document.getElementById( 'vidThing' ).innerHTML = '<iframe width="420" height="315" ng-src="https://www.youtube.com/embed/IAFS1gwzTTs" frameborder="0" allowfullscreen></iframe>';
+        self.newMultimedia.media_url = `https://www.youtube.com/embed/${self.newMultimedia.media_url}`
     }
 
     self.saveMultimedia = function(){
-        let newMultimedia = self.newMultimedia;
-        console.log('in saveMultimedia,', newMultimedia);
+        console.log('in save media,', self.newMultimedia);
         $http({
             method: 'POST',
-            url: '/artifact/multimedia/save',
+            url: '/artifacts/save',
             data: {
-                type: newMultimedia.type,
-                media_url: newMultimedia.media_url,
-                description: newMultimedia.description
+                type: self.newMultimedia.type,
+                media_url: self.newMultimedia.media_url,
+                description: self.newMultimedia.description
             }
         }).then((result)=>{
             console.log('new multimedia saved');
@@ -161,20 +167,57 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-    self.addNewLocation = function(latitude, longitude){
-        console.log('Latitude:', latitude, ', Longitude:', longitude);
-        //send latitude and longitude to DB, get back ID, replace 1 in location url with id.
-        $location.url('/admin/namelocation/1');
-    }
 
-    self.saveLocationName = function(){
-        let newName = self.locations.newLocation.name;
-        let newId = self.locations.newLocation.id;
-        console.log('newLocation name:', newName, 'newLocation id', newId);
-        //update location of id with new name in DB
-        //on .then()
-        $location.url('/admin/addlocation');
+
+    //function that saves user's location
+     self.findLocation = () => {
+        console.log('in find location');
+        self.locations.newLocation.coords= {};
+        //if the user allows geolocation the success function will run: it returns an object with info about the user's location
+        success = (pos) => {
+            let crd = pos.coords;
+            //adding logs to test that function is working
+            console.log('your current position is: ');
+            console.log(`Latitude: ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`more or less ${crd.accuracy} meters`);
+            //assign the long + lat to the newlocation object
+            self.locations.newLocation.coords = {
+                lat: crd.latitude,
+                long: crd.longitude,
+            }
+            console.log(self.locations.newLocation);
+        }
+        //if geolocation is not able to run, the error function runs. 
+        error = (err) => {
+            alert ('Geolocation did not work!. Maybe change your browser settings to allow this website to get your location' );
+            console.log('error on finding location: ', err);
+        }
+        //options lets us choose things like how accurate a read we want.
+        options = {
+            enableHighAccuracy: true
+        }
+        navigator.geolocation.getCurrentPosition(success, error, options);
     }
+    self.addLocation = function(location){
+        $http({
+            method: 'POST',
+            url: '/map/post',
+            data: {
+                location_name: location.name,
+                lat: location.lat,
+                long: location.long
+            }
+        }).then((response) =>{
+                console.log('location sent to the database');
+                alert('Location successfully uploaded!');
+                location.name = '';
+            })
+            .catch((error) => {
+                console.log('error on post: ', error); 
+            })
+        // $location.url('/admin/namelocation/1');
+    }//end addd location
 
     self.getAllLocations = function(){
         console.log('in getAllLocations function');
@@ -189,18 +232,22 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
             console.log('error getting all locations');
         })
     }
+//i don't think we need this one if we have the addnewlocation function above
+    // self.addLocationToDB = function(location){
+    //     success = (pos) => {
+    //         let crd = pos.coords;
+    //     }
 
-    self.addLocationToDB = function(postObj){
-        $http({
-            method: 'POST',
-            url: '/map/post',
-            data: postObj
-        }).then((result)=>{
-            self.getAllLocations();
-        }).catch((error)=>{
-            console.log('/map/location/post', error);
-        })
-    } // ---------------------I don't have a button---------------------
+    //     $http({
+    //         method: 'POST',
+    //         url: '/map/post',
+    //         data: postObj
+    //     }).then((result)=>{
+    //         self.getAllLocations();
+    //     }).catch((error)=>{
+    //         console.log('/map/location/post', error);
+    //     })
+    // } // ---------------------I don't have a button---------------------
 
     self.deleteLocation = function(){
         $http({
@@ -300,24 +347,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
 //-----END INFORMATION AJAX-------
 //-----Start Artifacts-------
     //-----Start Multimedia------
-    self.saveMultimedia = function(){
-        let newMultimedia = self.newMultimedia;
-        console.log('in saveMultimedia,', newMultimedia);
-        $http({
-            method: 'POST',
-            url: '/artifacts/save',
-            data: {
-                type: newMultimedia.type,
-                media_url: newMultimedia.media_url,
-                description: newMultimedia.description
-            }
-        }).then((result)=>{
-            console.log('new multimedia saved');
-            history.back();
-        }).catch((error)=>{
-            console.log('error saving new multimedia', error);
-        })
-    }
+
 
     self.getAllMultimedia = function(){
         console.log('in getAllMultimedia function');
@@ -331,6 +361,7 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         })
     }
 
+<<<<<<< HEAD
     self.uploadnewPhoto = function(){
         console.log('in uploadNewPhoto');
         self.newMultimedia.type = 'photo';
@@ -350,6 +381,8 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         self.newMultimedia.type = 'video';
         self.newMultimedia.media_url = url;
     }
+=======
+>>>>>>> master
 
    
     //-----End Multimedia------
@@ -505,17 +538,6 @@ capApp.service('AdminService', ['$http', '$location', function($http, $location)
         }
     }
 
-    self.getAllMultimedia = function(){
-        console.log('in getAllMultimedia function');
-        $http({
-            method: 'GET',
-            url: '/artifacts/media'
-        }).then((result)=>{
-            self.locations.allMultimedia = result.data;
-        }).catch((error)=>{
-            console.log('/artifacts/media', error);
-        })
-    }
 
     self.getAllWritings = function(){
         console.log('in getAllWritings function');
