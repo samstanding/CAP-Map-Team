@@ -103,26 +103,6 @@ a{
   height: 100vh;
 }
 
-/* admin menu view */
-
-.admin-menu{
-  background-color: lightblue;
-  height: 15%;
-  text-align: center;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-}
-
-#admin-menu-parent{
-  background-color: lightpink;
-  height: 100vh;
-}
-
-.admin-menu-a{
-  vertical-align: middle;
-}
-
 /* modal */
 
 .dialogdemoBasicUsage #popupContainer {
@@ -171,7 +151,6 @@ a{
     position: absolute;
   }
 
-
   .eventPhoto {
     width: 20%;
     height: 20%;
@@ -207,4 +186,10 @@ a{
     /* border-color:red; */
     margin: 0;
     height: 90px;
+  }
+
+  .navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; 
   }
