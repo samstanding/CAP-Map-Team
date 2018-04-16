@@ -48,38 +48,6 @@ body, html {
   margin-left: 10px;
 }
 
-/* .navbar {
-  background-color: #333333;
-  width: 100%;
-  border-radius: 0px;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-} */
-
-/* Change the link color to #111 (black) on hover */
-/* li a:hover {
-  text-decoration: underline;
-  color: rgb(128, 98, 98);
-} */
-
-
 /* all views */
 
 a{
@@ -180,4 +148,48 @@ a{
   /* not working */
   .subNav{
     max-width: 50%;
+  }
+
+  .eventPhoto {
+    width: 20%;
+    height: 20%;
+    border-radius: 20px;
+    float: right;
+  }
+
+  .event {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  .menuIcon{
+    float:right;
+  }
+
+  .guestMenu {
+    /* background-color: #A7C463; */
+    /* background-color: #EFE32F; */
+    height: 20px;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  .banner {
+    height: 90px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .redDiv {
+    /* border-style: solid; */
+    /* border-color:red; */
+    margin: 0;
+    height: 90px;
+  }
+
+  .navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; 
+
   }
