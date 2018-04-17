@@ -1,14 +1,17 @@
-<div class="redDiv"><img src="/styles/banner.png" class="banner"></div>
-<div class="guestMenu"><a href=#!menu class="menuIcon"><i class="material-icons" style="font-size: 50px">menu</i></a></div>
+<!-- <div class="redDiv"><img src="/styles/banner.png" class="banner"></div> -->
 
-<div>
+<div class="guestMenu" flex="auto"><a href=#!menu class="menuIcon"><i class="material-icons" style="font-size: 50px">menu</i></a></div>
+
+<div class="guestBody">
     <h1>Events</h1>
     <div>
         <div ng-repeat="event in vm.locations.allEvents" class="event">
+            <md-divider></md-divider>
             <div class="eventDate">{{event.date | date: short }}</div>
-            <div>{{event.title}} <img class="eventPhoto" src="{{event.photo_url}}"></div>
-            <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div>
-            <div>{{event.description}}, {{event.time}}</div>
+            <div class="indent">{{event.title}} <img class="eventPhoto" src="{{event.photo_url}}"></div>
+            <div class="indent"> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div>
+            <div class="indent">{{event.description}}, {{event.time}}</div>
+            
         </div>
     </div>
 </div>
