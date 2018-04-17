@@ -9,7 +9,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     let markerStore = {marker: null};
 
-    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    var static = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
     self.findLocation = () => {
         console.log('in find location map');
@@ -32,18 +32,18 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             })
 
             markerStore.marker = personMarker;
-            console.log(markerStore.marker);
             
         }
         $scope.$apply();
     }
     error = (err) => {
         console.log('error in finding location: ', err);
+        alert('You\'ll need to give this site access to your location for this to work');
     }
-    // options = {
-    //     enableHighAccuracy: true
-    // }
-    navigator.geolocation.watchPosition(success, error);
+    options = {
+        enableHighAccuracy: true
+    }
+    navigator.geolocation.watchPosition(success, error, options);
 }
 
 self.findLocation();
@@ -77,6 +77,7 @@ self.findLocation();
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
                 map: self.map,
                 title: self.locations.allLocations[i].location_name,
+                icon: self.location.allLocations[i].reveal_type
          })
 
          google.maps.event.addListener(marker, 'click', (function (marker, i) {
