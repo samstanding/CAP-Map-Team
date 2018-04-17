@@ -150,3 +150,73 @@ a{
     width: 100%;
     position: absolute;
   }
+
+  .redDiv {
+    border-style: solid;
+    border-color: red;
+  }
+
+  .blueDiv {
+    border-style: solid;
+    border-color: blue;
+  }
+
+  .greenDiv {
+    border-style: solid;
+    border-color: green;
+  }
+
+  .yellowDiv {
+    border-style: solid;
+    border-color: yellow;
+  }
+
+  .purpleDiv {
+    border-style: solid;
+    border-color: purple;
+  }
+
+  .xIconFloat {
+    padding-top: 4px;
+  }
+
+  .leftFloat {
+    float: left;
+    border: 10px;
+  }
+
+  .rightFloat {
+    float: right;
+    border: 10px;
+  }
+
+  .divHeight {
+    height: 30px;
+  }
+
+  .adminMenu {
+    background-color: #333333;
+    width: 100%;
+    height: 45px;
+    border-radius: 0px;
+  }
+
+  .adminMenuDiv {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .adminMenuDiv a:hover {
+    text-decoration: underline;
+    color: #eee;
+  }
+
+  .adminMenuDiv:hover {
+    background: #444444;
+  }
+
+  .textWhite {
+    color: white;
+  }
