@@ -1,12 +1,14 @@
-<div class="redDiv"><img src="/styles/banner.png" class="banner"></div>
+<!-- <div class="redDiv"><img src="/styles/banner.png" class="banner"></div> -->
     
 <div class="guestMenu"><a href=#!menu class="menuIcon"><i class="material-icons" style="font-size: 50px">menu</i></a></div>
-<div>
+<div class="guestBody">
     <h1>Register for Emails</h1>
 
     <form>
-        <input ng-model="vm.user.guest.name" placeholder="Name" />
-        <input ng-model="vm.user.guest.email" placeholder="Email" />
+        Name:<br>
+        <input class="indent" ng-model="vm.user.guest.name" placeholder="Name" /><br>
+        Email:<br>
+        <input class="indent" ng-model="vm.user.guest.email" placeholder="Email" /><br>
         <input type="submit" ng-click="vm.addGuest(vm.user.guest); vm.user.guest.name = ''; vm.user.guest.email=''" value="Submit" />
     </form>
 </div>
