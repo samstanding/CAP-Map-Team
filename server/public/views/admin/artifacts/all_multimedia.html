@@ -20,7 +20,7 @@ Search:
             
                 <iframe width="200" height="200" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
                 <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
-        <div ng-if="vm.locations.currentLocationId != '' && vm.isMainPhoto.type == multimedia.type">
+        <div ng-if="vm.locations.currentLocationId != ''; vm.isMainPhoto.type == multimedia.type">
             <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
         </div>
         <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>

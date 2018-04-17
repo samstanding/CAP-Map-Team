@@ -4,7 +4,7 @@
 <br>
 
 <div ng-if="!vm.indLocation.isBeingEdited">
-
+        <img id="mainPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
         <br>
         <br>
         <div>
@@ -17,9 +17,7 @@
         <div ng-bind-html="vm.indLocation.indSculpture.extended_description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
         <br>
 
-        <div ng-if="vm.indLocation.indMainPhoto">
-                <img src="{{vm.indLocation.indMainPhoto.media_url}}" />
-        </div>
+     
         <br>
         <div>
                 <strong>Historical Photos</strong>
@@ -89,7 +87,7 @@
                 <strong>Main Photo</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean = true && vm.isMainPhoto.type = photo">
+                <button ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
                         <i class="material-icons">add_circle</i>
                 </button>
         </a>
@@ -104,7 +102,7 @@
                 <strong>Historical Photos</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == photo">
+                <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'photo'">
                 <i class="material-icons">add_circle</i>
                 </button>
 
@@ -170,7 +168,7 @@
         </div>
         <a href="/#!/admin/multimedia">
 
-                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == video">
+                <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'video'">
                 <i class="material-icons">add_circle</i>
                 </button>
         </a>
