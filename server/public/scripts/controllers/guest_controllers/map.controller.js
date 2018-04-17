@@ -24,7 +24,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
         fillColor: 'blue',
         fillOpacity: 0,
-        scale: 0,
+        scale: .1,
         strokeColor: 'blue',
         strokeWeight: 14
       };
@@ -52,9 +52,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             })
             markerStore.marker = personMarker;
             console.log(crd);
-            }
-            if (crd.latitude > 44.8) {
-                blueStar.scale = .1;
             }
         $scope.$apply();
     }
