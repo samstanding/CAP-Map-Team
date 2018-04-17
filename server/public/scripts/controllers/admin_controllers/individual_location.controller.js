@@ -17,6 +17,7 @@ capApp.controller('IndividualLocationController', ['UserService', 'AdminService'
       }
 
     self.deleteAssociation = AdminService.deleteAssociation;
+    self.saveAssociation = AdminService.saveAssociation;
     self.isMainPhoto = AdminService.isMainPhoto;
     self.getArtifactToEdit = AdminService.getArtifactToEdit; //getArtifactToEdit
 

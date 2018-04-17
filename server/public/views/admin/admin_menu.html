@@ -7,12 +7,14 @@
                     <button>
                         <a id="menu-item" href="/#!/admin/editlocation">Edit Location</a>
                     </button>
+                    <md-menu-content hide></md-menu-content>
                 </md-menu>
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/addlocation')}">
                     <button>
                         <a id="menu-item" href="/#!/admin/addlocation">Add Location</a>
                     </button>
+                    <md-menu-content hide></md-menu-content>
                 </md-menu>
 
                 <md-menu>
@@ -31,6 +33,7 @@
                         <button >
                             <a id="menu-item" href="/#!/admin/editevents">Edit Events</a>
                         </button>
+                        <md-menu-content hide></md-menu-content>
                 </md-menu>
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/manageadmins') || vm.isCurrentPage('/admin/manageguests')}">
@@ -47,12 +50,14 @@
                     <button>
                         <a id="menu-item" href="/#!/admin/editguidelines">Edit Guidelines</a>
                     </button>
+                    <md-menu-content hide></md-menu-content>
                 </md-menu>
 
                 <md-menu>
                     <button id="menu-item" ng-click="vm.userService.logout()">
                         Log Out
                     </button>
+                    <md-menu-content hide></md-menu-content>
                 </md-menu>
 
               </md-menu-bar>
