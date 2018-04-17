@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- admin menu -->
 <div class="adminMenu">
     <div class="rightFloat adminMenuDiv textWhite" ng-click="vm.userService.logout()">Log Out</div>
@@ -8,3 +9,69 @@
     <div class="leftFloat adminMenuDiv"><a class="textWhite" href="/#!/admin/manageusers">Manage Users</a></div>
     <div class="leftFloat adminMenuDiv"><a class="textWhite" href="/#!/admin/editguidelines">Edit Guidelines</a></div>
 </div>
+=======
+          <md-toolbar class="md-menu-toolbar">
+          <div layout="row">
+            <div>
+              <md-menu-bar>
+
+                <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editlocation')}">
+                    <button>
+                        <a href="/#!/admin/editlocation">Edit Location</a>
+                    </button>
+                </md-menu>
+
+                <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/addlocation')}">
+                    <button>
+                        <a href="/#!/admin/addlocation">Add Location</a>
+                    </button>
+                </md-menu>
+
+                <md-menu>
+                  <button ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
+                    Manage Artifacts
+                  </button>
+                  <md-menu-content class="subNav">
+                    <a href="/#!/admin/anecdotes"><md-menu-item class="md-indent" type="string">Anecdotes</md-menu-item></a>
+                    <a href="/#!/admin/poems"><md-menu-item class="md-indent" type="string">Poems</md-menu-item></a>
+                    <a href="/#!/admin/writings"><md-menu-item class="md-indent" type="string">Writings</md-menu-item></a>
+                    <a href="/#!/admin/multimedia"><md-menu-item class="md-indent" type="string">Multimedia</md-menu-item></a>
+                  </md-menu-content>
+                </md-menu>
+
+                <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editevents')}">
+                        <button >
+                            <a href="/#!/admin/editevents">Edit Events</a>
+                        </button>
+                </md-menu>
+
+                <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/manageadmins') || vm.isCurrentPage('/admin/manageguests')}">
+                    <button ng-click="$mdMenu.open()">
+                        Manage Users
+                    </button>
+                    <md-menu-content class="subNav">
+                        <a href="/#!/admin/manageadmins"><md-menu-item class="md-indent" type="string">Admins</md-menu-item></a>
+                        <a href="/#!/admin/manageguests"><md-menu-item class="md-indent" type="string">Guests</md-menu-item></a>
+                    </md-menu-content>
+                </md-menu>
+
+                <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editguidelines')}">
+                    <button>
+                        <a href="/#!/admin/editguidelines">Edit Guidelines</a>
+                    </button>
+                </md-menu>
+
+                <md-menu>
+                    <button ng-click="vm.userService.logout()">
+                        Log Out
+                    </button>
+                </md-menu>
+
+              </md-menu-bar>
+            </div>
+          </div>
+        </md-toolbar>
+      
+
+      
+>>>>>>> master

@@ -1,51 +1,14 @@
-<a href=#!menu><i class="material-icons" style="font-size: 100px">menu</i></a>
+<div class="redDiv"><img src="/styles/banner.png" class="banner"></div>
+<div class="guestMenu"><a href=#!menu class="menuIcon"><i class="material-icons" style="font-size: 50px">menu</i></a></div>
+
 <div>
     <h1>Events</h1>
     <div>
-        <table>
-            <thread>
-                <th>Event Title</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Description</th>
-                <th>Notes</th>
-                <th>Category</th>
-                <th>Photo</th>
-                <th>Age Group</th>
-                <th>Price</th>
-            </thread>
-            <tbody>
-                <tr ng-repeat="event in vm.locations.allEvents">
-                    <td>
-                        <div ng-hide="event.editing">{{event.title}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.date | date: short}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing"> {{event.time}}</div>
-                        <input ng-show="event.editing" ng-model="event.time" ng-value="event.time">
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.description}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.notes}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.category}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing"><img src="{{event.photo_url}}"></div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.age_group}}</div>
-                    </td>
-                    <td>
-                        <div ng-hide="event.editing">{{event.price}}</div>
-                    </td>
-                   
-            </tbody>
-        </table>
+        <div ng-repeat="event in vm.locations.allEvents" class="event">
+            <div class="eventDate">{{event.date | date: short }}</div>
+            <div>{{event.title}} <img class="eventPhoto" src="{{event.photo_url}}"></div>
+            <div> Adaptable for ages{{event.age_group}},  {{event.price}}/person</div>
+            <div>{{event.description}}, {{event.time}}</div>
+        </div>
     </div>
 </div>

@@ -1,7 +1,6 @@
-manage admins
+
 <div ng-include="'/views/admin/admin_menu.html'"></div>
 
-<a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
 
 <div ng-include="'views/templates/register.html'"></div>
 <table>
@@ -17,6 +16,6 @@ manage admins
     <td>{{admin.last_name}}</td>
     <td>{{admin.email}}</td>
     <td>{{admin.username}}</td>
-    <td ng-if="vm.locations.allAdmins > 1"><button ng-click="vm.deleteAdmin(admin)">Delete Administrator</button></td>
+    <td ng-if="vm.locations.allAdmins.length > 1"><button ng-click="vm.deleteAdmin(admin)">Delete Administrator</button></td>
 </tbody>
 </table>

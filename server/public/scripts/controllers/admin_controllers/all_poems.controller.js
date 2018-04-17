@@ -16,4 +16,7 @@ capApp.controller('PoemsController', ['UserService', 'AdminService', function (U
     
     self.clearArtifact = AdminService.clearArtifact;
     self.clearArtifact();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

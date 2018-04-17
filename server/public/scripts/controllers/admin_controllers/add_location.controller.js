@@ -18,13 +18,16 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
                 lat: 44.80526000, 
                 lng: -93.15375000
             }, 
-            zoom: 20,
-            mapTypeId: 'satellite'
+            zoom: 18,
+            mapTypeId: 'satellite',
+            streetViewControl: false,
+            rotateControleOptions: false,
+            tilt: 0
         })
        
         let bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(44.8048, -93.1577000),
-            new google.maps.LatLng(44.8085000, -93.1457900));
+            new google.maps.LatLng(44.8047000, -93.1550000),
+            new google.maps.LatLng(44.8090000, -93.1488500));
     
         let srcImage = '../../styles/northMap.png';
 
@@ -127,4 +130,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
         this.div_ = null;
       };
     self.initMap();
+
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
 }]);

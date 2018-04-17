@@ -16,4 +16,7 @@ capApp.controller('EditGuidelinesController', ['UserService', 'AdminService', fu
 
     self.getInformation();
 
+    self.isCurrentPage = AdminService.isCurrentPage;
+    self.isCurrentPage();
+
 }]);
