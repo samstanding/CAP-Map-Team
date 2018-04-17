@@ -1,22 +1,22 @@
-          <md-toolbar class="md-menu-toolbar">
+          <md-toolbar id="adminMenu" class="md-menu-toolbar">
           <div layout="row">
             <div>
               <md-menu-bar>
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editlocation')}">
                     <button>
-                        <a href="/#!/admin/editlocation">Edit Location</a>
+                        <a id="menu-item" href="/#!/admin/editlocation">Edit Location</a>
                     </button>
                 </md-menu>
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/addlocation')}">
                     <button>
-                        <a href="/#!/admin/addlocation">Add Location</a>
+                        <a id="menu-item" href="/#!/admin/addlocation">Add Location</a>
                     </button>
                 </md-menu>
 
                 <md-menu>
-                  <button ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
+                  <button id="menu-item" ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
                     Manage Artifacts
                   </button>
                   <md-menu-content class="subNav">
@@ -29,12 +29,12 @@
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editevents')}">
                         <button >
-                            <a href="/#!/admin/editevents">Edit Events</a>
+                            <a id="menu-item" href="/#!/admin/editevents">Edit Events</a>
                         </button>
                 </md-menu>
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/manageadmins') || vm.isCurrentPage('/admin/manageguests')}">
-                    <button ng-click="$mdMenu.open()">
+                    <button id="menu-item" ng-click="$mdMenu.open()">
                         Manage Users
                     </button>
                     <md-menu-content class="subNav">
@@ -45,12 +45,12 @@
 
                 <md-menu ng-class="{'is-active': vm.isCurrentPage('/admin/editguidelines')}">
                     <button>
-                        <a href="/#!/admin/editguidelines">Edit Guidelines</a>
+                        <a id="menu-item" href="/#!/admin/editguidelines">Edit Guidelines</a>
                     </button>
                 </md-menu>
 
                 <md-menu>
-                    <button ng-click="vm.userService.logout()">
+                    <button id="menu-item" ng-click="vm.userService.logout()">
                         Log Out
                     </button>
                 </md-menu>

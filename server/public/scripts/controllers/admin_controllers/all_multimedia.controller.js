@@ -26,4 +26,7 @@ capApp.controller('MultimediaController', ['UserService', 'AdminService', '$sce'
     self.isCurrentPage = AdminService.isCurrentPage;
     self.isCurrentPage();
 
+    self.isMainPhoto = AdminService.isMainPhoto;
+    console.log(self.isMainPhoto);
+
 }]);
