@@ -1,16 +1,16 @@
 
 <div ng-include="'/views/admin/admin_menu.html'"></div>
-
+<div class="pageDown"></div>
 
 Search:
 <input type="text" ng-model="vm.searchMultimedia">
 
 <div ng-repeat="multimedia in vm.locations.allMultimedia|filter:vm.searchMultimedia">
         <div ng-if="multimedia.type == 'photo'">
-                <img src="{{multimedia.media_url}}" />
+                <img width="200" height="200" src="{{multimedia.media_url}}" />
                 <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
                 <div ng-if="vm.locations.currentLocationId != ''">
-                    <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
+                    <button ng-click="vm.saveAssociation(multimedia.id, vm.isMainPhoto.boolean)">Add to location</button>
                 </div>
                 <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
                 <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
@@ -18,9 +18,9 @@ Search:
 
         <div ng-if="multimedia.type == 'video'">
             
-                <iframe width="560" height="315" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
+                <iframe width="200" height="200" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
                 <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
-        <div ng-if="vm.locations.currentLocationId != '' && vm.isMainPhoto.type == multimedia.type">
+        <div ng-if="vm.locations.currentLocationId != ''; vm.isMainPhoto.type == multimedia.type">
             <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
         </div>
         <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
