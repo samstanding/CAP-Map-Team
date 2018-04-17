@@ -106,19 +106,43 @@ img{
   overflow: hidden;
 }
 
-  #map {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      /* width: 100%; */
-  }
-
-  #map-container {
+#map {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    width: 100%;
-    position: absolute;
-  }
+    /* width: 100%; */
+}
 
+#map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.redDiv {
+  border-style: solid;
+  border-color: red;
+}
+
+.blueDiv {
+  border-style: solid;
+  border-color: blue;
+}
+
+.greenDiv {
+  border-style: solid;
+  border-color: green;
+}
+
+.yellowDiv {
+  border-style: solid;
+  border-color: yellow;
+}
+
+.purpleDiv {
+  border-style: solid;
+  border-color: purple;
+}
 #map_format {
     height: 100%;
     margin: 0;
