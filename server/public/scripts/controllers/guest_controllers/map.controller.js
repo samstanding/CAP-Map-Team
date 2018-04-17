@@ -9,7 +9,25 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     let markerStore = {marker: null};
 
-    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+    const goldStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'yellow',
+        fillOpacity: 0.4,
+        scale: .1,
+        strokeColor: 'gold',
+        strokeWeight: 14
+      };
+
+    const blueStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'blue',
+        fillOpacity: 0,
+        scale: 0,
+        strokeColor: 'blue',
+        strokeWeight: 14
+      };
 
     self.findLocation = () => {
         console.log('in find location map');
@@ -56,7 +74,8 @@ self.findLocation();
                  lng: -93.15375000
              }, 
              zoom: 18,
-             mapTypeId: 'satellite'
+             mapTypeId: 'satellite',
+             streetViewControl: false
          })
         
         //  let bounds = new google.maps.LatLngBounds(
@@ -76,7 +95,11 @@ self.findLocation();
              console.log(self.locations.allLocations[i].reveal_type);
              
             if (self.locations.allLocations[i].reveal_type == 'static') {
-                self.locations.allLocations[i].reveal_type = image
+                self.locations.allLocations[i].reveal_type = image;
+            } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
+                self.locations.allLocations[i].reveal_type = blueStar;
+            } else {
+                self.locations.allLocations[i].reveal_type = goldStar;
             }
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
