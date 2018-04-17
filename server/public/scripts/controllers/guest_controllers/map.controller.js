@@ -11,7 +11,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-    const goldStar = {
+    let goldStar = {
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
         fillColor: 'yellow',
         fillOpacity: 0.4,
@@ -20,7 +20,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         strokeWeight: 14
       };
 
-    const blueStar = {
+    let blueStar = {
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
         fillColor: 'blue',
         fillOpacity: 0,
@@ -29,18 +29,20 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         strokeWeight: 14
       };
 
+      let crd;
+
     self.findLocation = () => {
         console.log('in find location map');
         success = (pos) => {
-            let crd = pos.coords;
+            crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            console.log(markerStore.marker);
             
         if (markerStore.marker !== null) {
             markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
+       
         } 
          else {
             let personMarker = new google.maps.Marker({
@@ -48,10 +50,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 map: self.map,
                 icon: '../../styles/maps_marker.png',
             })
-
             markerStore.marker = personMarker;
-            
-        }
+            console.log(crd);
+            }
+            if (crd.latitude > 44.8) {
+                blueStar.scale = .1;
+            }
         $scope.$apply();
     }
     error = (err) => {
@@ -65,6 +69,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 }
 
 self.findLocation();
+
+
+
 
     self.initMap = () => {
         
