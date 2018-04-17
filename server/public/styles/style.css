@@ -283,6 +283,7 @@ a{
     position: fixed;
     background-color: darkslategrey;
     opacity: .85;
+    margin-bottom: 40px;
   }
 
   #menu-item{
@@ -348,3 +349,6 @@ a{
   background-color: #FFF2E0; 
 }
 
+.pageDown{
+  padding-top: 80px;
+}
