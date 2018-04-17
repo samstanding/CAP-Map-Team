@@ -9,20 +9,40 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     let markerStore = {marker: null};
 
-    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+    let goldStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'yellow',
+        fillOpacity: 0.4,
+        scale: .1,
+        strokeColor: 'gold',
+        strokeWeight: 14
+      };
+
+    let blueStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'blue',
+        fillOpacity: 0,
+        scale: .1,
+        strokeColor: 'blue',
+        strokeWeight: 14
+      };
+
+      let crd;
 
     self.findLocation = () => {
         console.log('in find location map');
         success = (pos) => {
-            let crd = pos.coords;
+            crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            console.log(markerStore.marker);
             
         if (markerStore.marker !== null) {
             markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
+       
         } 
          else {
             let personMarker = new google.maps.Marker({
@@ -30,23 +50,25 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 map: self.map,
                 icon: '../../styles/maps_marker.png',
             })
-
             markerStore.marker = personMarker;
-            console.log(markerStore.marker);
-            
-        }
+            console.log(crd);
+            }
         $scope.$apply();
     }
     error = (err) => {
         console.log('error in finding location: ', err);
+        alert('You\'ll need to give this site access to your location for this to work');
     }
-    // options = {
-    //     enableHighAccuracy: true
-    // }
-    navigator.geolocation.watchPosition(success, error);
+    options = {
+        enableHighAccuracy: true
+    }
+    navigator.geolocation.watchPosition(success, error, options);
 }
 
 self.findLocation();
+
+
+
 
     self.initMap = () => {
         
@@ -56,7 +78,8 @@ self.findLocation();
                  lng: -93.15375000
              }, 
              zoom: 18,
-             mapTypeId: 'satellite'
+             mapTypeId: 'satellite',
+             streetViewControl: false
          })
         
         //  let bounds = new google.maps.LatLngBounds(
@@ -73,11 +96,22 @@ self.findLocation();
          
          //need to add something to differentiate between display types
          for(let i = 0; i <self.locations.allLocations.length; i ++) {
+             console.log(self.locations.allLocations[i].reveal_type);
+             
+            if (self.locations.allLocations[i].reveal_type == 'static') {
+                self.locations.allLocations[i].reveal_type = image;
+            } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
+                self.locations.allLocations[i].reveal_type = blueStar;
+            } else {
+                self.locations.allLocations[i].reveal_type = goldStar;
+            }
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
                 map: self.map,
                 title: self.locations.allLocations[i].location_name,
+                icon: self.locations.allLocations[i].reveal_type
          })
+    
 
          google.maps.event.addListener(marker, 'click', (function (marker, i) {
              return function () {
