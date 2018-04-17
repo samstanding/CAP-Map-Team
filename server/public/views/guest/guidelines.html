@@ -1,11 +1,16 @@
-<div class="redDiv"><img src="/styles/banner.png" class="banner"></div>
 <div class="guestMenu"><a href=#!menu class="menuIcon"><i class="material-icons" style="font-size: 50px">menu</i></a></div>
-<div>
-    <h1>Caponi Art Park Etiquette</h1>
 
-<div ng-repeat="guideline in vm.information.guidelines">
-    <div> • {{guideline.description}}</div>
-</div>
+
+<div class="guestBody">
+    
+    <h1>Park Etiquette</h1>
+
+
+    <md-list-item ng-repeat="guideline in vm.information.guidelines">
+    <div class="guideline" > {{guideline.description}}
+        <md-divider></md-divider>
+    </div>
+    </md-list-item>
 
 <!-- <p>• Park trails are for pedestrians only.</p>
 <p>• Cars and bicycles are not allowed beyond the parking lot. A bike rack is available for your use. </p>

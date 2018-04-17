@@ -22,6 +22,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
             mapTypeId: 'satellite',
             streetViewControl: false,
             rotateControleOptions: false,
+            fullscreenControl: false,
             tilt: 0
         })
        
