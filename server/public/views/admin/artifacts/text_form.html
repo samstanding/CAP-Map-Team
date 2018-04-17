@@ -2,10 +2,10 @@
 <div ng-include="'/views/admin/admin_menu.html'"></div>
 
 <a onClick="javascript:history.go(-1);"><i class="material-icons">clear</i></a>
-<input ng-model="vm.newText.title"/>
-<input ng-model="vm.newText.year"/>
+<input placeholder="Title" ng-model="vm.newText.title"/>
+<input placeholder="Year" ng-model="vm.newText.year"/>
 <!-- <input ng-model="vm.newText.description"/> -->
-<text-angular ng-model="vm.newText.description"></text-angular>
+<text-angular ta-toolbar="[['bold','italics','underline','strikeThrough','undo','redo','justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent']]" ng-model="vm.newText.description"></text-angular>
 
 <button ng-if="!vm.newText.editing" ng-click="vm.saveText()">Add</button>
 <button ng-if="vm.newText.editing" ng-click="vm.editArtifact(vm.newText)">Save Edit</button>

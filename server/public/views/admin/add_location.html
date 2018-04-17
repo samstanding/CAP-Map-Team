@@ -1,16 +1,13 @@
-
 <div ng-include="'/views/admin/admin_menu.html'"></div>
-
-<div id="map-container"> 
+<div id="map-container">
     <div class="map_header">
-            <a href="/#!/admin/menu">
-                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
-            </a>
-    <input type="text" placeholder="Name Location" ng-model="vm.locations.newLocation.name">
-    <button ng-click="vm.addLocation(vm.locations.newLocation)">Submit Location</button>
+        <a href="/#!/admin/menu">
+            <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
+        </a>
+        <input type="text" placeholder="Name Location" ng-model="vm.locations.newLocation.name">
+        <button ng-click="vm.addLocation(vm.locations.newLocation)">Submit Location</button>
+    </div>
+    <div id="map_format">
+        <div id="map"></div>
+    </div>
 </div>
-
-
-<div id="map"></div>
-</div>
-
