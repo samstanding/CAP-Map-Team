@@ -82,17 +82,26 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
             self.information.currentLocationId = locationid;
             console.log('current location id:', self.information.currentLocationId);
             console.log(`success getting artifacts for location id:${locationid}`, self.information.allArtifactsForLocation);
-            self.indLocation.indSculpture = {};
-            self.indLocation.indMainPhoto = {};
-            self.indLocation.indPhotos = [];
-            self.indLocation.indPoems = [];
-            self.indLocation.indWritings = [];
-            self.indLocation.indAnecdotes = [];
-            self.indLocation.indVideos = [];
-            self.indLocation.isBeingEdited = false;
-            self.determineType();
+            // self.determineMain(self.information.allArtifactsForLocation);
+            // console.log('main', self.mainArtifact);
+            
         }).catch((error)=>{
             console.log('error getting all locations', error);
         })
     }
+
+    // self.mainAritfact = [];
+    // self.supportingArtifacts = [];
+
+    // self.determineMain = function (information) {
+    //     for (i = 0; i < information.length; i++){
+    //         if (i==0){
+    //             self.mainArtifact.push(information[i]);
+    //         }
+    //         else {
+    //             self.supportingArtifacts.push(information[i]);
+    //         }
+    //     }    
+    // }
+
 }]);
