@@ -9,7 +9,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     let markerStore = {marker: null};
 
-    var static = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
     self.findLocation = () => {
         console.log('in find location map');
@@ -73,12 +73,18 @@ self.findLocation();
          
          //need to add something to differentiate between display types
          for(let i = 0; i <self.locations.allLocations.length; i ++) {
+             console.log(self.locations.allLocations[i].reveal_type);
+             
+            if (self.locations.allLocations[i].reveal_type == 'static') {
+                self.locations.allLocations[i].reveal_type = image
+            }
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat,self.locations.allLocations[i].long ),
                 map: self.map,
                 title: self.locations.allLocations[i].location_name,
-                icon: self.location.allLocations[i].reveal_type
+                icon: self.locations.allLocations[i].reveal_type
          })
+    
 
          google.maps.event.addListener(marker, 'click', (function (marker, i) {
              return function () {
