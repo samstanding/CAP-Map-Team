@@ -88,5 +88,4 @@ self.findLocation();
         }    
     } 
     self.initMap();
-
 }]);
