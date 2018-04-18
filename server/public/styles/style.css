@@ -294,8 +294,16 @@ a{
 
   .eventDate {
     font-weight: bold;
+    /* margin-left: 20px; */
+   
+    float:right;
+    
   }
-
+  
+  .eventTitle{
+    text-transform: uppercase;
+  }
+   
   .menuIcon{
     float:right;
     color: grey;
@@ -328,6 +336,7 @@ a{
   .guestBody {
     padding: 10px;
     font-size: 17px;
+    margin-top: 10px;
   }
 
   .welcome {
@@ -339,6 +348,14 @@ a{
     text-align: center;
     color: white;
     background-color:#365c63;
+  }
+  
+  .md-raised{
+    float:right;
+  }
+
+  .guestEmail{
+    float:center;
   }
 
 .is-active{
@@ -355,29 +372,21 @@ a{
 }
 
 .eventPhoto {
-  width: 20%;
-  height: 20%;
-  border-radius: 20px;
-  float: right;
+  height: 200px;
+  width: 100%;
+  border-radius: 4px;
+  margin: auto;
 }
 
 .event {
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 30px;
+  
 }
 
 .menuIcon{
   float:right;
   z-index: 2;
-}
-
-.guestMenu {
-  /* background-color: #A7C463; */
-  /* background-color: #EFE32F; */
-  height: 20px;
-  margin-top: 0px;
-  padding-top: 0px;
-  height:90px;
 }
 
 .banner {
