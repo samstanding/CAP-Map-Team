@@ -15,4 +15,13 @@ capApp.controller('DotArtifactsController', ['UserService', 'GuestService', '$sc
         return $sce.trustAsResourceUrl(src);
     }
 
+    // self.mainAritfact[];
+    // self.supportingArtifacts
+    
+    // self.determineMain = function(information){
+    //     for (info of information)
+    //     if info[0] 
+        
+    // }
+
 }]);

@@ -37,15 +37,6 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
       templateUrl: '/views/admin/admin_login.html',
       controller: 'LoginController as vm',
     })
-    // .when('/admin/menu', {
-    //   templateUrl: '/views/admin/admin_menu.html',
-    //   controller: 'AdminMenuController as vm',
-    //   resolve: {
-    //     getuser: function (UserService) {
-    //       return UserService.getuser();
-    //     }
-    //   }
-    // })
     .when('/admin/addlocation', {
       templateUrl: '/views/admin/add_location.html',
       controller: 'AddLocationController as vm', 
@@ -64,7 +55,7 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/location/:id', {
+    .when('/admin/location/:locationid', {
       templateUrl: '/views/admin/individual_location.html',
       controller: 'IndividualLocationController as vm',
       resolve: {
@@ -136,27 +127,9 @@ capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $
         }
       }
     })
-    .when('/admin/manageartifacts', {
-      templateUrl: '/views/admin/manage_artifacts.html',
-      controller: 'ManageArtifactsController as vm',
-      resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
-        }
-      }
-    })
     .when('/admin/editevents', {
       templateUrl: '/views/admin/edit_events.html',
       controller: 'EditEventsController as vm',
-      resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
-        }
-      }
-    })
-    .when('/admin/manageusers', {
-      templateUrl: '/views/admin/manage_users.html',
-      controller: 'ManageUsersController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();

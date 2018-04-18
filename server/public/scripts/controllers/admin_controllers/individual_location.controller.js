@@ -10,15 +10,19 @@ capApp.controller('IndividualLocationController', ['UserService', 'AdminService'
 
     let locationid = $routeParams.locationid;
     self.getIndividualLocation(locationid);
+    console.log('locationid', locationid);
 
     self.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);
       }
 
     self.deleteAssociation = AdminService.deleteAssociation;
+    self.saveAssociation = AdminService.saveAssociation;
     self.isMainPhoto = AdminService.isMainPhoto;
     self.getArtifactToEdit = AdminService.getArtifactToEdit; //getArtifactToEdit
 
     self.isCurrentPage = AdminService.isCurrentPage;
     self.isCurrentPage();
+
+    self.isMainPhoto = AdminService.isMainPhoto;
 }]);

@@ -1,14 +1,11 @@
 <div ng-include="'/views/admin/admin_menu.html'"></div>
-
+<div class="pageDown"></div>
 <br>
 <br>
 
 <div ng-if="!vm.indLocation.isBeingEdited">
-
-        <a href="/#!/admin/editlocation">
-                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
-         </a>
-         <br>
+        <img id="mainPhoto" class="coverPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
+        <br>
         <br>
         <div>
                 <strong>Sculpture</strong>
@@ -19,12 +16,8 @@
         <div ng-bind-html="vm.indLocation.indSculpture.description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.description}}</div>
         <div ng-bind-html="vm.indLocation.indSculpture.extended_description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
         <br>
-        <div>
-                <strong>Main Photo</strong>
-        </div>
-        <div ng-if="vm.indLocation.indMainPhoto">
-                <img src="{{vm.indLocation.indMainPhoto.media_url}}" />
-        </div>
+
+     
         <br>
         <div>
                 <strong>Historical Photos</strong>
@@ -72,9 +65,7 @@
 </div>
 
 <div ng-if="vm.indLocation.isBeingEdited">
-        <div ng-click="vm.indLocation.isBeingEdited = false">
-                <i id="backArrow" class="material-icons" style="font-size: 30px">arrow_back</i>
-        </div><br><br>
+        <br><br>
         <div>
                 <strong>Sculpture</strong>
         </div>
@@ -96,13 +87,13 @@
                 <strong>Main Photo</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean=true && vm.isMainPhoto.type == photo">
+                <button ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
                         <i class="material-icons">add_circle</i>
                 </button>
         </a>
         <!-- save as main_photo -->
         <div ng-if="vm.indLocation.indMainPhoto">
-                <img src="{{vm.indLocation.indMainPhoto.media_url}}" />
+                <img class="coverPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
         </div>
         <button ng-click="vm.deleteAssociation(vm.indLocation.indMainPhoto.id)">Remove</button>
         <br>
@@ -111,7 +102,7 @@
                 <strong>Historical Photos</strong>
         </div>
         <a href="/#!/admin/multimedia">
-                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == photo">
+                <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'photo'">
                 <i class="material-icons">add_circle</i>
                 </button>
 
@@ -177,7 +168,7 @@
         </div>
         <a href="/#!/admin/multimedia">
 
-                <button ng-click="vm.isMainPhoto.boolean=false && vm.isMainPhoto.type == video">
+                <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'video'">
                 <i class="material-icons">add_circle</i>
                 </button>
         </a>
@@ -187,16 +178,17 @@
         </div>
 <br>
 
-        <md-select ng-model="vm.indLocation.reveal_type">
+        <!-- <md-select ng-model="vm.indLocation.reveal_type">
                 <md-option ng-selected="vm.indLocation.reveal_type" ng-repeat="types in vm.locations.allRevealTypes"
                 ng-value={{types.type}}>{{ types.type }}</md-option>
-        </md-select>
+        </md-select> -->
 
-        <!-- <select value="{{vm.indLocation.reveal_type}}">
+        <select value="{{vm.indLocation.reveal_type}}" ng-model="vm.indLocation.reveal_type">
                 <option value="static">Static</option>
                 <option value="proximity">Proximity</option>
                 <option value="bathroom">Bathroom</option>
-        </select> -->
+        </select>
         
+        <div ng-click="vm.indLocation.isBeingEdited = false"><button ng-click="vm.saveAssociation(vm.indLocation.reveal_type)">Save</button></div>
 
 </div>
