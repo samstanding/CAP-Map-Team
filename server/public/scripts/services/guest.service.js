@@ -22,6 +22,7 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         indAnecdotes: [],
         indVideos: [],
         isBeingEdited: false,
+        showMore: false,
     }
     
     self.addGuest = function(guest){
@@ -80,6 +81,7 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         }).then((result)=>{
             self.information.allArtifactsForLocation = result.data;
             self.information.currentLocationId = locationid;
+            self.indLocation.showMore = false;
             console.log('current location id:', self.information.currentLocationId);
             console.log(`success getting artifacts for location id:${locationid}`, self.information.allArtifactsForLocation);
             // self.determineMain(self.information.allArtifactsForLocation);
