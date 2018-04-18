@@ -316,6 +316,7 @@ a{
     left: 30px;
     font-weight: bold;
     letter-spacing: 1px;
+    background-color: white;
   }
 
   .menu {
@@ -452,4 +453,21 @@ a{
   color: grey;
   margin-top: -10px;
   margin-right: 30px;
+}
+
+.indLocationGuestBody{
+  margin-top: 70px;
+}
+
+.mainPhotoGuest{
+  width: 100%;
+}
+
+.sculptureGuest{
+  text-align: center;
+  margin-top: 13px;
+}
+
+.moreInfo{
+  text-align: center;
 }
