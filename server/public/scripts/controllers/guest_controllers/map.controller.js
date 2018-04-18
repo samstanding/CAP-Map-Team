@@ -7,7 +7,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.getAllLocations = AdminService.getAllLocations;
 
     self.locations = AdminService.locations;
-    console.log(self.locations.allLocations);
 
     let markerStore = { marker: null };
 
@@ -26,7 +25,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         strokeWeight: 14
       };
 
-    let blueStar = {
+      let hiddenMarker = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        scale: .0,
+      };
+
+      let blueStar = {
         path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
         fillColor: 'blue',
         fillOpacity: 0,
@@ -35,12 +39,25 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         strokeWeight: 14
       };
 
-      let crd;
+
+
+      self.triggerMarkerShow = (location) => {
+        for (let i = 0; i <self.locations.allLocations.length; i ++) {
+            if (self.locations.allLocations[i].reveal_type == hiddenMarker && location.latitude > 44.9 ) {
+                console.log('in marker show conditional');
+                let newMarker = new google.maps.Marker ({
+                    position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long ),
+                    map:self.map,
+                    icon: blueStar
+                })
+            }
+        }
+    }
 
     self.findLocation = () => {
         console.log('in find location map');
         success = (pos) => {
-            crd = pos.coords;
+           let crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
@@ -49,8 +66,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             
         if (markerStore.marker !== null) {
             markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
-       
         } 
+
          else {
             let personMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(crd.latitude, crd.longitude),
@@ -58,18 +75,21 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 icon: '../../styles/maps_marker.png',
             })
             markerStore.marker = personMarker;
-            console.log(crd);
             }
+            self.triggerMarkerShow(crd);
         $scope.$apply();
     }
     error = (err) => {
         console.log('error in finding location: ', err);
-        alert('We were\'t able to get your location. Make sure your on an HTTPS webpage!g');
+        alert('We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!');
     }
     options = {
-        enableHighAccuracy: true
+        // enableHighAccuracy: true,
+        // timeout: 7500,
+        // frequency: 1
     }
-    navigator.geolocation.watchPosition(success, error, options);
+    //PUT OPTIONS BACK IN BEFORE YOU PUSH!!!!!!
+    navigator.geolocation.watchPosition(success, error);
 }
 
 
@@ -105,14 +125,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
              
              
              //need to add something to differentiate between display types
-             for(let i = 0; i <self.locations.allLocations.length; i ++) {
-                 console.log(self.locations.allLocations[i].reveal_type);
-                 
+             for(let i = 0; i <self.locations.allLocations.length; i ++) {  
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = image;
                 } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
-                    self.locations.allLocations[i].reveal_type = blueStar;
-                } else {
+                        self.locations.allLocations[i].reveal_type = hiddenMarker;
+                    } else {
                     self.locations.allLocations[i].reveal_type = goldStar;
                 }
     
@@ -120,6 +138,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
                     map: self.map,
                     title: self.locations.allLocations[i].location_name,
+                    icon: self.locations.allLocations[i].reveal_type
                 })
     
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -130,7 +149,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        }, 0)
+        }, 20)
     }
 
 

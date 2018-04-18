@@ -188,7 +188,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
 
     self.getAllLocations = function(){
         self.locations.allLocations = [];
-        console.log('in getAllLocations function');
         $http({
             method: 'GET',
             url: '/map/all'
