@@ -4,8 +4,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.userService = UserService;
     self.adminService = AdminService;
     self.guestService = GuestService;
+    self.getAllLocations = AdminService.getAllLocations;
 
     self.locations = AdminService.locations;
+    console.log(self.locations.allLocations);
 
     let markerStore = { marker: null };
 
@@ -73,62 +75,62 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     self.findLocation();
 
-
-
-
     self.initMap = () => {
 
-        self.map = new google.maps.Map(document.getElementById('map'), {
-            center : {
-                lat: 44.80526000, 
-                lng: -93.15375000
-            }, 
-            zoom: 18,
-            mapTypeId: 'satellite',
-            streetViewControl: false,
-            rotateControleOptions: false,
-            fullscreenControl: false,
-            tilt: 0
-        })
-
-        let bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(44.8047000, -93.1550000),
-            new google.maps.LatLng(44.8090000, -93.1488500));
-
-        let srcImage = '../../styles/northMap.png';
-
-
-        let generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
-
-         self.infowindow = new google.maps.InfoWindow();
-         
-         
-         //need to add something to differentiate between display types
-         for(let i = 0; i <self.locations.allLocations.length; i ++) {
-             console.log(self.locations.allLocations[i].reveal_type);
-             
-            if (self.locations.allLocations[i].reveal_type == 'static') {
-                self.locations.allLocations[i].reveal_type = image;
-            } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
-                self.locations.allLocations[i].reveal_type = blueStar;
-            } else {
-                self.locations.allLocations[i].reveal_type = goldStar;
-            }
-
-            let marker = new google.maps.Marker({
-                position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-                map: self.map,
-                title: self.locations.allLocations[i].location_name,
+        self.getAllLocations();
+        setTimeout(function mapDelay(){
+            self.map = new google.maps.Map(document.getElementById('map'), {
+                center : {
+                    lat: 44.80526000, 
+                    lng: -93.15375000
+                }, 
+                zoom: 18,
+                mapTypeId: 'satellite',
+                streetViewControl: false,
+                rotateControleOptions: false,
+                fullscreenControl: false,
+                tilt: 0
             })
-
-            google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                return function () {
-                    self.infowindow.setContent(generateLink(self.locations.allLocations[i]));
-                    self.infowindow.open(self.map, marker);
+    
+            let bounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(44.8047000, -93.1550000),
+                new google.maps.LatLng(44.8090000, -93.1488500));
+    
+            let srcImage = '../../styles/northMap.png';
+    
+    
+            let generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
+    
+             self.infowindow = new google.maps.InfoWindow();
+             
+             
+             //need to add something to differentiate between display types
+             for(let i = 0; i <self.locations.allLocations.length; i ++) {
+                 console.log(self.locations.allLocations[i].reveal_type);
+                 
+                if (self.locations.allLocations[i].reveal_type == 'static') {
+                    self.locations.allLocations[i].reveal_type = image;
+                } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
+                    self.locations.allLocations[i].reveal_type = blueStar;
+                } else {
+                    self.locations.allLocations[i].reveal_type = goldStar;
                 }
-            })(marker, i));
-        }
-        overlay = new CaponiOverlay(bounds, srcImage, self.map);
+    
+                let marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
+                    map: self.map,
+                    title: self.locations.allLocations[i].location_name,
+                })
+    
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        self.infowindow.setContent(generateLink(self.locations.allLocations[i]));
+                        self.infowindow.open(self.map, marker);
+                    }
+                })(marker, i));
+            }
+            overlay = new CaponiOverlay(bounds, srcImage, self.map);
+        }, 0)
     }
 
 

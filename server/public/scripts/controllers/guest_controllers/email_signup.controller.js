@@ -6,10 +6,4 @@ capApp.controller('EmailSignupController', ['UserService', 'GuestService', 'Admi
     self.adminService = AdminService;
 
     self.addGuest = GuestService.addGuest;
-
-    
-    self.getAllLocations = AdminService.getAllLocations;
-
-    self.getAllLocations();
-
 }]);
