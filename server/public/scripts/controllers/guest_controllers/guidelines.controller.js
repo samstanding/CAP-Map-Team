@@ -10,11 +10,6 @@ capApp.controller('GuidelinesController', ['UserService', 'GuestService', 'Admin
     self.getInformation = GuestService.getInformation;
 
     self.getInformation();
-
-    self.getAllLocations = AdminService.getAllLocations;
-
-    self.getAllLocations();
-    
 }]);
 
 
