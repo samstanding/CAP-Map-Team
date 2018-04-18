@@ -4,7 +4,7 @@
 <br>
 
 <div ng-if="!vm.indLocation.isBeingEdited">
-        <img id="mainPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
+        <img id="mainPhoto" class="coverPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
         <br>
         <br>
         <div>
@@ -93,7 +93,7 @@
         </a>
         <!-- save as main_photo -->
         <div ng-if="vm.indLocation.indMainPhoto">
-                <img src="{{vm.indLocation.indMainPhoto.media_url}}" />
+                <img class="coverPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
         </div>
         <button ng-click="vm.deleteAssociation(vm.indLocation.indMainPhoto.id)">Remove</button>
         <br>
@@ -178,16 +178,17 @@
         </div>
 <br>
 
-        <md-select ng-model="vm.indLocation.reveal_type">
+        <!-- <md-select ng-model="vm.indLocation.reveal_type">
                 <md-option ng-selected="vm.indLocation.reveal_type" ng-repeat="types in vm.locations.allRevealTypes"
                 ng-value={{types.type}}>{{ types.type }}</md-option>
-        </md-select>
+        </md-select> -->
 
-        <!-- <select value="{{vm.indLocation.reveal_type}}">
+        <select value="{{vm.indLocation.reveal_type}}" ng-model="vm.indLocation.reveal_type">
                 <option value="static">Static</option>
                 <option value="proximity">Proximity</option>
                 <option value="bathroom">Bathroom</option>
-        </select> -->
+        </select>
         
+        <div ng-click="vm.indLocation.isBeingEdited = false"><button ng-click="vm.saveAssociation(vm.indLocation.reveal_type)">Save</button></div>
 
 </div>

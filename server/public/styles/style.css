@@ -95,7 +95,7 @@ a{
   margin-bottom: 0; }
 
   /* end modal */
-/* 
+
   img{
     object-fit: cover;
     background-repeat: no-repeat;
@@ -104,7 +104,7 @@ a{
     height: 200px;
     position: relative;
     overflow: hidden;
-  } */
+  }
 
   #map {
       margin: 0;
@@ -175,11 +175,6 @@ a{
     height: 20px;
     margin-top: 0px;
     padding-top: 0px;
-  }
-
-  .banner {
-    height: 90px;
-    width: 100%;
   }
 
 #map {
@@ -257,10 +252,14 @@ a{
 
   .locationName{
     padding: 20px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     text-transform: uppercase;
     font-size: larger;
+  }
+
+  .locationName:hover{
+    color: white;
   }
 
   .searchBar{
@@ -273,13 +272,7 @@ a{
 
   .searchIcon{
     position: relative;
-    transform: translateY(10px);
-  }
-
-  #mainPhoto{
-    width: 100%;
-    height: 250px;
-    transform: translateY(16px);
+    transform: translateY(8px);
   }
 
   #adminMenu{
@@ -291,6 +284,9 @@ a{
 
   #menu-item{
     color: white;
+  }
+
+  #menu-item:hover{
   }
 
 .menuBardemoBasicUsage .page p {
@@ -392,4 +388,21 @@ a{
 
 .pageDown{
   padding-top: 80px;
+}
+
+.coverPhoto{
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  overflow: hidden;
+  margin-top: -65px;
+  width: 100%;
+  height: 250px;
+  transform: translateY(16px);
+}
+
+.fixed{
+  position: fixed;
+
 }
