@@ -26,11 +26,19 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
             tilt: 0
         })
        
-        let bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(44.8047000, -93.1550000),
-            new google.maps.LatLng(44.8090000, -93.1488500));
+        // this is the original map
+        // let bounds = new google.maps.LatLngBounds(
+        //     new google.maps.LatLng(44.8047000, -93.1550000),
+        //     new google.maps.LatLng(44.8090000, -93.1488500));
     
-        let srcImage = '../../styles/northMap.png';
+        // let srcImage = '../../styles/northMap.png';
+
+        // this is the trail only map using google maps as the background
+        let bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(44.8017750, -93.1568000),
+            new google.maps.LatLng(44.8081500, -93.1468500));
+    
+        let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
 
         let marker = new google.maps.Marker({
             position: new google.maps.LatLng(44.80457827564791,-93.15323458993169),
