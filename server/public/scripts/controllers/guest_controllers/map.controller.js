@@ -62,7 +62,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     }
     error = (err) => {
         console.log('error in finding location: ', err);
-        alert('You\'ll need to give this site access to your location for this to work');
+        alert('We were\'t able to get your location. Make sure your on an HTTPS webpage!');
     }
     options = {
         enableHighAccuracy: true
@@ -108,6 +108,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
              console.log(self.locations.allLocations[i].reveal_type);
              
             if (self.locations.allLocations[i].reveal_type == 'static') {
+                //
                 self.locations.allLocations[i].reveal_type = image;
             } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
                 self.locations.allLocations[i].reveal_type = blueStar;
@@ -119,6 +120,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
                 map: self.map,
                 title: self.locations.allLocations[i].location_name,
+                icon: self.locations.allLocations[i].reveal_type
             })
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
