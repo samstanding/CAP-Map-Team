@@ -343,7 +343,6 @@ img{
   background-color:#365c63;
 }
 
-  line-height: 1.6rem; }
 
   .eventDate {
     font-weight: bold;
@@ -437,10 +436,6 @@ img{
   /* transform: translate(-20px, -50px); */
 }
 
-.aTranslate{
-  /* transform: translate(20px, 50px); */
-}
-
 .eventPhoto {
   height: 200px;
   width: 100%;
@@ -500,6 +495,8 @@ img{
 
 .rightFloat {
   float: right;
+}
+
 .add-location{
   /* padding-top: 30px; */
   margin-top: 30px;
@@ -528,7 +525,7 @@ img{
   position: fixed;
   text-align: center;
   top: 27px;
-  left: 30px;
+  left: 28px;
   font-weight: bold;
   letter-spacing: 1px;
   height: 10px;
@@ -633,13 +630,16 @@ img{
   vertical-align: top;
   width: 8px;
   height:8px;
+  transform: translateY(-20px);
 }
 
 #slash{
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
+  /* padding-right: 15px; */
 }
