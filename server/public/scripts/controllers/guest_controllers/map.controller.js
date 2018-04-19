@@ -26,7 +26,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     const found = '../../styles/Blue_Marker.png';
 
       //--------------for the marker info windows--------------
-      self.generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
+      self.generateLink = (location) => `<a href="#!/artifacts/${location.id}">${location.location_name}</a>`;
       self.infowindow = new google.maps.InfoWindow();
 
       //--------------functions that control when hidden locations are shown--------------
@@ -143,7 +143,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             let srcImage = '../../styles/northMap.png';
              
     //--------------loops through all the locations and displays locations that should be displayed--------------
-             for(let i = 0; i <self.locations.allLocations.length; i ++) {  
+             for(let i = 0; i <self.locations.allLocations.length; i ++) {
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
                 } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
