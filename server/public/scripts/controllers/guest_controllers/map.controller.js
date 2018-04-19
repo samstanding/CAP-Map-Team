@@ -4,14 +4,14 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.userService = UserService;
     self.adminService = AdminService;
     self.guestService = GuestService;
+    //--------------
     self.getAllLocations = AdminService.getAllLocations;
 
     self.locations = AdminService.locations;
 
     let markerStore = { marker: null };
-
+    //for overlay
     let overlay;
-    
    CaponiOverlay.prototype = new google.maps.OverlayView();
 
     const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -39,7 +39,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         strokeWeight: 14
       };
 
+      self.generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
 
+      self.infowindow = new google.maps.InfoWindow();
 
       self.triggerMarkerShow = (location) => {
         for (let i = 0; i <self.locations.allLocations.length; i ++) {
@@ -74,6 +76,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     map:self.map,
                     icon: self.locations.allLocations[i].reveal_type
                 })
+                google.maps.event.addListener(marker, 'click', (function (newMarker, i) {
+                    return function () {
+                        self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
+                        self.infowindow.open(self.map, newMarker);
+                    }
+                })(newMarker, i));
             }
         }
     }
@@ -143,14 +151,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 new google.maps.LatLng(44.8090000, -93.1488500));
     
             let srcImage = '../../styles/northMap.png';
-    
-    
-            let generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
-    
-             self.infowindow = new google.maps.InfoWindow();
              
              
-             //need to add something to differentiate between display types
+            
              for(let i = 0; i <self.locations.allLocations.length; i ++) {  
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = image;
@@ -169,7 +172,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
-                        self.infowindow.setContent(generateLink(self.locations.allLocations[i]));
+                        self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
                         self.infowindow.open(self.map, marker);
                     }
                 })(marker, i));
