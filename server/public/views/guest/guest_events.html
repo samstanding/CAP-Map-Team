@@ -8,18 +8,16 @@
                 <div><img class="eventPhoto" src="{{event.photo_url}}"></div>
                 <div class="eventDate">{{event.date | date: short }}</div>
                 <div class="eventTitle">{{event.title}}</div>
-            <md-divider></md-divider>
-           
-
+            
             <div  ng-if="vm.information.allEvents.showMore == false">
-                <div class="moreInfo" ng-click="vm.information.allEvents.showMore = true"><i class="material-icons">keyboard_arrow_down</i></div>
-            <md-divider></md-divider>
+                <div class="eventDetails" ng-click="vm.information.allEvents.showMore = true">DETAILS</div>
+           
             </div>
 
             <div ng-if="vm.information.allEvents.showMore == true">
-                <div class="moreInfo" ng-click="vm.information.allEvents.showMore = false"><i class="material-icons">keyboard_arrow_up</i></div>
-                <md-divider></md-divider>
-                <div>{{event.description}}, {{event.time}}</div>
+                <div class="eventDetails" ng-click="vm.information.allEvents.showMore = false">LESS</div>
+                <div>Event Details:{{event.description}}</div>
+                <div>{{event.time}}</div>
                 <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div> 
             </div>
         </div>
