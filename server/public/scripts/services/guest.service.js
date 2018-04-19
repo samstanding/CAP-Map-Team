@@ -11,6 +11,7 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         guidelines: [],
         allArtifactsForLocation: [],
         currentLocationId: '',
+        mapInfo: true,
     }
 
     self.indLocation = {
@@ -99,6 +100,11 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
             console.log('error getting all locations', error);
         })
     }
+
+    self.xoutofalert = function () {
+        self.information.mapInfo = false;
+      }
+    
 
     // self.mainAritfact = [];
     // self.supportingArtifacts = [];

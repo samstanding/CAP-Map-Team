@@ -434,7 +434,7 @@ a{
   background-position: 50% 50%;
   position: relative;
   overflow: hidden;
-  margin-top: -65px;
+  margin-top: -71px;
   width: 100%;
   height: 250px;
   transform: translateY(16px);
@@ -548,4 +548,24 @@ a{
   color: black;
   text-shadow: 0.5px 0.5px 1px  #3b5998;
   vertical-align: middle;
+}
+
+.centerPage{
+  float: center;
+}
+
+#xbutton{
+  float: right;
+  vertical-align: top;
+  width: 8px;
+  height:8px;
+}
+
+#slash{
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  background-color: rgb(162, 196, 99);
+  margin-bottom: -10px;
 }
