@@ -3,7 +3,7 @@
 <div class="pageDown"></div>
 
 
-<h3 class="indent">Edit Location</h3>
+<h3 class="indent editLocation">EDIT LOCATION</h3>
 
 <hr>
 
@@ -12,7 +12,7 @@
 <i class="material-icons indent extra-indent searchIcon">search</i>
 <input class="indent searchBar" type="text" ng-model="vm.searchLocations">
 
-<div flex>
+<div style="overflow:scroll; height:400px;" flex>
         <md-content>
           <md-list flex>
             <md-list-item class="md-3-line" ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
