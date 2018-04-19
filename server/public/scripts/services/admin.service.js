@@ -1,6 +1,7 @@
 capApp.service('AdminService', ['$http', '$location',  function($http, $location){
     console.log('AdminService Loaded');
     var self = this;
+    self.currentPage = {list:[]};
     self.locations = {
         newLocation: {},
         allLocations: [],
@@ -93,7 +94,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             console.log('error saving new multimedia', error);
         })
     }
-
 //---START EVENTS AJAX---
     self.getEvents = function(){
         console.log('getEvents');
@@ -165,7 +165,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     }
     //-----END EVENTS AJAX----
     //-----Start Locations----
-
     self.addLocation = function(location){
         $http({
             method: 'POST',
@@ -299,8 +298,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
 //-----END INFORMATION AJAX-------
 //-----Start Artifacts-------
     //-----Start Multimedia------
-
-
     self.getAllMultimedia = function(){
         console.log('in getAllMultimedia function');
         $http({
@@ -312,9 +309,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             console.log('/artifacts/media', error);
         })
     }
-
-
-   
     //-----End Multimedia------
     //-----Start Sculptures------
     self.saveSculpture = function(){
@@ -414,7 +408,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     }
     //-----End Other Artifacts-----
     //-----Start Misc Artifact Functions-----
-
     self.editArtifact = function(artifact){
         console.log('Edit Artifact', artifact);
         
@@ -699,5 +692,4 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     self.isCurrentPage = function(path){
         return path === $location.path();
     }
-
 }]);
