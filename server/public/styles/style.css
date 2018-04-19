@@ -221,6 +221,7 @@ img{
   border-style: solid;
   border-color: purple;
 }
+
 #map_format {
     height: 100%;
     /* margin-top: 50px; */
@@ -576,6 +577,7 @@ img{
   .emailButton {
     float: right;
   }
+  
 .headerLine{
   margin-top: 80px;
 }
