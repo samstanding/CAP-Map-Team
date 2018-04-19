@@ -43,8 +43,13 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
       self.triggerMarkerShow = (location) => {
         for (let i = 0; i <self.locations.allLocations.length; i ++) {
-            if (self.locations.allLocations[i].reveal_type == hiddenMarker && location.latitude > 44.9 ) {
-                console.log('in marker show conditional');
+            if (self.locations.allLocations[i].reveal_type == hiddenMarker) {
+            let boundTop = parseFloat(self.locations.allLocations[i].lat) +.00035;
+            let boundBottom = self.locations.allLocations[i].lat - .00035;
+            let boundRight = parseFloat(self.locations.allLocations[i].long) +.0005;
+            let boundLeft = self.locations.allLocations[i].long - .0005;
+             if( location.latitude > boundBottom && location.latitude < boundTop && location.longitude < boundRight && location.latitude > boundLeft ) {
+                 self.locations.allLocations[i].reveal_type = 'not hidden';
                 let newMarker = new google.maps.Marker ({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long ),
                     map:self.map,
@@ -52,6 +57,26 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })
             }
         }
+    }
+}
+
+    self.triggerMarkerHide = (location) => {
+        for (let i = 0; i <self.locations.allLocations.length; i ++) {
+            if (self.locations.allLocations[i].reveal_type == 'not hidden') {
+            let boundTop = parseFloat(self.locations.allLocations[i].lat) +.00035;
+            let boundBottom = self.locations.allLocations[i].lat - .00035;
+            let boundRight = parseFloat(self.locations.allLocations[i].long) +.0005;
+            let boundLeft = self.locations.allLocations[i].long - .0005;
+             if( location.latitude < boundBottom && location.latitude > boundTop && location.longitude > boundRight && location.latitude < boundLeft ) {
+                 self.locations.allLocations[i].reveal_type = hiddenMarker;
+                let newMarker = new google.maps.Marker ({
+                    position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long ),
+                    map:self.map,
+                    icon: self.locations.allLocations[i].reveal_type
+                })
+            }
+        }
+    }
     }
 
     self.findLocation = () => {
@@ -77,6 +102,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             markerStore.marker = personMarker;
             }
             self.triggerMarkerShow(crd);
+            self.triggerMarkerHide(crd);
         $scope.$apply();
     }
     error = (err) => {
@@ -149,7 +175,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        }, 20)
+        }, 100)
     }
 
 
