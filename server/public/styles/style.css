@@ -341,7 +341,6 @@ img{
   color: white;
   background-color:#365c63;
 }
-
 .eventDate {
   font-weight: bold;
   text-transform: uppercase;
@@ -523,7 +522,7 @@ img{
   position: fixed;
   text-align: center;
   top: 27px;
-  left: 30px;
+  left: 28px;
   font-weight: bold;
   letter-spacing: 1px;
   height: 10px;
@@ -628,13 +627,16 @@ img{
   vertical-align: top;
   width: 8px;
   height:8px;
+  transform: translateY(-20px);
 }
 
 #slash{
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
+  /* padding-right: 15px; */
 }
