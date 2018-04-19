@@ -107,7 +107,6 @@ img{
 }
 
 #map {
-<<<<<<< HEAD
     margin: 0;
     padding: 0;
     height: 100%;
@@ -115,14 +114,6 @@ img{
     z-index: 1;
     /* position:absolute; */
     /* width: 100%; */
-=======
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  /* width: 100%; */
->>>>>>> 236ff8cd88c3b573198e5b0abf92c25bc3535a34
 }
 
 #map-container-admin {
@@ -237,11 +228,13 @@ img{
     z-index: 1;
     position:relative;
 }
+
 .mapMenu {
   float:right;
   color: white;
   margin-top: 15px;
 }
+
 .menuPosition {
   position: relative;
   z-index: 1000;
@@ -359,18 +352,15 @@ img{
   color: white;
   background-color:#365c63;
 }
-.eventDate {
-  font-weight: bold;
-  text-transform: uppercase;
-  float:right;
-  color: darkgrey;
-}
 
-.eventTitle{
-  text-transform: uppercase;
-}
+
+  .eventDate {
+    font-weight: bold;
+    text-transform: uppercase;
+    float:right;
+    color: darkgrey;
+  }
   
-<<<<<<< HEAD
   .eventTitle{
     text-transform: uppercase;
   }
@@ -378,8 +368,9 @@ img{
   .menuIcon{
     float:right;
     color: grey;
+    z-index: 2;
     margin-top: -10px;
-  
+    margin-right: 35px;
   }
   
   .banner {
@@ -393,70 +384,46 @@ img{
     letter-spacing: 1px;
     /* background-color: orange; */
   }
-=======
-.menuIcon{
-  float:right;
-  color: grey;
-  margin-top: -10px;
-  /* margin-right: 45px; */
-}
-.mapMenu {
-  float:right;
-  color: grey;
-}
 
-.banner {
-  text-align:left;
-  font-size: 25px;
-  position: fixed;
-  text-align: center;
-  top: 25px; 
-  left: 30px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  /* background-color: orange; */
-}
->>>>>>> 236ff8cd88c3b573198e5b0abf92c25bc3535a34
+  .headerBackground{
+    width:100%;
+    height: 80px;
+    background-color:white;
+    position: fixed;
+    top:0;
+    opacity: 40%;
+  }
 
-.headerBackground{
-  width:100%;
-  height: 80px;
-  background-color:white;
-  position: fixed;
-  top:0;
-  opacity: 40%;
-}
+  .menu {
+    font-size: 30px;
+    font-weight: 800;
+    padding:10px;
+    
+  }
 
-.menu {
-  font-size: 30px;
-  font-weight: 800;
-  padding:10px;
+  .guestBody {
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .welcome {
+    padding: 5px;
+    margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    color: white;
+    background-color:#365c63;
+  }
   
-}
-
-.guestBody {
-  padding: 10px;
-  font-size: 17px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.welcome {
-  padding: 5px;
-  margin-top: 80px;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-align: center;
-  color: white;
-  background-color:#365c63;
-}
-
-.button{
-  text-align:center;
-  width: 95%;
-  margin-top: 20px;
-  font-weight: bold;
-}
+  .button{
+    text-align:center;
+    width: 95%;
+    margin-top: 20px;
+    font-weight: bold;
+  }
 
 .is-active{
   background-color: grey;
@@ -473,6 +440,7 @@ img{
 /* not working */
 .subNav{
   max-width: 50%;
+  /* transform: translate(-20px, -50px); */
 }
 
 .eventPhoto {
@@ -487,12 +455,6 @@ img{
   margin-top: 30px;
   
 }
-
-.menuIcon{
-  float:right;
-  z-index: 2;
-}
-
 
 .redDiv {
   /* border-style: solid; */
@@ -511,7 +473,6 @@ img{
   padding-top: 80px;
 }
 
-
 .coverPhoto{
   object-fit: cover;
   background-repeat: no-repeat;
@@ -526,6 +487,7 @@ img{
 
 .fixed{
   position: fixed;
+
 }
 
 .leftFloat {
@@ -574,7 +536,7 @@ img{
 
 .menuIcon{
   float:right;
-  color: grey;
+  color:grey;
   margin-top: -10px;
   margin-right: 30px;
 }
