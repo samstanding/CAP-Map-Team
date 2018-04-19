@@ -4,14 +4,21 @@
 
 <div class="guestBody">
     <div>
-        <div ng-repeat="event in vm.locations.allEvents" class="event">
-            <div><img class="eventPhoto" src="{{event.photo_url}}"></div>
-            <div class="eventDate">{{event.date | date: short }}</div>
-            <div class="eventTitle">{{event.title}}</div>
-            <md-divider></md-divider>
-            <div>
-            <div>{{event.description}}, {{event.time}}</div>
-            <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div> 
+        <div ng-repeat="event in vm.information.allEvents" class="event">
+                <div><img class="eventPhoto" src="{{event.photo_url}}"></div>
+                <div class="eventDate">{{event.date | date: short }}</div>
+                <div class="eventTitle">{{event.title}}</div>
+            
+            <div  ng-if="vm.information.allEvents.showMore == false">
+                <div class="eventDetails" ng-click="vm.information.allEvents.showMore = true">DETAILS</div>
+           
+            </div>
+
+            <div ng-if="vm.information.allEvents.showMore == true">
+                <div class="eventDetails" ng-click="vm.information.allEvents.showMore = false">LESS</div>
+                <div>Event Details:{{event.description}}</div>
+                <div>{{event.time}}</div>
+                <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div> 
             </div>
         </div>
     </div>

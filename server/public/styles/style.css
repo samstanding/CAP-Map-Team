@@ -3,6 +3,7 @@ body, html {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
+  background-color: white;
 }
 
 .instructions .container h1 {
@@ -219,7 +220,7 @@ img{
   border-color: purple;
 }
 #map_format {
-    height: 90%;
+    height: 100%;
     margin-top: 50px;
     padding: 0;
 }
@@ -285,9 +286,9 @@ img{
   margin-bottom: 40px;
 }
 
-#menu-item{
-  color: white;
-}
+/* #menu-item{ COMMENTED OUT ON MERGE*/
+/*   color: white; */
+/* } */
 
 .menuBardemoBasicUsage .page p {
   line-height: 1.6rem;
@@ -346,10 +347,9 @@ img{
 
   .eventDate {
     font-weight: bold;
-    /* margin-left: 20px; */
-   
+    text-transform: uppercase;
     float:right;
-    
+    color: darkgrey;
   }
   
   .eventTitle{
@@ -399,10 +399,10 @@ img{
     padding: 10px;
     font-size: 17px;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   .welcome {
-   
     padding: 5px;
     margin-top: 80px;
     margin-left: 10px;
@@ -412,12 +412,11 @@ img{
     background-color:#365c63;
   }
   
-  .md-raised{
-    float:right;
-  }
-
-  .guestEmail{
-    float:center;
+  .button{
+    text-align:center;
+    width: 95%;
+    margin-top: 20px;
+    font-weight: bold;
   }
 
 .is-active{
@@ -460,11 +459,6 @@ img{
   z-index: 2;
 }
 
-.banner {
-  height: 10px;
-  width: 100%;
-  margin: 0;
-}
 
 .redDiv {
   /* border-style: solid; */
@@ -537,6 +531,9 @@ img{
   left: 30px;
   font-weight: bold;
   letter-spacing: 1px;
+  height: 10px;
+  width: 100%;
+  margin: 0;
 }
 
 .menuIcon{
@@ -564,6 +561,23 @@ img{
   text-align: center;
 }
 
+.eventDetails{
+  text-align: center;
+  font-size:10px;
+  color: grey;
+  text-decoration: underline;
+}
+
+ .email {
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .emailButton {
+    float: right;
+  }
 .headerLine{
   margin-top: 80px;
 }
@@ -610,7 +624,6 @@ img{
   text-shadow: 0.5px 0.5px 1px  #3b5998;
   vertical-align: middle;
 }
-
 .centerPage{
   float: center;
 }

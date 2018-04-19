@@ -62,15 +62,16 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         })
     }
 
-    self.getEvents = function(){
+    self.getEvents = function () {
         console.log('getEvents');
         $http({
             method: 'GET',
             url: `/events/get`,
-        }).then((result)=>{
+        }).then((result) => {
             console.log('Events:', result.data);
             self.information.allEvents = result.data;
-        }).catch((error)=>{
+            self.information.allEvents.showMore = false;
+        }).catch((error) => {
             console.log('getEvents', error);
         })
     }
