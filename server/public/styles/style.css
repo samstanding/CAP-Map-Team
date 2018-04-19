@@ -185,7 +185,13 @@ a{
     /* width: 100%; */
 }
 
-#map-container {
+#map-container-admin {
+  height: 78%;
+  width: 100%;
+  position: absolute;
+}
+
+#map-container-guest {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -430,6 +436,12 @@ a{
 
 }
 
+.add-location{
+  /* padding-top: 30px; */
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+  
 .hard-break{
   margin-top: -1px;
 }
