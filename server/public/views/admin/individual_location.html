@@ -17,7 +17,7 @@
         <div ng-bind-html="vm.indLocation.indSculpture.extended_description" ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.extended_description}}</div>
         <br>
 
-     
+
         <br>
         <div>
                 <strong>Historical Photos</strong>
@@ -65,7 +65,8 @@
 </div>
 
 <div ng-if="vm.indLocation.isBeingEdited">
-        <br><br>
+        <br>
+        <br>
         <div>
                 <strong>Sculpture</strong>
         </div>
@@ -103,7 +104,7 @@
         </div>
         <a href="/#!/admin/multimedia">
                 <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'photo'">
-                <i class="material-icons">add_circle</i>
+                        <i class="material-icons">add_circle</i>
                 </button>
 
         </a>
@@ -118,7 +119,7 @@
         <a href="/#!/admin/poems">
 
                 <button ng-click="vm.isMainPhoto.boolean=false">
-                <i class="material-icons">add_circle</i>
+                        <i class="material-icons">add_circle</i>
                 </button>
 
         </a>
@@ -135,7 +136,7 @@
         <a href="/#!/admin/writings">
 
                 <button ng-click="vm.isMainPhoto.boolean=false">
-                <i class="material-icons">add_circle</i>
+                        <i class="material-icons">add_circle</i>
                 </button>
 
         </a>
@@ -153,7 +154,7 @@
         <a href="/#!/admin/anecdotes">
 
                 <button ng-click="vm.isMainPhoto.boolean=false">
-                <i class="material-icons">add_circle</i>
+                        <i class="material-icons">add_circle</i>
                 </button>
         </a>
         <div ng-repeat="anecdote in vm.indLocation.indAnecdotes">
@@ -169,14 +170,14 @@
         <a href="/#!/admin/multimedia">
 
                 <button ng-click="vm.isMainPhoto.boolean = false; vm.isMainPhoto.type = 'video'">
-                <i class="material-icons">add_circle</i>
+                        <i class="material-icons">add_circle</i>
                 </button>
         </a>
         <div ng-repeat="video in vm.indLocation.indVideos">
                 <iframe width="560" height="315" ng-src="{{vm.trustSrc(video.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
                 <button ng-click="vm.deleteAssociation(video.id)">Remove</button>
         </div>
-<br>
+        <br>
 
         <!-- <md-select ng-model="vm.indLocation.reveal_type">
                 <md-option ng-selected="vm.indLocation.reveal_type" ng-repeat="types in vm.locations.allRevealTypes"
@@ -188,8 +189,10 @@
                 <option value="proximity">Proximity</option>
                 <option value="bathroom">Bathroom</option>
         </select>
-        
-        <div ng-click="vm.indLocation.isBeingEdited = false"><button ng-click="vm.saveAssociation(vm.indLocation.reveal_type)">Save</button></div>
+
+        <div ng-click="vm.indLocation.isBeingEdited = false">
+                <button ng-click="vm.saveAssociation(vm.indLocation.reveal_type)">Save</button>
+        </div>
 
 </div>
 </div>
