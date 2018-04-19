@@ -1,7 +1,8 @@
 <div ng-include="'/views/admin/admin_menu.html'"></div>
+
 <div class="pageDown"></div>
 
-<div ng-include="'views/templates/register.html'"></div>
+<h3>All Admins</h3>
 <table>
 <thead>
 <th>First Name</th>
@@ -18,3 +19,5 @@
     <td ng-if="vm.locations.allAdmins.length > 1"><button ng-click="vm.deleteAdmin(admin)">Delete Administrator</button></td>
 </tbody>
 </table>
+
+<div ng-include="'views/templates/register.html'"></div>  
