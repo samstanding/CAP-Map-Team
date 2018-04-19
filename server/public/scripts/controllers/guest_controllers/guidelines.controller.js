@@ -8,6 +8,7 @@ capApp.controller('GuidelinesController', ['UserService', 'GuestService', 'Admin
     self.information = GuestService.information
 
     self.getInformation = GuestService.getInformation;
+    self.xoutofalert = GuestService.xoutofalert;
 
     self.getInformation();
 }]);

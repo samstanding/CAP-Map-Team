@@ -1,15 +1,18 @@
-<div class="banner"> CAPONI ART PARK<a href=#!menu ><i class="material-icons menuIcon" style="font-size: 50px">menu</i></a></div>
+<div class="headerBackground"><div class="banner"> CAPONI ART PARK<a href=#!menu ><i class="material-icons menuIcon" style="font-size: 50px">menu</i></a></div></div>
+
+<div class="welcome"><h1>Events</h1></div>
 
 <div class="guestBody">
-    <h1>Events</h1>
     <div>
         <div ng-repeat="event in vm.locations.allEvents" class="event">
-            <md-divider></md-divider>
+            <div><img class="eventPhoto" src="{{event.photo_url}}"></div>
             <div class="eventDate">{{event.date | date: short }}</div>
-            <div class="indent">{{event.title}} <img class="eventPhoto" src="{{event.photo_url}}"></div>
-            <div class="indent"> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div>
-            <div class="indent">{{event.description}}, {{event.time}}</div>
-            
+            <div class="eventTitle">{{event.title}}</div>
+            <md-divider></md-divider>
+            <div>
+            <div>{{event.description}}, {{event.time}}</div>
+            <div> Adaptable for ages {{event.age_group}},  {{event.price}}/person</div> 
+            </div>
         </div>
     </div>
 </div>

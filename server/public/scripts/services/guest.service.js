@@ -11,6 +11,7 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         guidelines: [],
         allArtifactsForLocation: [],
         currentLocationId: '',
+        mapInfo: true,
     }
 
     self.indLocation = {
@@ -22,6 +23,8 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         indAnecdotes: [],
         indVideos: [],
         isBeingEdited: false,
+        showMore: false,
+        sculptureTitle: '',
     }
     
     self.addGuest = function(guest){
@@ -80,6 +83,14 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
         }).then((result)=>{
             self.information.allArtifactsForLocation = result.data;
             self.information.currentLocationId = locationid;
+            self.indLocation.showMore = true;
+            self.indLocation.sculptureTitle = '';
+            for (let artifact of self.information.allArtifactsForLocation){
+                if (artifact.type == 'sculpture'){
+                    self.indLocation.showMore = false;
+                    self.indLocation.sculptureTitle = artifact.title.toUpperCase();
+                }
+            }
             console.log('current location id:', self.information.currentLocationId);
             console.log(`success getting artifacts for location id:${locationid}`, self.information.allArtifactsForLocation);
             // self.determineMain(self.information.allArtifactsForLocation);
@@ -89,6 +100,11 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
             console.log('error getting all locations', error);
         })
     }
+
+    self.xoutofalert = function () {
+        self.information.mapInfo = false;
+      }
+    
 
     // self.mainAritfact = [];
     // self.supportingArtifacts = [];
