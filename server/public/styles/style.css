@@ -282,7 +282,8 @@ img{
 #adminMenu{
   position: fixed;
   background-color: darkslategrey;
-  opacity: .85;
+  opacity: 1;
+  z-index: 999;
   margin-bottom: 40px;
 }
 
@@ -343,7 +344,6 @@ img{
   background-color:#365c63;
 }
 
-  line-height: 1.6rem; }
 
   .eventDate {
     font-weight: bold;
@@ -481,18 +481,17 @@ img{
 .coverPhoto{
   object-fit: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  position: relative;
   overflow: hidden;
-  margin-top: -71px;
-  width: 100%;
+  top: 0px;
+  width: 50%;
   height: 250px;
-  transform: translateY(16px);
+  transform: translateY(10px);
+  z-index: 1;
+  position: relative;
 }
 
 .fixed{
   position: fixed;
-
 }
 
 .leftFloat {
@@ -501,6 +500,8 @@ img{
 
 .rightFloat {
   float: right;
+}
+
 .add-location{
   /* padding-top: 30px; */
   margin-top: 30px;
@@ -643,4 +644,35 @@ img{
   width: 100%;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
+}
+
+.changeMainPhoto{
+  /* margin-right: 240px; */
+  z-index: 9;
+  transform: translateY(-19px);
+  position: relative;
+}
+
+#editSculpture{
+  margin-left: 10px;
+}
+
+.add{
+  margin-left: 10px;
+}
+
+#removeButton{
+  position: relative;
+  z-index: 5;
+  transform: translateY(-19px);
+}
+
+.minus{
+  margin-left: -28px;
+  position: relative;
+  z-index: 10;
+}
+
+.short{
+  width: 60%;
 }

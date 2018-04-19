@@ -200,12 +200,13 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         })
     }
 
-    self.deleteLocation = function(){
+    self.deleteLocation = function(id){
         $http({
             method: 'DELETE',
             url: `/map/delete/${id}`
         }).then((result)=>{
             self.getAllLocations();
+            $location.url('/admin/editlocation');
         }).catch((error)=>{
             console.log('/map/delete/:id', error);
         })
@@ -443,6 +444,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     }
     
     self.determineType = function(){
+        console.log('in determineType');
         self.indLocation.reveal_type = self.locations.allArtifactsForLocation[0].reveal_type;
         for(let artifact of self.locations.allArtifactsForLocation){
             if(artifact.type == 'sculpture'){
@@ -461,6 +463,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
                 self.indLocation.indMainPhoto = artifact;
             }
         }
+        console.log('main photo:',self.indLocation.indMainPhoto);
     }
 
 
@@ -693,4 +696,5 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     self.isCurrentPage = function(path){
         return path === $location.path();
     }
+
 }]);
