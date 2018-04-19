@@ -166,13 +166,15 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     //-----END EVENTS AJAX----
     //-----Start Locations----
     self.addLocation = function(location){
+        console.log(location);
         $http({
             method: 'POST',
             url: '/map/post',
             data: {
                 location_name: location.name,
                 lat: location.lat,
-                long: location.long
+                long: location.long,
+                reveal_type: location.reveal_type
             }
         }).then((response) =>{
                 console.log('location sent to the database');

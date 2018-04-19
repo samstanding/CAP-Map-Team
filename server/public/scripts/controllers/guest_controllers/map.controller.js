@@ -143,7 +143,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             let srcImage = '../../styles/northMap.png';
              
     //--------------loops through all the locations and displays locations that should be displayed--------------
-             for(let i = 0; i <self.locations.allLocations.length; i ++) {  
+             for(let i = 0; i <self.locations.allLocations.length; i ++) {
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
                 } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
