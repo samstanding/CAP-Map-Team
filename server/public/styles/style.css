@@ -92,97 +92,94 @@ a{
   color: #c60008; }
 
 .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}
 
-  /* end modal */
-
-  img{
-    object-fit: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #map {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      z-index: 1;
-      /* width: 100%; */
-
-  }
-
-  #map-container {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-  }
-
-  .menuBardemoBasicUsage .page-container {
-    padding: 32px; }
-  
-  .menuBardemoBasicUsage .page {
-    margin: 0 auto;
-    padding: 24px;
-    max-width: 680px;
-    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25); }
-  
-  .menuBardemoBasicUsage .page h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-top: 0;
-    font-weight: normal; }
-  
-  .menuBardemoBasicUsage .page p {
-    line-height: 1.6rem; }
-
-  .is-active{
-    background-color: #548c8c;
-  }
-
-  .md-indent{
-    margin-left: 20px;
-  }
-
-  /* not working */
-  .subNav{
-    max-width: 50%;
-  }
-
-  .eventPhoto {
-    width: 20%;
-    height: 20%;
-    border-radius: 20px;
-    float: right;
-  }
-
-  .event {
-    padding: 10px;
-    margin-top: 20px;
-  }
-
-  .menuIcon{
-    float:right;
-  }
-
-  .guestMenu {
-    /* background-color: #A7C463; */
-    /* background-color: #EFE32F; */
-    height: 20px;
-    margin-top: 0px;
-    padding-top: 0px;
-  }
+img{
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
 
 #map {
-
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
+    z-index: 1;
     /* width: 100%; */
+}
+
+#map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.menuBardemoBasicUsage .page-container {
+  padding: 32px;
+}
+
+.menuBardemoBasicUsage .page {
+  margin: 0 auto;
+  padding: 24px;
+  max-width: 680px;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.menuBardemoBasicUsage .page h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 0;
+  font-weight: normal;
+}
+
+.menuBardemoBasicUsage .page p {
+  line-height: 1.6rem;
+}
+
+.md-indent{
+  margin-left: 20px;
+}
+
+/* not working */
+.subNav{
+  max-width: 50%;
+}
+
+.eventPhoto {
+  width: 20%;
+  height: 20%;
+  border-radius: 20px;
+  float: right;
+}
+
+.event {
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.menuIcon{
+  float:right;
+}
+
+.guestMenu {
+  /* background-color: #A7C463; */
+  /* background-color: #EFE32F; */
+  height: 20px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+#map {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* width: 100%; */
 }
 
 #map-container {
@@ -236,113 +233,115 @@ a{
   margin-top: 0;
   font-weight: normal; }
 
-  .navBardemoBasicUsage md-content .ext-content {
-    padding: 50px;
-    margin: 20px;
-    background-color: #FFF2E0; 
-  }
+.navBardemoBasicUsage md-content .ext-content {
+  padding: 50px;
+  margin: 20px;
+  background-color: #FFF2E0; 
+}
 
-  .indent{
-    margin-left: 40px;
-  }
+.indent{
+  margin-left: 40px;
+}
 
-  .extraIndent{
-    margin-left: 40px;
-  }
+.extraIndent{
+  margin-left: 40px;
+}
 
-  .locationName{
-    padding: 20px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: larger;
-  }
+.locationName{
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: larger;
+}
 
-  .locationName:hover{
-    color: white;
-  }
+.locationName:hover{
+  color: white;
+}
 
-  .searchBar{
-    width: 40%;
-  }
+.searchBar{
+  width: 40%;
+}
 
-  .location-list:hover{
-    background-color: #548c8c;
-  }
+.location-list:hover{
+  background-color: #548c8c;
+}
 
-  .searchIcon{
-    position: relative;
-    transform: translateY(8px);
-  }
+.searchIcon{
+  position: relative;
+  transform: translateY(8px);
+}
 
-  #adminMenu{
-    position: fixed;
-    background-color: darkslategrey;
-    opacity: .85;
-    margin-bottom: 40px;
-  }
+#adminMenu{
+  position: fixed;
+  background-color: darkslategrey;
+  opacity: .85;
+  margin-bottom: 40px;
+}
 
-  #menu-item{
-    color: white;
-  }
-
-  /* #menu-item:hover{
-  } */
+#menu-item{
+  color: white;
+}
 
 .menuBardemoBasicUsage .page p {
-  line-height: 1.6rem; }
+  line-height: 1.6rem;
+}
 
-  .eventDate {
-    font-weight: bold;
-  }
+.eventDate {
+  font-weight: bold;
+}
 
-  .menuIcon{
-    float:right;
-    color: grey;
-    margin-top: -10px;
-    margin-right: 35px;
-  }
-  .mapMenu {
-    float:right;
-    color: grey;
-  }
+.menuIcon{
+  float:right;
+  color: grey;
+  margin-top: -10px;
+  margin-right: 35px;
+}
+.mapMenu {
+  float:right;
+  color: grey;
+}
 
-  .banner {
-    text-align:left;
-    font-size: 25px;
-    position: relative;
-    text-align: center;
-    top: 27px; 
-    left: 30px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
+.banner {
+  text-align:left;
+  font-size: 25px;
+  position: relative;
+  text-align: center;
+  top: 27px; 
+  left: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-  .menu {
-    font-size: 30px;
-    font-weight: 800;
-    padding:10px;
-    
-  }
+.menu {
+  font-size: 30px;
+  font-weight: 800;
+  padding:10px;
+  
+}
 
-  .guestBody {
-    padding: 10px;
-    font-size: 17px;
-  }
+.guestBody {
+  padding: 10px;
+  font-size: 17px;
+}
 
-  .welcome {
-   
-    padding: 5px;
-    margin-top: 80px;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: center;
-    color: white;
-    background-color:#365c63;
-  }
+.welcome {
+  
+  padding: 5px;
+  margin-top: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  color: white;
+  background-color:#365c63;
+}
 
 .is-active{
-  background-color: gainsboro;
+  background-color: grey;
+}
+
+.marginTop {
+  margin-top: 25px;
 }
 
 .md-indent{
@@ -352,6 +351,11 @@ a{
 /* not working */
 .subNav{
   max-width: 50%;
+  /* transform: translate(-20px, -50px); */
+}
+
+.aTranslate{
+  /* transform: translate(20px, 50px); */
 }
 
 .eventPhoto {
@@ -418,4 +422,12 @@ a{
 .fixed{
   position: fixed;
 
+}
+
+.leftFloat {
+  float: left;
+}
+
+.rightFloat {
+  float: right;
 }
