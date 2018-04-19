@@ -4,45 +4,32 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.userService = UserService;
     self.adminService = AdminService;
     self.guestService = GuestService;
-    //--------------
+    //--------------for getting all locations--------------
     self.getAllLocations = AdminService.getAllLocations;
-
     self.locations = AdminService.locations;
-
+    //--------------for the person marker--------------
     let markerStore = { marker: null };
-    //for overlay
+    //--------------for map overlay--------------
     let overlay;
-   CaponiOverlay.prototype = new google.maps.OverlayView();
+    CaponiOverlay.prototype = new google.maps.OverlayView();
 
-    const image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+     //--------------files to display the markers--------------
+    const static = '../../styles/DarkGreen_Marker.png';
 
-    let goldStar = {
-        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: 'yellow',
-        fillOpacity: 0.4,
-        scale: .1,
-        strokeColor: 'gold',
-        strokeWeight: 14
-      };
+    const facility = '../../styles/Brown_Marker.png';
 
-      let hiddenMarker = {
-        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+    const hiddenMarker = {
+        path: '../../styles/Brown_Marker.png',
         scale: .0,
       };
 
-      let blueStar = {
-        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: 'blue',
-        fillOpacity: 0,
-        scale: .1,
-        strokeColor: 'blue',
-        strokeWeight: 14
-      };
+    const found = '../../styles/Blue_Marker.png';
 
+      //--------------for the marker info windows--------------
       self.generateLink = (location) => `<a href="#!/artifacts/${location._id}">${location.location_name}</a>`;
-
       self.infowindow = new google.maps.InfoWindow();
 
+      //--------------functions that control when hidden locations are shown--------------
       self.triggerMarkerShow = (location) => {
         for (let i = 0; i <self.locations.allLocations.length; i ++) {
             if (self.locations.allLocations[i].reveal_type == hiddenMarker) {
@@ -55,13 +42,14 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 let newMarker = new google.maps.Marker ({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long ),
                     map:self.map,
-                    icon: blueStar
+                    icon: found,
+                    animation: google.maps.Animation.DROP
                 })
             }
         }
     }
 }
-
+//--------------functions that control when hidden locations are hid again--------------
     self.triggerMarkerHide = (location) => {
         for (let i = 0; i <self.locations.allLocations.length; i ++) {
             if (self.locations.allLocations[i].reveal_type == 'not hidden') {
@@ -87,6 +75,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     }
     }
 
+////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
         console.log('in find location map');
         success = (pos) => {
@@ -118,20 +107,21 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         alert('We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!');
     }
     options = {
-        // enableHighAccuracy: true,
-        // timeout: 7500,
-        // frequency: 1
+        enableHighAccuracy: true,
+        timeout: 7500,
+        frequency: 1
     }
-    //PUT OPTIONS BACK IN BEFORE YOU PUSH!!!!!!
+
     navigator.geolocation.watchPosition(success, error);
 }
 
-
     self.findLocation();
 
+////--------------this function displays the map--------------
     self.initMap = () => {
-
+////--------------gets the locations to display--------------
         self.getAllLocations();
+        //--------------timeout so all locations are obtained before map renders-------------
         setTimeout(function mapDelay(){
             self.map = new google.maps.Map(document.getElementById('map'), {
                 center : {
@@ -145,31 +135,30 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 fullscreenControl: false,
                 tilt: 0
             })
-    
+    ////--------------sets bounds for the overlay--------------
             let bounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(44.8047000, -93.1550000),
                 new google.maps.LatLng(44.8090000, -93.1488500));
-    
+    //--------------source image for the overlay--------------
             let srcImage = '../../styles/northMap.png';
              
-             
-            
+    //--------------loops through all the locations and displays locations that should be displayed--------------
              for(let i = 0; i <self.locations.allLocations.length; i ++) {  
                 if (self.locations.allLocations[i].reveal_type == 'static') {
-                    self.locations.allLocations[i].reveal_type = image;
+                    self.locations.allLocations[i].reveal_type = static;
                 } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
                         self.locations.allLocations[i].reveal_type = hiddenMarker;
                     } else {
-                    self.locations.allLocations[i].reveal_type = goldStar;
+                    self.locations.allLocations[i].reveal_type = facility;
                 }
-    
+    //--------------creates markers for each location--------------
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
                     map: self.map,
                     title: self.locations.allLocations[i].location_name,
                     icon: self.locations.allLocations[i].reveal_type
                 })
-    
+    //--------------creates the info windows and sets event listener to route to artifact pages on click--------------
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
@@ -177,10 +166,11 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     }
                 })(marker, i));
             }
+            //--------------overlay function for the overlay--------------
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
         }, 100)
     }
-
+//--------------everything from here- ln 258 is for the map overlay --------------
 
           /** @constructor */
     function CaponiOverlay(bounds, image, map) {
@@ -253,7 +243,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         this.div_.parentNode.removeChild(this.div_);
         this.div_ = null;
       };
-
+//--------------runs the map initiate to render the map--------------
       self.initMap();
       
     self.isCurrentPage = AdminService.isCurrentPage;
