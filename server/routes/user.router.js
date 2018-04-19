@@ -32,11 +32,10 @@ router.post('/register', (req, res, next)=>{
       last_name: req.body.last_name,
       email: req.body.email,
     };
-    console.log('new user:', saveUser);
+    // console.log('new user:', saveUser);
     pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5) RETURNING id;',
       [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.email], (err, result) => {
         if(err){
-          console.log("Error inserting data: ", err);
           res.sendStatus(500);
         }else{
           res.sendStatus(201);

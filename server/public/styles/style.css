@@ -112,6 +112,7 @@ img{
     height: 100%;
     width: 100%;
     z-index: 1;
+    /* position:absolute; */
     /* width: 100%; */
 }
 
@@ -186,6 +187,7 @@ img{
   margin: 0;
   padding: 0;
   height: 100%;
+  position:static;
   /* width: 100%; */
 }
 
@@ -221,8 +223,21 @@ img{
 }
 #map_format {
     height: 100%;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     padding: 0;
+    z-index: 1;
+    position:relative;
+}
+
+.mapMenu {
+  float:right;
+  color: white;
+  margin-top: 15px;
+}
+
+.menuPosition {
+  position: relative;
+  z-index: 1000;
 }
 
 .menuBardemoBasicUsage .page-container {
@@ -305,10 +320,6 @@ img{
   margin-top: -10px;
   margin-right: 35px;
 }
-.mapMenu {
-  float:right;
-  color: grey;
-}
 
 .banner {
   text-align:left;
@@ -334,7 +345,6 @@ img{
 }
 
 .welcome {
-  
   padding: 5px;
   margin-top: 80px;
   margin-left: 10px;
@@ -359,14 +369,11 @@ img{
   .menuIcon{
     float:right;
     color: grey;
+    z-index: 2;
     margin-top: -10px;
-    /* margin-right: 45px; */
+    margin-right: 35px;
   }
-  .mapMenu {
-    float:right;
-    color: grey;
-  }
-
+  
   .banner {
     text-align:left;
     font-size: 25px;
@@ -437,10 +444,6 @@ img{
   /* transform: translate(-20px, -50px); */
 }
 
-.aTranslate{
-  /* transform: translate(20px, 50px); */
-}
-
 .eventPhoto {
   height: 200px;
   width: 100%;
@@ -453,12 +456,6 @@ img{
   margin-top: 30px;
   
 }
-
-.menuIcon{
-  float:right;
-  z-index: 2;
-}
-
 
 .redDiv {
   /* border-style: solid; */
@@ -476,7 +473,6 @@ img{
 .pageDown{
   padding-top: 80px;
 }
-
 
 .coverPhoto{
   object-fit: cover;
@@ -530,7 +526,7 @@ img{
   position: fixed;
   text-align: center;
   top: 27px;
-  left: 30px;
+  left: 28px;
   font-weight: bold;
   letter-spacing: 1px;
   height: 10px;
@@ -540,7 +536,7 @@ img{
 
 .menuIcon{
   float:right;
-  color: grey;
+  color:grey;
   margin-top: -10px;
   margin-right: 30px;
 }
@@ -635,13 +631,15 @@ img{
   vertical-align: top;
   width: 8px;
   height:8px;
+  transform: translateY(-20px);
 }
 
 #slash{
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
 }

@@ -40,7 +40,6 @@ router.post('/join/insert', (req, res)=>{
         pool.query('INSERT INTO map_artifact_join (artifact_id, location_id, main_photo) VALUES ($1, $2, $3);',
         [req.body.artifact_id, req.body.location_id, req.body.main_photo], (err, result)=>{
         if(err){
-            console.log("Error inserting data: ", err);
             res.sendStatus(500);
         }else{
             res.sendStatus(201);
@@ -54,7 +53,7 @@ router.post('/join/insert', (req, res)=>{
 router.post('/post', (req, res)=>{
     if(req.isAuthenticated()){
         let location = req.body;
-        pool.query('INSERT INTO map (location_name, lat, long) VALUES ($1, $2, $3);', [location.location_name, location.lat, location.long])
+        pool.query('INSERT INTO map (location_name, lat, long, reveal_type) VALUES ($1, $2, $3, $4);', [location.location_name, location.lat, location.long, location.reveal_type])
         .then(function(result){
             res.sendStatus(201);
         }).catch(function(error){

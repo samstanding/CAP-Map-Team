@@ -73,10 +73,8 @@ router.put('/edit', (req, res)=>{
         [art.type, art.year, art.material, art.artist_name, art.title, art.description, art.extended_description, art.media_url, art.view_count, art.id])
         .then((result)=>{
             res.sendStatus(201);
-            console.log('Artifact is updated', result.rows);
         }).catch((error)=>{
             res.sendStatus(500);
-            console.log('Update failed', error);
         })
     }else{
         res.sendStatus(403);
