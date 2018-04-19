@@ -663,12 +663,10 @@ img{
 
 .add{
   margin-left: 10px;
-  z-index: 10;
 }
 
 .minus{
   position: relative;
-  z-index: 10;
 }
 
 .short{
