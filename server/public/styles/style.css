@@ -553,3 +553,19 @@ a{
 .centerPage{
   float: center;
 }
+
+#xbutton{
+  float: right;
+  vertical-align: top;
+  width: 8px;
+  height:8px;
+}
+
+#slash{
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  background-color: rgb(162, 196, 99);
+  margin-bottom: -10px;
+}
