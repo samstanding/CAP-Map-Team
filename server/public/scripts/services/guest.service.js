@@ -28,19 +28,15 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
     }
     
     self.addGuest = function(guest){
-        console.log('In addGuest');
-        console.log(guest);
         $http({
             method: 'POST',
             url:'/api/user/guest',
             data: guest,
         }).then((result)=>{
-            // console.log('guest email added');
             self.emptyGuestInputs();
             alert("Thank you for joining the Caponi Art Park Email List!");
-            // self.emptyGuestInputs();
         }).catch((error)=>{
-            console.log('Could not add guest email'); 
+            console.log('/api/user/guest', error); 
         })
     }
 
@@ -50,37 +46,32 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
     }
 
     self.getInformation = function(){
-        console.log('Get Guidelines');
         $http({
             method: 'GET',
             url: `/information/get`,
         }).then((result)=>{
-            console.log('Information:', result.data);
             self.information.guidelines = result.data;
         }).catch((error)=>{
-            console.log('guidelines', error);
+            console.log('/information/get', error);
         })
     }
 
     self.getEvents = function () {
-        console.log('getEvents');
         $http({
             method: 'GET',
             url: `/events/get`,
         }).then((result) => {
-            console.log('Events:', result.data);
             self.information.allEvents = result.data;
             self.information.allEvents.showMore = false;
         }).catch((error) => {
-            console.log('getEvents', error);
+            console.log('/events/get', error);
         })
     }
 
     self.getIndividualLocation = function(locationid){
-        console.log('in getIndividualLocation function');
         $http({
             method: 'GET',
-            url: `map/artifact/${locationid}`
+            url: `/map/artifact/${locationid}`
         }).then((result)=>{
             self.information.allArtifactsForLocation = result.data;
             self.information.currentLocationId = locationid;
@@ -92,13 +83,8 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
                     self.indLocation.sculptureTitle = artifact.title.toUpperCase();
                 }
             }
-            console.log('current location id:', self.information.currentLocationId);
-            console.log(`success getting artifacts for location id:${locationid}`, self.information.allArtifactsForLocation);
-            // self.determineMain(self.information.allArtifactsForLocation);
-            // console.log('main', self.mainArtifact);
-            
         }).catch((error)=>{
-            console.log('error getting all locations', error);
+            console.log(`/map/artifact/${locationid}`, error);
         })
     }
 

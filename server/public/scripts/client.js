@@ -2,7 +2,7 @@ let capApp = angular.module('capApp', ['ngRoute', 'ngSanitize', 'ngMaterial', 'm
 
 /// Routes ///
 capApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  console.log('capApp -- config')
+  // console.log('capApp -- config')
   $routeProvider
     .when('/', {
       redirectTo: 'guidelines'
