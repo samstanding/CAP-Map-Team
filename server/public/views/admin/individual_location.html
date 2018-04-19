@@ -64,8 +64,13 @@
 
 <!--ng-if="vm.indLocation.isBeingEdited"-->
                 <!-- save as main_photo -->
+        <div layout="row" layout-align="center center">
+        <a href="/#!/admin/location/{{vm.locations.currentLocationId}}/location"> 
+                <button class="md-raised">Edit Map Location </button></a>
+        </div>
+       
         <hr>
-        <div class="divCoverPhoto" layout="column" layout-align="center center" ng-if="vm.indLocation.indMainPhoto.media_url != undefined">
+        <div class="divCoverPhoto" layout="column" layout-align="center center" ng-if="vm.indLocation.indMainPhoto.media_url != undefined"></div>
                 <img layout="row" layout-align="center center" class="coverPhoto" src="{{vm.indLocation.indMainPhoto.media_url}}" />
                 <div layout="row" layout-align="center end">
                 <a class="changeMainPhoto" href="/#!/admin/multimedia">

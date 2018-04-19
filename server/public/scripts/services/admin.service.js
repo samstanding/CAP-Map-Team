@@ -19,6 +19,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         newGuest:{},
         allAdmins: [],
         allRevealTypes: [{type:'static'}, {type:'proximity'}, {type:'bathroom'}],
+        locationToEdit: {}
     }
     
     self.indLocation = {
@@ -223,10 +224,21 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             self.indLocation.indWritings = [];
             self.indLocation.indAnecdotes = [];
             self.indLocation.indVideos = [];
-            self.indLocation.reveal_type = '';
             self.determineType();
         }).catch((error)=>{
             console.log(`map/artifact/${id}`, error);
+        })
+    }
+
+    self.getMapLocation = (id) => {
+        $http({
+            method:'GET',
+            url: `map/${id}`
+        }).then((result) => {
+            self.locations.locationToEdit = result.data;
+            console.log(self.locations.locationToEdit);
+        }).catch((error) => {
+            console.log(`map/${id}`, error);
         })
     }
     //-----End Locations----

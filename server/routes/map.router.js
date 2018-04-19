@@ -93,4 +93,11 @@ router.put('/edit', (req, res)=>{
     }
 });
 
+// router.get('/map/:id', (req, res) => {
+//     if(req.isAuthenticated()) {
+//         let id = req.params.id;
+//         pool.query('')
+//     }
+// })
+
 module.exports = router;
