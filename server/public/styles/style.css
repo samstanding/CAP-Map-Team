@@ -231,8 +231,7 @@ img{
 .mapMenu {
   float:right;
   color: white;
-  
-  /* position: relative; */
+  margin-top: 15px;
 }
 .menuPosition {
   position: relative;
@@ -369,7 +368,7 @@ img{
     float:right;
     color: grey;
     margin-top: -10px;
-    /* margin-right: 45px; */
+  
   }
   
   .banner {
