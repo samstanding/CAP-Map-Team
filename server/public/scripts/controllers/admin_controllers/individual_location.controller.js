@@ -7,6 +7,7 @@ capApp.controller('IndividualLocationController', ['UserService', 'AdminService'
     self.locations = AdminService.locations;
     self.indLocation = AdminService.indLocation;
     self.getIndividualLocation = AdminService.getIndividualLocation;
+    self.deleteLocation = AdminService.deleteLocation;
 
     let locationid = $routeParams.locationid;
     self.getIndividualLocation(locationid);
