@@ -2,7 +2,9 @@
 
 
 <div class="welcome"><h1>WELCOME</h1></div>
-
+<div ng-if="vm.information.mapInfo">
+        <div ng-include="'views/partials/mapInfo.html'"></div>
+</div>
 <div class="guestBody">
     <md-list-item ng-repeat="guideline in vm.information.guidelines">
     <div class="guideline" > {{guideline.description}}
