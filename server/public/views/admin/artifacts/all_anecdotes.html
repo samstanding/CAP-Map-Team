@@ -1,20 +1,25 @@
-
-<div ng-include="'/views/admin/admin_menu.html'"></div>
+<div ng-include="'/views/admin/admin_menu.html'">
+</div>
 
 <div class="pageDown"></div>
-Search:
-<input type="text" ng-model="vm.searchAnecdotes">
+<div class="adminBody">
+    <h2>Anecdotes</h2>
 
-<div ng-repeat="anecdote in vm.locations.allAnecdotes|filter:vm.searchAnecdotes">
-    
-        {{anecdote.title}}
-        {{anecdote.year}}
+    Search:
+    <input type="text" ng-model="vm.searchAnecdotes">
+
+    <div ng-repeat="anecdote in vm.locations.allAnecdotes|filter:vm.searchAnecdotes">
+
+        {{anecdote.title}} {{anecdote.year}}
         <div ng-bind-html="anecdote.description">{{anecdote.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(anecdote.id, 'false')">Add to location</button>
         </div>
         <button ng-click="vm.getArtifactToEdit(anecdote.id)">Edit</button>
         <button ng-click="vm.deleteArtifact(anecdote)">Delete</button>
-</div>
+    </div>
 
-<a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>
+    <a href="/#!/admin/textform">
+        <i class="material-icons">add_circle</i>
+    </a>
+</div>
