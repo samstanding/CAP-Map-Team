@@ -754,3 +754,29 @@ md-content{
 #eventsTable{
   margin-top: 30px;
 }
+
+.textFormPage{
+  margin-left: 100px;
+  margin-right: 100px;
+  border-style: solid;
+  border-color: #dbdbdb;
+  border-width: 1px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.moreSculptureDetails{
+  text-align: center;
+  font-size:10px;
+  color: grey;
+  text-decoration: underline;
+}
+
+.greyText{
+  color: #939393;
+}
+
+#or{
+  margin-top: 14px;
+  margin-left: 10px;
+}
