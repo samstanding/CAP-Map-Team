@@ -151,12 +151,8 @@ img{
 }
 
 .md-indent{
-  margin-left: 20px;
-}
-
-/* not working */
-.subNav{
-  max-width: 50%;
+  margin-left: 5px;
+  content: center;
 }
 
 .adminEventPhoto {
@@ -283,6 +279,7 @@ img{
 
 .searchBar{
   width: 40%;
+  margin: 15px;
 }
 
 .location-list:hover{
@@ -291,7 +288,6 @@ img{
 
 .searchIcon{
   position: relative;
-  transform: translateY(8px);
 }
 
 #adminMenu{
@@ -428,16 +424,6 @@ img{
 
 .marginTop {
   margin-top: 25px;
-}
-
-.md-indent{
-  margin-left: 20px;
-}
-
-/* not working */
-.subNav{
-  max-width: 50%;
-  /* transform: translate(-20px, -50px); */
 }
 
 .eventPhoto {
@@ -658,7 +644,11 @@ img{
 }
 
 .subNavPadding{
-  margin-right:20px;
+  /* margin-right:20px; */
+  background: white;
+  text-align: left;
+  vertical-align: middle;
+  content: center;
 }
 
 .changeMainPhoto{
@@ -686,6 +676,10 @@ img{
 
 .short{
   width: 60%;
+}
+
+.markerType {
+  margin-top: 23px;
 }
 
 td{

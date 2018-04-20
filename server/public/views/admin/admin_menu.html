@@ -16,10 +16,10 @@
 
                 <div class="leftFloat marginTop">
                     <md-menu>
-                        <button id="menu-item" ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
+                        <button ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
                             Manage Artifacts
                         </button>
-                        <md-menu-content class="subNav subNavPadding">
+                        <md-menu-content class="subNavPadding">
                             <a href="/#!/admin/anecdotes">
                                 <md-menu-item class="md-indent hover" type="string">Anecdotes</md-menu-item>
                             </a>
@@ -47,7 +47,7 @@
                         <button id="menu-item" ng-click="$mdMenu.open()">
                             Manage Users
                         </button>
-                        <md-menu-content class="subNav subNavPadding">
+                        <md-menu-content >
                             <a href="/#!/admin/manageadmins">
                                 <md-menu-item class="md-indent hover" type="string">Admins</md-menu-item>
                             </a>
