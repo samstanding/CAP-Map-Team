@@ -106,7 +106,7 @@ router.post('/guest', (req, res)=>{
   })
 })
 
-router.delete('/api/user/admin/delete/:id', (req, res)=>{
+router.delete('/admin/delete/:id', (req, res)=>{
   if(req.isAuthenticated()){
     let id = req.params.id;
     pool.query('DELETE FROM users WHERE id = $1;', [id])

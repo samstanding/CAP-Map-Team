@@ -151,17 +151,13 @@ img{
 }
 
 .md-indent{
-  margin-left: 20px;
-}
-
-/* not working */
-.subNav{
-  max-width: 50%;
+  margin-left: 5px;
+  content: center;
 }
 
 .adminEventPhoto {
-  height: 30%;
-  width: 30%;
+  height: 150px;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -283,6 +279,7 @@ img{
 
 .searchBar{
   width: 40%;
+  margin: 15px;
 }
 
 .location-list:hover{
@@ -291,7 +288,6 @@ img{
 
 .searchIcon{
   position: relative;
-  transform: translateY(8px);
 }
 
 #adminMenu{
@@ -428,16 +424,6 @@ img{
 
 .marginTop {
   margin-top: 25px;
-}
-
-.md-indent{
-  margin-left: 20px;
-}
-
-/* not working */
-.subNav{
-  max-width: 50%;
-  /* transform: translate(-20px, -50px); */
 }
 
 .eventPhoto {
@@ -658,7 +644,11 @@ img{
 }
 
 .subNavPadding{
-  margin-right:20px;
+  /* margin-right:20px; */
+  background: white;
+  text-align: left;
+  vertical-align: middle;
+  content: center;
 }
 
 .changeMainPhoto{
@@ -686,4 +676,47 @@ img{
 
 .short{
   width: 60%;
+}
+
+.markerType {
+  margin-top: 49px;
+}
+
+td{
+  border-bottom: 1px solid #e9e9e9; 
+  padding: 10px;
+}
+
+.indCard{
+  width: 30%;
+}
+
+.addArtifact{
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.textTitle{
+  text-transform: uppercase;
+}
+
+.indMultimediaCard{
+  width: 100%;
+}
+
+md-content{
+  flex-wrap: wrap;
+}
+
+cardImg{
+  width: 100%; 
+  height: 60%;
+}
+.tableFit{
+  width:300px;
+}
+
+.eventInput{
+  text-align: center;
+  padding: 20px;
 }
