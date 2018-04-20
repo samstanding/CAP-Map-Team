@@ -156,10 +156,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
             //--------------loops through all the locations and displays locations that should be displayed--------------
             for (let i = 0; i < self.locations.allLocations.length; i++) {
-            
+                console.log(self.locations.allLocations);
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
-                } else if (self.locations.allLocations[i].reveal_type == 'hidden') {
+                } else if (self.locations.allLocations[i].reveal_type == '') {
                     self.locations.allLocations[i].reveal_type = hiddenMarker;
                 } else {
                     self.locations.allLocations[i].reveal_type = facility;
