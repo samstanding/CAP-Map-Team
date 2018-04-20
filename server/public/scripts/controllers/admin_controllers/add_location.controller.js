@@ -13,10 +13,6 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
     let overlay;
     CaponiOverlay.prototype = new google.maps.OverlayView();
 
-
-   
-
-
     self.initMap = () => {
 
         if (self.locations.currentLocationId.length > 0 )  {
