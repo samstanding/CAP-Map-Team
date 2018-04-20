@@ -30,7 +30,7 @@
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
                         <div ng-if="vm.locations.currentLocationId != ''">
-                                <button ng-click="vm.saveAssociation(anecdote.id, 'false')"><i class="material-icons">add</i></button>
+                                <div ng-click="vm.saveAssociation(anecdote.id, 'false')"><i class="material-icons">add</i></div>
                         </div>
                         <div ng-click="vm.getArtifactToEdit(anecdote.id)"><i class="material-icons">mode_edit</i></div>
                         <div ng-click="vm.deleteArtifact(anecdote)"><i class="material-icons">delete</i></div>
