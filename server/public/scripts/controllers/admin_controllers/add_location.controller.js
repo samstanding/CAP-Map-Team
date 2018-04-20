@@ -15,8 +15,8 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
         let map = new google.maps.Map(document.getElementById('map'), {
             center: {
-                lat: 44.80526000,
-                lng: -93.15375000
+                lat: 44.8049741120178,
+                lng: -93.1529663690302
             },
             zoom: 18,
             mapTypeId: 'satellite',
@@ -35,13 +35,13 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
         // this is the trail only map using google maps as the background
         let bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(44.8018500, -93.1568000),
-            new google.maps.LatLng(44.8081500, -93.1468500));
+            new google.maps.LatLng(44.8000250, -93.157400000),
+            new google.maps.LatLng(44.8080250, -93.1460700));
 
-        let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
+        let srcImage = '../../styles/CaponiArtParkOverlay_Transparent.png';
 
         let marker = new google.maps.Marker({
-            position: new google.maps.LatLng(44.80457827564791, -93.15323458993169),
+            position: new google.maps.LatLng(44.8049741120178, -93.1529663690302),
             map: map,
             title: self.locations.newLocation.name,
             draggable: true,
@@ -101,7 +101,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
         img.style.width = '100%';
         img.style.height = '100%';
         img.style.position = 'absolute';
-        img.style.opacity = '.9';
+        img.style.opacity = '.75';
         div.appendChild(img);
 
         this.div_ = div;
