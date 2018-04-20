@@ -623,6 +623,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             url: '/api/user/guest',
             data: guest,
         }).then((result)=>{
+            swal("Guest and email added.", "", "success");
             self.getAllGuests();
             self.emptyGuestInputs();
         }).catch((error)=>{

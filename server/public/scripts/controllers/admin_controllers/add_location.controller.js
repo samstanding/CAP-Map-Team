@@ -126,7 +126,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
         img.style.width = '100%';
         img.style.height = '100%';
         img.style.position = 'absolute';
-        img.style.opacity = '.9';
+        img.style.opacity = '.75';
         div.appendChild(img);
 
         this.div_ = div;

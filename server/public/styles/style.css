@@ -156,8 +156,8 @@ img{
 }
 
 .adminEventPhoto {
-  height: 30%;
-  width: 30%;
+  height: 150px;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -679,10 +679,44 @@ img{
 }
 
 .markerType {
-  margin-top: 23px;
+  margin-top: 49px;
 }
 
 td{
   border-bottom: 1px solid #e9e9e9; 
   padding: 10px;
+}
+
+.indCard{
+  width: 30%;
+}
+
+.addArtifact{
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.textTitle{
+  text-transform: uppercase;
+}
+
+.indMultimediaCard{
+  width: 100%;
+}
+
+md-content{
+  flex-wrap: wrap;
+}
+
+cardImg{
+  width: 100%; 
+  height: 60%;
+}
+.tableFit{
+  width:300px;
+}
+
+.eventInput{
+  text-align: center;
+  padding: 20px;
 }
