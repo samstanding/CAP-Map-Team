@@ -340,7 +340,15 @@ img{
   background-color:#365c63;
 }
 
-
+.adminWelcome {
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  color: white;
+  background-color:#365c63;
+}
   .eventDate {
     font-weight: bold;
     text-transform: uppercase;
@@ -753,4 +761,8 @@ md-content{
 
 #eventsTable{
   margin-top: 30px;
+}
+
+.guestCard{
+  width: 15%;
 }
