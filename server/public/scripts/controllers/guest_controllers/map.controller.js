@@ -136,11 +136,22 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 tilt: 0
             })
     ////--------------sets bounds for the overlay--------------
-            let bounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(44.8047000, -93.1550000),
-                new google.maps.LatLng(44.8090000, -93.1488500));
+
+        // this is the original map
+        // let bounds = new google.maps.LatLngBounds(
+        //     new google.maps.LatLng(44.8047000, -93.1550000),
+        //     new google.maps.LatLng(44.8090000, -93.1488500));
+
+        // let srcImage = '../../styles/northMap.png';
+
+        // this is the trail only map using google maps as the background
+        let bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(44.8018500, -93.1568000),
+            new google.maps.LatLng(44.8081500, -93.1468500));
+            
     //--------------source image for the overlay--------------
-            let srcImage = '../../styles/northMap.png';
+
+    let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
              
     //--------------loops through all the locations and displays locations that should be displayed--------------
              for(let i = 0; i <self.locations.allLocations.length; i ++) {  

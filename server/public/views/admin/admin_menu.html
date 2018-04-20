@@ -19,18 +19,18 @@
                         <button id="menu-item" ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
                             Manage Artifacts
                         </button>
-                        <md-menu-content class="subNav">
+                        <md-menu-content class="subNav subNavPadding">
                             <a href="/#!/admin/anecdotes">
-                                <md-menu-item class="md-indent" type="string">Anecdotes</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Anecdotes</md-menu-item>
                             </a>
                             <a href="/#!/admin/poems">
-                                <md-menu-item class="md-indent" type="string">Poems</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Poems</md-menu-item>
                             </a>
                             <a href="/#!/admin/writings">
-                                <md-menu-item class="md-indent" type="string">Writings</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Writings</md-menu-item>
                             </a>
                             <a href="/#!/admin/multimedia">
-                                <md-menu-item class="md-indent" type="string">Multimedia</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Multimedia</md-menu-item>
                             </a>
                         </md-menu-content>
                     </md-menu>
@@ -47,12 +47,12 @@
                         <button id="menu-item" ng-click="$mdMenu.open()">
                             Manage Users
                         </button>
-                        <md-menu-content class="subNav">
+                        <md-menu-content class="subNav subNavPadding">
                             <a href="/#!/admin/manageadmins">
-                                <md-menu-item class="md-indent" type="string">Admins</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Admins</md-menu-item>
                             </a>
                             <a href="/#!/admin/manageguests">
-                                <md-menu-item class="md-indent" type="string">Guests</md-menu-item>
+                                <md-menu-item class="md-indent hover" type="string">Guests</md-menu-item>
                             </a>
                         </md-menu-content>
                     </md-menu>

@@ -1,22 +1,26 @@
-
-<div ng-include="'/views/admin/admin_menu.html'"></div>
-<div class="pageDown"></div>
-
-Search:
-<input type="text" ng-model="vm.searchLocations">
-<div ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
-    <a href="/#!/admin/location/{{location.id}}">{{location.location_name}}</a>
+<div ng-include="'/views/admin/admin_menu.html'">
 </div>
+<div class="pageDown"></div>
+<div class="adminBody">
+    <h2>Poems</h2>
 
-<div ng-repeat="poem in vm.locations.allPoems">
-    {{poem.title}}
-    {{poem.year}}
-    <div ng-bind-html="poem.description">{{poem.description}}</div>
+    Search:
+    <input type="text" ng-model="vm.searchLocations">
+    <div ng-repeat="location in vm.locations.allLocations|filter:vm.searchLocations">
+        <a href="/#!/admin/location/{{location.id}}">{{location.location_name}}</a>
+    </div>
+
+    <div ng-repeat="poem in vm.locations.allPoems">
+        {{poem.title}} {{poem.year}}
+        <div ng-bind-html="poem.description">{{poem.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(poem.id, 'false')">Add to location</button>
         </div>
-    <button ng-click="vm.getArtifactToEdit(poem.id)">Edit</button>
-    <button ng-click="vm.deleteArtifact(poem)">Delete</button>
-</div>
+        <button ng-click="vm.getArtifactToEdit(poem.id)">Edit</button>
+        <button ng-click="vm.deleteArtifact(poem)">Delete</button>
+    </div>
 
-<a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>
+    <a href="/#!/admin/textform">
+        <i class="material-icons">add_circle</i>
+    </a>
+</div>
