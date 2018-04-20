@@ -17,7 +17,7 @@
 <div>
     <table>
         <thread>
-            <th>Information</th>
+            <th>Guideline</th>
             <!-- <th>Category</th> -->
             <th></th>
             <th></th>
@@ -26,7 +26,10 @@
             <tr ng-repeat="information in vm.locations.information">
                 <td>
                     <div ng-hide="information.editing">{{information.description}}</div>
-                    <input ng-show="information.editing" ng-model="information.description" ng-value="information.description"/>
+                    <md-input-container ng-show="information.editing" class="md-block">
+                        <label>Guideline</label>
+                    <input ng-model="information.description" ng-value="information.description"/>
+                    </md-input-container>
                     <!-- <text-angular ng-show="information.editing" ng-value="information.description" ng-model="information.description"></text-angular> -->
                 </td>
                 <!-- <td>
