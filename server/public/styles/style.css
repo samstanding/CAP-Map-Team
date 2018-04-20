@@ -358,6 +358,12 @@ img{
     text-transform: uppercase;
   }
    
+  .mapSearch {
+    float:left;
+    z-index: 2;
+    margin-top: -10px;
+    margin-right: 35px;
+  }
   .menuIcon{
     float:right;
     color: grey;
