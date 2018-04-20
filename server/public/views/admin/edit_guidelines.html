@@ -2,7 +2,9 @@
 
 <div ng-include="'/views/admin/admin_menu.html'"></div>
 <div class="pageDown"></div>
-
+<h3>EDIT GUIDELINES</h3>
+<md-divider></md-divider>
+<br>
 <div>
     <form>
         <md-input-container class="md-block">
@@ -13,7 +15,8 @@
         <md-button  class="md-raised" type="submit" ng-click="vm.addInformation(vm.locations.information.newInformation)">Submit</md-button>
     </form>
 </div>
-
+<md-divider></md-divider>
+<br>
 <div>
     <table>
         <thread>
@@ -37,11 +40,12 @@
                     <input ng-show="information.editing" ng-model="information.category" ng-value="information.category"/>
                 </td> -->
                 <td>
-                    <md-button class="md-raised" ng-hide="information.editing" ng-click="vm.viewEditInformation(information)">Edit</md-button>
-                    <md-button class="md-raised" ng-show="information.editing" ng-click="vm.editInformation(information)">Save</md-button>
+                   
+                    <div layout="row"  layout-align="center center" ng-hide="information.editing" ng-click="vm.viewEditInformation(information)"><i class="material-icons">mode_edit</i></div>
+                    <div layout="row"  layout-align="center center" ng-show="information.editing" ng-click="vm.editInformation(information)"><i class="material-icons">check</i></div>
                 </td>
                 <td>
-                    <md-button class="md-raised" ng-click="vm.deleteInformation(information)">Delete</md-button>
+                    <div layout="row"  layout-align="center center" ng-click="vm.deleteInformation(information)"><i class="material-icons">remove_circle</i></div>
                 </td>
             </tr>
         </tbody>

@@ -156,8 +156,8 @@ img{
 }
 
 .adminEventPhoto {
-  height: 30%;
-  width: 30%;
+  height: 200px;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -679,10 +679,14 @@ img{
 }
 
 .markerType {
-  margin-top: 23px;
+  margin-top: 49px;
 }
 
 td{
   border-bottom: 1px solid #e9e9e9; 
   padding: 10px;
+}
+
+.tableFit{
+  width:300px;
 }
