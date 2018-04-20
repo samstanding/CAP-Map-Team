@@ -105,7 +105,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         error = (err) => {
             console.log('error in finding location: ', err);
-            alert('We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!');
+            swal("We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!", "", "error");
         }
         options = {
             enableHighAccuracy: true,
