@@ -687,9 +687,9 @@ td{
   padding: 10px;
 }
 
-/* .indCard{
+.indCard{
   width: 30%;
-} */
+}
 
 .addArtifact{
   margin-left: 20px;
@@ -702,17 +702,10 @@ td{
 
 .indMultimediaCard{
   width: 275px;
-  /* align-items: middle;
-  margin-left: auto;
-  margin-right: auto; */
 }
 
 .cardText{
 width: 260px;
-
-/* text-align: justify;
-text-justify: contain; */
-
 }
 
 md-content{
@@ -722,8 +715,6 @@ md-content{
 .cardImg{
   width: 160%; 
   height: 150px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .margin {
