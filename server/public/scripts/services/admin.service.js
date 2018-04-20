@@ -62,9 +62,8 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             self.newMultimedia.media_url = result.filesUploaded[0].url;
             self.locations.newEvent.photo_url = result.filesUploaded[0].url;
             self.newMultimedia.uploaded = true;
-            alert("successful upload!");
+            swal("Successful upload!", "", "success")
         }).catch((error)=>{
-            alert("Please try again.");
             console.log('FileStack error:', error);
         })
     }
@@ -166,7 +165,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
                 reveal_type: location.reveal_type
             }
         }).then((response) =>{
-                alert('Location successfully uploaded!');
+                swal("Location successfully uploaded!", "", "success")
                 location.name = '';
             })
             .catch((error) => {
@@ -324,7 +323,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
                 type: 'sculpture',
             }
         }).then((result)=>{
-            alert('sculpture added!');
+            swal("sculpture added!", "", "success")
             let artifact_id = result.data[0].id //return id from database!!!!
             self.saveAssociation(artifact_id, false);
         }).catch((error)=>{
