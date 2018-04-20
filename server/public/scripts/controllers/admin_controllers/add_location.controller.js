@@ -10,77 +10,91 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
     self.getMapLocation = AdminService.getMapLocation;
 
-
-    if (self.locations.currentLocationId.length > 0 )  {
-        self.getMapLocation(self.locations.currentLocationId);
-        console.log(self.locations.locationToEdit);
-       
-    }
-
-    
-    
-    
-
     let overlay;
     CaponiOverlay.prototype = new google.maps.OverlayView();
 
+
+   
+
+
     self.initMap = () => {
 
-        let map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 44.80526000,
-                lng: -93.15375000
-            },
-            zoom: 18,
-            mapTypeId: 'satellite',
-            streetViewControl: false,
-            rotateControleOptions: false,
-            fullscreenControl: false,
-            tilt: 0
-        })
+        if (self.locations.currentLocationId.length > 0 )  {
+            self.getMapLocation(self.locations.currentLocationId);
+            console.log(self.locations.locationToEdit);
+           
+        }
+        setTimeout(function mapDelay() {
 
-        // this is the original map
-        // let bounds = new google.maps.LatLngBounds(
-        //     new google.maps.LatLng(44.8047000, -93.1550000),
-        //     new google.maps.LatLng(44.8090000, -93.1488500));
+            let map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 44.80526000,
+                    lng: -93.15375000
+                },
+                zoom: 18,
+                mapTypeId: 'satellite',
+                streetViewControl: false,
+                rotateControleOptions: false,
+                fullscreenControl: false,
+                tilt: 0
+            })
+    
+            // this is the original map
+            // let bounds = new google.maps.LatLngBounds(
+            //     new google.maps.LatLng(44.8047000, -93.1550000),
+            //     new google.maps.LatLng(44.8090000, -93.1488500));
+    
+            // let srcImage = '../../styles/northMap.png';
+    
+            // this is the trail only map using google maps as the background
+            let bounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(44.8018500, -93.1568000),
+                new google.maps.LatLng(44.8081500, -93.1468500));
+    
+            let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
+    
+            if (self.locations.currentLocationId.length > 0 ) {
+                console.log(self.locations.locationToEdit);
+                let marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(self.locations.locationToEdit[0].lat, self.locations.locationToEdit[0].long),
+                    map: map,
+                    title: self.locations.locationToEdit.name,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP
+                })
+            } else {
+                let marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(44.80457827564791, -93.15323458993169),
+                    map: map,
+                    title: self.locations.newLocation.name,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP
+                })
+            }
+    
+           
+    
+    
+            google.maps.event.addListener(marker, 'dragstart', function () {
+                console.log('drag start');
+    
+            })
+    
+            google.maps.event.addListener(marker, 'drag', function () {
+                console.log('dragging');
+    
+            })
+    
+            google.maps.event.addListener(marker, 'dragend', function () {
+                console.log('dragend');
+                self.locations.newLocation.lat = marker.getPosition().lat();
+                self.locations.newLocation.long = marker.getPosition().lng();
+                console.log(self.locations.newLocation);
+            })
+            overlay = new CaponiOverlay(bounds, srcImage, map);
 
-        // let srcImage = '../../styles/northMap.png';
-
-        // this is the trail only map using google maps as the background
-        let bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(44.8018500, -93.1568000),
-            new google.maps.LatLng(44.8081500, -93.1468500));
-
-        let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
-
-            
-
-        let marker = new google.maps.Marker({
-            position: new google.maps.LatLng(44.80457827564791, -93.15323458993169),
-            map: map,
-            title: self.locations.newLocation.name,
-            draggable: true,
-            animation: google.maps.Animation.DROP
-        })
-
-
-        google.maps.event.addListener(marker, 'dragstart', function () {
-            console.log('drag start');
-
-        })
-
-        google.maps.event.addListener(marker, 'drag', function () {
-            console.log('dragging');
-
-        })
-
-        google.maps.event.addListener(marker, 'dragend', function () {
-            console.log('dragend');
-            self.locations.newLocation.lat = marker.getPosition().lat();
-            self.locations.newLocation.long = marker.getPosition().lng();
-            console.log(self.locations.newLocation);
-        })
-        overlay = new CaponiOverlay(bounds, srcImage, map);
+        },100)
+        
     }
     /** @constructor */
     function CaponiOverlay(bounds, image, map) {
