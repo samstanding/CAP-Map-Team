@@ -1,6 +1,10 @@
 
 <div ng-include="'/views/admin/admin_menu.html'"></div>
 <div class="pageDown"></div>
+
+<h3 class="indent">EVENTS</h3>
+<md-divider></md-divider>
+<br>
 <div class="guestBody">
     <div>
         <form>
@@ -20,6 +24,7 @@
                 <label>Description</label>
                 <input ng-model="vm.locations.newEvent.description" />
             </md-input-container>
+            <br>
             <md-input-container>
                 <label>Notes (Admin Only)</label>
                 <input ng-model="vm.locations.newEvent.notes"/>
@@ -28,9 +33,9 @@
                 <label>Category</label> 
                 <input ng-model="vm.locations.newEvent.category"/>
             </md-input-container>
-            <md-input-container>
+            <!-- <md-input-container>
                 <md-button class="md-raised" ng-click="vm.uploadnewPhoto()">Choose Photo</md-button>
-            </md-input-container>
+            </md-input-container> -->
             <md-input-container>
                 <label>Age Group</label>
                 <input ng-model="vm.locations.newEvent.age_group"/>
@@ -39,24 +44,29 @@
                 <label>Price</label>
                 <input ng-model="vm.locations.newEvent.price"/>
             </md-input-container>
+            <br>
+            <md-input-container>
+                <md-button class="md-raised" ng-click="vm.uploadnewPhoto()">Choose Photo</md-button>
+            </md-input-container>
+            <md-input-container>
            <md-button class="md-raised" ng-click="vm.addEvent(vm.locations.newEvent)" value="Submit">Submit</md-button>
         </form>
     </div>
 
-<md-input-container>
-<label>SEARCH</label>
-<input type="text" ng-model="vm.searchEvents">
-</md-input-container>
+
+<i class="material-icons indent extra-indent searchIcon">search</i>
+<input class="indent" type="text" ng-model="vm.searchLocations">
+
     <div>
         <table>
             <thread>
+                <th class="tableFit">Photo</th>
                 <th>Event Title</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Description</th>
                 <th>Notes</th>
                 <th>Category</th>
-                <th>Photo</th>
                 <th>Age Group</th>
                 <th>Price</th>
                 <th></th>
@@ -64,6 +74,14 @@
             </thread>
             <tbody>
                 <tr ng-repeat="event in vm.locations.allEvents|filter:vm.searchEvents">
+                    <td class="tableFit">
+                        <div ng-hide="event.editing">
+                            <img class="adminEventPhoto" src="{{event.photo_url}}" altSrc="favicon.icn" />
+                        </div>
+                        <md-input-container ng-show="event.editing">
+                            <md-button class="md-raised" ng-click="vm.uploadnewPhoto()">Choose Photo</md-button>
+                        </md-input-container>
+                    </td>
                     <td>
                         <div ng-hide="event.editing">{{event.title}}</div>
                         <md-input-container ng-show="event.editing">
@@ -107,12 +125,6 @@
                         </md-input-container>
                     </td>
                     <td>
-                        <div ng-hide="event.editing"><img class="adminEventPhoto" src="{{event.photo_url}}" altSrc="favicon.icn"/></div>
-                        <md-input-container ng-show="event.editing">
-                        <md-button class="md-raised" ng-click="vm.uploadnewPhoto()">Choose Photo</md-button>
-                        </md-input-container>
-                    </td>
-                    <td>
                         <div ng-hide="event.editing">{{event.age_group}}</div>
                         <md-input-container ng-show="event.editing">
                             <label>Age Group</label>
@@ -127,11 +139,12 @@
                         </md-input-container>
                     </td>
                     <td>
-                        <md-button class="md-raised" ng-hide="event.editing" ng-click="vm.viewEditEvents(event)">Edit</md-button>
-                        <md-button class="md-raised" ng-show="event.editing" ng-click="vm.editEvent(event)">Save</md-button>
+                        <div layout="row"  layout-align="center center" ng-hide="event.editing" ng-click="vm.viewEditEvents(event)"><i class="material-icons">mode_edit</i></div>
+                        <div layout="row"  layout-align="center center" ng-show="event.editing" ng-click="vm.editEvent(event)"><i class="material-icons">check</i></div>
                     </td>
                     <td>
-                    <md-button class="md-raised" ng-click="vm.deleteEvent(event)">Delete</md-button>
+                     <div layout="row"  layout-align="center center" ng-click="vm.deleteEvent(event)"><i class="material-icons">remove_circle</i></div>
+                </td>
                     </td>
             </tbody>
         </table>
