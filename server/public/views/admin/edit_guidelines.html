@@ -5,16 +5,19 @@
 
 <div>
     <form>
-        New Information:<input ng-model="vm.locations.information.newInformation.description"/>
+        <md-input-container class="md-block">
+        <label>Guideline</label>
+        <input ng-model="vm.locations.information.newInformation.description"/>
+        </md-input-container>
         <!-- Category:<input ng-model="vm.locations.information.newInformation.category"/> -->
-        <input type="submit" ng-click="vm.addInformation(vm.locations.information.newInformation)"/>
+        <md-button  class="md-raised" type="submit" ng-click="vm.addInformation(vm.locations.information.newInformation)">Submit</md-button>
     </form>
 </div>
 
 <div>
     <table>
         <thread>
-            <th>Information</th>
+            <th>Guideline</th>
             <!-- <th>Category</th> -->
             <th></th>
             <th></th>
@@ -23,7 +26,10 @@
             <tr ng-repeat="information in vm.locations.information">
                 <td>
                     <div ng-hide="information.editing">{{information.description}}</div>
-                    <input ng-show="information.editing" ng-model="information.description" ng-value="information.description"/>
+                    <md-input-container ng-show="information.editing" class="md-block">
+                        <label>Guideline</label>
+                    <input ng-model="information.description" ng-value="information.description"/>
+                    </md-input-container>
                     <!-- <text-angular ng-show="information.editing" ng-value="information.description" ng-model="information.description"></text-angular> -->
                 </td>
                 <!-- <td>
@@ -31,11 +37,11 @@
                     <input ng-show="information.editing" ng-model="information.category" ng-value="information.category"/>
                 </td> -->
                 <td>
-                    <button ng-hide="information.editing" ng-click="vm.viewEditInformation(information)">Edit</button>
-                    <button ng-show="information.editing" ng-click="vm.editInformation(information)">Save</button>
+                    <md-button class="md-raised" ng-hide="information.editing" ng-click="vm.viewEditInformation(information)">Edit</md-button>
+                    <md-button class="md-raised" ng-show="information.editing" ng-click="vm.editInformation(information)">Save</md-button>
                 </td>
                 <td>
-                    <button ng-click="vm.deleteInformation(information)">Delete</button>
+                    <md-button class="md-raised" ng-click="vm.deleteInformation(information)">Delete</md-button>
                 </td>
             </tr>
         </tbody>

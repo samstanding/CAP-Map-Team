@@ -80,21 +80,23 @@
                 </a>
                 <div id="removeButton" ng-click="vm.deleteAssociation(vm.indLocation.indMainPhoto.id)"><i class="material-icons">remove_circle</i></div>
                 </div>
-        </div>
+        </div><br>
         <div layout="row" layout-align="center center" ng-if="vm.indLocation.indMainPhoto.media_url == undefined">
-                <button class="md-raised" ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
+                <a href="/#!/admin/multimedia">
+                <md-button class="md-raised" ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
                         Add Main Photo
-                </button>
+                </md-button></a>
         </div>
-
+        <br>
         <hr>
+        <br>
         <div layout="column" layout-align="center center">
                 <div layout="row" layout-align="center center">
                         <strong>SCULPTURE INFORMATION</strong>
-                        <button ng-if="vm.indLocation.indSculpture.title" id="editSculpture" ng-click="vm.getArtifactToEdit(vm.indLocation.indSculpture.id)">Edit</button>
                         <a ng-if="!vm.indLocation.indSculpture.title" class="add" href="/#!/admin/sculptures">
                                 <i class="material-icons">add_circle</i>
                         </a>
+                        <div ng-if="vm.indLocation.indSculpture.title" id="editSculpture" ng-click="vm.getArtifactToEdit(vm.indLocation.indSculpture.id)"><i class="material-icons">mode_edit</i></div>
                 </div><br>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.title}}</div><br>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.artist_name}}</div><br>
@@ -115,7 +117,7 @@
                 </div>
 
                 <div layout="row" layout-align="center center">
-                <div ng-repeat="photo in vm.indLocation.indPhotos" layout="row" layout-align="center end">
+                <div ng-repeat="photo in vm.indLocation.indPhotos" layout="column" layout-align="center center">
                         <img src="{{photo.media_url}}" height="100px" width="100px" />
                         <div class="minus" ng-click="vm.deleteAssociation(photo.id)">
                                 <i class="material-icons">remove_circle</i>
@@ -146,6 +148,7 @@
                         <br>
                 </div>
         </div>
+        <br>
         <hr class="short">
         <br>
         <div layout="column" layout-align="center center">
@@ -214,10 +217,6 @@
                         </div>
                 </div>
         </div>
-
-
-
-
 
         <br>
 

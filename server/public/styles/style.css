@@ -151,19 +151,14 @@ img{
 }
 
 .md-indent{
-  margin-left: 20px;
+  margin-left: 5px;
+  content: center;
 }
 
-/* not working */
-.subNav{
-  max-width: 50%;
-}
-
-.eventPhoto {
-  width: 20%;
-  height: 20%;
-  border-radius: 20px;
-  float: right;
+.adminEventPhoto {
+  height: 30%;
+  width: 30%;
+  border-radius: 4px;
 }
 
 .event {
@@ -284,6 +279,7 @@ img{
 
 .searchBar{
   width: 40%;
+  margin: 15px;
 }
 
 .location-list:hover{
@@ -292,15 +288,14 @@ img{
 
 .searchIcon{
   position: relative;
-  transform: translateY(8px);
 }
 
 #adminMenu{
   position: fixed;
-  background-color: darkslategrey;
+  background-color: #f6f6f6;
   opacity: 1;
-  z-index: 999;
   margin-bottom: 40px;
+  border-bottom: 5px ridge #e9e9e9;
 }
 
 /* #menu-item{ COMMENTED OUT ON MERGE*/
@@ -309,10 +304,6 @@ img{
 
 .menuBardemoBasicUsage .page p {
   line-height: 1.6rem;
-}
-
-.eventDate {
-  font-weight: bold;
 }
 
 .menuIcon{
@@ -428,21 +419,11 @@ img{
   }
 
 .is-active{
-  background-color: grey;
+  background-color: #e9e9e9;
 }
 
 .marginTop {
   margin-top: 25px;
-}
-
-.md-indent{
-  margin-left: 20px;
-}
-
-/* not working */
-.subNav{
-  max-width: 50%;
-  /* transform: translate(-20px, -50px); */
 }
 
 .eventPhoto {
@@ -450,12 +431,6 @@ img{
   width: 100%;
   border-radius: 4px;
   margin: auto;
-}
-
-.event {
-  padding: 10px;
-  margin-top: 30px;
-  
 }
 
 .redDiv {
@@ -644,13 +619,47 @@ img{
   text-align: left;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
+  /* padding-right: 15px; */
+}
+
+/* .plus_icon{
+    vertical-align: middle;
+    margin-top: 111px;
+} */
+
+.material-icons{
+  vertical-align: middle;
+} 
+
+.adminBody {
+  padding: 10px;
+  font-size: 17px;
+  font-family:  'Lucida Grande', 'sans-serif';
+}
+
+.hover:hover{
+  color: black;
+  background: whitesmoke;
+  transition: background 500ms;
+}
+
+.subNavPadding{
+  /* margin-right:20px; */
+  background: white;
+  text-align: left;
+  vertical-align: middle;
+  content: center;
 }
 
 .changeMainPhoto{
   /* margin-right: 240px; */
-  z-index: 9;
-  transform: translateY(-19px);
   position: relative;
+  transform: translateY(15px);
+}
+
+#removeButton{
+  position: relative;
+  transform: translateY(15px);
 }
 
 #editSculpture{
@@ -661,18 +670,19 @@ img{
   margin-left: 10px;
 }
 
-#removeButton{
-  position: relative;
-  z-index: 5;
-  transform: translateY(-19px);
-}
-
 .minus{
-  margin-left: -28px;
   position: relative;
-  z-index: 10;
 }
 
 .short{
   width: 60%;
+}
+
+.markerType {
+  margin-top: 23px;
+}
+
+td{
+  border-bottom: 1px solid #e9e9e9; 
+  padding: 10px;
 }
