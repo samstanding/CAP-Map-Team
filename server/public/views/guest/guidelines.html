@@ -1,19 +1,13 @@
-<div class="headerBackground">
-    <div class="banner">
-        CAPONI ART PARK
-        <a href=#!menu>
-            <i class="material-icons menuIcon" style="font-size: 50px">menu</i>
-        </a>
+<div class="headerBackground"><div class="banner"> CAPONI ART PARK<a href=#!menu ><i class="material-icons menuIcon" style="font-size: 50px">menu</i></a></div></div>
+
+
+<div class="welcome"><h1>WELCOME</h1></div>
+
+<div class="guestBody guidelineList">
+    <md-list-item ng-repeat="guideline in vm.information.guidelines" layout="column" layout-align="center center">
+    <div class="guideline" > {{guideline.description}}
+        <!-- <md-divider></md-divider> -->
     </div>
-</div>
-<div class="welcome">
-    <h1>WELCOME</h1>
-</div>
-<div class="guestBody">
-    <md-list-item ng-repeat="guideline in vm.information.guidelines">
-        <div class="guideline" > {{guideline.description}}
-            <md-divider></md-divider>
-        </div>
     </md-list-item>
 </div>
 <div ng-if="vm.information.mapInfo">

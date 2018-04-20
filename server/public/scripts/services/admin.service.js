@@ -97,6 +97,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             url:`/events/get`,
         }).then((result)=>{
             self.locations.allEvents = result.data;
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log('/events/get', error);
         })
@@ -180,6 +181,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }).then((result)=>{
             self.locations.allLocations = result.data;
             self.indLocation.isBeingEdited = false;
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log('/map/all');
         })
@@ -192,6 +194,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         }).then((result)=>{
             self.getAllLocations();
             $location.url('/admin/editlocation');
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log(`/map/delete/${id}`, error);
         })
@@ -249,6 +252,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             url: `/information/get`,
         }).then((result)=>{
             self.locations.information = result.data;
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log('/information/get', error);
         })
@@ -468,6 +472,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
 
     self.saveAssociation = function(artifact_id, main_photo){
         let location_id = Number(self.locations.currentLocationId);
+        console.log(location_id);
         $http({
             method: 'POST',
             url: '/map/join/insert',
@@ -477,6 +482,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
                 main_photo: self.isMainPhoto.boolean,
             }
         }).then((result)=>{
+            self.getIndividualLocation(location_id);
             history.back();
         }).catch((error)=>{
             console.log('/map/join/insert', error);
@@ -588,6 +594,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             url: `/api/user/guest/all`
         }).then((result)=>{
             self.locations.guestList = result.data;
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log('/api/user/guest/all', error);
         })
@@ -630,6 +637,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
             url: '/api/user/admin/all'
         }).then((result) => {
             self.locations.allAdmins = result.data;
+            self.locations.currentLocationId = '';
         }).catch((error)=>{
             console.log('/api/user/admin/all', error);
         })
