@@ -156,7 +156,7 @@ img{
 }
 
 .adminEventPhoto {
-  height: 200px;
+  height: 150px;
   width: 100%;
   border-radius: 4px;
 }
@@ -689,4 +689,9 @@ td{
 
 .tableFit{
   width:300px;
+}
+
+.eventInput{
+  text-align: center;
+  padding: 20px;
 }
