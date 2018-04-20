@@ -687,6 +687,31 @@ td{
   padding: 10px;
 }
 
+.indCard{
+  width: 30%;
+}
+
+.addArtifact{
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.textTitle{
+  text-transform: uppercase;
+}
+
+.indMultimediaCard{
+  width: 100%;
+}
+
+md-content{
+  flex-wrap: wrap;
+}
+
+cardImg{
+  width: 100%; 
+  height: 60%;
+}
 .tableFit{
   width:300px;
 }
