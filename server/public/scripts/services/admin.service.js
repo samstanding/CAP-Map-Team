@@ -612,7 +612,6 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
     }
 
     self.addGuest = function(guest){
-        console.log(guest);
         $http({
             method: 'POST',
             url: '/api/user/guest',
