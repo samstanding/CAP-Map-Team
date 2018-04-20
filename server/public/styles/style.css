@@ -159,11 +159,10 @@ img{
   max-width: 50%;
 }
 
-.eventPhoto {
-  width: 20%;
-  height: 20%;
-  border-radius: 20px;
-  float: right;
+.adminEventPhoto {
+  height: 30%;
+  width: 30%;
+  border-radius: 4px;
 }
 
 .event {
@@ -221,6 +220,7 @@ img{
   border-style: solid;
   border-color: purple;
 }
+
 #map_format {
     height: 100%;
     /* margin-top: 50px; */
@@ -296,9 +296,10 @@ img{
 
 #adminMenu{
   position: fixed;
-  background-color: darkslategrey;
-  opacity: .85;
+  background-color: #f6f6f6;
+  opacity: 1;
   margin-bottom: 40px;
+  border-bottom: 5px ridge #e9e9e9;
 }
 
 /* #menu-item{ COMMENTED OUT ON MERGE*/
@@ -307,10 +308,6 @@ img{
 
 .menuBardemoBasicUsage .page p {
   line-height: 1.6rem;
-}
-
-.eventDate {
-  font-weight: bold;
 }
 
 .menuIcon{
@@ -426,7 +423,7 @@ img{
   }
 
 .is-active{
-  background-color: grey;
+  background-color: #e9e9e9;
 }
 
 .marginTop {
@@ -450,12 +447,6 @@ img{
   margin: auto;
 }
 
-.event {
-  padding: 10px;
-  margin-top: 30px;
-  
-}
-
 .redDiv {
   /* border-style: solid; */
   /* border-color:red; */
@@ -476,18 +467,17 @@ img{
 .coverPhoto{
   object-fit: cover;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  position: relative;
   overflow: hidden;
-  margin-top: -71px;
-  width: 100%;
+  top: 0px;
+  width: 50%;
   height: 250px;
-  transform: translateY(16px);
+  transform: translateY(10px);
+  z-index: 1;
+  position: relative;
 }
 
 .fixed{
   position: fixed;
-
 }
 
 .leftFloat {
@@ -576,6 +566,7 @@ img{
   .emailButton {
     float: right;
   }
+  
 .headerLine{
   margin-top: 80px;
 }
@@ -668,4 +659,31 @@ img{
 
 .subNavPadding{
   margin-right:20px;
+}
+
+.changeMainPhoto{
+  /* margin-right: 240px; */
+  position: relative;
+  transform: translateY(15px);
+}
+
+#removeButton{
+  position: relative;
+  transform: translateY(15px);
+}
+
+#editSculpture{
+  margin-left: 10px;
+}
+
+.add{
+  margin-left: 10px;
+}
+
+.minus{
+  position: relative;
+}
+
+.short{
+  width: 60%;
 }

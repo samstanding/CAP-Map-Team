@@ -24,7 +24,7 @@ router.get('/artifact/:id', (req, res)=>{
 router.delete('/join/delete/:id', (req, res)=>{
     if(req.isAuthenticated()){
         let id = req.params.id;
-        pool.query('DELETE * FROM map_artifact_join where id = $1;', [id])
+        pool.query('DELETE FROM map_artifact_join where id = $1;', [id])
         .then(function (result){
             res.send(result.rows);
         }).catch(function (error){
@@ -53,7 +53,7 @@ router.post('/join/insert', (req, res)=>{
 router.post('/post', (req, res)=>{
     if(req.isAuthenticated()){
         let location = req.body;
-        pool.query('INSERT INTO map (location_name, lat, long) VALUES ($1, $2, $3);', [location.location_name, location.lat, location.long])
+        pool.query('INSERT INTO map (location_name, lat, long, reveal_type) VALUES ($1, $2, $3, $4);', [location.location_name, location.lat, location.long, location.reveal_type])
         .then(function(result){
             res.sendStatus(201);
         }).catch(function(error){
@@ -67,6 +67,7 @@ router.post('/post', (req, res)=>{
 router.delete('/delete/:id', (req, res)=>{
     if(req.isAuthenticated()) {
         let id = req.params.id;
+        pool.query('DELETE FROM map_artifact_join where location_id = $1;', [id])
         pool.query('DELETE FROM map where id = $1;', [id])
         .then((result)=>{
             res.sendStatus(204);
