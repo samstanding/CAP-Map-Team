@@ -608,7 +608,7 @@ img{
   vertical-align: top;
   width: 8px;
   height:8px;
-  transform: translateY(-20px);
+  transform: translateY(-38px);
 }
 
 #slash{
@@ -633,8 +633,6 @@ img{
 
 .adminBody {
   padding: 10px;
-  font-size: 17px;
-  font-family:  'Lucida Grande', 'sans-serif';
 }
 
 .hover:hover{
@@ -693,7 +691,7 @@ td{
 
 .addArtifact{
   margin-left: 20px;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .textTitle{
@@ -728,4 +726,29 @@ md-content{
 .eventInput{
   text-align: center;
   padding: 20px;
+}
+
+.guideline{
+  text-transform: uppercase;
+  font-size: 16px;
+  color: black;
+}
+
+.guidelineList{
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+#textSlash{
+  text-align: center;
+}
+
+.guidelineTitle{
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+#eventsTable{
+  margin-top: 30px;
 }

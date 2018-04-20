@@ -3,15 +3,19 @@
 
 <div class="welcome"><h1>WELCOME</h1></div>
 
-<div class="guestBody">
-    <md-list-item ng-repeat="guideline in vm.information.guidelines">
+<div class="guestBody guidelineList">
+    <md-list-item ng-repeat="guideline in vm.information.guidelines" layout="column" layout-align="center center">
     <div class="guideline" > {{guideline.description}}
-        <md-divider></md-divider>
+        <!-- <md-divider></md-divider> -->
     </div>
     </md-list-item>
-
 </div>
 <div ng-if="vm.information.mapInfo">
     <div ng-include="'views/partials/mapInfo.html'"></div>
-</div><br>
-<md-button class="md-raised button"><a href="#!map"><strong>MAP</strong></a></md-button>
+</div>
+<br>
+<md-button class="md-raised button">
+    <a href="#!map">
+        <strong>MAP</strong>
+    </a>
+</md-button>
