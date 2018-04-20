@@ -10,15 +10,14 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
     self.getMapLocation = AdminService.getMapLocation;
 
-    self.locationToEdit = AdminService.locationToEdit;
-
-    console.log(self.locations.currentLocationId.length);
 
     if (self.locations.currentLocationId.length > 0 )  {
         self.getMapLocation(self.locations.currentLocationId);
+        console.log(self.locations.locationToEdit);
+       
     }
+
     
-    console.log(self.locationToEdit);
     
     
 
@@ -54,7 +53,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
         let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
 
-     
+            
 
         let marker = new google.maps.Marker({
             position: new google.maps.LatLng(44.80457827564791, -93.15323458993169),
