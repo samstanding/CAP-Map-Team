@@ -1,14 +1,15 @@
-
-<div ng-include="'/views/admin/admin_menu.html'"></div>
+<div ng-include="'/views/admin/admin_menu.html'">
+</div>
 <div class="pageDown"></div>
+<div class="adminBody">
+    <h2>Writings</h2>
 
-Search:
-<input type="text" ng-model="vm.searchWritings">
+    Search:
+    <input type="text" ng-model="vm.searchWritings">
 
-<div ng-repeat="writing in vm.locations.allWritings|filter:vm.searchWritings">
-    
-        {{writing.title}}
-        {{writing.year}}
+    <div ng-repeat="writing in vm.locations.allWritings|filter:vm.searchWritings">
+
+        {{writing.title}} {{writing.year}}
         <div ng-bind-html="writing.description">{{writing.description}}</div>
         <div ng-if="vm.locations.currentLocationId != ''">
             <button ng-click="vm.saveAssociation(writing.id, 'false')">Add to location</button>
@@ -17,4 +18,7 @@ Search:
         <button ng-click="vm.deleteArtifact(writing)">Delete</button>
     </div>
 
-<a href="/#!/admin/textform"><i class="material-icons">add_circle</i></a>
+    <a href="/#!/admin/textform">
+        <i class="material-icons">add_circle</i>
+    </a>
+</div>

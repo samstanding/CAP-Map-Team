@@ -78,9 +78,9 @@
         </div><br>
         <div layout="row" layout-align="center center" ng-if="vm.indLocation.indMainPhoto.media_url == undefined">
                 <a href="/#!/admin/multimedia">
-                <button class="md-raised" ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
+                <md-button class="md-raised" ng-click="vm.isMainPhoto.boolean = true; vm.isMainPhoto.type = 'photo'">
                         Add Main Photo
-                </button></a>
+                </md-button></a>
         </div>
         <br>
         <hr>
@@ -88,10 +88,10 @@
         <div layout="column" layout-align="center center">
                 <div layout="row" layout-align="center center">
                         <strong>SCULPTURE INFORMATION</strong>
-                        <button ng-if="vm.indLocation.indSculpture.title" id="editSculpture" ng-click="vm.getArtifactToEdit(vm.indLocation.indSculpture.id)">Edit</button>
                         <a ng-if="!vm.indLocation.indSculpture.title" class="add" href="/#!/admin/sculptures">
                                 <i class="material-icons">add_circle</i>
                         </a>
+                        <div ng-if="vm.indLocation.indSculpture.title" id="editSculpture" ng-click="vm.getArtifactToEdit(vm.indLocation.indSculpture.id)"><i class="material-icons">mode_edit</i></div>
                 </div><br>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.title}}</div><br>
         <div ng-if="vm.indLocation.indSculpture">{{vm.indLocation.indSculpture.artist_name}}</div><br>
