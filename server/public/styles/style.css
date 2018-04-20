@@ -685,9 +685,9 @@ td{
   padding: 10px;
 }
 
-.indCard{
+/* .indCard{
   width: 30%;
-}
+} */
 
 .addArtifact{
   margin-left: 20px;
@@ -699,17 +699,35 @@ td{
 }
 
 .indMultimediaCard{
-  width: 100%;
+  width: 275px;
+  /* align-items: middle;
+  margin-left: auto;
+  margin-right: auto; */
+}
+
+.cardText{
+width: 260px;
+
+/* text-align: justify;
+text-justify: contain; */
+
 }
 
 md-content{
   flex-wrap: wrap;
 }
 
-cardImg{
-  width: 100%; 
-  height: 60%;
+.cardImg{
+  width: 160%; 
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.margin {
+  margin:10px;
+}
+
 .tableFit{
   width:300px;
 }
