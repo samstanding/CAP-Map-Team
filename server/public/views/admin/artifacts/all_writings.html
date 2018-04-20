@@ -54,7 +54,7 @@
         
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
-                        <div ng-if="vm.locations.currentLocationId != ''">
+                        <div ng-if="vm.locations.currentLocationId !== null">
                                 <div ng-click="vm.saveAssociation(writing.id, 'false')"><i class="material-icons">add</i></div>
                         </div>
                         <div ng-click="vm.getArtifactToEdit(writing.id)"><i class="material-icons">mode_edit</i></div>
