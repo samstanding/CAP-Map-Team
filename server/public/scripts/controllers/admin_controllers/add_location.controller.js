@@ -10,16 +10,18 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
 
     self.getMapLocation = AdminService.getMapLocation;
 
+    self.editLocation = AdminService.editLocation;
+
+    self.locationName;
     let overlay;
     CaponiOverlay.prototype = new google.maps.OverlayView();
 
     self.initMap = () => {
 
-        if (self.locations.currentLocationId.length > 0 )  {
-            self.getMapLocation(self.locations.currentLocationId);
-            console.log(self.locations.locationToEdit);
-           
+        if (self.locations.currentLocationId !== null )  {
+            self.getMapLocation(self.locations.currentLocationId);      
         }
+
         setTimeout(function mapDelay() {
 
             let map = new google.maps.Map(document.getElementById('map'), {
@@ -44,13 +46,15 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
     
             // this is the trail only map using google maps as the background
             let bounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(44.8018500, -93.1568000),
-                new google.maps.LatLng(44.8081500, -93.1468500));
+                new google.maps.LatLng(44.8000250, -93.157400000),
+                new google.maps.LatLng(44.8080250, -93.1460700));
+
+            //--------------source image for the overlay--------------
+
+            let srcImage = '../../styles/CaponiArtParkOverlay_Transparent.png';
     
-            let srcImage = '../../styles/CaponiArtParkOverlayTransparent.png';
-    
-            if (self.locations.currentLocationId.length > 0 ) {
-                console.log(self.locations.locationToEdit);
+            if (self.locations.currentLocationId !== null ) {
+              
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.locationToEdit[0].lat, self.locations.locationToEdit[0].long),
                     map: map,
@@ -58,6 +62,18 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
                     draggable: true,
                     animation: google.maps.Animation.DROP
                 })
+
+            google.maps.event.addListener(marker, 'dragstart', function () {
+            })
+    
+            google.maps.event.addListener(marker, 'drag', function () {
+            })
+    
+            google.maps.event.addListener(marker, 'dragend', function () {
+                self.locations.locationToEdit[0].lat = marker.getPosition().lat();
+                self.locations.locationToEdit[0].long= marker.getPosition().lng();
+            })
+               
             } else {
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(44.80457827564791, -93.15323458993169),
@@ -66,11 +82,7 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
                     draggable: true,
                     animation: google.maps.Animation.DROP
                 })
-            }
-    
-           
-    
-    
+
             google.maps.event.addListener(marker, 'dragstart', function () {
                 console.log('drag start');
     
@@ -86,10 +98,15 @@ capApp.controller('AddLocationController', ['UserService', 'AdminService', funct
                 self.locations.newLocation.lat = marker.getPosition().lat();
                 self.locations.newLocation.long = marker.getPosition().lng();
                 console.log(self.locations.newLocation);
-            })
+            
+                })
+            }
+    
+           
+
             overlay = new CaponiOverlay(bounds, srcImage, map);
 
-        },100)
+        },150)
         
     }
     /** @constructor */

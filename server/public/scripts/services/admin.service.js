@@ -14,7 +14,7 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         allPoems: [],
         allMultimedia: [],
         information: {},
-        currentLocationId: '',
+        currentLocationId: null,
         guestList: [],
         newGuest:{},
         allAdmins: [],
@@ -198,12 +198,14 @@ capApp.service('AdminService', ['$http', '$location',  function($http, $location
         })
     } // ---------------------I don't have a button---------------------
 
-    self.editLocation = function(){
+    self.editLocation = function(location){
         $http({
             method: 'PUT',
             url: `/map/edit`,
-            data: putObj
+            data: location
         }).then((result)=>{
+            alert('Location Edited Successfully');
+            $location.url('/admin/editlocation');
             self.getAllLocations();
         }).catch((error)=>{
             console.log('/map/edit', error);
