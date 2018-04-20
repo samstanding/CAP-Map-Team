@@ -3,7 +3,10 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
     var self = this;
     
     self.user = {
-        guest: { }
+        guest: {
+            name: '',
+            email: '',
+        }
     }
 
     self.information = {
@@ -33,16 +36,12 @@ capApp.service('GuestService', ['$http', '$location', function($http, $location)
             url:'/api/user/guest',
             data: guest,
         }).then((result)=>{
-            self.emptyGuestInputs();
-            alert("Thank you for joining the Caponi Art Park Email List!");
+            swal("Welcome to the Caponi Art Park mailing list!", "", "success");
+            self.user.guest.name = '';
+            self.user.guest.email = '';
         }).catch((error)=>{
             console.log('/api/user/guest', error); 
         })
-    }
-
-    self.emptyGuestInputs = function(){
-        self.user.guest.name = '';
-        self.user.guest.email = '';
     }
 
     self.getInformation = function(){
