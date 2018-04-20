@@ -159,11 +159,10 @@ img{
   max-width: 50%;
 }
 
-.eventPhoto {
-  width: 20%;
-  height: 20%;
-  border-radius: 20px;
-  float: right;
+.adminEventPhoto {
+  height: 30%;
+  width: 30%;
+  border-radius: 4px;
 }
 
 .event {
@@ -311,10 +310,6 @@ img{
   line-height: 1.6rem;
 }
 
-.eventDate {
-  font-weight: bold;
-}
-
 .menuIcon{
   float:right;
   color: grey;
@@ -450,12 +445,6 @@ img{
   width: 100%;
   border-radius: 4px;
   margin: auto;
-}
-
-.event {
-  padding: 10px;
-  margin-top: 30px;
-  
 }
 
 .redDiv {
@@ -644,6 +633,32 @@ img{
   text-align: left;
   background-color: rgb(162, 196, 99);
   margin-bottom: -10px;
+  /* padding-right: 15px; */
+}
+
+/* .plus_icon{
+    vertical-align: middle;
+    margin-top: 111px;
+} */
+
+.material-icons{
+  vertical-align: middle;
+} 
+
+.adminBody {
+  padding: 10px;
+  font-size: 17px;
+  font-family:  'Lucida Grande', 'sans-serif';
+}
+
+.hover:hover{
+  color: black;
+  background: whitesmoke;
+  transition: background 500ms;
+}
+
+.subNavPadding{
+  margin-right:20px;
 }
 
 .changeMainPhoto{

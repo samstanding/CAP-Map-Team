@@ -1,34 +1,34 @@
-
-<div ng-include="'/views/admin/admin_menu.html'"></div>
+<div ng-include="'/views/admin/admin_menu.html'">
+</div>
 <div class="pageDown"></div>
+<div class="adminBody">
+    <h2>Multimedia</h2>
+    Search:
+    <input type="text" ng-model="vm.searchMultimedia">
 
-Search:
-<input type="text" ng-model="vm.searchMultimedia">
-
-<div ng-repeat="multimedia in vm.locations.allMultimedia|filter:vm.searchMultimedia">
+    <div ng-repeat="multimedia in vm.locations.allMultimedia|filter:vm.searchMultimedia">
         <div ng-if="multimedia.type == 'photo'">
-                <img width="200" height="200" src="{{multimedia.media_url}}" />
-                <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
-                <div ng-if="vm.locations.currentLocationId != ''">
-                    <button ng-click="vm.saveAssociation(multimedia.id, vm.isMainPhoto.boolean)">Add to location</button>
-                </div>
-                <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
-                <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
+            <img width="200" height="200" src="{{multimedia.media_url}}" />
+            <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
+            <div ng-if="vm.locations.currentLocationId != ''">
+                <button ng-click="vm.saveAssociation(multimedia.id, vm.isMainPhoto.boolean)">Add to location</button>
+            </div>
+            <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
+            <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
         </div>
 
         <div ng-if="multimedia.type == 'video'">
-            
-                <iframe width="200" height="200" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>            
-                <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
-        <div ng-if="vm.locations.currentLocationId != ''; vm.isMainPhoto.type == multimedia.type">
-            <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
+
+            <iframe width="200" height="200" ng-src="{{vm.trustSrc(multimedia.media_url)}}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+            <div ng-bind-html="multimedia.description">{{multimedia.description}}</div>
+            <div ng-if="vm.locations.currentLocationId != ''; vm.isMainPhoto.type == multimedia.type">
+                <button ng-click="vm.saveAssociation(multimedia.id, 'false')">Add to location</button>
+            </div>
+            <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
+            <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
         </div>
-        <button ng-click="vm.getArtifactToEdit(multimedia.id)">Edit</button>
-        <button ng-click="vm.deleteArtifact(multimedia)">Delete</button>
     </div>
-    </div>
-
-
-   
+    <a href="/#!/admin/multimediaform">
+        <i class="material-icons">add_circle</i>
+    </a>
 </div>
-<a href="/#!/admin/multimediaform"><i class="material-icons">add_circle</i></a>
