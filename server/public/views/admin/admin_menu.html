@@ -19,7 +19,7 @@
                         <button id="menu-item" ng-click="$mdMenu.open()" ng-class="{'is-active': vm.isCurrentPage('/admin/anecdotes') || vm.isCurrentPage('/admin/poems') || vm.isCurrentPage('/admin/writings') || vm.isCurrentPage('/admin/multimedia')}">
                             MANAGE ARTIFACTS
                         </button>
-                        <md-menu-content class="subNav subNavPadding">
+                        <md-menu-content class="subNavPadding">
                             <a href="/#!/admin/anecdotes">
                                 <md-menu-item class="md-indent hover" type="string">ANECDOTES</md-menu-item>
                             </a>
@@ -47,7 +47,7 @@
                         <button id="menu-item" ng-click="$mdMenu.open()">
                             MANAGE USERS
                         </button>
-                        <md-menu-content class="subNav subNavPadding">
+                        <md-menu-content >
                             <a href="/#!/admin/manageadmins">
                                 <md-menu-item class="md-indent hover" type="string">ADMINS</md-menu-item>
                             </a>
