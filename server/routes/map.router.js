@@ -93,11 +93,18 @@ router.put('/edit', (req, res)=>{
     }
 });
 
-// router.get('/map/:id', (req, res) => {
-//     if(req.isAuthenticated()) {
-//         let id = req.params.id;
-//         pool.query('')
-//     }
-// })
+router.get('/:id', (req, res) => {
+    if(req.isAuthenticated()) {
+        let id = req.params.id;
+        pool.query('SELECT * FROM map where id =$1', [id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log(error);
+            
+            res.sendStatus(500);
+        })
+    }
+})
 
 module.exports = router;
