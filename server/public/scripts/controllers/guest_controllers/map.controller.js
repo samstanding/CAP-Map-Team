@@ -159,7 +159,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 console.log(self.locations.allLocations);
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
-                } else if (self.locations.allLocations[i].reveal_type == '') {
+                } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
                     self.locations.allLocations[i].reveal_type = hiddenMarker;
                 } else {
                     self.locations.allLocations[i].reveal_type = facility;
