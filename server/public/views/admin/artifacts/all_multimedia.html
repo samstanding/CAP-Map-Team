@@ -17,11 +17,11 @@
 
 <div class="indent">
 
-<md-content class="md-padding"  layout="row" layout-wrap>
-        <div layout="row">
+<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+        <div flex-xs flex layout="row">
           <md-card ng-repeat="multimedia in vm.locations.allMultimedia|filter:vm.searchMultimedia" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="indMultimediaCard margin">
             <md-card-title>
-              <md-card-title-media class="indMultimediaCard">
+              <md-card-title-media >
                 <div class="md-media-lg card-media">
                     <div ng-if="multimedia.type == 'photo'">
                         <img class="cardImg" src="{{multimedia.media_url}}" />

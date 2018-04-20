@@ -328,12 +328,6 @@ img{
   font-size: 30px;
   font-weight: 800;
   padding:10px;
-  
-}
-
-.guestBody {
-  padding: 10px;
-  font-size: 17px;
 }
 
 .welcome {
@@ -706,17 +700,10 @@ td{
 
 .indMultimediaCard{
   width: 275px;
-  /* align-items: middle;
-  margin-left: auto;
-  margin-right: auto; */
 }
 
 .cardText{
 width: 260px;
-
-/* text-align: justify;
-text-justify: contain; */
-
 }
 
 md-content{
@@ -726,8 +713,6 @@ md-content{
 .cardImg{
   width: 160%; 
   height: 150px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .margin {
@@ -745,8 +730,10 @@ md-content{
 
 .guideline{
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 15px;
   color: black;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .guidelineList{
@@ -758,11 +745,11 @@ md-content{
   text-align: center;
 }
 
-.guidelineTitle{
+/* .guidelineTitle{
   float: left;
   margin-left: 10px;
   margin-bottom: 5px;
-}
+} */
 
 #eventsTable{
   margin-top: 30px;
