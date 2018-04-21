@@ -102,7 +102,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     map: self.map,
                     // icon: '../../styles/maps_marker.png',
                     icon: '../../styles/maps_marker_55px_halo.png',
-                    zIndex: 999,
                 })
                 markerStore.marker = personMarker;
             }
@@ -117,7 +116,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            maximumAge:60000
         }
 
         navigator.geolocation.watchPosition(success, error, options);
@@ -170,7 +168,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 } else {
                     self.locations.allLocations[i].reveal_type = facility;
                 }
-                console.log('creating new locations: ', self.locations.allLocations[i] );
                 
                 //--------------creates markers for each location--------------
                 let marker = new google.maps.Marker({
@@ -188,7 +185,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             //--------------overlay function for the overlay--------------
-            // overlay = new CaponiOverlay(bounds, srcImage, self.map);
+            overlay = new CaponiOverlay(bounds, srcImage, self.map);
         }, 100)
 
     }
