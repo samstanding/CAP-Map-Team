@@ -112,7 +112,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         error = (err) => {
             console.log('error in finding location: ', err);
-            swal("We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!", "", "error");
+            alert("We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!", "", "error");
         }
         options = {
             enableHighAccuracy: true,
@@ -187,7 +187,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
             //--------------overlay function for the overlay--------------
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        }, 100)
+        }, 200)
     }
     //--------------everything from here- ln 258 is for the map overlay --------------
 
