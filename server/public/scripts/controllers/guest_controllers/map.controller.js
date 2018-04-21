@@ -18,10 +18,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     const facility = '../../styles/Brown_Marker.png';
 
-    // const hiddenMarker = {
-    //     path: '../../styles/Brown_Marker.png',
-    //     scale: .0,
-    // };
+    const hiddenMarker = {
+        path: '../../styles/Brown_Marker.png',
+        scale: .0,
+    };
 
     const found = '../../styles/Blue_Marker.png';
 
@@ -30,56 +30,56 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.infowindow = new google.maps.InfoWindow();
 
     //--------------functions that control when hidden locations are shown--------------
-    // self.triggerMarkerShow = (location) => {
-    //     for (let i = 0; i < self.locations.allLocations.length; i++) {
-    //         if (self.locations.allLocations[i].reveal_type == hiddenMarker) {
-    //             let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
-    //             let boundBottom = self.locations.allLocations[i].lat - .00035;
-    //             let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
-    //             let boundLeft = self.locations.allLocations[i].long - .0005;
-    //             if (location.latitude > boundBottom && location.latitude < boundTop && location.longitude < boundRight && location.latitude > boundLeft) {
-    //                 self.locations.allLocations[i].reveal_type = 'not hidden';
-    //                 let newMarker = new google.maps.Marker({
-    //                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-    //                     map: self.map,
-    //                     icon: found,
-    //                     animation: google.maps.Animation.DROP
-    //                 })
-    //                 google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
-    //                     return function () {
-    //                         self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
-    //                         self.infowindow.open(self.map, newMarker);
-    //                     }
-    //                 })(newMarker, i));
-    //             }
-    //         }
-    //     }
-    // }
+    self.triggerMarkerShow = (location) => {
+        for (let i = 0; i < self.locations.allLocations.length; i++) {
+            if (self.locations.allLocations[i].reveal_type == hiddenMarker) {
+                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
+                let boundBottom = self.locations.allLocations[i].lat - .00035;
+                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
+                let boundLeft = self.locations.allLocations[i].long - .0005;
+                if (location.latitude > boundBottom && location.latitude < boundTop && location.longitude < boundRight && location.latitude > boundLeft) {
+                    self.locations.allLocations[i].reveal_type = 'not hidden';
+                    let newMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
+                        map: self.map,
+                        icon: found,
+                        animation: google.maps.Animation.DROP
+                    })
+                    google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
+                        return function () {
+                            self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
+                            self.infowindow.open(self.map, newMarker);
+                        }
+                    })(newMarker, i));
+                }
+            }
+        }
+    }
     //--------------functions that control when hidden locations are hid again--------------
-    // self.triggerMarkerHide = (location) => {
-    //     for (let i = 0; i < self.locations.allLocations.length; i++) {
-    //         if (self.locations.allLocations[i].reveal_type == 'not hidden') {
-    //             let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
-    //             let boundBottom = self.locations.allLocations[i].lat - .00035;
-    //             let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
-    //             let boundLeft = self.locations.allLocations[i].long - .0005;
-    //             if (location.latitude < boundBottom && location.latitude > boundTop && location.longitude > boundRight && location.latitude < boundLeft) {
-    //                 self.locations.allLocations[i].reveal_type = hiddenMarker;
-    //                 let newMarker = new google.maps.Marker({
-    //                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-    //                     map: self.map,
-    //                     icon: self.locations.allLocations[i].reveal_type
-    //                 })
-    //                 google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
-    //                     return function () {
-    //                         self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
-    //                         self.infowindow.open(self.map, newMarker);
-    //                     }
-    //                 })(newMarker, i));
-    //             }
-    //         }
-    //     }
-    // }
+    self.triggerMarkerHide = (location) => {
+        for (let i = 0; i < self.locations.allLocations.length; i++) {
+            if (self.locations.allLocations[i].reveal_type == 'not hidden') {
+                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
+                let boundBottom = self.locations.allLocations[i].lat - .00035;
+                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
+                let boundLeft = self.locations.allLocations[i].long - .0005;
+                if (location.latitude < boundBottom && location.latitude > boundTop && location.longitude > boundRight && location.latitude < boundLeft) {
+                    self.locations.allLocations[i].reveal_type = hiddenMarker;
+                    let newMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
+                        map: self.map,
+                        icon: self.locations.allLocations[i].reveal_type
+                    })
+                    google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
+                        return function () {
+                            self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
+                            self.infowindow.open(self.map, newMarker);
+                        }
+                    })(newMarker, i));
+                }
+            }
+        }
+    }
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
@@ -106,8 +106,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 markerStore.marker = personMarker;
             }
             $scope.$apply();
-            // self.triggerMarkerShow(crd);
-            // self.triggerMarkerHide(crd);
+            self.triggerMarkerShow(crd);
+            self.triggerMarkerHide(crd);
            
         }
         error = (err) => {
@@ -129,7 +129,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         ////--------------gets the locations to display--------------
         self.getAllLocations();
         //--------------timeout so all locations are obtained before map renders-------------
-        // setTimeout(function mapDelay() {
+        setTimeout(function mapDelay() {
             self.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 44.8049741120178,
@@ -164,8 +164,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             for (let i = 0; i < self.locations.allLocations.length; i++) {
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
-                // } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
-                //     self.locations.allLocations[i].reveal_type = hiddenMarker;
+                } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
+                    self.locations.allLocations[i].reveal_type = hiddenMarker;
                 } else {
                     self.locations.allLocations[i].reveal_type = facility;
                 }
@@ -188,7 +188,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
             //--------------overlay function for the overlay--------------
             // overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        // }, 100)
+        }, 100)
 
     }
     //--------------everything from here- ln 258 is for the map overlay --------------
