@@ -83,7 +83,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
-        alert('getting your location');
         console.log('in find location map');
         success = (pos) => {
             let crd = pos.coords;
