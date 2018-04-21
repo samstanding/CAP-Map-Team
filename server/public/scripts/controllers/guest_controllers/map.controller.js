@@ -105,9 +105,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })
                 markerStore.marker = personMarker;
             }
+            $scope.$apply();
             self.triggerMarkerShow(crd);
             self.triggerMarkerHide(crd);
-            $scope.$apply();
+           
         }
         error = (err) => {
             console.log('error in finding location: ', err);
@@ -115,7 +116,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            timeout: 7500,
         }
 
         navigator.geolocation.watchPosition(success, error, options);
