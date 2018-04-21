@@ -18,10 +18,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     const facility = '../../styles/Brown_Marker.png';
 
-    const hiddenMarker = {
-        path: '../../styles/Brown_Marker.png',
-        scale: .0,
-    };
+    // const hiddenMarker = {
+    //     path: '../../styles/Brown_Marker.png',
+    //     scale: .0,
+    // };
 
     const found = '../../styles/Blue_Marker.png';
 
@@ -164,9 +164,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             for (let i = 0; i < self.locations.allLocations.length; i++) {
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
-                } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
-                    self.locations.allLocations[i].reveal_type = hiddenMarker;
-                } else {
+                // } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
+                //     self.locations.allLocations[i].reveal_type = hiddenMarker;
+                // } else {
                     self.locations.allLocations[i].reveal_type = facility;
                 }
                 console.log('creating new locations: ', self.locations.allLocations[i] );
