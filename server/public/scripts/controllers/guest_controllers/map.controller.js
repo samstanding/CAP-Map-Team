@@ -107,8 +107,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 markerStore.marker = personMarker;
             }
             $scope.$apply();
-            self.triggerMarkerShow(crd);
-            self.triggerMarkerHide(crd);
+            // self.triggerMarkerShow(crd);
+            // self.triggerMarkerHide(crd);
            
         }
         error = (err) => {
