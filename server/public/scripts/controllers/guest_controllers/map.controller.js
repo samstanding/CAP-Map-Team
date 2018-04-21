@@ -129,7 +129,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         ////--------------gets the locations to display--------------
         self.getAllLocations();
         //--------------timeout so all locations are obtained before map renders-------------
-        setTimeout(function mapDelay() {
+        // setTimeout(function mapDelay() {
             self.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 44.8049741120178,
@@ -166,7 +166,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     self.locations.allLocations[i].reveal_type = static;
                 // } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
                 //     self.locations.allLocations[i].reveal_type = hiddenMarker;
-                // } else {
+                } else {
                     self.locations.allLocations[i].reveal_type = facility;
                 }
                 console.log('creating new locations: ', self.locations.allLocations[i] );
@@ -188,7 +188,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
             //--------------overlay function for the overlay--------------
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        }, 200)
+
+        // }, 100)
+
     }
     //--------------everything from here- ln 258 is for the map overlay --------------
 
