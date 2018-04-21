@@ -115,7 +115,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            timeout: 7500,
+            // timeout: 7500,
             frequency: 1
         }
 
