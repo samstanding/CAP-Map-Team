@@ -156,7 +156,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
             //--------------loops through all the locations and displays locations that should be displayed--------------
             for (let i = 0; i < self.locations.allLocations.length; i++) {
-                console.log(self.locations.allLocations);
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
                 } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
@@ -164,6 +163,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 } else {
                     self.locations.allLocations[i].reveal_type = facility;
                 }
+                console.log('creating new locations: ', self.locations.allLocations[i] );
+                
                 //--------------creates markers for each location--------------
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
