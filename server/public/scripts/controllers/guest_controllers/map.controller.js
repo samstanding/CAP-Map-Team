@@ -176,6 +176,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
                     map: self.map,
+                    zIndex: 999,
                     title: self.locations.allLocations[i].location_name,
                     icon: self.locations.allLocations[i].reveal_type
                 })
