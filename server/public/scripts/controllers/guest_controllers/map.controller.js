@@ -101,7 +101,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     position: new google.maps.LatLng(crd.latitude, crd.longitude),
                     map: self.map,
                     // icon: '../../styles/maps_marker.png',
-                    icon: '../../styles/maps_marker_55px_halo.png'
+                    icon: '../../styles/maps_marker_55px_halo.png',
+                    zIndex: 999,
                 })
                 markerStore.marker = personMarker;
             }
@@ -116,7 +117,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            timeout: 5000,
             maximumAge:60000
         }
 
@@ -176,7 +176,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
                     map: self.map,
-                    zIndex: 999,
                     title: self.locations.allLocations[i].location_name,
                     icon: self.locations.allLocations[i].reveal_type
                 })
