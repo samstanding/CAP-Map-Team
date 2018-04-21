@@ -83,6 +83,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
+        alert('getting your location');
         console.log('in find location map');
         success = (pos) => {
             let crd = pos.coords;
@@ -106,8 +107,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 markerStore.marker = personMarker;
             }
             $scope.$apply();
-            self.triggerMarkerShow(crd);
-            self.triggerMarkerHide(crd);
+            // self.triggerMarkerShow(crd);
+            // self.triggerMarkerHide(crd);
            
         }
         error = (err) => {
@@ -116,6 +117,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
+            // timeout: 7500,
         }
 
         navigator.geolocation.watchPosition(success, error, options);
