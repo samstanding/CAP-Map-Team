@@ -187,7 +187,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             //--------------overlay function for the overlay--------------
-            overlay = new CaponiOverlay(bounds, srcImage, self.map);
+            // overlay = new CaponiOverlay(bounds, srcImage, self.map);
         // }, 100)
     }
     //--------------everything from here- ln 258 is for the map overlay --------------
