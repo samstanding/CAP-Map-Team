@@ -45,7 +45,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                         icon: found,
                         animation: google.maps.Animation.DROP
                     })
-                    google.maps.event.addListener(marker, 'click', (function (newMarker, i) {
+                    google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
                         return function () {
                             self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
                             self.infowindow.open(self.map, newMarker);
@@ -70,7 +70,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                         map: self.map,
                         icon: self.locations.allLocations[i].reveal_type
                     })
-                    google.maps.event.addListener(marker, 'click', (function (newMarker, i) {
+                    google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
                         return function () {
                             self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
                             self.infowindow.open(self.map, newMarker);
@@ -101,8 +101,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 let personMarker = new google.maps.Marker({
                     position: new google.maps.LatLng(crd.latitude, crd.longitude),
                     map: self.map,
-                    // icon: '../../styles/maps_marker.png',
-                    icon: '../../styles/maps_marker_55px_halo.png'
+                    icon: '../../styles/maps_marker.png',
+                    // icon: '../../styles/maps_marker_55px_halo.png'
                 })
                 markerStore.marker = personMarker;
             }
