@@ -45,6 +45,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                         icon: found,
                         animation: google.maps.Animation.DROP
                     })
+                    google.maps.event.addListener(marker, 'click', (function (newMarker, i) {
+                        return function () {
+                            self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
+                            self.infowindow.open(self.map, newMarker);
+                        }
+                    })(newMarker, i));
                 }
             }
         }
