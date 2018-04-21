@@ -116,8 +116,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            // timeout: 7500,
-            frequency: 5,
+            timeout: 5000,
+            maximumAge:60000
         }
 
         navigator.geolocation.watchPosition(success, error, options);
