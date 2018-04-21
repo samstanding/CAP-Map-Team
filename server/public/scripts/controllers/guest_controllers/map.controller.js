@@ -115,11 +115,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
-            // timeout: 7500,
-            frequency: 1
+            timeout: 7500,
         }
 
-        navigator.geolocation.watchPosition(success, error);
+        navigator.geolocation.watchPosition(success, error, options);
     }
 
     self.findLocation();
