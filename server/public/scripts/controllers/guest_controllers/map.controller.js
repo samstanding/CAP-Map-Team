@@ -106,8 +106,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 markerStore.marker = personMarker;
             }
             
-            self.triggerMarkerShow(crd);
-            self.triggerMarkerHide(crd);
+            // self.triggerMarkerShow(crd);
+            // self.triggerMarkerHide(crd);
             $scope.$apply();
            
         }
@@ -187,7 +187,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             //--------------overlay function for the overlay--------------
-            overlay = new CaponiOverlay(bounds, srcImage, self.map);
+            // overlay = new CaponiOverlay(bounds, srcImage, self.map);
         }, 700)
 
     }
