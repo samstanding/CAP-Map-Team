@@ -108,7 +108,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
             
             self.triggerMarkerShow(crd);
-            // self.triggerMarkerHide(crd);
+            self.triggerMarkerHide(crd);
             $scope.$apply();
            
         }
