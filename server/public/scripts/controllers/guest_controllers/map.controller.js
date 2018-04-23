@@ -83,7 +83,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
-        console.log('in find location map');
+        $timeout(function () {
+            console.log('in find location map');
             success = (pos) => {
             let crd = pos.coords;
             console.log('your current position is: ');
@@ -118,8 +119,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         options = {
             enableHighAccuracy: true,
         }
-
         navigator.geolocation.watchPosition(success, error, options);
+        }, 700);
+        
+        
     }
 
     self.findLocation();
