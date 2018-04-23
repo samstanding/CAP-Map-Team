@@ -157,10 +157,11 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
 
             //--------------source image for the overlay--------------
 
-            let srcImage = '../../styles/CaponiArtParkOverlay_Transparent.png';
+            let srcImage = '../../styles/CaponiArtParkOverlay2_Transparent_Resized.png';
 
             //--------------loops through all the locations and displays locations that should be displayed--------------
             for (let i = 0; i < self.locations.allLocations.length; i++) {
+                console.log(self.locations.allLocations[i]);
                 if (self.locations.allLocations[i].reveal_type == 'static') {
                     self.locations.allLocations[i].reveal_type = static;
                 } else if (self.locations.allLocations[i].reveal_type == 'proximity') {
@@ -186,7 +187,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
             //--------------overlay function for the overlay--------------
             overlay = new CaponiOverlay(bounds, srcImage, self.map);
-        }, 1000)
+        }, 700)
 
     }
     //--------------everything from here- ln 258 is for the map overlay --------------
