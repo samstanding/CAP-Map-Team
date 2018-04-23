@@ -187,7 +187,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 })(marker, i));
             }
             //--------------overlay function for the overlay--------------
-            // overlay = new CaponiOverlay(bounds, srcImage, $scope.map);
+            overlay = new CaponiOverlay(bounds, srcImage, $scope.map);
         }, 700)
 
     }
