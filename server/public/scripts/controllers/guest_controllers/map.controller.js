@@ -92,14 +92,11 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             console.log(`more or less ${crd.accuracy} meters`);
 
 
-            if (markerStore.marker !== null) {
-                alert('repositioning marker');
-                
+            if (markerStore.marker !== null) { 
                 markerStore.marker.setPosition(new google.maps.LatLng(crd.latitude, crd.longitude));
             }
 
             else {
-                alert('creating marker');
                 let personMarker = new google.maps.Marker({
                     position: new google.maps.LatLng(crd.latitude, crd.longitude),
                     map: self.map,
