@@ -1,4 +1,4 @@
-capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService', '$scope', function (UserService, GuestService, AdminService, $scope) {
+capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService', '$scope', '$timeout', function (UserService, GuestService, AdminService, $scope, $timeout) {
     console.log('MapController created');
     var self = this;
     self.userService = UserService;
@@ -41,14 +41,14 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     self.locations.allLocations[i].reveal_type = 'not hidden';
                     let newMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-                        map: self.map,
+                        map: $scope.map,
                         icon: found,
                         animation: google.maps.Animation.DROP
                     })
                     google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
                         return function () {
                             self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
-                            self.infowindow.open(self.map, newMarker);
+                            self.infowindow.open($scope.map, newMarker);
                         }
                     })(newMarker, i));
                 }
@@ -67,13 +67,13 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     self.locations.allLocations[i].reveal_type = hiddenMarker;
                     let newMarker = new google.maps.Marker({
                         position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-                        map: self.map,
+                        map: $scope.map,
                         icon: self.locations.allLocations[i].reveal_type
                     })
                     google.maps.event.addListener(newMarker, 'click', (function (newMarker, i) {
                         return function () {
                             self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
-                            self.infowindow.open(self.map, newMarker);
+                            self.infowindow.open($scope.map, newMarker);
                         }
                     })(newMarker, i));
                 }
@@ -99,14 +99,14 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             else {
                 let personMarker = new google.maps.Marker({
                     position: new google.maps.LatLng(crd.latitude, crd.longitude),
-                    map: self.map,
+                    map: $scope.map,
                     // icon: '../../styles/maps_marker.png',
                     icon: '../../styles/maps_marker_55px_halo.png',
                 })
                 markerStore.marker = personMarker;
             }
             
-            // self.triggerMarkerShow(crd);
+            self.triggerMarkerShow(crd);
             // self.triggerMarkerHide(crd);
             $scope.$apply();
            
@@ -129,8 +129,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         ////--------------gets the locations to display--------------
         self.getAllLocations();
         //--------------timeout so all locations are obtained before map renders-------------
-        setTimeout(function mapDelay() {
-            self.map = new google.maps.Map(document.getElementById('map'), {
+        $timeout(function () {
+            $scope.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
                     lat: 44.8049741120178,
                     lng: -93.1529663690302
@@ -174,7 +174,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 //--------------creates markers for each location--------------
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(self.locations.allLocations[i].lat, self.locations.allLocations[i].long),
-                    map: self.map,
+                    map: $scope.map,
                     title: self.locations.allLocations[i].location_name,
                     icon: self.locations.allLocations[i].reveal_type
                 })
@@ -182,12 +182,12 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
-                        self.infowindow.open(self.map, marker);
+                        self.infowindow.open($scope.map, marker);
                     }
                 })(marker, i));
             }
             //--------------overlay function for the overlay--------------
-            // overlay = new CaponiOverlay(bounds, srcImage, self.map);
+            // overlay = new CaponiOverlay(bounds, srcImage, $scope.map);
         }, 700)
 
     }
@@ -207,7 +207,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         this.div_ = null;
 
         // Explicitly call setMap on this overlay.
-        this.setMap(self.map);
+        this.setMap($scope.map);
     }
 
     /**
