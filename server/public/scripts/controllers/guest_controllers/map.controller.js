@@ -84,8 +84,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
         console.log('in find location map');
-        $timeout(function () {
-            $scope.success = (pos) => {
+            success = (pos) => {
             let crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
@@ -112,7 +111,6 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             $scope.$apply();
            
         }
-    }, 700);
         error = (err) => {
             console.log('error in finding location: ', err);
             alert("We were\'t able to get your location. Make sure you\'re on an HTTPS webpage!", "", "error");
@@ -121,7 +119,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             enableHighAccuracy: true,
         }
 
-        navigator.geolocation.watchPosition($scope.success, error, options);
+        navigator.geolocation.watchPosition(success, error, options);
     }
 
     self.findLocation();
