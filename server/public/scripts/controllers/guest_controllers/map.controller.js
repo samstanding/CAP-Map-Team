@@ -62,10 +62,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.triggerMarkerHide = (location) => {
         for (let i = 0; i < self.locations.allLocations.length; i++) {
             if (self.locations.allLocations[i].reveal_type == 'not hidden') {
-                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00028;
-                let boundBottom = self.locations.allLocations[i].lat - .00028;
-                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0004;
-                let boundLeft = self.locations.allLocations[i].long - .0004;
+                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
+                let boundBottom = self.locations.allLocations[i].lat - .00035;
+                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
+                let boundLeft = self.locations.allLocations[i].long - .0005;
                 if (location.latitude < boundBottom && location.latitude > boundTop && location.longitude > boundRight && location.latitude < boundLeft) {
                     self.locations.allLocations[i].reveal_type = hiddenMarker;
                     let newMarker = new google.maps.Marker({
@@ -86,9 +86,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     //--------------instance of a marker that is centered --------------
 
     let markerImage = new google.maps.MarkerImage('../../styles/maps_marker_55px_halo.png', 
-                    new google.maps.Size(90, 90), 
+                    new google.maps.Size(55, 55), 
                     new google.maps.Point(0, 0),
-                    new google.maps.Point(15, 15));
+                    new google.maps.Point(0, 32));
 
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
