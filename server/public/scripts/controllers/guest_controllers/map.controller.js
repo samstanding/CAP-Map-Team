@@ -86,7 +86,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     //--------------instance of a marker that is centered --------------
 
     let markerImage = new google.maps.MarkerImage('../../styles/maps_marker_55px_halo.png', 
-                    new google.maps.Size(30, 30), 
+                    new google.maps.Size(10, 10), 
                     new google.maps.Point(0, 0),
                     new google.maps.Point(15, 15));
 
