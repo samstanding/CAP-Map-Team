@@ -83,6 +83,13 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             }
         }
     }
+    //--------------instance of a marker that is centered --------------
+
+    let markerImage = new google.maps.MarkerImage('../../styles/maps_marker_55px_halo.png', 
+                    new google.maps.Size(30, 30), 
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(15, 15));
+
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
     self.findLocation = () => {
@@ -105,7 +112,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     position: new google.maps.LatLng(crd.latitude, crd.longitude),
                     map: $scope.map,
                     // icon: '../../styles/maps_marker.png',
-                    icon: '../../styles/maps_marker_55px_halo.png',
+                    icon: markerImage,
                 })
                 markerStore.marker = personMarker;
             }
