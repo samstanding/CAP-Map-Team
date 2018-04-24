@@ -88,7 +88,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     let markerImage =  new google.maps.MarkerImage('../../styles/maps_marker_55px_halo.png', 
                     new google.maps.Size(55, 55), 
                     new google.maps.Point(0, 0),
-                    new google.maps.Point(8, 16));
+                    new google.maps.Point(0, 0));
 
 
     ////--------------location to get the guest's location, display it and display what hidden locations they see--------------
