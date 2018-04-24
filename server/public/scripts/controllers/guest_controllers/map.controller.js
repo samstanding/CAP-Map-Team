@@ -101,7 +101,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`more or less ${crd.accuracy} meters`);
-            // if (crd.crd.latitude)
+            if (crd.latitude > 44.806949 && crd.latitude < 44.801 && crd.longitude > -93.14892 && crd.longitude < -93.1568 ) {
+                navigator.geolocation.clearWatch();
+            }
 
 
             if (markerStore.marker !== null) { 
