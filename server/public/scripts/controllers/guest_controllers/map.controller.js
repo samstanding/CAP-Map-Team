@@ -29,6 +29,9 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.generateLink = (location) => `<a href="#!/artifacts/${location.id}">${location.location_name}</a>`;
     self.infowindow = new google.maps.InfoWindow();
 
+    //--------------setting global variables for the user's coordinates--------------
+    let crd = {};
+
     //--------------functions that control when hidden locations are shown--------------
     self.triggerMarkerShow = (location) => {
         for (let i = 0; i < self.locations.allLocations.length; i++) {
@@ -86,7 +89,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         $timeout(function () {
             console.log('in find location map');
             success = (pos) => {
-            let crd = pos.coords;
+            crd = pos.coords;
             console.log('your current position is: ');
             console.log(`Latitude: ${crd.latitude}`);
             console.log(`Longitude: ${crd.longitude}`);
@@ -135,8 +138,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         $timeout(function () {
             $scope.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
-                    lat: 44.8049741120178,
-                    lng: -93.1529663690302
+                    lat: crd.latitude,
+                    lng: crd.longitude
                 },
                 zoom: 18,
                 mapTypeId: 'satellite',
