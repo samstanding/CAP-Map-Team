@@ -121,6 +121,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         }
         options = {
             enableHighAccuracy: true,
+            timeout: 3600000
         }
         navigator.geolocation.watchPosition(success, error, options);
         }, 700);
@@ -138,8 +139,8 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         $timeout(function () {
             $scope.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
-                    lat: crd.latitude,
-                    lng: crd.longitude
+                    lat: 44.8049741120178,
+                    lng: -93.1529663690302
                 },
                 zoom: 18,
                 mapTypeId: 'satellite',
