@@ -36,10 +36,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.triggerMarkerShow = (location) => {
         for (let i = 0; i < self.locations.allLocations.length; i++) {
             if (self.locations.allLocations[i].reveal_type == hiddenMarker) {
-                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
-                let boundBottom = self.locations.allLocations[i].lat - .00035;
-                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
-                let boundLeft = self.locations.allLocations[i].long - .0005;
+                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .0002;
+                let boundBottom = self.locations.allLocations[i].lat - .0002;
+                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0003;
+                let boundLeft = self.locations.allLocations[i].long - .0003;
                 if (location.latitude > boundBottom && location.latitude < boundTop && location.longitude < boundRight && location.latitude > boundLeft) {
                     self.locations.allLocations[i].reveal_type = 'not hidden';
                     let newMarker = new google.maps.Marker({
@@ -62,10 +62,10 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
     self.triggerMarkerHide = (location) => {
         for (let i = 0; i < self.locations.allLocations.length; i++) {
             if (self.locations.allLocations[i].reveal_type == 'not hidden') {
-                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .00035;
-                let boundBottom = self.locations.allLocations[i].lat - .00035;
-                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0005;
-                let boundLeft = self.locations.allLocations[i].long - .0005;
+                let boundTop = parseFloat(self.locations.allLocations[i].lat) + .0002;
+                let boundBottom = self.locations.allLocations[i].lat - .0002;
+                let boundRight = parseFloat(self.locations.allLocations[i].long) + .0003;
+                let boundLeft = self.locations.allLocations[i].long - .0003;
                 if (location.latitude < boundBottom && location.latitude > boundTop && location.longitude > boundRight && location.latitude < boundLeft) {
                     self.locations.allLocations[i].reveal_type = hiddenMarker;
                     let newMarker = new google.maps.Marker({
