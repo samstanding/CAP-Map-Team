@@ -148,7 +148,7 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
         $timeout(function () {
             $scope.map = new google.maps.Map(document.getElementById('map'), {
                 center: {
-                    lat: 44.8049741120178,
+                    lat: 44.8053,
                     lng: -93.1529663690302
                 },
                 zoom: 18,
