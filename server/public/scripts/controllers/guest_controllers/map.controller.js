@@ -197,12 +197,22 @@ capApp.controller('MapController', ['UserService', 'GuestService', 'AdminService
                     icon: self.locations.allLocations[i].reveal_type
                 })
                 //--------------creates the info windows and sets event listener to route to artifact pages on click--------------
+                if (self.locations.allLocations[i].reveal_type == facility) {
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            self.infowindow.setContent('Facilities');
+                            self.infowindow.open($scope.map, marker);
+                        }
+                    })(marker, i));
+                } else {
+
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         self.infowindow.setContent(self.generateLink(self.locations.allLocations[i]));
                         self.infowindow.open($scope.map, marker);
                     }
                 })(marker, i));
+                }
             }
             //--------------overlay function for the overlay--------------
             overlay = new CaponiOverlay(bounds, srcImage, $scope.map);
